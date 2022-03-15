@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="For love">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="No one can stop you">
+  
+  <title>面向对象-异常 - 辰妍亦沐</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>辰妍亦沐</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="面向对象-异常">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      muchenH
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-02 21:34" pubdate>
+        2021年9月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面向对象-异常</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年9月10日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>异常的概念</li>
+<li>捕获异常</li>
+<li>异常的传递</li>
+<li>抛出异常</li>
+</ul>
+<h2 id="01-异常的概念"><a href="#01-异常的概念" class="headerlink" title="01. 异常的概念"></a>01. 异常的概念</h2><ul>
+<li>程序在运行时，如果 <code>Python 解释器</code> <strong>遇到</strong> 到一个错误，<strong>会停止程序的执行，并且提示一些错误信息</strong>，这就是 <strong>异常</strong></li>
+<li><strong>程序停止执行并且提示错误信息</strong> 这个动作，我们通常称之为：<strong>抛出(raise)异常</strong></li>
+</ul>
+<p><img src="/media/14989636063700/001_%E5%BC%82%E5%B8%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="001_异常示意图-w480"></p>
+<blockquote>
+<p>程序开发时，很难将 <strong>所有的特殊情况</strong> 都处理的面面俱到，通过 <strong>异常捕获</strong> 可以针对突发事件做集中的处理，从而保证程序的 <strong>稳定性和健壮性</strong></p>
+</blockquote>
+<h2 id="02-捕获异常"><a href="#02-捕获异常" class="headerlink" title="02. 捕获异常"></a>02. 捕获异常</h2><h3 id="2-1-简单的捕获异常语法"><a href="#2-1-简单的捕获异常语法" class="headerlink" title="2.1 简单的捕获异常语法"></a>2.1 简单的捕获异常语法</h3><ul>
+<li>在程序开发中，如果 <strong>对某些代码的执行不能确定是否正确</strong>，可以增加 <code>try(尝试)</code> 来 <strong>捕获异常</strong></li>
+<li>捕获异常最简单的语法格式：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    尝试执行的代码<br><span class="hljs-keyword">except</span>:<br>    出现错误的处理<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><code>try</code> <strong>尝试</strong>，下方编写要尝试代码，不确定是否能够正常执行的代码</li>
+<li><code>except</code> <strong>如果不是</strong>，下方编写尝试失败的代码</li>
+</ul>
+<h4 id="简单异常捕获演练-——-要求用户输入整数"><a href="#简单异常捕获演练-——-要求用户输入整数" class="headerlink" title="简单异常捕获演练 —— 要求用户输入整数"></a>简单异常捕获演练 —— 要求用户输入整数</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-comment"># 提示用户输入一个数字</span><br>    num = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入数字：&quot;</span>))<br><span class="hljs-keyword">except</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请输入正确的数字&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-2-错误类型捕获"><a href="#2-2-错误类型捕获" class="headerlink" title="2.2 错误类型捕获"></a>2.2 错误类型捕获</h3><ul>
+<li><p>在程序执行时，可能会遇到 <strong>不同类型的异常</strong>，并且需要 <strong>针对不同类型的异常，做出不同的响应</strong>，这个时候，就需要捕获错误类型了</p>
+</li>
+<li><p>语法如下：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-comment"># 尝试执行的代码</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> 错误类型<span class="hljs-number">1</span>:<br>    <span class="hljs-comment"># 针对错误类型1，对应的代码处理</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> (错误类型<span class="hljs-number">2</span>, 错误类型<span class="hljs-number">3</span>):<br>    <span class="hljs-comment"># 针对错误类型2 和 3，对应的代码处理</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未知错误 %s&quot;</span> % result)<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>当 <code>Python</code> 解释器 <strong>抛出异常</strong> 时，<strong>最后一行错误信息的第一个单词，就是错误类型</strong></li>
+</ul>
+<h4 id="异常类型捕获演练-——-要求用户输入整数"><a href="#异常类型捕获演练-——-要求用户输入整数" class="headerlink" title="异常类型捕获演练 —— 要求用户输入整数"></a>异常类型捕获演练 —— 要求用户输入整数</h4><p><strong>需求</strong></p>
+<ol>
+<li>提示用户输入一个整数</li>
+<li>使用 <code>8</code> 除以用户输入的整数并且输出</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    num = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入整数：&quot;</span>))<br>    result = <span class="hljs-number">8</span> / num<br>    <span class="hljs-built_in">print</span>(result)<br><span class="hljs-keyword">except</span> ValueError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请输入正确的整数&quot;</span>)<br><span class="hljs-keyword">except</span> ZeroDivisionError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;除 0 错误&quot;</span>)<br><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="捕获未知错误"><a href="#捕获未知错误" class="headerlink" title="捕获未知错误"></a>捕获未知错误</h4><ul>
+<li>在开发时，<strong>要预判到所有可能出现的错误</strong>，还是有一定难度的</li>
+<li>如果希望程序 <strong>无论出现任何错误</strong>，都不会因为 <code>Python</code> 解释器 <strong>抛出异常而被终止</strong>，可以再增加一个 <code>except</code></li>
+</ul>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未知错误 %s&quot;</span> % result)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-3-异常捕获完整语法"><a href="#2-3-异常捕获完整语法" class="headerlink" title="2.3 异常捕获完整语法"></a>2.3 异常捕获完整语法</h3><ul>
+<li>在实际开发中，为了能够处理复杂的异常情况，完整的异常语法如下：</li>
+</ul>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>有关完整语法的应用场景，在后续学习中，<strong>结合实际的案例</strong>会更好理解</li>
+<li>现在先对这个语法结构有个印象即可</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-comment"># 尝试执行的代码</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> 错误类型<span class="hljs-number">1</span>:<br>    <span class="hljs-comment"># 针对错误类型1，对应的代码处理</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> 错误类型<span class="hljs-number">2</span>:<br>    <span class="hljs-comment"># 针对错误类型2，对应的代码处理</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> (错误类型<span class="hljs-number">3</span>, 错误类型<span class="hljs-number">4</span>):<br>    <span class="hljs-comment"># 针对错误类型3 和 4，对应的代码处理</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-comment"># 打印错误信息</span><br>    <span class="hljs-built_in">print</span>(result)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-comment"># 没有异常才会执行的代码</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-comment"># 无论是否有异常，都会执行的代码</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;无论是否有异常，都会执行的代码&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p><code>else</code> 只有在没有异常时才会执行的代码</p>
+</li>
+<li><p><code>finally</code> 无论是否有异常，都会执行的代码</p>
+</li>
+<li><p>之前一个演练的 <strong>完整捕获异常</strong> 的代码如下：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    num = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入整数：&quot;</span>))<br>    result = <span class="hljs-number">8</span> / num<br>    <span class="hljs-built_in">print</span>(result)<br><span class="hljs-keyword">except</span> ValueError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请输入正确的整数&quot;</span>)<br><span class="hljs-keyword">except</span> ZeroDivisionError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;除 0 错误&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未知错误 %s&quot;</span> % result)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正常执行&quot;</span>)<br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行完成，但是不保证正确&quot;</span>)<br><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="03-异常的传递"><a href="#03-异常的传递" class="headerlink" title="03. 异常的传递"></a>03. 异常的传递</h2><ul>
+<li><strong>异常的传递</strong> —— 当 <strong>函数&#x2F;方法</strong> 执行 <strong>出现异常</strong>，会 <strong>将异常传递</strong> 给 函数&#x2F;方法 的 <strong>调用一方</strong></li>
+<li>如果 <strong>传递到主程序</strong>，仍然 <strong>没有异常处理</strong>，程序才会被终止</li>
+</ul>
+<blockquote>
+<p>提示</p>
+</blockquote>
+<ul>
+<li>在开发中，可以在主函数中增加 <strong>异常捕获</strong></li>
+<li>而在主函数中调用的其他函数，只要出现异常，都会传递到主函数的 <strong>异常捕获</strong> 中</li>
+<li>这样就不需要在代码中，增加大量的 <strong>异常捕获</strong>，能够保证代码的整洁</li>
+</ul>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义函数 <code>demo1()</code> <strong>提示用户输入一个整数并且返回</strong></li>
+<li>定义函数 <code>demo2()</code> 调用 <code>demo1()</code></li>
+<li>在主程序中调用 <code>demo2()</code></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">demo1</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入一个整数：&quot;</span>))<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">demo2</span>():<br>    <span class="hljs-keyword">return</span> demo1()<br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-built_in">print</span>(demo2())<br><span class="hljs-keyword">except</span> ValueError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请输入正确的整数&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未知错误 %s&quot;</span> % result)<br><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="04-抛出-raise-异常"><a href="#04-抛出-raise-异常" class="headerlink" title="04. 抛出 raise 异常"></a>04. 抛出 <code>raise</code> 异常</h2><h3 id="4-1-应用场景"><a href="#4-1-应用场景" class="headerlink" title="4.1 应用场景"></a>4.1 应用场景</h3><ul>
+<li>在开发中，除了 <strong>代码执行出错</strong> <code>Python</code> 解释器会 <strong>抛出</strong> 异常之外</li>
+<li>还可以根据 <strong>应用程序</strong> <strong>特有的业务需求</strong> <strong>主动抛出异常</strong></li>
+</ul>
+<p><strong>示例</strong></p>
+<ul>
+<li>提示用户 <strong>输入密码</strong>，如果 <strong>长度少于 8</strong>，抛出 <strong>异常</strong></li>
+</ul>
+<p><img src="/media/15016413521006/024_%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8.png" srcset="/img/loading.gif" lazyload alt="024_自定义异常-w822"></p>
+<p><strong>注意</strong></p>
+<ul>
+<li>当前函数 <strong>只负责</strong> 提示用户输入密码，如果 <strong>密码长度不正确，需要其他的函数进行额外处理</strong></li>
+<li>因此可以 <strong>抛出异常</strong>，由其他需要处理的函数 <strong>捕获异常</strong></li>
+</ul>
+<h3 id="4-2-抛出异常"><a href="#4-2-抛出异常" class="headerlink" title="4.2 抛出异常"></a>4.2 抛出异常</h3><ul>
+<li><code>Python</code> 中提供了一个 <code>Exception</code> <strong>异常类</strong></li>
+<li>在开发时，如果满足 <strong>特定业务需求时</strong>，希望 <strong>抛出异常</strong>，可以：<ol>
+<li><strong>创建</strong> 一个 <code>Exception</code> 的 <strong>对象</strong></li>
+<li>使用 <code>raise</code> <strong>关键字</strong> 抛出 <strong>异常对象</strong></li>
+</ol>
+</li>
+</ul>
+<p><strong>需求</strong></p>
+<ul>
+<li>定义 <code>input_password</code> 函数，提示用户输入密码</li>
+<li>如果用户输入长度 &lt; 8，抛出异常</li>
+<li>如果用户输入长度 &gt;&#x3D;8，返回输入的密码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">input_password</span>():<br><br>    <span class="hljs-comment"># 1. 提示用户输入密码</span><br>    pwd = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入密码：&quot;</span>)<br><br>    <span class="hljs-comment"># 2. 判断密码长度，如果长度 &gt;= 8，返回用户输入的密码</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(pwd) &gt;= <span class="hljs-number">8</span>:<br>        <span class="hljs-keyword">return</span> pwd<br><br>    <span class="hljs-comment"># 3. 密码长度不够，需要抛出异常</span><br>    <span class="hljs-comment"># 1&gt; 创建异常对象 - 使用异常的错误信息字符串作为参数</span><br>    ex = Exception(<span class="hljs-string">&quot;密码长度不够&quot;</span>)<br><br>    <span class="hljs-comment"># 2&gt; 抛出异常对象</span><br>    <span class="hljs-keyword">raise</span> ex<br><br><br><span class="hljs-keyword">try</span>:<br>    user_pwd = input_password()<br>    <span class="hljs-built_in">print</span>(user_pwd)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;发现错误：%s&quot;</span> % result)<br><br></code></pre></div></td></tr></table></figure>
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Python面向对象</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面向对象-模块和包</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%8D%95%E4%BE%8B/">
+                        <span class="hidden-mobile">面向对象-单例</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span>with </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        皖ICP备2021012569号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
