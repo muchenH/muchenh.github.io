@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
 <meta property="article:published_time" content="2022-10-29T14:09:45.000Z">
-<meta property="article:modified_time" content="2023-02-25T12:50:42.863Z">
+<meta property="article:modified_time" content="2023-03-03T11:40:56.657Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="pygame">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.2k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          18 分钟
+          19 分钟
         
       </span>
     
@@ -291,7 +291,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">BASH<br><span class="hljs-comment"># 1.create portainer_data</span><br>docker volume create portainer_data<br><span class="hljs-comment"># 2.docker run portainer</span><br>docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest<br></code></pre></td></tr></table></figure>
 
 <p>Qinglong</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">BASH<br><span class="hljs-comment"># 1.docker run qinglong</span><br>docker run -itd -v /root/docker/ql/data:/ql/data -p 5700:5700 --name ql --hostname ql --restart always whyour/qinglong:latest<br> <span class="hljs-comment"># 2.fix dependent</span><br> docker <span class="hljs-built_in">exec</span> -it ql bash -c  <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/shidahuilang/QL-/main/npm.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">BASH<br><span class="hljs-comment"># 1.docker run qinglong</span><br>docker run -itd -v /root/docker/ql/data:/ql/data -p 5700:5700 --name ql --hostname ql --restart always whyour/qinglong:latest<br><span class="hljs-comment"># 2.fix dependent</span><br>docker <span class="hljs-built_in">exec</span> -it ql bash<br>curl -fsSL https://git.metauniverse-cn.com/https://raw.githubusercontent.com/shufflewzc/QLDependency/main/Shell/QLOneKeyDependency.sh | sh<br></code></pre></td></tr></table></figure>
 
 <p>Homeassistant</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">BASH<br><span class="hljs-comment"># 1.docker run homeassistant</span><br>docker run -d --restart=always --name=<span class="hljs-string">&quot;home-assistants&quot;</span> -v /root/docker/homeassistant/config:/config --net=host homeassistant/home-assistant:latest<br></code></pre></td></tr></table></figure>
@@ -397,8 +397,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/25/Ubuntu%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" title="Ubuntu设置自动挂载硬盘">
-                        <span class="hidden-mobile">Ubuntu设置自动挂载硬盘</span>
+                      <a href="/2022/10/25/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85docker/" title="Ubuntu系统安装docker">
+                        <span class="hidden-mobile">Ubuntu系统安装docker</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
