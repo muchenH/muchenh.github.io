@@ -16,18 +16,18 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+    <meta name="description" content="lsusb显示本机的USB设备列表信息 补充说明lsusb命令 用于显示本机的USB设备列表，以及USB设备的详细信息。 lsusb命令是一个学习USB驱动开发，认识USB设备的助手，推荐大家使用，如果您的开发板中或者产品中没有lsusb命令可以自己移植一个，放到文件系统里面。 语法1lsusb(选项)  选项12345-v：显示USB设备的详细信息；-s&lt;总线：设备号&gt;仅显示指定的总">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在macOS中下载最新系统并写入到U盘">
-<meta property="og:url" content="http://example.com/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/index.html">
+<meta property="og:title" content="Linux命令-lsusb">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lsusb/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+<meta property="og:description" content="lsusb显示本机的USB设备列表信息 补充说明lsusb命令 用于显示本机的USB设备列表，以及USB设备的详细信息。 lsusb命令是一个学习USB驱动开发，认识USB设备的助手，推荐大家使用，如果您的开发板中或者产品中没有lsusb命令可以自己移植一个，放到文件系统里面。 语法1lsusb(选项)  选项12345-v：显示USB设备的详细信息；-s&lt;总线：设备号&gt;仅显示指定的总">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2022-10-24T14:09:45.000Z">
-<meta property="article:modified_time" content="2023-03-10T09:16:28.366Z">
+<meta property="article:published_time" content="2023-08-14T07:20:22.000Z">
+<meta property="article:modified_time" content="2023-08-14T07:19:51.388Z">
 <meta property="article:author" content="muchenH">
-<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/default.png">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>在macOS中下载最新系统并写入到U盘 - muchenH Blog</title>
+  <title>Linux命令-lsusb - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="在macOS中下载最新系统并写入到U盘"></span>
+            <span id="subtitle" data-typed-text="Linux命令-lsusb"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-24 22:09" pubdate>
-          2022年10月24日 晚上
+        <time datetime="2023-08-14 15:20" pubdate>
+          2023年8月14日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          931 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -285,23 +285,39 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在macOS中下载最新系统并写入到U盘</h1>
+            <h1 style="display: none">Linux命令-lsusb</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="在macOS中下载最新系统并写入到U盘"><a href="#在macOS中下载最新系统并写入到U盘" class="headerlink" title="在macOS中下载最新系统并写入到U盘"></a><strong>在macOS中下载最新系统并写入到U盘</strong></h2><h3 id="1-使用终端运行一下命令查找最新版系统"><a href="#1-使用终端运行一下命令查找最新版系统" class="headerlink" title="1.使用终端运行一下命令查找最新版系统"></a>1.使用终端运行一下命令查找最新版系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --list-full-installers<br></code></pre></td></tr></table></figure>
+                <h1 id="lsusb"><a href="#lsusb" class="headerlink" title="lsusb"></a>lsusb</h1><p>显示本机的USB设备列表信息</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>lsusb命令</strong> 用于显示本机的USB设备列表，以及USB设备的详细信息。</p>
+<p>lsusb命令是一个学习USB驱动开发，认识USB设备的助手，推荐大家使用，如果您的开发板中或者产品中没有lsusb命令可以自己移植一个，放到文件系统里面。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsusb(选项)<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-使用命令下载指定的macOS镜像"><a href="#2-使用命令下载指定的macOS镜像" class="headerlink" title="2.使用命令下载指定的macOS镜像"></a>2.使用命令下载指定的macOS镜像</h3><p> <strong>eg:</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --fetch-full-installer --full-installer-version 12.6<br></code></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-v：显示USB设备的详细信息；<br>-s&lt;总线：设备号&gt;仅显示指定的总线和（或）设备号的设备；<br>-d&lt;厂商：产品&gt;：仅显示指定厂商和产品编号的设备；<br>-t：以树状结构显示无理USB设备的层次；<br>-V：显示命令的版本信息。<br></code></pre></td></tr></table></figure>
 
-<p> 以上命令下载完成后，在 &#x2F;Applications 目录下就会有一个名为 Install macOS Monterey.app 应用，这个就是完整的安装镜像了。</p>
-<h3 id="3-使用Apple官方的写入镜像方法将镜像写入U盘"><a href="#3-使用Apple官方的写入镜像方法将镜像写入U盘" class="headerlink" title="3.使用Apple官方的写入镜像方法将镜像写入U盘"></a>3.使用Apple官方的写入镜像方法将镜像写入U盘</h3><p> 1.连接用于可启动安装程序的 U盘或其他宗卷。</p>
-<p> 2.打开“终端”，它位于“应用程序”文件夹的“实用工具”文件夹中。</p>
-<p> 3.终端”中输入或粘贴以下命令之一。</p>
-<p> 这些假设安装程序位于“应用程序”文件夹中，而 MyVolume 是您 正在使用的 U盘或其他宗卷的名称。</p>
-<p> 如果它具有不同的名称，请在这些命令中将<em>MyVolume</em>替换为您 的卷的名称。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Monterey:<br><br>sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Big Sur:<br><br>sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Catalina:<br><br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Mojave:<br><br>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>High Sierra:<br><br>sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br></code></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>插入usb鼠标后执行lsusb的输出内容如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">Bus 005 Device 001: id 0000:0000 <br>Bus 001 Device 001: ID 0000:0000 <br>Bus 004 Device 001: ID 0000:0000 <br>Bus 003 Device 001: ID 0000:0000 <br>Bus 002 Device 006: ID 15d9:0a37 <br>Bus 002 Device 001: ID 0000:0000 <br></code></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<p> <strong>Bus 005</strong> </p>
+<p>表示第五个usb主控制器(机器上总共有5个usb主控制器 – 可以通过命令lspci | grep USB查看)</p>
+<p> <strong>Device 006</strong> </p>
+<p>表示系统给usb鼠标分配的设备号(devnum)，同时也可以看到该鼠标是插入到了第二个usb主控制器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">006        usb_device.devnum<br>/sys/devices/pci0000:00/0000:00:1d.1/usb2/2-2/devnum<br></code></pre></td></tr></table></figure>
+
+<p> <strong>ID 15d9:0a37</strong> </p>
+<p>表示usb设备的ID（这个ID由芯片制造商设置，可以唯一表示该设备）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">15d9    usb_device_descriptor.idVendor<br>0a37    usb_device_descriptor.idProduct<br>/sys/devices/pci0000:00/0000:00:1d.1/usb2/2-2/idVendor<br></code></pre></td></tr></table></figure>
+
+<p><strong>Bus 002 Device 006: ID 15d9:0a37<br>Bus 002 Device 001: ID 0000:0000</strong></p>
+<p>表示002号usb主控制器上接入了两个设备:</p>
+<ul>
+<li>一个是usb根Hub – 001 </li>
+<li>一个是usb鼠标  – 006</li>
+</ul>
+
                 
               </div>
             
@@ -319,7 +335,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/macOS/" class="category-chain-item">macOS</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -334,7 +350,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/macOS/">#macOS</a>
+        <a href="/tags/Linux/">#Linux</a>
       
     </div>
   
@@ -346,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在macOS中下载最新系统并写入到U盘</div>
-      <div>http://example.com/2022/10/24/在macOS中下载最新系统并写入到U盘/</div>
+      <div>Linux命令-lsusb</div>
+      <div>http://example.com/2023/08/14/Linux命令-lsusb/</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月24日</div>
+          <div>2023年8月14日</div>
         </div>
       
       
@@ -391,18 +407,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/" title="如何编译自己需要的 OpenWrt 固件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何编译自己需要的 OpenWrt 固件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/" title="飞机大战">
-                        <span class="hidden-mobile">飞机大战</span>
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lspci/" title="Linux命令-lspci">
+                        <span class="hidden-mobile">Linux命令-lspci</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

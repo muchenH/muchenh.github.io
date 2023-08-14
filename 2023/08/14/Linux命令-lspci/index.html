@@ -16,18 +16,18 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+    <meta name="description" content="lspci显示当前主机的所有PCI总线信息 补充说明lspci命令 用于显示当前主机的所有PCI总线信息，以及所有已连接的PCI设备信息。 语法1lspci(选项)  选项1234567-n：以数字方式显示PCI厂商和设备代码；-t：以树状结构显示PCI设备的层次关系，包括所有的总线、桥、设备以及它们之间的联接；-b：以总线为中心的视图；-d：仅显示给定厂商和设备的信息；-s：仅显示指定总线、插槽">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在macOS中下载最新系统并写入到U盘">
-<meta property="og:url" content="http://example.com/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/index.html">
+<meta property="og:title" content="Linux命令-lspci">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lspci/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+<meta property="og:description" content="lspci显示当前主机的所有PCI总线信息 补充说明lspci命令 用于显示当前主机的所有PCI总线信息，以及所有已连接的PCI设备信息。 语法1lspci(选项)  选项1234567-n：以数字方式显示PCI厂商和设备代码；-t：以树状结构显示PCI设备的层次关系，包括所有的总线、桥、设备以及它们之间的联接；-b：以总线为中心的视图；-d：仅显示给定厂商和设备的信息；-s：仅显示指定总线、插槽">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2022-10-24T14:09:45.000Z">
-<meta property="article:modified_time" content="2023-03-10T09:16:28.366Z">
+<meta property="article:published_time" content="2023-08-14T07:18:15.000Z">
+<meta property="article:modified_time" content="2023-08-14T07:19:54.261Z">
 <meta property="article:author" content="muchenH">
-<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/default.png">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>在macOS中下载最新系统并写入到U盘 - muchenH Blog</title>
+  <title>Linux命令-lspci - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="在macOS中下载最新系统并写入到U盘"></span>
+            <span id="subtitle" data-typed-text="Linux命令-lspci"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-24 22:09" pubdate>
-          2022年10月24日 晚上
+        <time datetime="2023-08-14 15:18" pubdate>
+          2023年8月14日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          3.9k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          9 分钟
+          33 分钟
         
       </span>
     
@@ -285,23 +285,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在macOS中下载最新系统并写入到U盘</h1>
+            <h1 style="display: none">Linux命令-lspci</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="在macOS中下载最新系统并写入到U盘"><a href="#在macOS中下载最新系统并写入到U盘" class="headerlink" title="在macOS中下载最新系统并写入到U盘"></a><strong>在macOS中下载最新系统并写入到U盘</strong></h2><h3 id="1-使用终端运行一下命令查找最新版系统"><a href="#1-使用终端运行一下命令查找最新版系统" class="headerlink" title="1.使用终端运行一下命令查找最新版系统"></a>1.使用终端运行一下命令查找最新版系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --list-full-installers<br></code></pre></td></tr></table></figure>
+                <h1 id="lspci"><a href="#lspci" class="headerlink" title="lspci"></a>lspci</h1><p>显示当前主机的所有PCI总线信息</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>lspci命令</strong> 用于显示当前主机的所有PCI总线信息，以及所有已连接的PCI设备信息。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lspci(选项)<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-使用命令下载指定的macOS镜像"><a href="#2-使用命令下载指定的macOS镜像" class="headerlink" title="2.使用命令下载指定的macOS镜像"></a>2.使用命令下载指定的macOS镜像</h3><p> <strong>eg:</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --fetch-full-installer --full-installer-version 12.6<br></code></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-n：以数字方式显示PCI厂商和设备代码；<br>-t：以树状结构显示PCI设备的层次关系，包括所有的总线、桥、设备以及它们之间的联接；<br>-b：以总线为中心的视图；<br>-d：仅显示给定厂商和设备的信息；<br>-s：仅显示指定总线、插槽上的设备和设备上的功能块信息；<br>-i：指定PCI编号列表文件，而不使用默认的文件；<br>-m：以机器可读方式显示PCI设备信息。<br></code></pre></td></tr></table></figure>
 
-<p> 以上命令下载完成后，在 &#x2F;Applications 目录下就会有一个名为 Install macOS Monterey.app 应用，这个就是完整的安装镜像了。</p>
-<h3 id="3-使用Apple官方的写入镜像方法将镜像写入U盘"><a href="#3-使用Apple官方的写入镜像方法将镜像写入U盘" class="headerlink" title="3.使用Apple官方的写入镜像方法将镜像写入U盘"></a>3.使用Apple官方的写入镜像方法将镜像写入U盘</h3><p> 1.连接用于可启动安装程序的 U盘或其他宗卷。</p>
-<p> 2.打开“终端”，它位于“应用程序”文件夹的“实用工具”文件夹中。</p>
-<p> 3.终端”中输入或粘贴以下命令之一。</p>
-<p> 这些假设安装程序位于“应用程序”文件夹中，而 MyVolume 是您 正在使用的 U盘或其他宗卷的名称。</p>
-<p> 如果它具有不同的名称，请在这些命令中将<em>MyVolume</em>替换为您 的卷的名称。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Monterey:<br><br>sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Big Sur:<br><br>sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Catalina:<br><br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Mojave:<br><br>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>High Sierra:<br><br>sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br></code></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# lspci<br>00:00.0 host bridge: Intel Corporation 5500 I/O Hub to ESI Port (rev 22)<br>00:01.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 1 (rev 22)<br>00:02.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 2 (rev 22)<br>00:03.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 3 (rev 22)<br>00:07.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 7 (rev 22)<br>00:08.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 8 (rev 22)<br>00:09.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 9 (rev 22)<br>00:0a.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 10 (rev 22)<br>00:10.0 PIC: Intel Corporation 5520/5500/X58 Physical and Link Layer Registers Port 0 (rev 22)<br>00:10.1 PIC: Intel Corporation 5520/5500/X58 Routing and Protocol Layer Registers Port 0 (rev 22)<br>00:11.0 PIC: Intel Corporation 5520/5500 Physical and Link Layer Registers Port 1 (rev 22)<br>00:11.1 PIC: Intel Corporation 5520/5500 Routing &amp; Protocol Layer Register Port 1 (rev 22)<br>00:14.0 PIC: Intel Corporation 5520/5500/X58 I/O Hub System Management Registers (rev 22)<br>00:14.1 PIC: Intel Corporation 5520/5500/X58 I/O Hub GPIO and Scratch Pad Registers (rev 22)<br>00:14.2 PIC: Intel Corporation 5520/5500/X58 I/O Hub Control Status and RAS Registers (rev 22)<br>00:14.3 PIC: Intel Corporation 5520/5500/X58 I/O Hub Throttle Registers (rev 22)<br>00:16.0 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.1 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.2 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.3 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.4 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.5 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.6 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:16.7 System peripheral: Intel Corporation 5520/5500/X58 Chipset QuickData Technology Device (rev 22)<br>00:1a.0 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #4<br>00:1a.1 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #5<br>00:1a.7 USB controller: Intel Corporation 82801JI (ICH10 Family) USB2 EHCI Controller #2<br>00:1b.0 Audio device: Intel Corporation 82801JI (ICH10 Family) HD Audio Controller<br>00:1c.0 PCI bridge: Intel Corporation 82801JI (ICH10 Family) PCI Express Root Port 1<br>00:1c.4 PCI bridge: Intel Corporation 82801JI (ICH10 Family) PCI Express Root Port 5<br>00:1c.5 PCI bridge: Intel Corporation 82801JI (ICH10 Family) PCI Express Root Port 6<br>00:1d.0 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #1<br>00:1d.1 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #2<br>00:1d.2 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #3<br>00:1d.3 USB controller: Intel Corporation 82801JI (ICH10 Family) USB UHCI Controller #6<br>00:1d.7 USB controller: Intel Corporation 82801JI (ICH10 Family) USB2 EHCI Controller #1<br>00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev 90)<br>00:1f.0 ISA bridge: Intel Corporation 82801JIR (ICH10R) lpc Interface Controller<br>00:1f.2 IDE interface: Intel Corporation 82801JI (ICH10 Family) 4 port SATA IDE Controller #1<br>00:1f.3 SMBus: Intel Corporation 82801JI (ICH10 Family) SMBus Controller<br>00:1f.5 IDE interface: Intel Corporation 82801JI (ICH10 Family) 2 port SATA IDE Controller #2<br>01:01.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 10)<br>02:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection<br>03:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection<br>04:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS2008 PCI-Express Fusion-MPT SAS-2 [Falcon] (rev 03)<br></code></pre></td></tr></table></figure>
+
+
+
                 
               </div>
             
@@ -319,7 +317,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/macOS/" class="category-chain-item">macOS</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -334,7 +332,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/macOS/">#macOS</a>
+        <a href="/tags/Linux/">#Linux</a>
       
     </div>
   
@@ -346,8 +344,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在macOS中下载最新系统并写入到U盘</div>
-      <div>http://example.com/2022/10/24/在macOS中下载最新系统并写入到U盘/</div>
+      <div>Linux命令-lspci</div>
+      <div>http://example.com/2023/08/14/Linux命令-lspci/</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +357,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月24日</div>
+          <div>2023年8月14日</div>
         </div>
       
       
@@ -391,9 +389,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/" title="如何编译自己需要的 OpenWrt 固件">
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lsusb/" title="Linux命令-lsusb">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何编译自己需要的 OpenWrt 固件</span>
+                        <span class="hidden-mobile">Linux命令-lsusb</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -401,8 +399,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/" title="飞机大战">
-                        <span class="hidden-mobile">飞机大战</span>
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lsof/" title="Linux命令-lsof">
+                        <span class="hidden-mobile">Linux命令-lsof</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
