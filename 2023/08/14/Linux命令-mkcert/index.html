@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="mkcert用来生成自签证书的工具 示例mkcert 是 GO 编写的，一个简单的零配置的用来生成自签证书的工具。 下面给一个简单的示例，在本地生成自签证书，并使用让 nc 使用生成的证书。 123456789101112131415161718192021222324252627282930~ ···················································">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-mkcert">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-mkcert/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="mkcert用来生成自签证书的工具 示例mkcert 是 GO 编写的，一个简单的零配置的用来生成自签证书的工具。 下面给一个简单的示例，在本地生成自签证书，并使用让 nc 使用生成的证书。 123456789101112131415161718192021222324252627282930~ ···················································">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:30.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:36.112Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-mkcert - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-mkcert"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-mkcert</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="mkcert"><a href="#mkcert" class="headerlink" title="mkcert"></a>mkcert</h1><p>用来生成自签证书的工具</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><code>mkcert</code> 是 GO 编写的，一个简单的<strong>零配置</strong>的用来生成自签证书的工具。</p>
+<p>下面给一个简单的示例，在本地生成自签证书，并使用让 nc 使用生成的证书。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs zsh">~ ·········································································································································  10:46:25<br>❯ mkcert -install<br>The local CA is already installed in the system trust store! 👍The local CA is already installed in the Firefox and/or Chrome/Chromium trust store! 👍<br>~ ·········································································································································  10:46:34<br>❯ mkcert example.com &quot;*.example.com&quot; example.test localhost 127.0.0.1 ::1<br><br>Created a new certificate valid for the following names 📜 - &quot;example.com&quot;<br> - &quot;*.example.com&quot;<br> - &quot;example.test&quot;<br> - &quot;localhost&quot;<br> - &quot;127.0.0.1&quot;<br> - &quot;::1&quot;<br><br>Reminder: X.509 wildcards only go one level deep, so this won&#x27;t match a.b.example.com ℹ️<br><br>The certificate is at &quot;./example.com+5.pem&quot; and the key at &quot;./example.com+5-key.pem&quot; ✅<br>It will expire on 30 January 2025 🗓<br><br>~ ·········································································································································  10:47:37<br>❯ ls             <br>公共  视频  文档  音乐  aria          aria2-downloads  Dockerfile             example.com+5.pem  GOPATH  minio-binaries  nowip_hosts.txt  tech_backend.jar<br>模板  图片  下载  桌面  aria2-config  cv_debug.log     example.com+5-key.pem  go                 math    navicat_reset   src<br>~ ·········································································································································  10:47:55<br>❯ ncat -lvp 1589 --ssl-key example.com+5-key.pem --ssl-cert example.com+5.pem <br>Ncat: Version 7.92 ( https://nmap.org/ncat )<br>Ncat: Listening on :::1589<br>Ncat: Listening on 0.0.0.0:1589<br>Ncat: Connection from 127.0.0.1.<br>Ncat: Connection from 127.0.0.1:39156.<br>Ncat: Failed SSL connection from 127.0.0.1: error:00000000:lib(0):func(0):reason(0)<br></code></pre></td></tr></table></figure>
+
+<p><code>mkcert</code> 自动生成并安装一个本地 CA 到 root stores，并且生成 locally-trusted 证书。<code>mkcert</code> 不会自动使用证书来配置服务器，不过，这取决于你。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>Warning: <code>mkcert</code> 自动生成的 <code>rootCA-key.pem</code> 文件提供了完整的能力来拦截你机器上的安全请求。请不要分享它。</p>
+</blockquote>
+<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ brew install mkcert<br>$ brew install nss <span class="hljs-comment"># 如果用 Firefox 的话</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>在 Linux 上，首先要安装 <code>certutil</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install libnss3-tools<br><span class="hljs-comment">#    -or-</span><br>$ sudo yum install nss-tools<br><span class="hljs-comment">#    -or-</span><br>$ sudo pacman -S nss<br><span class="hljs-comment">#    -or-</span><br>$ sudo zypper install mozilla-nss-tools<br></code></pre></td></tr></table></figure>
+
+<p>然后可以使用 <a target="_blank" rel="noopener" href="https://docs.brew.sh/Homebrew-on-Linux">Homebrew on Linux</a> 来安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ brew install mkcert<br></code></pre></td></tr></table></figure>
+
+<p>或者从源码构建（要求 Go 1.13+）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/FiloSottile/mkcert &amp;&amp; <span class="hljs-built_in">cd</span> mkcert<br>go build -ldflags <span class="hljs-string">&quot;-X main.Version=<span class="hljs-subst">$(git describe --tags)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>又或者使用 <a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert/releases">预构建的二进制文件</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ curl -JLO <span class="hljs-string">&quot;https://dl.filippo.io/mkcert/latest?for=linux/amd64&quot;</span><br>$ <span class="hljs-built_in">chmod</span> +x mkcert-v*-linux-amd64<br>$ sudo <span class="hljs-built_in">cp</span> mkcert-v*-linux-amd64 /usr/local/bin/mkcert<br></code></pre></td></tr></table></figure>
+
+<p>对于 Arch Linux 用户（比如我），<a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/mkcert/"><code>mkcert</code></a> 在 Arch Linux 官方仓库中可用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo pacman -S mkcert<br></code></pre></td></tr></table></figure>
+
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>使用 <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ choco install mkcert<br></code></pre></td></tr></table></figure>
+
+<p>或者使用 Scoop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ scoop bucket add extras<br>$ scoop install mkcert<br></code></pre></td></tr></table></figure>
+
+<p>或者从源码构建（要求 Go 1.10+） ，或者使用 <a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert/releases">预构建的二进制文件</a>。</p>
+<p>如果遇到权限问题，请使用管理员运行 <code>mkcert</code></p>
+<h2 id="支持的-root-stores"><a href="#支持的-root-stores" class="headerlink" title="支持的 root stores"></a>支持的 root stores</h2><p><code>mkcert</code> 支持以下 root stores：</p>
+<ul>
+<li>macOS system store</li>
+<li>Windows system store</li>
+<li>Linux 发行版提供<ul>
+<li><code>update-ca-trust</code> （Fedora，RHEL，CentOS）或者</li>
+<li><code>update-ca-certificates</code> （Ubuntu，Debian，OpenSUSE，SLES）或者</li>
+<li><code>trust</code> （Arch）</li>
+</ul>
+</li>
+<li>Firefox （仅 macOS 和 Linux）</li>
+<li>Chrome 和 Chromium</li>
+<li>Java（当 <code>JAVA_HOME</code> 被设置时）</li>
+</ul>
+<p>为了把 local root CA 装到这些 root stores 中，你可以设置 <code>TRUST_STORES</code> 环境变量到一个逗号分隔的 list。有这些选项：”system”,”java” 和 “nss”（包括了 Firefox）。</p>
+<h2 id="高级-topics"><a href="#高级-topics" class="headerlink" title="高级 topics"></a>高级 topics</h2><h3 id="高级选项"><a href="#高级选项" class="headerlink" title="高级选项"></a>高级选项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">-cert-file FILE, -key-file FILE, -p12-file FILE<br>    <span class="hljs-comment"># 自定义输出路径.</span><br>-client <span class="hljs-comment"># 生成供客户端认证使用的证书.</span><br>-ecdsa  <span class="hljs-comment"># 生成使用一个 ECDSA （一种椭圆曲线签名算法）key 来生成证书.</span><br>-pkcs12 <span class="hljs-comment"># 生成一个 &quot;.p12&quot; PKCS #12 文件，也可以被识别为 &quot;.pfx&quot; 文件,</span><br>        <span class="hljs-comment"># 包含 cert 和 key for legacy applications.</span><br>-csr CSR <span class="hljs-comment"># 生成一个给予 CSR（证书签名申请） 的证书。</span><br>         <span class="hljs-comment"># 与除了 -install 和 -cert-file 以外的其它所以 flag 和参数冲突！</span><br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/5367">SSL 证书 什么是CSR？-常见问题-文档中心-腾讯云</a></p>
+<blockquote>
+<p><strong>请注意！</strong> 你必须把这些选项放在域名列表之前。</p>
+</blockquote>
+<h3 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkcert -key-file key.pem -cert-file cert.pem example.com *.example.com<br></code></pre></td></tr></table></figure>
+
+<h3 id="S-x2F-MIME-（邮件安全证书）"><a href="#S-x2F-MIME-（邮件安全证书）" class="headerlink" title="S&#x2F;MIME （邮件安全证书）"></a>S&#x2F;MIME （邮件安全证书）</h3><p>用下面这种方式 <code>mkcert</code> 会生成一个 S&#x2F;MIME 证书：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkcert filippo@example.com<br></code></pre></td></tr></table></figure>
+
+<h3 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h3><p>对于要让移动设备信任证书的情况，你得安装 root CA。就是 <code>rootCA.pem</code> 这个文件，可以通过 <code>mkcert -CAROOT</code> 打印出这个文件所在的目录。</p>
+<p>在 iOS 上，你也可以使用 AirDrop，把 CA 邮件发给你自己，或者通过一个 HTTP server 提供它。在打开它之后，你需要  <a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert/issues/233#issuecomment-690110809">install the profile in Settings &gt; Profile Downloaded</a> and then <a target="_blank" rel="noopener" href="https://support.apple.com/en-nz/HT204477">enable full trust in it</a> 。</p>
+<p>对于 Android ，你得安装这个 CA 然后在应用程序的开发版本中启用 user roots。可以看一看这个 <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/22040887/749014">StackOverflow 回答</a> 。</p>
+<h3 id="用-Node-js-来使用这个-root"><a href="#用-Node-js-来使用这个-root" class="headerlink" title="用 Node.js 来使用这个 root"></a>用 Node.js 来使用这个 root</h3><p>Node 不使用 system root store，所以它不会自动接受 <code>mkcert</code> 证书。相反，你得设置 <a target="_blank" rel="noopener" href="https://nodejs.org/api/cli.html#cli_node_extra_ca_certs_file"><code>NODE_EXTRA_CA_CERTS</code></a> 环境变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODE_EXTRA_CA_CERTS=<span class="hljs-string">&quot;<span class="hljs-subst">$(mkcert -CAROOT)</span>/rootCA.pem&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="改变-CA-文件的位置"><a href="#改变-CA-文件的位置" class="headerlink" title="改变 CA 文件的位置"></a>改变 CA 文件的位置</h3><p>CA 证书和它的 key 被存储在用户家目录的一个文件夹中。一般来说你不会想去关注它的位置，因为它会被自动装载。但是你可以通过 <code>mkcert -CAROOT</code> 来打印这个目录位置。</p>
+<p>如果你想要管理单独的 CA 们，你可以使用 <code>\$CAROOT</code> 环境变量来设置 mkcert 放置和寻找 CA files 的路径。</p>
+<h3 id="在其它系统上安装-CA"><a href="#在其它系统上安装-CA" class="headerlink" title="在其它系统上安装 CA"></a>在其它系统上安装 CA</h3><p>安装 trust store 不需要 CA key（只要 CA），所以你可以导出 CA，并且使用 <code>mkcert</code> 来安装到其它机器上。</p>
+<ul>
+<li>找到 <code>rootCA.pem</code> 文件，可以用 <code>mkcert -CAROOT</code> 找到对应目录。</li>
+<li>把它 copy 到别的机器上。</li>
+<li>设置 <code>\$CAROOT</code> 为 <code>rootCA.pem</code> 所在目录。</li>
+<li>运行 <code>mkcert -install</code>(arch linux 可以 <code>sudo trust anchor --store rootCA.pem</code>，其它发行版可以用自带的命令手动添加来信任 CA)</li>
+</ul>
+<p>请千万记住 <code>mkcert</code> 是用于开发目的的，不建议用于生产，所以它不应该被用到用户终端上，并且你不应该导出或者共享 <code>rootCA-key.pem</code> 。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-mkcert</div>
+      <div>http://example.com/2023/08/14/Linux命令-mkcert/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-make/" title="Linux命令-make">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-make</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-mke2fs/" title="Linux命令-mke2fs">
+                        <span class="hidden-mobile">Linux命令-mke2fs</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
