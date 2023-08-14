@@ -16,18 +16,18 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+    <meta name="description" content="lsof显示Linux系统当前已打开的所有文件列表 lsof -p pid 补充说明lsof命令 用于查看你进程打开的文件，打开文件的进程，进程打开的端口(TCP、UDP)。找回&#x2F;恢复删除的文件。是十分方便的系统监视工具，因为lsof命令需要访问核心内存和各种文件，所以需要root用户执行。 在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在macOS中下载最新系统并写入到U盘">
-<meta property="og:url" content="http://example.com/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/index.html">
+<meta property="og:title" content="Linux命令-lsof">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lsof/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="在macOS中下载最新系统并写入到U盘1.使用终端运行一下命令查找最新版系统1softwareupdate --list-full-installers  2.使用命令下载指定的macOS镜像 eg: 1softwareupdate --fetch-full-installer --full-installer-version 12.6   以上命令下载完成后，在 &#x2F;Applicatio">
+<meta property="og:description" content="lsof显示Linux系统当前已打开的所有文件列表 lsof -p pid 补充说明lsof命令 用于查看你进程打开的文件，打开文件的进程，进程打开的端口(TCP、UDP)。找回&#x2F;恢复删除的文件。是十分方便的系统监视工具，因为lsof命令需要访问核心内存和各种文件，所以需要root用户执行。 在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2022-10-24T14:09:45.000Z">
-<meta property="article:modified_time" content="2023-03-10T09:16:28.366Z">
+<meta property="article:published_time" content="2023-08-14T07:10:15.000Z">
+<meta property="article:modified_time" content="2023-08-14T07:10:21.835Z">
 <meta property="article:author" content="muchenH">
-<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/default.png">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>在macOS中下载最新系统并写入到U盘 - muchenH Blog</title>
+  <title>Linux命令-lsof - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="在macOS中下载最新系统并写入到U盘"></span>
+            <span id="subtitle" data-typed-text="Linux命令-lsof"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-24 22:09" pubdate>
-          2022年10月24日 晚上
+        <time datetime="2023-08-14 15:10" pubdate>
+          2023年8月14日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          2.6k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          9 分钟
+          22 分钟
         
       </span>
     
@@ -285,23 +285,273 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在macOS中下载最新系统并写入到U盘</h1>
+            <h1 style="display: none">Linux命令-lsof</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="在macOS中下载最新系统并写入到U盘"><a href="#在macOS中下载最新系统并写入到U盘" class="headerlink" title="在macOS中下载最新系统并写入到U盘"></a><strong>在macOS中下载最新系统并写入到U盘</strong></h2><h3 id="1-使用终端运行一下命令查找最新版系统"><a href="#1-使用终端运行一下命令查找最新版系统" class="headerlink" title="1.使用终端运行一下命令查找最新版系统"></a>1.使用终端运行一下命令查找最新版系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --list-full-installers<br></code></pre></td></tr></table></figure>
+                <h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>显示Linux系统当前已打开的所有文件列表 <code>lsof -p pid</code></p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>lsof命令</strong> 用于查看你进程打开的文件，打开文件的进程，进程打开的端口(TCP、UDP)。找回&#x2F;恢复删除的文件。是十分方便的系统监视工具，因为lsof命令需要访问核心内存和各种文件，所以需要root用户执行。</p>
+<p>在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof (选项)<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-使用命令下载指定的macOS镜像"><a href="#2-使用命令下载指定的macOS镜像" class="headerlink" title="2.使用命令下载指定的macOS镜像"></a>2.使用命令下载指定的macOS镜像</h3><p> <strong>eg:</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --fetch-full-installer --full-installer-version 12.6<br></code></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a：列出打开文件存在的进程；<br>-c&lt;进程名&gt;：列出指定进程所打开的文件；<br>-g：列出GID号进程详情；<br>-d&lt;文件号&gt;：列出占用该文件号的进程；<br>+d&lt;目录&gt;：列出目录下被打开的文件；<br>+D&lt;目录&gt;：递归列出目录下被打开的文件；<br>-n&lt;目录&gt;：列出使用NFS的文件；<br>-i&lt;条件&gt;：列出符合条件的进程（协议、:端口、 @ip ）<br>-p&lt;进程号&gt;：列出指定进程号所打开的文件；<br>-u：列出UID号进程详情；<br>-h：显示帮助信息；<br>-v：显示版本信息<br></code></pre></td></tr></table></figure>
 
-<p> 以上命令下载完成后，在 &#x2F;Applications 目录下就会有一个名为 Install macOS Monterey.app 应用，这个就是完整的安装镜像了。</p>
-<h3 id="3-使用Apple官方的写入镜像方法将镜像写入U盘"><a href="#3-使用Apple官方的写入镜像方法将镜像写入U盘" class="headerlink" title="3.使用Apple官方的写入镜像方法将镜像写入U盘"></a>3.使用Apple官方的写入镜像方法将镜像写入U盘</h3><p> 1.连接用于可启动安装程序的 U盘或其他宗卷。</p>
-<p> 2.打开“终端”，它位于“应用程序”文件夹的“实用工具”文件夹中。</p>
-<p> 3.终端”中输入或粘贴以下命令之一。</p>
-<p> 这些假设安装程序位于“应用程序”文件夹中，而 MyVolume 是您 正在使用的 U盘或其他宗卷的名称。</p>
-<p> 如果它具有不同的名称，请在这些命令中将<em>MyVolume</em>替换为您 的卷的名称。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Monterey:<br><br>sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Big Sur:<br><br>sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Catalina:<br><br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Mojave:<br><br>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>High Sierra:<br><br>sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br></code></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof<br>command     PID USER   FD      type             DEVICE     SIZE       NODE NAME<br>init          1 root  cwd       DIR                8,2     4096          2 /<br>init          1 root  rtd       DIR                8,2     4096          2 /<br>init          1 root  txt       REG                8,2    43496    6121706 /sbin/init<br>init          1 root  mem       REG                8,2   143600    7823908 /lib64/ld-2.5.so<br>init          1 root  mem       REG                8,2  1722304    7823915 /lib64/libc-2.5.so<br>init          1 root  mem       REG                8,2    23360    7823919 /lib64/libdl-2.5.so<br>init          1 root  mem       REG                8,2    95464    7824116 /lib64/libselinux.so.1<br>init          1 root  mem       REG                8,2   247496    7823947 /lib64/libsepol.so.1<br>init          1 root   10u     FIFO               0,17                1233 /dev/initctl<br>migration     2 root  cwd       DIR                8,2     4096          2 /<br>migration     2 root  rtd       DIR                8,2     4096          2 /<br>migration     2 root  txt   unknown                                        /proc/2/exe<br>ksoftirqd     3 root  cwd       DIR                8,2     4096          2 /<br>ksoftirqd     3 root  rtd       DIR                8,2     4096          2 /<br>ksoftirqd     3 root  txt   unknown                                        /proc/3/exe<br>migration     4 root  cwd       DIR                8,2     4096          2 /<br>migration     4 root  rtd       DIR                8,2     4096          2 /<br>migration     4 root  txt   unknown                                        /proc/4/exe<br>ksoftirqd     5 root  cwd       DIR                8,2     4096          2 /<br>ksoftirqd     5 root  rtd       DIR                8,2     4096          2 /<br>ksoftirqd     5 root  txt   unknown                                        /proc/5/exe<br>events/0      6 root  cwd       DIR                8,2     4096          2 /<br>events/0      6 root  rtd       DIR                8,2     4096          2 /<br>events/0      6 root  txt   unknown                                        /proc/6/exe<br>events/1      7 root  cwd       DIR                8,2     4096          2 /<br></code></pre></td></tr></table></figure>
+
+<p><strong>lsof输出各列信息的意义如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>COMMAND</code></td>
+<td align="left">进程的名称</td>
+</tr>
+<tr>
+<td align="left"><code>PID</code></td>
+<td align="left">进程标识符</td>
+</tr>
+<tr>
+<td align="left"><code>PPID</code></td>
+<td align="left">父进程标识符（需要指定-R参数）</td>
+</tr>
+<tr>
+<td align="left"><code>USER</code></td>
+<td align="left">进程所有者</td>
+</tr>
+<tr>
+<td align="left"><code>PGID</code></td>
+<td align="left">进程所属组</td>
+</tr>
+<tr>
+<td align="left"><code>FD</code></td>
+<td align="left">文件描述符，应用程序通过它识别该文件</td>
+</tr>
+</tbody></table>
+<p>文件描述符列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>cwd</code></td>
+<td align="left">表示当前工作目录，即：应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改</td>
+</tr>
+<tr>
+<td align="left"><code>txt</code></td>
+<td align="left">该类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 &#x2F;sbin&#x2F;init 程序</td>
+</tr>
+<tr>
+<td align="left"><code>lnn</code></td>
+<td align="left">库引用 (AIX);</td>
+</tr>
+<tr>
+<td align="left"><code>er</code></td>
+<td align="left">FD 信息错误（参见名称栏）</td>
+</tr>
+<tr>
+<td align="left"><code>jld</code></td>
+<td align="left">jail 目录 (FreeBSD);</td>
+</tr>
+<tr>
+<td align="left"><code>ltx</code></td>
+<td align="left">共享库文本（代码和数据）</td>
+</tr>
+<tr>
+<td align="left"><code>mxx</code></td>
+<td align="left">十六进制内存映射类型编号xx</td>
+</tr>
+<tr>
+<td align="left"><code>m86</code></td>
+<td align="left">DOS合并映射文件</td>
+</tr>
+<tr>
+<td align="left"><code>mem</code></td>
+<td align="left">内存映射文件</td>
+</tr>
+<tr>
+<td align="left"><code>mmap</code></td>
+<td align="left">内存映射设备</td>
+</tr>
+<tr>
+<td align="left"><code>pd</code></td>
+<td align="left">父目录</td>
+</tr>
+<tr>
+<td align="left"><code>rtd</code></td>
+<td align="left">根目录</td>
+</tr>
+<tr>
+<td align="left"><code>tr</code></td>
+<td align="left">内核跟踪文件 (OpenBSD)</td>
+</tr>
+<tr>
+<td align="left"><code>v86</code></td>
+<td align="left">VP&#x2F;ix 映射文件</td>
+</tr>
+<tr>
+<td align="left"><code>0</code></td>
+<td align="left">表示标准输出</td>
+</tr>
+<tr>
+<td align="left"><code>1</code></td>
+<td align="left">表示标准输入</td>
+</tr>
+<tr>
+<td align="left"><code>2</code></td>
+<td align="left">表示标准错误</td>
+</tr>
+</tbody></table>
+<p>一般在标准输出、标准错误、标准输入后还跟着文件状态模式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>u</code></td>
+<td align="left">表示该文件被打开并处于读取&#x2F;写入模式</td>
+</tr>
+<tr>
+<td align="left"><code>r</code></td>
+<td align="left">表示该文件被打开并处于只读模式</td>
+</tr>
+<tr>
+<td align="left"><code>w</code></td>
+<td align="left">表示该文件被打开并处于写入模式</td>
+</tr>
+<tr>
+<td align="left"><code>空格</code></td>
+<td align="left">表示该文件的状态模式为 unknow，且没有锁定</td>
+</tr>
+<tr>
+<td align="left"><code>-</code></td>
+<td align="left">表示该文件的状态模式为 unknow，且被锁定</td>
+</tr>
+</tbody></table>
+<p>同时在文件状态模式后面，还跟着相关的锁：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>N</code></td>
+<td align="left">对于未知类型的Solaris NFS锁</td>
+</tr>
+<tr>
+<td align="left"><code>r</code></td>
+<td align="left">用于部分文件的读取锁定</td>
+</tr>
+<tr>
+<td align="left"><code>R</code></td>
+<td align="left">对整个文件进行读取锁定</td>
+</tr>
+<tr>
+<td align="left"><code>w</code></td>
+<td align="left">对文件的一部分进行写锁定(文件的部分写锁)</td>
+</tr>
+<tr>
+<td align="left"><code>W</code></td>
+<td align="left">对整个文件进行写锁定(整个文件的写锁)</td>
+</tr>
+<tr>
+<td align="left"><code>u</code></td>
+<td align="left">用于任何长度的读写锁</td>
+</tr>
+<tr>
+<td align="left"><code>U</code></td>
+<td align="left">对于未知类型的锁</td>
+</tr>
+<tr>
+<td align="left"><code>x</code></td>
+<td align="left">对于文件部分的SCO OpenServer Xenix锁</td>
+</tr>
+<tr>
+<td align="left"><code>X</code></td>
+<td align="left">对于整个文件的SCO OpenServer Xenix锁</td>
+</tr>
+<tr>
+<td align="left"><code>space</code></td>
+<td align="left">如果没有锁</td>
+</tr>
+</tbody></table>
+<p><strong>文件类型</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>DIR</code></td>
+<td align="left">表示目录</td>
+</tr>
+<tr>
+<td align="left"><code>CHR</code></td>
+<td align="left">表示字符类型</td>
+</tr>
+<tr>
+<td align="left"><code>BLK</code></td>
+<td align="left">块设备类型</td>
+</tr>
+<tr>
+<td align="left"><code>UNIX</code></td>
+<td align="left">UNIX 域套接字</td>
+</tr>
+<tr>
+<td align="left"><code>FIFO</code></td>
+<td align="left">先进先出 (FIFO) 队列</td>
+</tr>
+<tr>
+<td align="left"><code>IPv4</code></td>
+<td align="left">网际协议 (IP) 套接字</td>
+</tr>
+<tr>
+<td align="left"><code>DEVICE</code></td>
+<td align="left">指定磁盘的名称</td>
+</tr>
+<tr>
+<td align="left"><code>SIZE</code></td>
+<td align="left">文件的大小</td>
+</tr>
+<tr>
+<td align="left"><code>NODE</code></td>
+<td align="left">索引节点（文件在磁盘上的标识）</td>
+</tr>
+<tr>
+<td align="left"><code>NAME</code></td>
+<td align="left">打开文件的确切名称</td>
+</tr>
+<tr>
+<td align="left"><code>REG</code></td>
+<td align="left">常规文件</td>
+</tr>
+</tbody></table>
+<p>列出指定进程号所打开的文件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof -p $pid<br></code></pre></td></tr></table></figure>
+
+<p>获取端口对应的进程ID&#x3D;&gt;pid</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof -i:9981 -P -t -sTCP:LISTEN<br></code></pre></td></tr></table></figure>
+
+<p>列出打开文件的进程:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof $filename<br></code></pre></td></tr></table></figure>
+<p>查看端口占用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsof -i:$port<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
@@ -319,7 +569,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/macOS/" class="category-chain-item">macOS</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -334,7 +584,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/macOS/">#macOS</a>
+        <a href="/tags/Linux/">#Linux</a>
       
     </div>
   
@@ -346,8 +596,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在macOS中下载最新系统并写入到U盘</div>
-      <div>http://example.com/2022/10/24/在macOS中下载最新系统并写入到U盘/</div>
+      <div>Linux命令-lsof</div>
+      <div>http://example.com/2023/08/14/Linux命令-lsof/</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +609,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月24日</div>
+          <div>2023年8月14日</div>
         </div>
       
       
@@ -391,18 +641,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/" title="基于Docker部署OpenWrt">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基于Docker部署OpenWrt</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/" title="飞机大战">
-                        <span class="hidden-mobile">飞机大战</span>
+                      <a href="/2023/08/13/Linux%E5%91%BD%E4%BB%A4-ps/" title="Linux命令-ps">
+                        <span class="hidden-mobile">Linux命令-ps</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
