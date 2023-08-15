@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Linux命令-7z</title>
+    <link href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-7z/"/>
+    <url>/2023/08/14/Linux%E5%91%BD%E4%BB%A4-7z/</url>
+    
+    <content type="html"><![CDATA[<h1 id="7z"><a href="#7z" class="headerlink" title="7z"></a>7z</h1><p>拥有极高压缩比的开源压缩软件。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在 Linux 中输入以下命令安装 7-Zip。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Ubuntu 系统</span><br>apt-get update<br>apt-get install p7zip-full -y<br><br><span class="hljs-comment"># CentOS    参考：https://linuxconfig.org/how-to-install-p7zip-on-redhat-8</span><br>sudo yum install epel-release<br>yum install p7zip p7zip-plugins<br><br></code></pre></td></tr></table></figure><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>介绍几个常用场景：解压、压缩、查看（压缩包内容）。</p><p>1、将压缩文件 text.7z 在当前目录下解压缩。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">7z x text.7z<br></code></pre></td></tr></table></figure><p>2、将压缩文件 text.7z 在指定目录(&#x2F;home&#x2F;text)下解压缩。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 注意 -o 用来指定解压缩文件存放目录，-o 后是没有空格的,直接接目录</span><br>7z x text.7z -r -o/home/text<br></code></pre></td></tr></table></figure><p>3、将文件 &#x2F;home&#x2F;text 压缩成 text.7z。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">7z a text.7z -r /home/text<br></code></pre></td></tr></table></figure><p>4、查看压缩包 text.7z 内容，但不解压。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">7z l text.7z<br></code></pre></td></tr></table></figure><h2 id="help-信息翻译"><a href="#help-信息翻译" class="headerlink" title="help 信息翻译"></a>help 信息翻译</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs shell">使用方法： 7z &lt;命令&gt; [&lt;开关&gt;...] &lt;archive_name&gt; [&lt;file_names&gt;...］<br><br>&lt;命令&gt;<br>  a : 添加文件到存档<br>  b : 基准测试<br>  d : 从存档中删除文件<br>  e：从档案中提取文件（不使用目录名）。<br>  h：计算文件的哈希值<br>  i : 显示支持的格式信息<br>  l : 列出档案的内容<br>  rn : 重命名档案中的文件<br>  t : 测试档案的完整性<br>  u : 更新档案中的文件<br>  x : 提取完整路径的文件<br><br>&lt;开关&gt;<br>  --：停止开关解析<br>  @listfile : 设置包含文件名的列表文件的路径<br>  -ai[r[-|0]]&#123;@listfile|!wildcard&#125; : 包括归档文件<br>  -ax[r[-|0]]&#123;@listfile|!wildcard&#125; : 排除档案。<br>  -ao&#123;a|s|t|u&#125; : 设置覆写模式<br>  -an : 禁用档案名称字段<br>  -bb[0-3] : 设置输出日志级别<br>  -bd : 禁用进度指示器<br>  -bs&#123;o|e|p&#125;&#123;0|1|2&#125;：设置输出/错误/进度行的输出流<br>  -bt : 显示执行时间统计<br>  -i[r[-|0]]&#123;@listfile|！通配符&#125; : 包括文件名<br>  -m&#123;Parameters&#125; : 设置压缩方法<br>  -mmt[N] : 设置CPU线程的数量<br>  -mx[N] : 设置压缩级别: -mx1 (最快) ... -mx9 (超强)<br>  -o&#123;Directory&#125; : 设置输出目录<br>  -p&#123;Password&#125; : 设置密码<br>  -r[-|0] : 重新搜索子目录<br>  -sa&#123;a|e|s&#125; : 设置存档名称模式<br>  -scc&#123;UTF-8|WIN|DOS&#125;：设置控制台输入/输出的字符集。<br>  -scs&#123;UTF-8|UTF-16LE|UTF-16BE|WIN|DOS|&#123;id&#125;&#125;：设置列表文件的字符集。<br>  -scrc[CRC32|CRC64|SHA1|SHA256|*] ：为x、e、h命令设置哈希函数。<br>  -sdel : 压缩后删除文件<br>  -seml[.] : 通过电子邮件发送档案<br>  -sfx[&#123;name&#125;] : 创建SFX档案<br>  -si[&#123;name&#125;] : 从stdin读取数据<br>  -slp : 设置大型页面模式<br>  -slt : 显示l（List）命令的技术信息<br>  -snh : 将硬链接存储为链接<br>  -snl : 将符号链接存储为链接<br>  -sni : 存储NT安全信息<br>  -sns[-] : 存储NTFS备用流<br>  -so : 向stdout写数据<br>  -spd : 禁用文件名的通配符匹配<br>  -spe : 消除提取命令中根文件夹的重复。<br>  -spf : 使用完全合格的文件路径<br>  -ssc[-] : 设置敏感的大小写模式<br>  -ssw : 压缩共享文件<br>  -stl : 从最近修改的文件设置存档时间戳<br>  -stm&#123;HexMask&#125; : 设置CPU线程亲和力掩码（十六进制数字）。<br>  -stx&#123;Type&#125; : 排除存档类型<br>  -t&#123;Type&#125; : 设置存档的类型<br><span class="hljs-meta prompt_">  -u[-][p#</span><span class="language-bash">][q<span class="hljs-comment">#][r#][x#][y#][z#] [!newArchiveName] : 更新选项</span></span><br>  -v&#123;大小&#125;[b|k|m|g] : 创建卷册<br>  -w[&#123;path&#125;] : 指定工作目录。空的路径意味着一个临时目录<br>  -x[r[-|0]]&#123;@listfile|!wildcard&#125; : 排除文件名。<br>  -y : 假设所有的查询都是肯定的<br></code></pre></td></tr></table></figure><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p>更多安装使用方法可以访问官网学习：<a href="https://www.7-zip.org/">https://www.7-zip.org/</a><br>或者可以访问简体中文网站：<a href="https://sparanoid.com/lab/7z/">https://sparanoid.com/lab/7z/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Windows11设置时间显秒</title>
     <link href="/2023/05/17/Windows11%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E6%98%BE%E7%A7%92/"/>
     <url>/2023/05/17/Windows11%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E6%98%BE%E7%A7%92/</url>
@@ -231,6 +256,31 @@
   
   
   <entry>
+    <title>在macOS中下载最新系统并写入到U盘</title>
+    <link href="/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/"/>
+    <url>/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="在macOS中下载最新系统并写入到U盘"><a href="#在macOS中下载最新系统并写入到U盘" class="headerlink" title="在macOS中下载最新系统并写入到U盘"></a><strong>在macOS中下载最新系统并写入到U盘</strong></h2><h3 id="1-使用终端运行一下命令查找最新版系统"><a href="#1-使用终端运行一下命令查找最新版系统" class="headerlink" title="1.使用终端运行一下命令查找最新版系统"></a>1.使用终端运行一下命令查找最新版系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --list-full-installers<br></code></pre></td></tr></table></figure><h3 id="2-使用命令下载指定的macOS镜像"><a href="#2-使用命令下载指定的macOS镜像" class="headerlink" title="2.使用命令下载指定的macOS镜像"></a>2.使用命令下载指定的macOS镜像</h3><p> <strong>eg:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --fetch-full-installer --full-installer-version 12.6<br></code></pre></td></tr></table></figure><p> 以上命令下载完成后，在 &#x2F;Applications 目录下就会有一个名为 Install macOS Monterey.app 应用，这个就是完整的安装镜像了。</p><h3 id="3-使用Apple官方的写入镜像方法将镜像写入U盘"><a href="#3-使用Apple官方的写入镜像方法将镜像写入U盘" class="headerlink" title="3.使用Apple官方的写入镜像方法将镜像写入U盘"></a>3.使用Apple官方的写入镜像方法将镜像写入U盘</h3><p> 1.连接用于可启动安装程序的 U盘或其他宗卷。</p><p> 2.打开“终端”，它位于“应用程序”文件夹的“实用工具”文件夹中。</p><p> 3.终端”中输入或粘贴以下命令之一。</p><p> 这些假设安装程序位于“应用程序”文件夹中，而 MyVolume 是您 正在使用的 U盘或其他宗卷的名称。</p><p> 如果它具有不同的名称，请在这些命令中将<em>MyVolume</em>替换为您 的卷的名称。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Monterey:<br><br>sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Big Sur:<br><br>sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Catalina:<br><br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Mojave:<br><br>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>High Sierra:<br><br>sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>macOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>macOS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于Docker部署OpenWrt</title>
     <link href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/"/>
     <url>/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/</url>
@@ -275,31 +325,6 @@
     <tags>
       
       <tag>OpenWrt</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>在macOS中下载最新系统并写入到U盘</title>
-    <link href="/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/"/>
-    <url>/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/</url>
-    
-    <content type="html"><![CDATA[<h2 id="在macOS中下载最新系统并写入到U盘"><a href="#在macOS中下载最新系统并写入到U盘" class="headerlink" title="在macOS中下载最新系统并写入到U盘"></a><strong>在macOS中下载最新系统并写入到U盘</strong></h2><h3 id="1-使用终端运行一下命令查找最新版系统"><a href="#1-使用终端运行一下命令查找最新版系统" class="headerlink" title="1.使用终端运行一下命令查找最新版系统"></a>1.使用终端运行一下命令查找最新版系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --list-full-installers<br></code></pre></td></tr></table></figure><h3 id="2-使用命令下载指定的macOS镜像"><a href="#2-使用命令下载指定的macOS镜像" class="headerlink" title="2.使用命令下载指定的macOS镜像"></a>2.使用命令下载指定的macOS镜像</h3><p> <strong>eg:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">softwareupdate --fetch-full-installer --full-installer-version 12.6<br></code></pre></td></tr></table></figure><p> 以上命令下载完成后，在 &#x2F;Applications 目录下就会有一个名为 Install macOS Monterey.app 应用，这个就是完整的安装镜像了。</p><h3 id="3-使用Apple官方的写入镜像方法将镜像写入U盘"><a href="#3-使用Apple官方的写入镜像方法将镜像写入U盘" class="headerlink" title="3.使用Apple官方的写入镜像方法将镜像写入U盘"></a>3.使用Apple官方的写入镜像方法将镜像写入U盘</h3><p> 1.连接用于可启动安装程序的 U盘或其他宗卷。</p><p> 2.打开“终端”，它位于“应用程序”文件夹的“实用工具”文件夹中。</p><p> 3.终端”中输入或粘贴以下命令之一。</p><p> 这些假设安装程序位于“应用程序”文件夹中，而 MyVolume 是您 正在使用的 U盘或其他宗卷的名称。</p><p> 如果它具有不同的名称，请在这些命令中将<em>MyVolume</em>替换为您 的卷的名称。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Monterey:<br><br>sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Big Sur:<br><br>sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Catalina:<br><br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>Mojave:<br><br>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br><br>High Sierra:<br><br>sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>macOS</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>macOS</tag>
       
     </tags>
     
