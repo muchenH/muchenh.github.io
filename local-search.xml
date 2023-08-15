@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Linux命令-alias</title>
+    <link href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-alias/"/>
+    <url>/2023/08/14/Linux%E5%91%BD%E4%BB%A4-alias/</url>
+    
+    <content type="html"><![CDATA[<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h1><p>定义或显示别名。</p><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">alias [-p] [name[=value] ...]<br></code></pre></td></tr></table></figure><h2 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h2><ul><li>简化较长的命令。</li><li>定义、修改或者显示一个或多个别名。</li></ul><h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-p：显示全部已定义的别名。<br>name（可选）：指定要（定义、修改、显示）的别名。<br>value（可选）：别名的值。<br></code></pre></td></tr></table></figure><h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>alias 返回 true 除非您要显示的别名未定义。</p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">显示全部已定义的别名</span><br>alias<br>alias -p<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">显示已定义的别名（假设当前环境存在以下别名）</span><br>alias ls<br>alias ls grep<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">定义或修改别名的值</span><br>alias ls=&#x27;ls --color=auto&#x27;<br>alias ls=&#x27;ls --color=never&#x27; grep=&#x27;grep --color=never&#x27;<br></code></pre></td></tr></table></figure><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>直接在shell里设定的命令别名，在终端关闭或者系统重新启动后都会失效，如何才能永久有效呢？</p><p>使用编辑器打开<code>~/.bashrc</code>，在文件中加入别名设置，如：alias rm&#x3D;’rm -i’，保存后执行<code>source ~/.bashrc</code>，这样就可以永久保存命令的别名了。</p><p>因为修改的是当前用户目录下的<code>~/.bashrc</code>文件，所以这样的方式只对当前用户有用。如果要对所有用户都有效，修改<code>/etc/bashrc</code>文件就可以了。</p><blockquote><p>请注意，以下内容可能与您实际使用的系统有出入:</p><p>在CentOS7下，这个文件是<code>/etc/bash.bashrc</code>。此外在CentOS7下，细看<code>~/.bashrc</code>文件，会发现有这样一段代码：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">if [ -f ~/.bash_aliases ]; then<br>  . ~/.bash_aliases<br>fi<br></code></pre></td></tr></table></figure><p>这个代码的意思就是如果存在那么就加载<code>.bash_aliases</code>文件，所以也可以在用户根目录下新建该文件用于单独存放命令别名设置。</p></blockquote><h2 id="错误用法"><a href="#错误用法" class="headerlink" title="错误用法"></a>错误用法</h2><ul><li>要显示的别名未定义。</li><li>当您定义（修改）别名的值的时候，由于值的字符串有空格但您没有用<strong>单引号扩起</strong>，那么会导致严重的问题：</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">为方便演示，删除全部别名</span><br>unalias -a<br><span class="hljs-meta prompt_"># </span><span class="language-bash">没有用单引号扩起</span><br>alias rm=rm -rf<br><span class="hljs-meta prompt_"># </span><span class="language-bash">执行命令后报错 bash: <span class="hljs-built_in">alias</span>: -rf: not found</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这时使用<span class="hljs-built_in">alias</span>查看<span class="hljs-built_in">rm</span>的别名时返回 <span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>=<span class="hljs-string">&#x27;rm&#x27;</span></span><br></code></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">更具有迷惑性的例子</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">为方便演示，删除全部别名</span><br>unalias -a<br><span class="hljs-meta prompt_"># </span><span class="language-bash">仍然没有用单引号括起</span><br>alias ls=ls --color=never<br><span class="hljs-meta prompt_"># </span><span class="language-bash">执行命令后看起来没有报错</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使用<span class="hljs-built_in">alias</span>查看全部别名会发现运行结果如下：</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">alias</span> --color=never</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">alias</span> <span class="hljs-built_in">ls</span>=<span class="hljs-string">&#x27;ls&#x27;</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">alias</span>处理时将它们看成了两组</span><br></code></pre></td></tr></table></figure><h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><p>Q：如果我要显示一到多个别名，但不知道其中是否有未定义的该怎么办？</p><p>A：正常执行就是了，alias不会因为有一个未定义的别名就结束对剩余参数的执行。</p><p>Q：如果我这么定义<code>alias cd=&#39;ls&#39; ls=&#39;cd&#39;</code>，会有什么后果？</p><p>A：运行cd依然会切换目录，运行ls依然会列出文件夹的内容；不要这样定义。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li>执行脚本时请注意：<ul><li>使用 <code>source</code> 命令执行的bash脚本如果执行了 <code>alias</code> 或 <code>unalias</code> 命令，那么有可能会对终端环境的别名设置产生影响；终端环境的别名设置也可能改变运行结果；</li><li>通过 <code>sh</code> 方式调用的 bash 脚本或直接运行当前用户有执行权限的脚本不受终端环境的别名影响。</li></ul></li><li>删除别名，请查看<code>unalias</code>命令。</li><li>建议您不要对 <code>mv cp rm</code> 等命令的别名设置危险的 <code>-f</code> 选项，比如 <code>alias rm=&#39;rm -f&#39;</code>。</li><li>需要注意别名是否和其他命令有冲突的情况。</li><li>该命令是 bash 内建命令，相关的帮助信息请查看 <code>help</code> 命令。</li></ol><h3 id="其他参考链接"><a href="#其他参考链接" class="headerlink" title="其他参考链接"></a>其他参考链接</h3><ul><li><a href="https://man7.org/linux/man-pages/man1/alias.1p.html">alias(1p) - Linux manual page</a></li><li><a href="https://jingyan.baidu.com/article/ac6a9a5e6738422b653eac01.html">Linux命令详解：[8]alias创建自己的命令</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-ag</title>
+    <link href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ag/"/>
+    <url>/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ag/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ag"><a href="#ag" class="headerlink" title="ag"></a>ag</h1><p>ack 的升级版，C语言编写，更快更人性化</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><blockquote><p>摘自 <a href="https://github.com/ggreer/the_silver_searcher">https://github.com/ggreer/the_silver_searcher</a> 项目的 Readme.md</p></blockquote><ul><li>它比ack快一个数量级。</li><li>它忽略了你的 <code>.gitignore</code> 和 <code>.hgignore</code> 中的文件模式。</li><li>如果你的源码库里有你不想搜索的文件，只要把它们的模式添加到一个.ignore文件里。(<em>cough</em> <em>.min.js</em>cough*)</li><li>这个命令的名字比ack短33%，而且所有的键都在主行上!</li></ul><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ag [options] pattern [path ...]<br>ag [可选项] 匹配模式 [路径...]<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs shell">输出选项:<br>     --ackmate            以 AckMate-parseable 的格式显示结果<br>  -A --after [LINES]      显示匹配行之后的行（默认2行）<br>  -B --before [LINES]     显示匹配行之前的行（默认2行）<br>     --[no]break          不同文件中匹配到的内容新建一行显示（默认开启）<br>  -c --count              只显示每个文件中匹配到的数量 （通常与匹配行数不同）<br>     --[no]color          在结果中打印颜色代码（默认启用）<br>     --color-line-number  行号的颜色代码（默认值为：1;33）。<br>     --color-match        匹配结果的颜色代码（默认值为：30;43）。<br>     --color-path         路径名称的颜色代码（默认值为：1;32）<br>     --column             打印结果中的列号<br>     --[no]filename       打印文件名（除非搜索单个文件，否则启用）。<br>  -H --[no]heading        在每个文件匹配前输出文件名（默认开启）<br>  -C --context [LINES]    显示匹配行上下两行（默认2行）<br>     --[no]group          和这些一样： --[no]break --[no]heading<br>  -g --filename-pattern PATTERN 打印匹配PATTERN的文件名<br>  -l --files-with-matches 显示包含匹配的文件名（不显示匹配的行）<br>  -L --files-without-matches  只显示不包含匹配项的文件名<br>     --print-all-files    打印所有搜索到的文件的标题，甚至那些不包含匹配的文件。<br>     --[no]numbers        打印行号。默认情况是在搜索流时省略行号。<br>  -o --only-matching      只输出每行匹配的部分<br>     --print-long-lines   在很长的行上打印匹配信息（默认：&gt;2k字符）。<br>     --passthrough        当搜索一个流时，打印所有的行，即使它们不匹配。<br>     --silent             抑制所有的日志信息，包括错误<br>     --stats              打印统计（扫描的文件、花费的时间等）。<br>     --stats-only         打印统计信息，不打印其他信息（与搜索单个文件时的--计数相同）。<br>     --vimgrep            像vim的:vimgrep /pattern/g那样打印结果（它报告每一行的匹配结果）<br>  -0 --null --print0      用null分隔文件名（用于&#x27;xargs -0&#x27;）。<br><br>搜索选项:<br>  -a --all-types          搜索所有文件（包括隐藏文件）<br>  -D --debug              可笑的调试（可能没有用）<br>     --depth NUM          目录搜索最大深度（默认25）<br>  -f --follow             跟随链接进行搜索<br>  -F --fixed-strings      为了与grep兼容，--literal的别名。<br>  -G --file-search-regex  根据正则匹配搜索指定类型的文件<br>     --hidden             搜索隐藏文件 （但遵从 .*ignore 文件）<br>  -i --ignore-case        不区分大小写匹配<br>     --ignore PATTERN     忽略匹配 PATTERN 的文件/目录（也允许使用文字文件/目录名称）<br>     --ignore-dir NAME    为了与ack兼容，--ignore的别名<br>  -m --max-count NUM      在一个文件中最大匹配的数量（默认: 10,000）<br>     --one-device         不跟随其他设备的链接搜索<br>  -p --path-to-ignore STRING 在STRING使用.ignore文件<br>  -Q --literal            不要将PATTERN解析为正则表达式<br>  -s --case-sensitive     敏感地匹配案例<br>  -S --smart-case         不区分大小写匹配，除非 PATTERN 包含大写字符<br>     --search-binary      搜索二进制文件<br>  -t --all-text           搜索所有文本文件（不包括隐藏文件）<br>  -u --unrestricted       搜索所有文件 （忽略 .ignore, .gitignore, 比如：搜索二进制和隐藏文件）<br>  -U --skip-vcs-ignores   忽略VCS的忽略文件（指的是 .gitignore，.hgignore；仍然遵从.ignore）。<br>  -v --invert-match       反向匹配<br>  -w --word-regexp        只匹配整个单词<br>  -W --width NUM          在NUM字符后截断匹配行<br>  -z --search-zip         搜索压缩文件中的内容<br><br>文件类型:<br>搜索可以限制在某些类型的文件中，例如:<br>   ag --html needle   结果输出到指定类型文件<br>   - 在后缀为 .htm、.html、.shtml 或 .xhtml 的文件中搜索“needle”<br><br>有关支持的文件类型的列表，可以运行:<br>  ag --list-file-types  列出支持的文件类型<br></code></pre></td></tr></table></figure><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>列出当前目录下包含 <code>npm</code> 的文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  vue-project ag npm ./<br>README.md<br>16:npm install<br>22:npm run dev<br>28:npm run build<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux命令-ack</title>
     <link href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ack/"/>
     <url>/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ack/</url>
@@ -356,6 +406,31 @@
   
   
   <entry>
+    <title>基于Docker部署OpenWrt</title>
+    <link href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/"/>
+    <url>/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/</url>
+    
+    <content type="html"><![CDATA[<h2 id="基于Docker部署OpenWrt"><a href="#基于Docker部署OpenWrt" class="headerlink" title="基于Docker部署OpenWrt"></a>基于Docker部署OpenWrt</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.下载镜像</span><br>wget https://op.supes.top/releases/targets/armvirt/64/openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz<br><span class="hljs-comment"># 2.docker导入镜像</span><br><span class="hljs-built_in">cat</span> openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz | docker import - openwrt:0.0.1<br><span class="hljs-comment"># 3.开启网口混杂</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 promisc on<br><span class="hljs-comment"># 4.创建macnet网络</span><br>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 macnet<br><span class="hljs-comment"># 5.基于镜像启动docker容器</span><br>docker run -d --name=OpenWrt --restart always --network macnet --ip 192.168.1.10 --privileged openwrt:0.0.1 /sbin/init<br><span class="hljs-comment"># 6.修改容器内openwrt管理IP地址</span><br>docker <span class="hljs-built_in">exec</span> OpenWrt sed -e <span class="hljs-string">&quot;s/10.0.0.1/192.168.1.10/&quot;</span> -i /etc/config/network<br><span class="hljs-comment"># enjoy it ！！！</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pygame</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何编译自己需要的 OpenWrt 固件</title>
     <link href="/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/"/>
     <url>/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/</url>
@@ -375,31 +450,6 @@
     <tags>
       
       <tag>OpenWrt</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>基于Docker部署OpenWrt</title>
-    <link href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/"/>
-    <url>/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/</url>
-    
-    <content type="html"><![CDATA[<h2 id="基于Docker部署OpenWrt"><a href="#基于Docker部署OpenWrt" class="headerlink" title="基于Docker部署OpenWrt"></a>基于Docker部署OpenWrt</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.下载镜像</span><br>wget https://op.supes.top/releases/targets/armvirt/64/openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz<br><span class="hljs-comment"># 2.docker导入镜像</span><br><span class="hljs-built_in">cat</span> openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz | docker import - openwrt:0.0.1<br><span class="hljs-comment"># 3.开启网口混杂</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 promisc on<br><span class="hljs-comment"># 4.创建macnet网络</span><br>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 macnet<br><span class="hljs-comment"># 5.基于镜像启动docker容器</span><br>docker run -d --name=OpenWrt --restart always --network macnet --ip 192.168.1.10 --privileged openwrt:0.0.1 /sbin/init<br><span class="hljs-comment"># 6.修改容器内openwrt管理IP地址</span><br>docker <span class="hljs-built_in">exec</span> OpenWrt sed -e <span class="hljs-string">&quot;s/10.0.0.1/192.168.1.10/&quot;</span> -i /etc/config/network<br><span class="hljs-comment"># enjoy it ！！！</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>项目实战</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>pygame</tag>
       
     </tags>
     
