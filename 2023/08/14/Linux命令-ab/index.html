@@ -16,18 +16,18 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="注意 不要用 root 用户进行编译 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1 密码 password  编译命令 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS  安装编译依赖 12345678sudo apt update -ysudo apt full-upgrade -ysudo apt install -y ack antlr3">
+    <meta name="description" content="abApache服务器的性能测试工具 安装若系统未安装，使用以下命令安装 123456# Ubuntusudo apt-get install apache2-utils# Centosyum install httpd-tools   补充说明ab命令 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数量来看看你的 Apach">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何编译自己需要的 OpenWrt 固件">
-<meta property="og:url" content="http://example.com/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/index.html">
+<meta property="og:title" content="Linux命令-ab">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ab/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="注意 不要用 root 用户进行编译 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1 密码 password  编译命令 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS  安装编译依赖 12345678sudo apt update -ysudo apt full-upgrade -ysudo apt install -y ack antlr3">
+<meta property="og:description" content="abApache服务器的性能测试工具 安装若系统未安装，使用以下命令安装 123456# Ubuntusudo apt-get install apache2-utils# Centosyum install httpd-tools   补充说明ab命令 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数量来看看你的 Apach">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2022-10-24T14:09:45.000Z">
-<meta property="article:modified_time" content="2023-03-10T09:16:28.341Z">
+<meta property="article:published_time" content="2023-08-14T10:50:44.000Z">
+<meta property="article:modified_time" content="2023-08-15T05:53:34.782Z">
 <meta property="article:author" content="muchenH">
-<meta property="article:tag" content="OpenWrt">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/default.png">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>如何编译自己需要的 OpenWrt 固件 - muchenH Blog</title>
+  <title>Linux命令-ab - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="如何编译自己需要的 OpenWrt 固件"></span>
+            <span id="subtitle" data-typed-text="Linux命令-ab"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-24 22:09" pubdate>
-          2022年10月24日 晚上
+        <time datetime="2023-08-14 18:50" pubdate>
+          2023年8月14日 晚上
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.1k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          21 分钟
+          26 分钟
         
       </span>
     
@@ -285,54 +285,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">如何编译自己需要的 OpenWrt 固件</h1>
+            <h1 style="display: none">Linux命令-ab</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
-<li><strong>不要用 root 用户进行编译</strong></li>
-<li>国内用户编译前最好准备好梯子</li>
-<li>默认登陆IP 192.168.1.1 密码 password</li>
-</ol>
-<h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ol>
-<li><p>首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS</p>
-</li>
-<li><p>安装编译依赖</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update -y<br>sudo apt full-upgrade -y<br>sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \<br>bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \<br>git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \<br>libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \<br>mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \<br>rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>下载源代码，更新 feeds 并选择配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/coolsnowwolf/lede<br><span class="hljs-built_in">cd</span> lede<br>./scripts/feeds update -a<br>./scripts/feeds install -a<br>make menuconfig<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>下载 download 库，编译固件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">make download -j8<br>make V=s -j1<br><span class="hljs-comment">#（-j1 后面是单线程数，第一次编译推荐用单线程，便于排错）</span><br>make V=s -j$(<span class="hljs-built_in">nproc</span>)<br><span class="hljs-comment">#（-j$(nproc) 后面是最大线程数，速度更快但不便于排错）</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>二次编译：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> lede<br>git pull<br>./scripts/feeds update -a<br>./scripts/feeds install -a<br>make defconfig<br>make download -j8<br>make V=s -j$(<span class="hljs-built_in">nproc</span>)<br></code></pre></td></tr></table></figure>
+                <h1 id="ab"><a href="#ab" class="headerlink" title="ab"></a>ab</h1><p>Apache服务器的性能测试工具</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>若系统未安装，使用以下命令安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Ubuntu</span><br>sudo apt-get install apache2-utils<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Centos</span><br>yum install httpd-tools<br><br></code></pre></td></tr></table></figure>
 
-<p>如果需要重新配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf ./tmp &amp;&amp; <span class="hljs-built_in">rm</span> -rf .config<br>make menuconfig<br>make V=s -j$(<span class="hljs-built_in">nproc</span>)<br></code></pre></td></tr></table></figure>
 
-<p>编译完成后输出路径：bin&#x2F;targets</p>
-<h3 id="如果你使用-WSL-x2F-WSL2-进行编译"><a href="#如果你使用-WSL-x2F-WSL2-进行编译" class="headerlink" title="如果你使用 WSL&#x2F;WSL2 进行编译"></a>如果你使用 WSL&#x2F;WSL2 进行编译</h3><p>由于 WSL 的 PATH 中包含带有空格的 Windows 路径，有可能会导致编译失败，请在 <code>make</code> 前面加上：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<br></code></pre></td></tr></table></figure>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>ab命令</strong> 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数量来看看你的 Apache 和机器配合的性能如何。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">ab [ -A auth-username:password ] [ -c concurrency ] [ -C cookie-name=value<br>] [ -d ] [ -e csv-file ] [ -g gnuplot-file ] [ -h ] [ -H custom-header ] [<br>-i  ]  [  -k  ]  [  -n  requests  ] [ -p POST-file ] [ -P proxy-auth-user‐<br>name:password ] [ -q ] [ -s ] [ -S ] [ -t timelimit ] [ -T content-type  ]<br>[  -v verbosity] [ -V ] [ -w ] [ -x &lt;table&gt;-attributes ] [ -X proxy[:port]<br>]  [  -y  &lt;tr&gt;-attributes  ]  [  -z   &lt;td&gt;-attributes   ]   [http://]host‐<br>name[:port]/path<br></code></pre></td></tr></table></figure>
 
-<h3 id="macOS-原生系统进行编译"><a href="#macOS-原生系统进行编译" class="headerlink" title="macOS 原生系统进行编译"></a>macOS 原生系统进行编译</h3><ol>
-<li><p>在 AppStore 中安装 Xcode</p>
-</li>
-<li><p>安装 Homebrew：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/bin/ruby -e <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>使用 Homebrew 安装工具链、依赖与基础软件包:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew <span class="hljs-built_in">unlink</span> awk<br>brew install coreutils diffutils findutils gawk gnu-getopt gnu-tar grep make ncurses pkg-config wget quilt xz<br>brew install gcc@11<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>然后输入以下命令，添加到系统环境变量中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/coreutils/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/findutils/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/gnu-getopt/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/gnu-tar/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/grep/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/gnu-sed/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/usr/local/opt/make/libexec/gnubin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>重新加载一下 shell 启动文件 <code>source ~/.bashrc</code>，然后输入 <code>bash</code> 进入 bash shell，就可以和 Linux 一样正常编译了</p>
-</li>
-</ol>
-<h2 id="特别提示"><a href="#特别提示" class="headerlink" title="特别提示"></a>特别提示</h2><h3 id="源代码中绝不含任何后门和可以监控或者劫持你的-HTTPS-的闭源软件，-SSL-安全是互联网最后的壁垒。安全干净才是固件应该做到的。"><a href="#源代码中绝不含任何后门和可以监控或者劫持你的-HTTPS-的闭源软件，-SSL-安全是互联网最后的壁垒。安全干净才是固件应该做到的。" class="headerlink" title="源代码中绝不含任何后门和可以监控或者劫持你的 HTTPS 的闭源软件， SSL 安全是互联网最后的壁垒。安全干净才是固件应该做到的。"></a>源代码中绝不含任何后门和可以监控或者劫持你的 HTTPS 的闭源软件， SSL 安全是互联网最后的壁垒。安全干净才是固件应该做到的。</h3>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs shell">-A auth-username:password<br>      #  支持基本的验证证书,用户名和密码之间使用&quot;冒号&quot;                    :<br>      # 分隔开,ab将以明文方式传送过去.不管服务器是不是需要<br>      # ,也就是说你的服务器需要支持401认证.<br><br>-c concurrency<br>      # 同时向服务器端发送的请求数目，默认状态下是一次 只执行一个http请求.<br><br>-C cookie-name=value<br>      # Add a Cookie: line to the request. The argument is typically in the<br>      # form of a name=value pair. This field is repeatable.<br><br>-d    #  Do not display  the  &quot;percentage  served  within  XX  [ms]  table&quot;.<br>      # (legacy support).<br><br>-e csv-file<br>      # Write  a  Comma  separated value (CSV) file which contains for each<br>      # percentage (from 1% to 100%) the time (in milli seconds) it took to<br>      # serve  that percentage of the requests. This is usually more useful<br>      # than the &#x27;gnuplot&#x27; file; as the results are already &#x27;binned&#x27;.<br><br>-g gnuplot-file<br>      # Write all measured values out as a &#x27;gnuplot&#x27; or TSV  (Tab  separate<br>      # values)  file.  This file can easily be imported into packages like<br>      # Gnuplot, IDL, Mathematica, Igor or even Excell. The labels  are  on<br>      # the first line of the file.<br>-h    # 显示使用说明<br>-H custom-header<br>      # 向请求包追加附加的标题字串.此参数应该是有效的标题         行(header<br>      # line)形式,通常使用冒号&quot;:&quot;来分隔有效配对 (valid  pair)例如  &#x27;Accept-<br>      # Encoding: zip/zop;8 bit&#x27;;<br><br>-i    # 使用一个 http 头(HEAD) 来替换 GET方法.不可以掺入POST 方法<br><br>-k    #  允许http      KeepAlive      ；也就是说执行多个请求在一个      http<br>      # 会话当中，默认是不允许的也就是no KeepAlive啦;)<br><br>-n requests<br>      # 执行一次测试会话的时候所发出的请求数目,默认是执行一个单一的请求<br>      # 当然了这样的测试结果也就没什么意义了<br><br>-p POST-file<br>      # 测试程序也就是ab,将向Apache server发送带有HTTP POST 的请求.<br><br>-P proxy-auth-username:password<br>      # 当需要通过代理测试一台 HTTP 服务器的时候而你的代理<br>      # 又需要用户名密码验证,这时你可以使用这个选项,同样<br>      # 用户名与密码之间使用冒号&quot;:&quot;分隔开,ab将之以明文的方式<br>      # 发送出去,当然,前提是你的代理是处于407认证状态的<br><br>-q    #  When processing more than 150 requests, ab outputs a progress count<br>      # on  stderr  every  10% or 100 requests or so. The -q flag will sup‐<br>      # press these messages.<br><br>-s    #  When compiled in (ab -h will show you) use the SSL protected  https<br>      # rather  than  the  http  protocol. This feature is experimental and<br>      # very rudimentary. You probably do not want to use it.<br><br>-S    #  Do not display the median and standard deviation values,  nor  dis‐<br>      # play  the  warning/error  messages  when the average and median are<br>      # more than one or two times the standard deviation  apart.  And  de‐<br>      # fault to the min/avg/max values. (legacy support).<br><br>-t timelimit<br>      #  设置测试的时间的长短，使用这个选项ab将自动设置<br>      # 测试请求会话数目为50000，然后以你设置的时间为<br>      # 固定周期.默认状态下是没有时限的，也就是直到完成<br>      # 你所设置的请求数目为止.<br><br>-T content-type<br>      # 内容类型标头,使用在POST数据的时候.<br><br>-v verbosity<br>      # 设置冗余级别,4级打印出每个请求标头的详细信息,<br>      # 3级打印出回应代码(例如,404,200),2级打印出警告 信息和指示消息<br><br>-V    # 显示版本号并且退出<br>-w    # 打印输出结果到HTML表中. 默认的表是两列n行白底黑框<br><br>-x &lt;table&gt;-attributes<br>      # 使用字串来描述表的属性,该属性字串应该插入到&lt;table 这里 &gt;<br><br>-X proxy[:port]<br>      # Use a proxy server for the requests.<br><br>-y &lt;tr&gt;-attributes<br>      # 用于生成html表格每行的属性名 (&lt;tr&gt;)<br><br>-z &lt;td&gt;-attributes<br>      # 用于生成html表格每列的属性名 (&lt;td&gt;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>主机：被测试主机。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">10个并发， 请求500次</span><br>ab -c 10 -n 500 https://www.qq.com/<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -353,13 +323,6 @@
   <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/Linux/OpenWrt/" class="category-chain-item">OpenWrt</a>
-  
-  
-
-  
 
       </span>
     
@@ -372,7 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/OpenWrt/">#OpenWrt</a>
+        <a href="/tags/Linux/">#Linux</a>
       
     </div>
   
@@ -384,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>如何编译自己需要的 OpenWrt 固件</div>
-      <div>http://example.com/2022/10/24/如何编译自己需要的OpenWrt固件/</div>
+      <div>Linux命令-ab</div>
+      <div>http://example.com/2023/08/14/Linux命令-ab/</div>
     </div>
     <div class="license-meta">
       
@@ -397,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月24日</div>
+          <div>2023年8月14日</div>
         </div>
       
       
@@ -429,9 +392,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/24/%E5%9C%A8macOS%E4%B8%AD%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%86%99%E5%85%A5%E5%88%B0U%E7%9B%98/" title="在macOS中下载最新系统并写入到U盘">
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-accept/" title="Linux命令-accept">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">在macOS中下载最新系统并写入到U盘</span>
+                        <span class="hidden-mobile">Linux命令-accept</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -439,8 +402,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/" title="飞机大战">
-                        <span class="hidden-mobile">飞机大战</span>
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-7z/" title="Linux命令-7z">
+                        <span class="hidden-mobile">Linux命令-7z</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
