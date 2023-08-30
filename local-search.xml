@@ -4,6 +4,181 @@
   
   
   <entry>
+    <title>Linux命令-axel</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-axel/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-axel/</url>
+    
+    <content type="html"><![CDATA[<h1 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h1><p>多线程下载工具</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>axel</strong> 是Linux下一个不错的HTTP&#x2F;ftp高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件。适合网速不给力时多线程下载提高下载速度。比如在国内VPS或服务器上下载lnmp一键安装包用Axel就比wget快。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS安装Axel：</p><p>目前yum源上没有Axel，我们可以到 <a href="http://pkgs.repoforge.org/axel/">http://pkgs.repoforge.org/axel/</a> 下载rpm包安装。</p><p>32位CentOS执行下面命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -c http://pkgs.repoforge.org/axel/axel-2.4-1.el5.rf.i386.rpm<br>rpm -ivh axel-2.4-1.el5.rf.i386.rpm<br></code></pre></td></tr></table></figure><p>64位CentOS执行下面命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -c http://pkgs.repoforge.org/axel/axel-2.4-1.el5.rf.x86_64.rpm<br>rpm -ivh axel-2.4-1.el5.rf.x86_64.rpm<br></code></pre></td></tr></table></figure><p>Debian&#x2F;Ubuntu安装Axel：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt-get install axel<br></code></pre></td></tr></table></figure><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">axel [options] url1 [url2] [url...]<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">--max-speed=x , -s x         # 最高速度x<br>--num-connections=x , -n x   # 连接数x<br>--output=f , -o f            # 下载为本地文件f<br>--search[=x] , -S [x]        # 搜索镜像<br>--header=x , -H x            # 添加头文件字符串x（指定 HTTP header）<br>--user-agent=x , -U x        # 设置用户代理（指定 HTTP user agent）<br>--no-proxy ， -N             # 不使用代理服务器<br>--quiet ， -q                # 静默模式<br>--verbose ，-v               # 更多状态信息<br>--alternate ， -a            # Alternate progress indicator<br>--help ，-h                  # 帮助<br>--version ，-V               # 版本信息<br></code></pre></td></tr></table></figure><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>如下载lnmp安装包指定10个线程，存到 <code>/tmp/</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">axel -n 10 -o /tmp/ http://www.jsdig.com/lnmp.tar.gz<br></code></pre></td></tr></table></figure><p>如果下载过程中下载中断可以再执行下载命令即可恢复上次的下载进度。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-atrm</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atrm/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atrm/</url>
+    
+    <content type="html"><![CDATA[<h1 id="atrm"><a href="#atrm" class="headerlink" title="atrm"></a>atrm</h1><p>删除待执行任务队列中的指定任务</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>atrm命令</strong> 用于删除待执行任务队列中的指定任务。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atrm(选项)(参数)<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-V：显示版本号。<br></code></pre></td></tr></table></figure><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>任务号：指定待执行队列中要删除的任务。</p><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>删除已经排队的任务</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">atq        # 显示当前已经设置的任务<br>2 Mon May 17 08:00:00 2010 a root<br>1 Sat May 15 17:00:00 2010 a root<br><br>atrm 2     # 删除任务2<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-atq</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/</url>
+    
+    <content type="html"><![CDATA[<h1 id="atq"><a href="#atq" class="headerlink" title="atq"></a>atq</h1><p>列出当前用户的at任务列表</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>atq命令</strong> 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atq [-V] [-q 队列] [-v]<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">-V：显示版本号；<br>-q：查询指定队列的任务。<br></code></pre></td></tr></table></figure><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">at now + 10 minutes<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash"><span class="hljs-built_in">echo</span> 1111</span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;eot&gt;</span><br>job 3 at Fri Apr 26 12:56:00 2013<br><br>atq<br>3       Fri Apr 26 12:56:00 2013 a root<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-atop</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/</url>
+    
+    <content type="html"><![CDATA[<h1 id="atop"><a href="#atop" class="headerlink" title="atop"></a>atop</h1><p>监控Linux系统资源与进程的工具</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>[非内部程序，需要安装]它以一定的频率记录系统的运行状态，所采集的数据包含系统资源(CPU、内存、磁盘和网络)使用情况和进程运行情况，并能以日志文件的方式保存在磁盘中，服务器出现问题后，我们可获取相应的atop日志文件进行分析。atop是一款开源软件，我们可以从这里获得其<a href="https://github.com/Atoptool/atop">源码</a>和<a href="https://pkgs.org/download/atop">rpm安装包</a>。</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atop(选项)(参数)<br></code></pre></td></tr></table></figure><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><strong>ATOP列</strong>：该列显示了主机名、信息采样日期和时间点</p><p><strong>PRC列</strong>：该列显示进程整体运行情况</p><ul><li>sys、usr字段分别指示进程在内核态和用户态的运行时间</li><li>#proc字段指示进程总数</li><li>#zombie字段指示僵尸进程的数量</li><li>#exit字段指示atop采样周期期间退出的进程数量</li></ul><p><strong>CPU列</strong>：该列显示CPU整体(即多核CPU作为一个整体CPU资源)的使用情况，我们知道CPU可被用于执行进程、处理中断，也可处于空闲状态(空闲状态分两种，一种是活动进程等待磁盘IO导致CPU空闲，另一种是完全空闲)</p><ul><li>sys、usr字段指示CPU被用于处理进程时，进程在内核态、用户态所占CPU的时间比例</li><li>irq字段指示CPU被用于处理中断的时间比例</li><li>idle字段指示CPU处在完全空闲状态的时间比例</li><li>wait字段指示CPU处在“进程等待磁盘IO导致CPU空闲”状态的时间比例</li></ul><p>CPU列各个字段指示值相加结果为N00%，其中N为cpu核数。</p><p>cpu列：该列显示某一核cpu的使用情况，各字段含义可参照CPU列，各字段值相加结果为100%</p><p><strong>CPL列</strong>：该列显示CPU负载情况</p><ul><li>avg1、avg5和avg15字段：过去1分钟、5分钟和15分钟内运行队列中的平均进程数量</li><li>csw字段指示上下文交换次数</li><li>intr字段指示中断发生次数</li></ul><p><strong>MEM列</strong>：该列指示内存的使用情况</p><ul><li>tot字段指示物理内存总量</li><li>free字段指示空闲内存的大小</li><li>cache字段指示用于页缓存的内存大小</li><li>buff字段指示用于文件缓存的内存大小</li><li>slab字段指示系统内核占用的内存大小</li></ul><p><strong>SWP列</strong>：该列指示交换空间的使用情况</p><ul><li>tot字段指示交换区总量</li><li>free字段指示空闲交换空间大小</li></ul><p><strong>PAG列</strong>：该列指示虚拟内存分页情况</p><p>swin、swout字段：换入和换出内存页数</p><p><strong>DSK列</strong>：该列指示磁盘使用情况，每一个磁盘设备对应一列，如果有sdb设备，那么增多一列DSK信息</p><ul><li>sda字段：磁盘设备标识</li><li>busy字段：磁盘忙时比例</li><li>read、write字段：读、写请求数量</li></ul><p><strong>NET列</strong>：多列NET展示了网络状况，包括传输层(TCP和UDP)、IP层以及各活动的网口信息</p><ul><li>XXXi  字段指示各层或活动网口收包数目</li><li>XXXo 字段指示各层或活动网口发包数目</li></ul><h2 id="atop日志"><a href="#atop日志" class="headerlink" title="atop日志"></a>atop日志</h2><p>每个时间点采样页面组合起来就形成了一个atop日志文件，我们可以使用”atop -r XXX”命令对日志文件进行查看。那以什么形式保存atop日志文件呢？</p><p>对于atop日志文件的保存方式，我们可以这样：</p><ul><li>每天保存一个atop日志文件，该日志文件记录当天信息</li><li>日志文件以”atop_YYYYMMDD”的方式命名</li><li>设定日志失效期限，自动删除一段时间前的日志文件</li></ul><p>其实atop开发者已经提供了以上日志保存方式，相应的atop.daily脚本可以在源码目录下找到。在atop.daily脚本中，我们可以通过修改INTERVAL变量改变atop信息采样周期(默认为10分钟)；通过修改以下命令中的数值改变日志保存天数(默认为28天)：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(sleep 3; find $LOGPATH -name &#x27;atop_*&#x27; -mtime +28 -exec rm &#123;&#125; \; )&amp; <br></code></pre></td></tr></table></figure><p>最后，我们修改cron文件，每天凌晨执行atop.daily脚本：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">0 0 * * * root /etc/cron.daily/atop.daily<br></code></pre></td></tr></table></figure><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul><li><a href="http://www.atoptool.nl/download/man_atop-1.pdf">官方手册</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-at</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-at/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-at/</url>
+    
+    <content type="html"><![CDATA[<h1 id="at"><a href="#at" class="headerlink" title="at"></a>at</h1><p>在指定时间执行一个任务</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>at命令</strong> 用于在指定时间执行命令。at允许使用一套相当复杂的指定时间的方法。它能够接受在当天的hh:mm（小时:分钟）式的时间指定。假如该时间已过去，那么就放在第二天执行。当然也能够使用midnight（深夜），noon（中午），teatime（饮茶时间，一般是下午4点）等比较模糊的 词语来指定时间。用户还能够采用12小时计时制，即在时间后面加上AM（上午）或PM（下午）来说明是上午还是下午。 也能够指定命令执行的具体日期，指定格式为month day（月 日）或mm&#x2F;dd&#x2F;yy（月&#x2F;日&#x2F;年）或dd.mm.yy（日.月.年）。指定的日期必须跟在指定时间的后面。</p><p>上面介绍的都是绝对计时法，其实还能够使用相对计时法，这对于安排不久就要执行的命令是很有好处的。指定格式为：<code>now + count time-units</code>，now就是当前时间，time-units是时间单位，这里能够是minutes（分钟）、hours（小时）、days（天）、weeks（星期）。count是时间的数量，究竟是几天，还是几小时，等等。 更有一种计时方法就是直接使用today（今天）、tomorrow（明天）来指定完成命令的时间。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">at [-V] [-q 队列] [-f 文件] [-mldbv] 时间 at -c 作业 [作业...]<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-f：指定包含具体指令的任务文件；<br>-q：指定新任务的队列名称；<br>-l：显示待执行任务的列表；<br>-d：删除指定的待执行任务；<br>-m：任务执行完成后向用户发送E-mail。<br></code></pre></td></tr></table></figure><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>日期时间：指定任务执行的日期时间。</p><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>三天后的下午 5 点锺执行<code>/bin/ls</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at 5pm+3 days<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">/bin/ls</span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;EOT&gt;</span><br>job 7 at 2013-01-08 17:00<br></code></pre></td></tr></table></figure><p>明天17点钟，输出时间到指定文件内：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at 17:20 tomorrow<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash"><span class="hljs-built_in">date</span> &gt;/root/2013.<span class="hljs-built_in">log</span></span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;EOT&gt;</span><br>job 8 at 2013-01-06 17:20<br></code></pre></td></tr></table></figure><p>计划任务设定后，在没有执行之前我们可以用atq命令来查看系统没有执行工作任务：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br>7       2013-01-08 17:00 a root<br></code></pre></td></tr></table></figure><p>删除已经设置的任务：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br>7       2013-01-08 17:00 a root<br><br>[root@localhost ~]# atrm 7<br>[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br></code></pre></td></tr></table></figure><p>显示已经设置的任务内容：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at -c 8<br><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">atrun uid=0 gid=0</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">mail     root 0</span><br>umask 22此处省略n个字符<br>date &gt;/root/2013.log<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-as</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-as/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-as/</url>
+    
+    <content type="html"><![CDATA[<h1 id="as"><a href="#as" class="headerlink" title="as"></a>as</h1><p>汇编语言编译器</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>as命令</strong> GNU组织推出的一款汇编语言编译器，它支持多种不同类型的处理器。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">as(选项)(参数)<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">-ac：忽略失败条件；<br>-ad：忽略调试指令；<br>-ah：包括高级源；<br>-al：包括装配；<br>-am：包括宏扩展；<br>-an：忽略形式处理；<br>-as：包括符号；<br>=file：设置列出文件的名字；<br>--alternate：以交互宏模式开始；<br>-f：跳过空白和注释预处理；<br>-g：产生调试信息；<br>-J：对于有符号溢出不显示警告信息；<br>-L：在符号表中保留本地符号；<br>-o：指定要生成的目标文件；<br>--statistics：打印汇编所用的最大空间和总时间。<br></code></pre></td></tr></table></figure><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>汇编文件：指定要汇编的源文件。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令-arpwatch</title>
+    <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/"/>
+    <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/</url>
+    
+    <content type="html"><![CDATA[<h1 id="arpwatch"><a href="#arpwatch" class="headerlink" title="arpwatch"></a>arpwatch</h1><p>监听网络上ARP的记录</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>arpwatch命令</strong> 用来监听网络上arp的记录。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arpwatch(选项)<br></code></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">-d：启动排错模式；<br>-f&lt;记录文件&gt;：设置存储ARP记录的文件，预设为/var/arpwatch/arp.dat；<br>-i&lt;接口&gt;：指定监听ARP的接口，预设的接口为eth0；<br>-r&lt;记录文件&gt;：从指定的文件中读取ARP记录，而不是从网络上监听。<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux命令-arptables</title>
     <link href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/"/>
     <url>/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/</url>
@@ -654,18 +829,16 @@
   
   
   <entry>
-    <title>Ubuntu系统安装docker</title>
-    <link href="/2022/10/25/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85docker/"/>
-    <url>/2022/10/25/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85docker/</url>
+    <title>Ubuntu设置自动挂载硬盘</title>
+    <link href="/2022/10/25/Ubuntu%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/"/>
+    <url>/2022/10/25/Ubuntu%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</url>
     
-    <content type="html"><![CDATA[<h1 id="使用一键安装脚本快速部署Docker"><a href="#使用一键安装脚本快速部署Docker" class="headerlink" title="使用一键安装脚本快速部署Docker"></a>使用一键安装脚本快速部署Docker</h1><p>将以下命令复制到一个新建的文本文件，命名为 <code>install-docker.sh</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#! /bin/bash</span><br><br><span class="hljs-built_in">date</span> <span class="hljs-string">&quot;+%Y年%m月%d日 周%w %H:%M:%S&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;开始安装 Docker&#x27;</span><br>apt-get update<br><span class="hljs-built_in">echo</span> y | apt-get install \<br>    ca-certificates \<br>    curl \<br>    gnupg \<br>    lsb-release<br>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg<br><span class="hljs-built_in">echo</span> \<br><span class="hljs-string">&quot;deb [arch=<span class="hljs-subst">$(dpkg --print-architecture)</span> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="hljs-string"><span class="hljs-subst">$(lsb_release -cs)</span> stable&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null<br>apt-get update<br><span class="hljs-built_in">echo</span> y | apt-get install docker-ce docker-ce-cli containerd.io<br>docker run hello-world<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;Docker 安装完成，请检查是否出现 Hello from Docker!&#x27;</span><br></code></pre></td></tr></table></figure><p>随后将文件复制到Ubuntu系统内你想要上传的路径，这里使用<code>scp</code>传输，方便快捷。</p><p>在<code>install.sh</code>存在目录打开终端，输入以下内容，其中</p><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td>IP</td><td>Ubuntu系统对应的IP地址</td></tr><tr><td>[需要保存该文件的绝对路径]</td><td>例如 <code>/root</code></td></tr></tbody></table><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp install.sh root@IP:[需要保存该文件的绝对路径]<br></code></pre></td></tr></table></figure><p>上传完成后使用终端连接到Ubuntu ，在你上传的目录里输入以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh install.sh<br></code></pre></td></tr></table></figure><p>等待脚本运行完成，当出现<code>Hello from Docker</code>字样，即表示安装成功，此时输入：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker info<br></code></pre></td></tr></table></figure><p>若出现以下内容，docker已经安装完成</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">OneCloud ~<span class="hljs-comment"># docker info</span><br>Client:<br> Context:    default<br> Debug Mode: <span class="hljs-literal">false</span><br> Plugins:<br>  app: Docker App (Docker Inc., v0.9.1-beta3)<br>  buildx: Docker Buildx (Docker Inc., v0.9.1-docker)<br>  compose: Docker Compose (Docker Inc., v2.12.0)<br><br>Server:<br> Containers: 3<br>  Running: 3<br>  Paused: 0<br>  Stopped: 0<br> Images: 5<br> Server Version: 20.10.20<br> Storage Driver: overlay2<br>  Backing Filesystem: extfs<br>  Supports d_type: <span class="hljs-literal">true</span><br>  Native Overlay Diff: <span class="hljs-literal">true</span><br>  userxattr: <span class="hljs-literal">false</span><br> Logging Driver: json-file<br> Cgroup Driver: cgroupfs<br> Cgroup Version: 1<br> ········<br> ········<br> ········<br> Docker Root Dir: /var/lib/docker<br> Debug Mode: <span class="hljs-literal">false</span><br> Registry: https://index.docker.io/v1/<br> Labels:<br> Experimental: <span class="hljs-literal">false</span><br> Insecure Registries:<br>  127.0.0.0/8<br> Registry Mirrors:<br>  https://registry.docker-cn.com/<br> Live Restore Enabled: <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="如何在Ubuntu设置自动挂载硬盘"><a href="#如何在Ubuntu设置自动挂载硬盘" class="headerlink" title="如何在Ubuntu设置自动挂载硬盘"></a>如何在Ubuntu设置自动挂载硬盘</h1><h2 id="1-使用命令查看分区"><a href="#1-使用命令查看分区" class="headerlink" title="1.使用命令查看分区"></a>1.使用命令查看分区</h2><p>确认硬盘状态</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo fdisk -l<br><span class="hljs-built_in">df</span> -f<br></code></pre></td></tr></table></figure><p>可以根据提供的磁盘信息确定想挂载的磁盘，以及确定挂载的位置。我这里的硬盘位于&#x2F;dev&#x2F;sda<br>比如我想将硬盘挂载到 &#x2F;root&#x2F;repo目录下，则首先需要创建目录</p><h2 id="2-创建挂载目录"><a href="#2-创建挂载目录" class="headerlink" title="2.创建挂载目录"></a>2.创建挂载目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">mkdir</span> /root/repo<br></code></pre></td></tr></table></figure><h2 id="3-开始挂载"><a href="#3-开始挂载" class="headerlink" title="3.开始挂载"></a>3.开始挂载</h2><p>sudo mount &#x2F;dev&#x2F;sda&#x2F; &#x2F;root&#x2F;repo&#x2F;</p><h2 id="4-设置开机自动挂载"><a href="#4-设置开机自动挂载" class="headerlink" title="4.设置开机自动挂载"></a>4.设置开机自动挂载</h2><h3 id="4-1查询挂载硬盘UUID"><a href="#4-1查询挂载硬盘UUID" class="headerlink" title="4.1查询挂载硬盘UUID"></a>4.1查询挂载硬盘UUID</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo blkid /dev/sda<br></code></pre></td></tr></table></figure><p>返回的信息为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/dev/sda: LABEL=<span class="hljs-string">&quot;Data&quot;</span> UUID=<span class="hljs-string">&quot;88069947069936E2&quot;</span> TYPE=<span class="hljs-string">&quot;ntfs&quot;</span> PARTLABEL=<span class="hljs-string">&quot;Basic data partition&quot;</span> PARTUUID=<span class="hljs-string">&quot;7170f9a7-9c9f-43d8-9916-da47aa9101f7&quot;</span><br></code></pre></td></tr></table></figure><p>则能够从返回信息中获取</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">UUID=<span class="hljs-string">&quot;88069947069936E2&quot;</span><br></code></pre></td></tr></table></figure><h3 id="4-2修改文件"><a href="#4-2修改文件" class="headerlink" title="4.2修改文件"></a>4.2修改文件</h3><p>打开文件&#x2F;etc&#x2F;fstab文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/fstab<br></code></pre></td></tr></table></figure><p>在文档末尾添加裹在磁盘的信息。<br>格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[UUID=************] [挂载磁盘分区]  [挂载磁盘格式]  0  0<br>UUID=88069947069936E2 /root/repo ntfs defaults  0  0<br></code></pre></td></tr></table></figure><p>第一个数字表明备份工具dump是否对此文件系统进行备份， 0为忽略， 1为备份。通常都设置为0。<br>第二个数字与磁盘检查有关。它告诉fsck检查此文件系统的顺序。0为忽略检查，1为先检查此分区，2为后检查该分区。建议根分区&#x2F;此值设为1， 普通分区设为2。使用0来禁止启动时磁盘检查。</p>]]></content>
     
     
     <categories>
       
       <category>Linux</category>
-      
-      <category>Docker</category>
       
     </categories>
     
@@ -681,16 +854,18 @@
   
   
   <entry>
-    <title>Ubuntu设置自动挂载硬盘</title>
-    <link href="/2022/10/25/Ubuntu%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/"/>
-    <url>/2022/10/25/Ubuntu%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</url>
+    <title>Ubuntu系统安装docker</title>
+    <link href="/2022/10/25/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85docker/"/>
+    <url>/2022/10/25/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85docker/</url>
     
-    <content type="html"><![CDATA[<h1 id="如何在Ubuntu设置自动挂载硬盘"><a href="#如何在Ubuntu设置自动挂载硬盘" class="headerlink" title="如何在Ubuntu设置自动挂载硬盘"></a>如何在Ubuntu设置自动挂载硬盘</h1><h2 id="1-使用命令查看分区"><a href="#1-使用命令查看分区" class="headerlink" title="1.使用命令查看分区"></a>1.使用命令查看分区</h2><p>确认硬盘状态</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo fdisk -l<br><span class="hljs-built_in">df</span> -f<br></code></pre></td></tr></table></figure><p>可以根据提供的磁盘信息确定想挂载的磁盘，以及确定挂载的位置。我这里的硬盘位于&#x2F;dev&#x2F;sda<br>比如我想将硬盘挂载到 &#x2F;root&#x2F;repo目录下，则首先需要创建目录</p><h2 id="2-创建挂载目录"><a href="#2-创建挂载目录" class="headerlink" title="2.创建挂载目录"></a>2.创建挂载目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">mkdir</span> /root/repo<br></code></pre></td></tr></table></figure><h2 id="3-开始挂载"><a href="#3-开始挂载" class="headerlink" title="3.开始挂载"></a>3.开始挂载</h2><p>sudo mount &#x2F;dev&#x2F;sda&#x2F; &#x2F;root&#x2F;repo&#x2F;</p><h2 id="4-设置开机自动挂载"><a href="#4-设置开机自动挂载" class="headerlink" title="4.设置开机自动挂载"></a>4.设置开机自动挂载</h2><h3 id="4-1查询挂载硬盘UUID"><a href="#4-1查询挂载硬盘UUID" class="headerlink" title="4.1查询挂载硬盘UUID"></a>4.1查询挂载硬盘UUID</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo blkid /dev/sda<br></code></pre></td></tr></table></figure><p>返回的信息为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/dev/sda: LABEL=<span class="hljs-string">&quot;Data&quot;</span> UUID=<span class="hljs-string">&quot;88069947069936E2&quot;</span> TYPE=<span class="hljs-string">&quot;ntfs&quot;</span> PARTLABEL=<span class="hljs-string">&quot;Basic data partition&quot;</span> PARTUUID=<span class="hljs-string">&quot;7170f9a7-9c9f-43d8-9916-da47aa9101f7&quot;</span><br></code></pre></td></tr></table></figure><p>则能够从返回信息中获取</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">UUID=<span class="hljs-string">&quot;88069947069936E2&quot;</span><br></code></pre></td></tr></table></figure><h3 id="4-2修改文件"><a href="#4-2修改文件" class="headerlink" title="4.2修改文件"></a>4.2修改文件</h3><p>打开文件&#x2F;etc&#x2F;fstab文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/fstab<br></code></pre></td></tr></table></figure><p>在文档末尾添加裹在磁盘的信息。<br>格式为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[UUID=************] [挂载磁盘分区]  [挂载磁盘格式]  0  0<br>UUID=88069947069936E2 /root/repo ntfs defaults  0  0<br></code></pre></td></tr></table></figure><p>第一个数字表明备份工具dump是否对此文件系统进行备份， 0为忽略， 1为备份。通常都设置为0。<br>第二个数字与磁盘检查有关。它告诉fsck检查此文件系统的顺序。0为忽略检查，1为先检查此分区，2为后检查该分区。建议根分区&#x2F;此值设为1， 普通分区设为2。使用0来禁止启动时磁盘检查。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="使用一键安装脚本快速部署Docker"><a href="#使用一键安装脚本快速部署Docker" class="headerlink" title="使用一键安装脚本快速部署Docker"></a>使用一键安装脚本快速部署Docker</h1><p>将以下命令复制到一个新建的文本文件，命名为 <code>install-docker.sh</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#! /bin/bash</span><br><br><span class="hljs-built_in">date</span> <span class="hljs-string">&quot;+%Y年%m月%d日 周%w %H:%M:%S&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;开始安装 Docker&#x27;</span><br>apt-get update<br><span class="hljs-built_in">echo</span> y | apt-get install \<br>    ca-certificates \<br>    curl \<br>    gnupg \<br>    lsb-release<br>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg<br><span class="hljs-built_in">echo</span> \<br><span class="hljs-string">&quot;deb [arch=<span class="hljs-subst">$(dpkg --print-architecture)</span> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="hljs-string"><span class="hljs-subst">$(lsb_release -cs)</span> stable&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null<br>apt-get update<br><span class="hljs-built_in">echo</span> y | apt-get install docker-ce docker-ce-cli containerd.io<br>docker run hello-world<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;Docker 安装完成，请检查是否出现 Hello from Docker!&#x27;</span><br></code></pre></td></tr></table></figure><p>随后将文件复制到Ubuntu系统内你想要上传的路径，这里使用<code>scp</code>传输，方便快捷。</p><p>在<code>install.sh</code>存在目录打开终端，输入以下内容，其中</p><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td>IP</td><td>Ubuntu系统对应的IP地址</td></tr><tr><td>[需要保存该文件的绝对路径]</td><td>例如 <code>/root</code></td></tr></tbody></table><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp install.sh root@IP:[需要保存该文件的绝对路径]<br></code></pre></td></tr></table></figure><p>上传完成后使用终端连接到Ubuntu ，在你上传的目录里输入以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh install.sh<br></code></pre></td></tr></table></figure><p>等待脚本运行完成，当出现<code>Hello from Docker</code>字样，即表示安装成功，此时输入：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker info<br></code></pre></td></tr></table></figure><p>若出现以下内容，docker已经安装完成</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">OneCloud ~<span class="hljs-comment"># docker info</span><br>Client:<br> Context:    default<br> Debug Mode: <span class="hljs-literal">false</span><br> Plugins:<br>  app: Docker App (Docker Inc., v0.9.1-beta3)<br>  buildx: Docker Buildx (Docker Inc., v0.9.1-docker)<br>  compose: Docker Compose (Docker Inc., v2.12.0)<br><br>Server:<br> Containers: 3<br>  Running: 3<br>  Paused: 0<br>  Stopped: 0<br> Images: 5<br> Server Version: 20.10.20<br> Storage Driver: overlay2<br>  Backing Filesystem: extfs<br>  Supports d_type: <span class="hljs-literal">true</span><br>  Native Overlay Diff: <span class="hljs-literal">true</span><br>  userxattr: <span class="hljs-literal">false</span><br> Logging Driver: json-file<br> Cgroup Driver: cgroupfs<br> Cgroup Version: 1<br> ········<br> ········<br> ········<br> Docker Root Dir: /var/lib/docker<br> Debug Mode: <span class="hljs-literal">false</span><br> Registry: https://index.docker.io/v1/<br> Labels:<br> Experimental: <span class="hljs-literal">false</span><br> Insecure Registries:<br>  127.0.0.0/8<br> Registry Mirrors:<br>  https://registry.docker-cn.com/<br> Live Restore Enabled: <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
       
       <category>Linux</category>
+      
+      <category>Docker</category>
       
     </categories>
     

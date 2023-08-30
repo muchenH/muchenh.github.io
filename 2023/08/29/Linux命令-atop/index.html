@@ -16,16 +16,16 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+    <meta name="description" content="atop监控Linux系统资源与进程的工具 补充说明[非内部程序，需要安装]它以一定的频率记录系统的运行状态，所采集的数据包含系统资源(CPU、内存、磁盘和网络)使用情况和进程运行情况，并能以日志文件的方式保存在磁盘中，服务器出现问题后，我们可获取相应的atop日志文件进行分析。atop是一款开源软件，我们可以从这里获得其源码和rpm安装包。 语法1atop(选项)(参数)  说明ATOP列：该列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令-arptables">
-<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/index.html">
+<meta property="og:title" content="Linux命令-atop">
+<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+<meta property="og:description" content="atop监控Linux系统资源与进程的工具 补充说明[非内部程序，需要安装]它以一定的频率记录系统的运行状态，所采集的数据包含系统资源(CPU、内存、磁盘和网络)使用情况和进程运行情况，并能以日志文件的方式保存在磁盘中，服务器出现问题后，我们可获取相应的atop日志文件进行分析。atop是一款开源软件，我们可以从这里获得其源码和rpm安装包。 语法1atop(选项)(参数)  说明ATOP列：该列">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2023-08-29T01:22:14.000Z">
-<meta property="article:modified_time" content="2023-08-30T01:28:51.061Z">
+<meta property="article:published_time" content="2023-08-29T06:52:14.000Z">
+<meta property="article:modified_time" content="2023-08-30T01:33:28.594Z">
 <meta property="article:author" content="muchenH">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux命令-arptables - muchenH Blog</title>
+  <title>Linux命令-atop - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux命令-arptables"></span>
+            <span id="subtitle" data-typed-text="Linux命令-atop"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-29 09:22" pubdate>
-          2023年8月29日 上午
+        <time datetime="2023-08-29 14:52" pubdate>
+          2023年8月29日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          318 字
+          1.5k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          3 分钟
+          13 分钟
         
       </span>
     
@@ -285,18 +285,80 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux命令-arptables</h1>
+            <h1 style="display: none">Linux命令-atop</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="arptables"><a href="#arptables" class="headerlink" title="arptables"></a>arptables</h1><p>管理ARP包过滤规则表</p>
-<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>arptables命令</strong> 用来设置、维护和检查Linux内核中的arp包过滤规则表。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arptables(选项)<br></code></pre></td></tr></table></figure>
+                <h1 id="atop"><a href="#atop" class="headerlink" title="atop"></a>atop</h1><p>监控Linux系统资源与进程的工具</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>[非内部程序，需要安装]它以一定的频率记录系统的运行状态，所采集的数据包含系统资源(CPU、内存、磁盘和网络)使用情况和进程运行情况，并能以日志文件的方式保存在磁盘中，服务器出现问题后，我们可获取相应的atop日志文件进行分析。atop是一款开源软件，我们可以从这里获得其<a target="_blank" rel="noopener" href="https://github.com/Atoptool/atop">源码</a>和<a target="_blank" rel="noopener" href="https://pkgs.org/download/atop">rpm安装包</a>。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atop(选项)(参数)<br></code></pre></td></tr></table></figure>
 
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">-A：向规则链中追加规则；<br>-D：从指定的链中删除规则；<br>-l：向规则链中插入一条新的规则；<br>-R：替换指定规则；<br>-P：设置规则链的默认策略；<br>-F：刷新指定规则链，将其中的所有规则链删除，但是不改变规则链的默认策略；<br>-Z：将规则链计数器清零；<br>-L：显示规则链中的规则列表；<br>-X：删除指定的空用户自定义规则链；<br>-h：显示指令帮助信息；<br>-j：指定满足规则的添加时的目标；<br>-s：指定要匹配ARP包的源ip地址；<br>-d：指定要匹配ARP包的目的IP地址。<br></code></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><strong>ATOP列</strong>：该列显示了主机名、信息采样日期和时间点</p>
+<p><strong>PRC列</strong>：该列显示进程整体运行情况</p>
+<ul>
+<li>sys、usr字段分别指示进程在内核态和用户态的运行时间</li>
+<li>#proc字段指示进程总数</li>
+<li>#zombie字段指示僵尸进程的数量</li>
+<li>#exit字段指示atop采样周期期间退出的进程数量</li>
+</ul>
+<p><strong>CPU列</strong>：该列显示CPU整体(即多核CPU作为一个整体CPU资源)的使用情况，我们知道CPU可被用于执行进程、处理中断，也可处于空闲状态(空闲状态分两种，一种是活动进程等待磁盘IO导致CPU空闲，另一种是完全空闲)</p>
+<ul>
+<li>sys、usr字段指示CPU被用于处理进程时，进程在内核态、用户态所占CPU的时间比例</li>
+<li>irq字段指示CPU被用于处理中断的时间比例</li>
+<li>idle字段指示CPU处在完全空闲状态的时间比例</li>
+<li>wait字段指示CPU处在“进程等待磁盘IO导致CPU空闲”状态的时间比例</li>
+</ul>
+<p>CPU列各个字段指示值相加结果为N00%，其中N为cpu核数。</p>
+<p>cpu列：该列显示某一核cpu的使用情况，各字段含义可参照CPU列，各字段值相加结果为100%</p>
+<p><strong>CPL列</strong>：该列显示CPU负载情况</p>
+<ul>
+<li>avg1、avg5和avg15字段：过去1分钟、5分钟和15分钟内运行队列中的平均进程数量</li>
+<li>csw字段指示上下文交换次数</li>
+<li>intr字段指示中断发生次数</li>
+</ul>
+<p><strong>MEM列</strong>：该列指示内存的使用情况</p>
+<ul>
+<li>tot字段指示物理内存总量</li>
+<li>free字段指示空闲内存的大小</li>
+<li>cache字段指示用于页缓存的内存大小</li>
+<li>buff字段指示用于文件缓存的内存大小</li>
+<li>slab字段指示系统内核占用的内存大小</li>
+</ul>
+<p><strong>SWP列</strong>：该列指示交换空间的使用情况</p>
+<ul>
+<li>tot字段指示交换区总量</li>
+<li>free字段指示空闲交换空间大小</li>
+</ul>
+<p><strong>PAG列</strong>：该列指示虚拟内存分页情况</p>
+<p>swin、swout字段：换入和换出内存页数</p>
+<p><strong>DSK列</strong>：该列指示磁盘使用情况，每一个磁盘设备对应一列，如果有sdb设备，那么增多一列DSK信息</p>
+<ul>
+<li>sda字段：磁盘设备标识</li>
+<li>busy字段：磁盘忙时比例</li>
+<li>read、write字段：读、写请求数量</li>
+</ul>
+<p><strong>NET列</strong>：多列NET展示了网络状况，包括传输层(TCP和UDP)、IP层以及各活动的网口信息</p>
+<ul>
+<li>XXXi  字段指示各层或活动网口收包数目</li>
+<li>XXXo 字段指示各层或活动网口发包数目</li>
+</ul>
+<h2 id="atop日志"><a href="#atop日志" class="headerlink" title="atop日志"></a>atop日志</h2><p>每个时间点采样页面组合起来就形成了一个atop日志文件，我们可以使用”atop -r XXX”命令对日志文件进行查看。那以什么形式保存atop日志文件呢？</p>
+<p>对于atop日志文件的保存方式，我们可以这样：</p>
+<ul>
+<li>每天保存一个atop日志文件，该日志文件记录当天信息</li>
+<li>日志文件以”atop_YYYYMMDD”的方式命名</li>
+<li>设定日志失效期限，自动删除一段时间前的日志文件</li>
+</ul>
+<p>其实atop开发者已经提供了以上日志保存方式，相应的atop.daily脚本可以在源码目录下找到。在atop.daily脚本中，我们可以通过修改INTERVAL变量改变atop信息采样周期(默认为10分钟)；通过修改以下命令中的数值改变日志保存天数(默认为28天)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(sleep 3; find $LOGPATH -name &#x27;atop_*&#x27; -mtime +28 -exec rm &#123;&#125; \; )&amp; <br></code></pre></td></tr></table></figure>
 
+<p>最后，我们修改cron文件，每天凌晨执行atop.daily脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">0 0 * * * root /etc/cron.daily/atop.daily<br></code></pre></td></tr></table></figure>
 
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.atoptool.nl/download/man_atop-1.pdf">官方手册</a></li>
+</ul>
 
                 
               </div>
@@ -342,8 +404,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux命令-arptables</div>
-      <div>http://example.com/2023/08/29/Linux命令-arptables/</div>
+      <div>Linux命令-atop</div>
+      <div>http://example.com/2023/08/29/Linux命令-atop/</div>
     </div>
     <div class="license-meta">
       
@@ -387,9 +449,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/" title="Linux命令-arpwatch">
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/" title="Linux命令-atq">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux命令-arpwatch</span>
+                        <span class="hidden-mobile">Linux命令-atq</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -397,8 +459,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arping/" title="Linux命令-arping">
-                        <span class="hidden-mobile">Linux命令-arping</span>
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-at/" title="Linux命令-at">
+                        <span class="hidden-mobile">Linux命令-at</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

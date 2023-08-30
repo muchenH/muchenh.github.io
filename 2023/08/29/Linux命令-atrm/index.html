@@ -16,25 +16,36 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="佛系摸鱼中~~~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类 - Linux">
-<meta property="og:url" content="http://example.com/categories/Linux/index.html">
+    <meta name="description" content="atrm删除待执行任务队列中的指定任务 补充说明atrm命令 用于删除待执行任务队列中的指定任务。 语法1atrm(选项)(参数)  选项1-V：显示版本号。  参数任务号：指定待执行队列中要删除的任务。 实例删除已经排队的任务 12345atq        # 显示当前已经设置的任务2 Mon May 17 08:00:00 2010 a root1 Sat May 15 17:00:00 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-atrm">
+<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atrm/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="佛系摸鱼中~~~">
+<meta property="og:description" content="atrm删除待执行任务队列中的指定任务 补充说明atrm命令 用于删除待执行任务队列中的指定任务。 语法1atrm(选项)(参数)  选项1-V：显示版本号。  参数任务号：指定待执行队列中要删除的任务。 实例删除已经排队的任务 12345atq        # 显示当前已经设置的任务2 Mon May 17 08:00:00 2010 a root1 Sat May 15 17:00:00 2">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-29T08:52:14.000Z">
+<meta property="article:modified_time" content="2023-08-30T01:33:51.581Z">
 <meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>分类 - Linux - muchenH Blog</title>
+  <title>Linux命令-atrm - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -84,7 +95,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -202,9 +213,49 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类 - Linux"></span>
+            <span id="subtitle" data-typed-text="Linux命令-atrm"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-29 16:52" pubdate>
+          2023年8月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          189 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -220,100 +271,201 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 37 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2023</p>
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-axel/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-axel</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-atrm</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="atrm"><a href="#atrm" class="headerlink" title="atrm"></a>atrm</h1><p>删除待执行任务队列中的指定任务</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>atrm命令</strong> 用于删除待执行任务队列中的指定任务。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atrm(选项)(参数)<br></code></pre></td></tr></table></figure>
+
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-V：显示版本号。<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>任务号：指定待执行队列中要删除的任务。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>删除已经排队的任务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">atq        # 显示当前已经设置的任务<br>2 Mon May 17 08:00:00 2010 a root<br>1 Sat May 15 17:00:00 2010 a root<br><br>atrm 2     # 删除任务2<br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atrm/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-atrm</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-atq</div>
-    </a>
   
+
+      </span>
     
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-atop</div>
-    </a>
   
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-at/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-at</div>
-    </a>
+</span>
+
+    </div>
   
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-as/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-as</div>
-    </a>
   
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-arpwatch</div>
-    </a>
-  
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-arptables</div>
-    </a>
-  
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arping/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-arping</div>
-    </a>
-  
-    
-    <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpd/" class="list-group-item list-group-item-action">
-      <time>08-29</time>
-      <div class="list-group-item-title">Linux命令-arpd</div>
-    </a>
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/Linux/page/2/#board">2</a><a class="page-number" href="/categories/Linux/page/3/#board">3</a><a class="page-number" href="/categories/Linux/page/4/#board">4</a><a class="extend next" rel="next" href="/categories/Linux/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-atrm</div>
+      <div>http://example.com/2023/08/29/Linux命令-atrm/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-axel/" title="Linux命令-axel">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-axel</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/" title="Linux命令-atq">
+                        <span class="hidden-mobile">Linux命令-atq</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -442,6 +594,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

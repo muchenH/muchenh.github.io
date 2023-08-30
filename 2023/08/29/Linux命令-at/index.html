@@ -16,16 +16,16 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+    <meta name="description" content="at在指定时间执行一个任务 补充说明at命令 用于在指定时间执行命令。at允许使用一套相当复杂的指定时间的方法。它能够接受在当天的hh:mm（小时:分钟）式的时间指定。假如该时间已过去，那么就放在第二天执行。当然也能够使用midnight（深夜），noon（中午），teatime（饮茶时间，一般是下午4点）等比较模糊的 词语来指定时间。用户还能够采用12小时计时制，即在时间后面加上AM（上午）或P">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令-arptables">
-<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/index.html">
+<meta property="og:title" content="Linux命令-at">
+<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-at/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+<meta property="og:description" content="at在指定时间执行一个任务 补充说明at命令 用于在指定时间执行命令。at允许使用一套相当复杂的指定时间的方法。它能够接受在当天的hh:mm（小时:分钟）式的时间指定。假如该时间已过去，那么就放在第二天执行。当然也能够使用midnight（深夜），noon（中午），teatime（饮茶时间，一般是下午4点）等比较模糊的 词语来指定时间。用户还能够采用12小时计时制，即在时间后面加上AM（上午）或P">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2023-08-29T01:22:14.000Z">
-<meta property="article:modified_time" content="2023-08-30T01:28:51.061Z">
+<meta property="article:published_time" content="2023-08-29T05:52:14.000Z">
+<meta property="article:modified_time" content="2023-08-30T01:33:15.225Z">
 <meta property="article:author" content="muchenH">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux命令-arptables - muchenH Blog</title>
+  <title>Linux命令-at - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux命令-arptables"></span>
+            <span id="subtitle" data-typed-text="Linux命令-at"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-29 09:22" pubdate>
-          2023年8月29日 上午
+        <time datetime="2023-08-29 13:52" pubdate>
+          2023年8月29日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          318 字
+          1.3k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          3 分钟
+          11 分钟
         
       </span>
     
@@ -285,16 +285,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux命令-arptables</h1>
+            <h1 style="display: none">Linux命令-at</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="arptables"><a href="#arptables" class="headerlink" title="arptables"></a>arptables</h1><p>管理ARP包过滤规则表</p>
-<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>arptables命令</strong> 用来设置、维护和检查Linux内核中的arp包过滤规则表。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arptables(选项)<br></code></pre></td></tr></table></figure>
+                <h1 id="at"><a href="#at" class="headerlink" title="at"></a>at</h1><p>在指定时间执行一个任务</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>at命令</strong> 用于在指定时间执行命令。at允许使用一套相当复杂的指定时间的方法。它能够接受在当天的hh:mm（小时:分钟）式的时间指定。假如该时间已过去，那么就放在第二天执行。当然也能够使用midnight（深夜），noon（中午），teatime（饮茶时间，一般是下午4点）等比较模糊的 词语来指定时间。用户还能够采用12小时计时制，即在时间后面加上AM（上午）或PM（下午）来说明是上午还是下午。 也能够指定命令执行的具体日期，指定格式为month day（月 日）或mm&#x2F;dd&#x2F;yy（月&#x2F;日&#x2F;年）或dd.mm.yy（日.月.年）。指定的日期必须跟在指定时间的后面。</p>
+<p>上面介绍的都是绝对计时法，其实还能够使用相对计时法，这对于安排不久就要执行的命令是很有好处的。指定格式为：<code>now + count time-units</code>，now就是当前时间，time-units是时间单位，这里能够是minutes（分钟）、hours（小时）、days（天）、weeks（星期）。count是时间的数量，究竟是几天，还是几小时，等等。 更有一种计时方法就是直接使用today（今天）、tomorrow（明天）来指定完成命令的时间。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">at [-V] [-q 队列] [-f 文件] [-mldbv] 时间 at -c 作业 [作业...]<br></code></pre></td></tr></table></figure>
 
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">-A：向规则链中追加规则；<br>-D：从指定的链中删除规则；<br>-l：向规则链中插入一条新的规则；<br>-R：替换指定规则；<br>-P：设置规则链的默认策略；<br>-F：刷新指定规则链，将其中的所有规则链删除，但是不改变规则链的默认策略；<br>-Z：将规则链计数器清零；<br>-L：显示规则链中的规则列表；<br>-X：删除指定的空用户自定义规则链；<br>-h：显示指令帮助信息；<br>-j：指定满足规则的添加时的目标；<br>-s：指定要匹配ARP包的源ip地址；<br>-d：指定要匹配ARP包的目的IP地址。<br></code></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-f：指定包含具体指令的任务文件；<br>-q：指定新任务的队列名称；<br>-l：显示待执行任务的列表；<br>-d：删除指定的待执行任务；<br>-m：任务执行完成后向用户发送E-mail。<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>日期时间：指定任务执行的日期时间。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>三天后的下午 5 点锺执行<code>/bin/ls</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at 5pm+3 days<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">/bin/ls</span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;EOT&gt;</span><br>job 7 at 2013-01-08 17:00<br></code></pre></td></tr></table></figure>
+
+<p>明天17点钟，输出时间到指定文件内：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at 17:20 tomorrow<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash"><span class="hljs-built_in">date</span> &gt;/root/2013.<span class="hljs-built_in">log</span></span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;EOT&gt;</span><br>job 8 at 2013-01-06 17:20<br></code></pre></td></tr></table></figure>
+
+<p>计划任务设定后，在没有执行之前我们可以用atq命令来查看系统没有执行工作任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br>7       2013-01-08 17:00 a root<br></code></pre></td></tr></table></figure>
+
+<p>删除已经设置的任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br>7       2013-01-08 17:00 a root<br><br>[root@localhost ~]# atrm 7<br>[root@localhost ~]# atq<br>8       2013-01-06 17:20 a root<br></code></pre></td></tr></table></figure>
+
+<p>显示已经设置的任务内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# at -c 8<br><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">atrun uid=0 gid=0</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">mail     root 0</span><br>umask 22此处省略n个字符<br>date &gt;/root/2013.log<br></code></pre></td></tr></table></figure>
+
 
 
 
@@ -342,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux命令-arptables</div>
-      <div>http://example.com/2023/08/29/Linux命令-arptables/</div>
+      <div>Linux命令-at</div>
+      <div>http://example.com/2023/08/29/Linux命令-at/</div>
     </div>
     <div class="license-meta">
       
@@ -387,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/" title="Linux命令-arpwatch">
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/" title="Linux命令-atop">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux命令-arpwatch</span>
+                        <span class="hidden-mobile">Linux命令-atop</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -397,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arping/" title="Linux命令-arping">
-                        <span class="hidden-mobile">Linux命令-arping</span>
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-as/" title="Linux命令-as">
+                        <span class="hidden-mobile">Linux命令-as</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

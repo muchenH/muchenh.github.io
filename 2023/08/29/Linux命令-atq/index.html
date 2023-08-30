@@ -16,16 +16,16 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+    <meta name="description" content="atq列出当前用户的at任务列表 补充说明atq命令 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。 语法1atq [-V] [-q 队列] [-v]  选项12-V：显示版本号；-q：查询指定队列的任务。  实例1234567at now + 10 minutesat&gt; echo 1111at&gt; &lt;eot&gt;job 3 at Fri Apr 26 12:56">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令-arptables">
-<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arptables/index.html">
+<meta property="og:title" content="Linux命令-atq">
+<meta property="og:url" content="http://example.com/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atq/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="arptables管理ARP包过滤规则表 补充说明arptables命令 用来设置、维护和检查Linux内核中的arp包过滤规则表。 语法1arptables(选项)  选项12345678910111213-A：向规则链中追加规则；-D：从指定的链中删除规则；-l：向规则链中插入一条新的规则；-R：替换指定规则；-P：设置规则链的默认策略；-F：刷新指定规则链，将其中的所有规则链删除，但是不改变">
+<meta property="og:description" content="atq列出当前用户的at任务列表 补充说明atq命令 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。 语法1atq [-V] [-q 队列] [-v]  选项12-V：显示版本号；-q：查询指定队列的任务。  实例1234567at now + 10 minutesat&gt; echo 1111at&gt; &lt;eot&gt;job 3 at Fri Apr 26 12:56">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
-<meta property="article:published_time" content="2023-08-29T01:22:14.000Z">
-<meta property="article:modified_time" content="2023-08-30T01:28:51.061Z">
+<meta property="article:published_time" content="2023-08-29T07:52:14.000Z">
+<meta property="article:modified_time" content="2023-08-30T01:33:40.135Z">
 <meta property="article:author" content="muchenH">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux命令-arptables - muchenH Blog</title>
+  <title>Linux命令-atq - muchenH Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux命令-arptables"></span>
+            <span id="subtitle" data-typed-text="Linux命令-atq"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-29 09:22" pubdate>
-          2023年8月29日 上午
+        <time datetime="2023-08-29 15:52" pubdate>
+          2023年8月29日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          318 字
+          212 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -285,16 +285,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux命令-arptables</h1>
+            <h1 style="display: none">Linux命令-atq</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="arptables"><a href="#arptables" class="headerlink" title="arptables"></a>arptables</h1><p>管理ARP包过滤规则表</p>
-<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>arptables命令</strong> 用来设置、维护和检查Linux内核中的arp包过滤规则表。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arptables(选项)<br></code></pre></td></tr></table></figure>
+                <h1 id="atq"><a href="#atq" class="headerlink" title="atq"></a>atq</h1><p>列出当前用户的at任务列表</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>atq命令</strong> 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">atq [-V] [-q 队列] [-v]<br></code></pre></td></tr></table></figure>
 
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">-A：向规则链中追加规则；<br>-D：从指定的链中删除规则；<br>-l：向规则链中插入一条新的规则；<br>-R：替换指定规则；<br>-P：设置规则链的默认策略；<br>-F：刷新指定规则链，将其中的所有规则链删除，但是不改变规则链的默认策略；<br>-Z：将规则链计数器清零；<br>-L：显示规则链中的规则列表；<br>-X：删除指定的空用户自定义规则链；<br>-h：显示指令帮助信息；<br>-j：指定满足规则的添加时的目标；<br>-s：指定要匹配ARP包的源ip地址；<br>-d：指定要匹配ARP包的目的IP地址。<br></code></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">-V：显示版本号；<br>-q：查询指定队列的任务。<br></code></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">at now + 10 minutes<br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash"><span class="hljs-built_in">echo</span> 1111</span><br><span class="hljs-meta prompt_">at&gt; </span><span class="language-bash">&lt;eot&gt;</span><br>job 3 at Fri Apr 26 12:56:00 2013<br><br>atq<br>3       Fri Apr 26 12:56:00 2013 a root<br></code></pre></td></tr></table></figure>
+
 
 
 
@@ -342,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux命令-arptables</div>
-      <div>http://example.com/2023/08/29/Linux命令-arptables/</div>
+      <div>Linux命令-atq</div>
+      <div>http://example.com/2023/08/29/Linux命令-atq/</div>
     </div>
     <div class="license-meta">
       
@@ -387,9 +390,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arpwatch/" title="Linux命令-arpwatch">
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atrm/" title="Linux命令-atrm">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux命令-arpwatch</span>
+                        <span class="hidden-mobile">Linux命令-atrm</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -397,8 +400,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-arping/" title="Linux命令-arping">
-                        <span class="hidden-mobile">Linux命令-arping</span>
+                      <a href="/2023/08/29/Linux%E5%91%BD%E4%BB%A4-atop/" title="Linux命令-atop">
+                        <span class="hidden-mobile">Linux命令-atop</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
