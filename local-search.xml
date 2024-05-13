@@ -281,31 +281,6 @@
   
   
   <entry>
-    <title>基于Docker部署OpenWrt</title>
-    <link href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/"/>
-    <url>/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/</url>
-    
-    <content type="html"><![CDATA[<h2 id="基于Docker部署OpenWrt"><a href="#基于Docker部署OpenWrt" class="headerlink" title="基于Docker部署OpenWrt"></a>基于Docker部署OpenWrt</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.下载镜像</span><br>wget https://op.supes.top/releases/targets/armvirt/64/openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz<br><span class="hljs-comment"># 2.docker导入镜像</span><br><span class="hljs-built_in">cat</span> openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz | docker import - openwrt:0.0.1<br><span class="hljs-comment"># 3.开启网口混杂</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 promisc on<br><span class="hljs-comment"># 4.创建macnet网络</span><br>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 macnet<br><span class="hljs-comment"># 5.基于镜像启动docker容器</span><br>docker run -d --name=OpenWrt --restart always --network macnet --ip 192.168.1.10 --privileged openwrt:0.0.1 /sbin/init<br><span class="hljs-comment"># 6.修改容器内openwrt管理IP地址</span><br>docker <span class="hljs-built_in">exec</span> OpenWrt sed -e <span class="hljs-string">&quot;s/10.0.0.1/192.168.1.10/&quot;</span> -i /etc/config/network<br><span class="hljs-comment"># enjoy it ！！！</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>项目实战</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>pygame</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>如何编译自己需要的 OpenWrt 固件</title>
     <link href="/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/"/>
     <url>/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/</url>
@@ -325,6 +300,31 @@
     <tags>
       
       <tag>OpenWrt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于Docker部署OpenWrt</title>
+    <link href="/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/"/>
+    <url>/2022/10/24/%E5%9F%BA%E4%BA%8EDocker%E9%83%A8%E7%BD%B2OpenWrt/</url>
+    
+    <content type="html"><![CDATA[<h2 id="基于Docker部署OpenWrt"><a href="#基于Docker部署OpenWrt" class="headerlink" title="基于Docker部署OpenWrt"></a>基于Docker部署OpenWrt</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.下载镜像</span><br>wget https://op.supes.top/releases/targets/armvirt/64/openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz<br><span class="hljs-comment"># 2.docker导入镜像</span><br><span class="hljs-built_in">cat</span> openwrt-09.05.2022-armvirt-64-l1pro-rootfs.tar.gz | docker import - openwrt:0.0.1<br><span class="hljs-comment"># 3.开启网口混杂</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 promisc on<br><span class="hljs-comment"># 4.创建macnet网络</span><br>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 macnet<br><span class="hljs-comment"># 5.基于镜像启动docker容器</span><br>docker run -d --name=OpenWrt --restart always --network macnet --ip 192.168.1.10 --privileged openwrt:0.0.1 /sbin/init<br><span class="hljs-comment"># 6.修改容器内openwrt管理IP地址</span><br>docker <span class="hljs-built_in">exec</span> OpenWrt sed -e <span class="hljs-string">&quot;s/10.0.0.1/192.168.1.10/&quot;</span> -i /etc/config/network<br><span class="hljs-comment"># enjoy it ！！！</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pygame</tag>
       
     </tags>
     
