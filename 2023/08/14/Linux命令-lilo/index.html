@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="lilo安装核心载入开机管理程序 补充说明lilo命令 用于安装核心载入，开机管理程序。lilo是个Linux系统核心载入程序，同时具备管理开机的功能。单独执行lilo指令，它会读取&#x2F;etc&#x2F;lilo.conf配置文件，然后根据其内容安装lilo。 Linux lilo已经成为所有 Linux 发行版的标准组成部分。作为一个 较老的&#x2F;最老的 Linux 引导加载程序，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-lilo">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lilo/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="lilo安装核心载入开机管理程序 补充说明lilo命令 用于安装核心载入，开机管理程序。lilo是个Linux系统核心载入程序，同时具备管理开机的功能。单独执行lilo指令，它会读取&#x2F;etc&#x2F;lilo.conf配置文件，然后根据其内容安装lilo。 Linux lilo已经成为所有 Linux 发行版的标准组成部分。作为一个 较老的&#x2F;最老的 Linux 引导加载程序，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:27.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:34.847Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-lilo - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-lilo"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-lilo</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="lilo"><a href="#lilo" class="headerlink" title="lilo"></a>lilo</h1><p>安装核心载入开机管理程序</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>lilo命令</strong> 用于安装核心载入，开机管理程序。lilo是个Linux系统核心载入程序，同时具备管理开机的功能。单独执行lilo指令，它会读取&#x2F;etc&#x2F;lilo.conf配置文件，然后根据其内容安装lilo。</p>
+<p>Linux lilo已经成为所有 Linux 发行版的标准组成部分。作为一个 较老的&#x2F;最老的 Linux 引导加载程序，它那不断壮大的 Linux 社区支持使它能够随时间的推移而发展，并始终能够充当一个可用的现代引导加载程序。有一些新的功能，比如增强的用户界面，以及对能够突破原来 1024-柱面限制的新 BIOS 功能的利用。</p>
+<p>虽然 LILO 仍在不断地发展，但 LILO 工作原理的基本概念保持不变。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lilo(选项)<br></code></pre></td></tr></table></figure>
+
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b&lt;外围设备代号&gt;：指定安装lilo之处的外围设备代号；<br>-c：使用紧致映射模式；<br>-C&lt;配置文件&gt;：指定lilo的配置文件；<br>-d&lt;延迟时间&gt;：设置开机延迟时间；<br>-D&lt;识别标签&gt;：指定开机后预设启动的操作系统，或系统核心识别标签；<br>-f&lt;几何参数文件&gt;：指定磁盘的几何参数配置文件；<br>-i&lt;开机磁区文件&gt;：指定欲使用的开机磁区文件，预设是/boot目录里的boot.b文件；<br>-I&lt;识别标签&gt;：显示系统核心存放之处；<br>-l：产生线形磁区地址；<br>-m&lt;映射文件&gt;：指定映射文件；<br>-P&lt;fix/ignore&gt;：决定要修复或忽略分区表的错误；<br>-q：列出映射的系统核心文件；<br>-r&lt;根目录&gt;：设置系统启动时欲挂入成为根目录的目录；<br>-R&lt;执行指令&gt;：设置下次启动系统时，首先执行的指令；<br>-s&lt;备份文件&gt;：指定备份文件；<br>-S&lt;备份文件&gt;：强制指定备份文件；<br>-t：不执行指令，仅列出实际执行会进行的动作；<br>-u&lt;外围色设备代号&gt;：删除lilo；<br>-U&lt;外围设备代号&gt;：此选项的效果和指定&quot;-u&quot;参数类似，当不检查时间戳记；<br>-v：显示指令执行过程；<br>-V：显示版本信息。<br></code></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p> <strong>使用 LILO 作为引导加载程序</strong> </p>
+<p>要使用 LILO 作为引导加载程序，需要做的事情取决于是要进行全新安装还是要让已经安装的 Linux 改为使用 LILO。如果是要进行全新安装，那么直接跳转到 配置 LILO 那一节。如果已经安装了某个 Linux 发行版，那么通常可以选择安装并配置 LILO（并可以将机器引导到新的 Linux 安装）。</p>
+<p>要将现有的 Linux 迁移到 LILO，首先必须获得最新版本的 LILO（见 参考资料）。在做任何其他事情之前，建议您确保在手边拥有一张 Linux 引导盘 —— 如果偶而弄错了某些地方，它可以提供很大的帮助，能够恢复到初始的 Linux 配置！将 LILO 安装到系统中之后，让它接管 MBR 非常简单。以 root 用户身份输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/sbin/lilo -v -v<br></code></pre></td></tr></table></figure>
+
+<p>这将使用当前的 LILO 默认值，抹去 MBR 中当前所有内容。不过，请阅读 配置 LILO，以确保能够按预期引导起来。也要注意，如果想要在同一机器上运行 Windows 和 Linux，那么应该先安装 Windows OS，然后再安装 Linux OS，这样，在 Linux 安装中所选择的引导加载程序就不会被 Windows 引导加载程序所覆盖。与 Linux 引导加载程序不同，多数 Window 引导加载程序不支持引导 Linux。如果已经先安装了 Linux，那么只需要自己创建一张 Linux 引导盘，这样就可以在安装完 Windows 之后，回到 Linux 安装中并重写 MBR。</p>
+<p> <strong>配置 LILO</strong> </p>
+<p>LILO 的配置都是通过位于 &#x2F;etc&#x2F;lilo.conf 的一个配置文件来完成的。清单 1 给出了一个示例配置，使用的是我的家用机器，支持 Linux 和 Windows 机器的双重引导。了解我的工作站的基本配置，就可以想像出这些配置是如何与实际机器相关联的：</p>
+<p>主 HDD（物理磁盘 1）上安装了 Windows XP（最初机器上只有它）。在 Linux 术语中，这个 HDD 是 &#x2F;dev&#x2F;hda（在 grub 术语中是 hd0,0）。</p>
+<p>从 HDD（物理磁盘 2）上安装了 Red Hat Linux；root 分区位于这个硬盘驱动器的第三个分区，即 &#x2F;dev&#x2F;hdb3（在 GRUB 术语中是 hd1,3）。</p>
+<p>lilo.conf 示例文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">boot=/dev/hda<br>map=/boot/map<br>install=/boot/boot.b<br>prompt<br>timeout=100<br>compact<br>default=Linux<br>image=/boot/vmlinuz-2.4.18-14<br>	label=Linux<br>	root=/dev/hdb3<br>	read-only<br>	password=linux<br>other=/dev/hda<br>	label=WindowsXP<br></code></pre></td></tr></table></figure>
+
+<p>配置文件选项说明：</p>
+<ul>
+<li>boot&#x3D; 行告诉 LILO 在哪里安装引导加载程序。在上面的示例中，将把它安装到第一块硬盘的 MBR。也可以选择将 LILO 安装到 &#x2F;dev&#x2F;hdb3（示例中的 Linux 分区），这样需要向 &#x2F;dev&#x2F;hda 安装另一个引导加载程序，并令其指向 LILO 引导加载程序；然后只需要让 LILO 作为二级引导加载程序。通常，引导加载程序应该位于 &#x2F;dev&#x2F;hda。还可以将这个参数指向软盘驱动器（最常见的是 &#x2F;dev&#x2F;fd0），来制做 LILO 软盘引导磁盘。</li>
+<li>map&#x3D; 指向引导期间 LILO 内部使用的映射文件。当使用 &#x2F;sbin&#x2F;lilo 命令安装 LILO 时， 它会自动生成这个文件，其中包含有描述符表（还有其他内容）。建议不要改动这个文件！</li>
+<li>install&#x3D; 是 LILO 在引导过程中内部使用的文件之一。它同时包含有引导加载程序的主要部分和二级部分。boot.b 文件的 一个片段被写入到 MBR（引导加载程序的主要部分），它会指向那个映射，接下来指向二级引导加载程序。同样，不要改动它！</li>
+<li>prompt&#x3D; 告诉 LILO 使用用户界面（本例中给出了两个选择 —— Linux 和 WindowsXP）。除了使用 prompt&#x2F;user 界面以外，在适当情况下还可以为 Linux 内核等指定具体的参数。如果不在配置文件中指定此选项，那么 LILO 将引导到 默认的 OS，不发生任何用户交互，也不会等待。（但是请注意，如果在引导时按下了 SHIFT，那么还是可以得到提示，当不想把 引导加载程序暴露给普通用户时，这非常有用）。</li>
+<li>timeout&#x3D; 是引导提示在自动引导默认 OS（本例中是 Linux）之前的等待时间（以十分之一秒为单位）。 如果在 lilo.conf 没有指定 prompt，那么这个参数就会被忽略。</li>
+<li>compact 选项可以大大加速引导过程，它会将连续的读磁盘的请求合并为一个单独的请求。不过，这可能是 一件祸福参半的事情，因为我在论坛上看到过很多贴子提到了关于此选项的问题。当希望从软盘引导时，这个选项尤其有用。</li>
+<li>default&#x3D; 选项告诉 LILO 默认使用哪个映像进行引导，比如在等待超时之后。这与 lilo.conf 文件中的某个映像的 标签相关联。如果没有在配置文件中指定此选项，那么它将引导文件中指定的第一个映像。</li>
+<li>对于允许用户引导到的每一个 Linux 版本，都应该指定 image&#x3D; 及以下三个选项。image 选项指定希望 引导到的内核版本。</li>
+<li>label&#x3D; 标明了在运行期间希望能够从用户界面引导的不同 OS。另外，这个标签用于指定引导的默认 OS。 （注意：标签名称中避免出现空格；否则，引导那个文件时会出现无法预期的错误。）</li>
+<li>root&#x3D; 告诉 LILO OS 文件系统实际所在的位置。在我们的示例中为 &#x2F;dev&#x2F;hdb3，即第二块硬盘上的第三个分区。</li>
+<li>read-only 告诉 LILO 以只读的方式初始引导到文件系统。OS 一旦完全引导起来，就会以读写方式挂载。</li>
+<li>password&#x3D; 允许您为将要引导到的特定 OS 设置口令。不幸的是，这个口令是以可读文本的方式保存在 lilo.conf 文件中，所以，所有人都能够读取它。如果需要，还可以对想要引导自的每个操作系统设置口令（在我们的示例中，只为 Linux 的引导 设置了一个口令）。</li>
+<li>other&#x3D; 的动作类似于 image 和 root 选项的组合，但是用于除了 Linux 以外的其他操作系统。 在我们的示例中，它告诉 LILO 到哪里去找到 Windows OS（位于第一块硬盘的第一个分区）。如果先安装 Windows，后安装 Linux，通常会是这样。</li>
+<li>label&#x3D; 与所有其他 label 选项相同。</li>
+</ul>
+<p>在 lilo.conf 文件中可以使用很多其他参数，不过清单 1 中的参数就足以让机器可用了。要获得关于 lilo.conf 的这些以及其他参数的 进一步资料，请参考手册页（man lilo.conf）。由于在引导时不会读取 lilo.conf，所以，当这个文件有改动时，需要“更新”MBR。 如果不完成此步骤就重新引导，那么对 lilo.conf 的修改不会在启动中反映出来。与先前将 LILO 写入 MBR 类似，需要运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/sbin/lilo -v -v<br></code></pre></td></tr></table></figure>
+
+<p><code>-v -v</code>标记会为您给出非常详细的输出。当像我们那样运行 LILO 时，有很多参数可以指定。 参阅手册页以获得更进一步的信息（man lilo）。</p>
+<p> <strong>初始引导过程</strong> </p>
+<p>当 LILO 初始引导时，它会按次序打印出每个字母 —— L-I-L-O。如果所有字母都显示出来，那么第一阶段引导就成功了。缺少任何内容 都表示出现了问题：</p>
+<p>L：第一阶段引导加载程序已经被加载。如果 LILO 停止在这里，那么是在引导第二阶段引导加载程序时出现了问题。这通常会伴随有一个错误代码。 在这个阶段的常见问题是介质问题，或者在 lilo.conf 文件中指定了不正确的磁盘参数。</p>
+<p>LI：第二阶段引导加载程序已经被加载。LILO 在此处停止表示第二阶段引导加载程序不能被执行。同样，这可能是因为出现了与只显示 L 类似的问题： 正在加载，或者因 boot.b 文件被破坏、移动或删除而不能加载。</p>
+<p>LIL：第二阶段引导加载程序正在被执行。此时，可能会再次出现介质问题，或者映射文件（如 lilo.conf 文件中所指定的）在寻找描述符表时 可能会出现问题。</p>
+<p>LIL?：加载到与上面相同的阶段。这通常意味着加载第二阶段引导加载程序使用了错误的地址，最常见的原因是 boot.b 所在的位置与 lilo.conf 文件所指定的不同。</p>
+<p>LIL-：加载到与上面相同的阶段。加载描述符表时出现问题，最常见的原因是描述符表错误。</p>
+<p>LILO：LILO 成功被加载，没有出现任何错误。</p>
+<p> <strong>引导时的附加配置</strong> </p>
+<p>LILO 被成功加载后，将看到 LILO 提示符。还是使用前面的示例 lilo.conf 文件，此时将有两个选择，可能对 LILO 新手来说并不直观。首先，可以 让 LILO 超时（10 秒后），这将引导<code>/dev/hdb3</code>，即 Linux 分区。另外，可以按下 TAB 键，这将列出将要引导的操作系统选项。在我们的示例 lilo.conf 中， 将得到的选项是 “Linux” 和 “Windows”。输入哪一个，就会引导到哪个 OS。指定加载 Linux 选项，会提示输入一个口令，在本例中是 linux。如果输入的口令有误，则会返回 LILO 提示符。</p>
+<p>不幸的是，LILO 不支持引导期间的交互式配置，所以，只能在 lilo.conf 中或者运行<code>/sbin/lilo</code>时指定选项。</p>
+<p>关于第一次尝试 LILO 的最后一点建议是：我发现使用软盘引导磁盘比使用硬盘实现 LILO 配置更为安全。为此，必须在 lilo.conf 文件中使用<code>boot=/dev/fd0</code>替换<code>boot=/dev/hda</code>。那样，如果弄乱了lilo.conf文件 中的任何配置，都可以取出引导磁盘并像先前一样引导到 Linux。当使用软盘进行引导一切正常以后，可以将lilo.conf修改回<code>boot=/dev/hda</code>，然后最后一次运行<code>/sbin/lilo</code>来上传修改。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-lilo</div>
+      <div>http://example.com/2023/08/14/Linux命令-lilo/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lftpget/" title="Linux命令-lftpget">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-lftpget</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ln/" title="Linux命令-ln">
+                        <span class="hidden-mobile">Linux命令-ln</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

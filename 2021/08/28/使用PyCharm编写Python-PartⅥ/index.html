@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="综合应用 —— 名片管理系统目标综合应用已经学习过的知识点：  变量 流程控制 函数 模块  开发 名片管理系统 系统需求  程序启动，显示名片管理系统欢迎界面，并显示功能菜单    123456789**************************************************欢迎使用【名片管理系统】V1.01. 新建名片2. 显示全部3. 查询名片0. 退出系统*****">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用PyCharm编写Python.PartⅥ">
+<meta property="og:url" content="http://example.com/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A5/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="综合应用 —— 名片管理系统目标综合应用已经学习过的知识点：  变量 流程控制 函数 模块  开发 名片管理系统 系统需求  程序启动，显示名片管理系统欢迎界面，并显示功能菜单    123456789**************************************************欢迎使用【名片管理系统】V1.01. 新建名片2. 显示全部3. 查询名片0. 退出系统*****">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/pycharm.png">
+<meta property="article:published_time" content="2021-08-28T15:04:34.000Z">
+<meta property="article:modified_time" content="2021-09-10T09:38:43.000Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/pycharm.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>使用PyCharm编写Python.PartⅥ - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用PyCharm编写Python.PartⅥ"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-28 23:04" pubdate>
+          2021年8月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用PyCharm编写Python.PartⅥ</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="综合应用-——-名片管理系统"><a href="#综合应用-——-名片管理系统" class="headerlink" title="综合应用 —— 名片管理系统"></a>综合应用 —— 名片管理系统</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>综合应用已经学习过的知识点：</p>
+<ul>
+<li><strong>变量</strong></li>
+<li><strong>流程控制</strong></li>
+<li><strong>函数</strong></li>
+<li><strong>模块</strong></li>
+</ul>
+<p>开发 <strong>名片管理系统</strong></p>
+<h2 id="系统需求"><a href="#系统需求" class="headerlink" title="系统需求"></a>系统需求</h2><ul>
+<li><ol>
+<li>程序启动，显示名片管理系统欢迎界面，并显示功能菜单</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span>**<br>欢迎使用【名片管理系统】V1.0<br><br><span class="hljs-bullet">1.</span> 新建名片<br><span class="hljs-bullet">2.</span> 显示全部<br><span class="hljs-bullet">3.</span> 查询名片<br><br><span class="hljs-bullet">0.</span> 退出系统<br><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">**</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="2">
+<li>用户用数字选择不同的功能</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>根据功能选择，执行不同的功能</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>用户名片需要记录用户的 <strong>姓名</strong>、<strong>电话</strong>、<strong>QQ</strong>、<strong>邮件</strong></li>
+</ol>
+</li>
+<li><ol start="5">
+<li>如果查询到指定的名片，用户可以选择 <strong>修改</strong> 或者 <strong>删除</strong> 名片</li>
+</ol>
+</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>框架搭建</li>
+<li>新增名片</li>
+<li>显示所有名片</li>
+<li>查询名片</li>
+<li>查询成功后修改、删除名片</li>
+<li>让 Python 程序能够直接运行</li>
+</ol>
+<h2 id="01-框架搭建"><a href="#01-框架搭建" class="headerlink" title="01. 框架搭建"></a>01. 框架搭建</h2><p><strong>目标</strong></p>
+<ul>
+<li>搭建名片管理系统 <strong>框架结构</strong><ol>
+<li><strong>准备文件</strong>，确定文件名，保证能够 <strong>在需要的位置</strong> 编写代码</li>
+<li>编写 <strong>主运行循环</strong>，实现基本的 <strong>用户输入和判断</strong></li>
+</ol>
+</li>
+</ul>
+<h3 id="1-1-文件准备"><a href="#1-1-文件准备" class="headerlink" title="1.1 文件准备"></a>1.1 文件准备</h3><ol>
+<li>新建 <code>cards_main.py</code> 保存 <strong>主程序功能代码</strong><ul>
+<li>程序的入口</li>
+<li>每一次启动名片管理系统都通过 <code>main</code> 这个文件启动</li>
+</ul>
+</li>
+<li>新建 <code>cards_tools.py</code> 保存 <strong>所有名片功能函数</strong><ul>
+<li>将对名片的 <strong>新增</strong>、<strong>查询</strong>、<strong>修改</strong>、<strong>删除</strong> 等功能封装在不同的函数中</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-2-编写主运行循环"><a href="#1-2-编写主运行循环" class="headerlink" title="1.2 编写主运行循环"></a>1.2 编写主运行循环</h3><ul>
+<li>在 <code>cards_main</code> 中添加一个 <strong>无限循环</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br><br>    <span class="hljs-comment"># TODO(小明) 显示系统菜单</span><br><br>    action = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请选择操作功能：&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;您选择的操作是：%s&quot;</span> % action)<br><br>    <span class="hljs-comment"># 根据用户输入决定后续的操作</span><br>    <span class="hljs-keyword">if</span> action <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>]:<br>        <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;0&quot;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;欢迎再次使用【名片管理系统】&quot;</span>)<br><br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入错误，请重新输入&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> action <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>]:<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-keyword">or</span> action == <span class="hljs-string">&quot;2&quot;</span> <span class="hljs-keyword">or</span> action == <span class="hljs-string">&quot;3&quot;</span>:<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>使用 <code>in</code> 针对 <strong>列表</strong> 判断，避免使用 <code>or</code> 拼接复杂的逻辑条件</li>
+<li>没有使用 <code>int</code> 转换用户输入，可以避免 <strong>一旦用户输入的不是数字</strong>，导致程序运行出错</li>
+</ol>
+<h4 id="pass"><a href="#pass" class="headerlink" title="pass"></a>pass</h4><ul>
+<li><code>pass</code> 就是一个空语句，不做任何事情，一般用做占位语句</li>
+<li>是为了保持程序结构的完整性</li>
+</ul>
+<h4 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h4><ul>
+<li>在开发软件时，如果 <strong>不希望程序执行后</strong> 立即退出</li>
+<li>可以在程序中增加一个 <strong>无限循环</strong></li>
+<li><strong>由用户来决定</strong> 退出程序的时机</li>
+</ul>
+<h4 id="TODO-注释"><a href="#TODO-注释" class="headerlink" title="TODO 注释"></a>TODO 注释</h4><ul>
+<li>在 <code>#</code> 后跟上 <code>TODO</code>，用于标记需要去做的工作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># TODO(作者/邮件) 显示系统菜单</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-在-cards-tools-中增加四个新函数"><a href="#1-3-在-cards-tools-中增加四个新函数" class="headerlink" title="1.3 在 cards_tools 中增加四个新函数"></a>1.3 在 <code>cards_tools</code> 中增加四个新函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_menu</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;显示菜单</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">new_card</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;新建名片</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：新建名片&quot;</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_all</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;显示全部</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：显示全部&quot;</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">search_card</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;搜索名片</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：搜索名片&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-导入模块"><a href="#1-4-导入模块" class="headerlink" title="1.4 导入模块"></a>1.4 导入模块</h3><ul>
+<li>在 <code>cards_main.py</code> 中使用 <code>import</code> 导入 <code>cards_tools</code> 模块</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cards_tools<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>while</code> 循环的代码如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cards_tools<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br><br>    cards_tools.show_menu()<br><br>    action = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请选择操作功能：&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;您选择的操作是：%s&quot;</span> % action)<br><br>    <span class="hljs-comment"># 根据用户输入决定后续的操作</span><br>    <span class="hljs-keyword">if</span> action <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>]:<br><br>        <span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;1&quot;</span>:<br>            cards_tools.new_card()<br><br>        <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;2&quot;</span>:<br>            cards_tools.show_all()<br><br>        <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;3&quot;</span>:<br>            cards_tools.search_card()<br><br>    <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;0&quot;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;欢迎再次使用【名片管理系统】&quot;</span>)<br><br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入错误，请重新输入：&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>至此：<code>cards_main</code> 中的所有代码全部开发完毕！</p>
+</blockquote>
+<h3 id="1-5-完成-show-menu-函数"><a href="#1-5-完成-show-menu-函数" class="headerlink" title="1.5 完成 show_menu 函数"></a>1.5 完成 <code>show_menu</code> 函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_menu</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;显示菜单</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;*&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;欢迎使用【菜单管理系统】V1.0&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;1. 新建名片&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;2. 显示全部&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;3. 查询名片&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;0. 退出系统&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;*&quot;</span> * <span class="hljs-number">50</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="02-保存名片数据的结构"><a href="#02-保存名片数据的结构" class="headerlink" title="02. 保存名片数据的结构"></a>02. 保存名片数据的结构</h2><p><strong>程序就是用来处理数据的，而变量就是用来存储数据的</strong></p>
+<ul>
+<li>使用 <strong>字典</strong> 记录 <strong>每一张名片</strong> 的详细信息</li>
+<li>使用 <strong>列表</strong> 统一记录所有的 <strong>名片字典</strong></li>
+</ul>
+<p><img src="/media/14973084639044/001_%E5%90%8D%E7%89%87%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%85%A8%E5%B1%80%E5%88%97%E8%A1%A8.png" srcset="/img/loading.gif" lazyload alt="001_名片管理系统全局列表-w500"></p>
+<h3 id="定义名片列表变量"><a href="#定义名片列表变量" class="headerlink" title="定义名片列表变量"></a>定义名片列表变量</h3><ul>
+<li>在 <code>cards_tools</code> 文件的顶部增加一个 <strong>列表变量</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 所有名片记录的列表</span><br>card_list = []<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li><strong>所有名片相关操作</strong>，都需要使用这个列表，所以应该 <strong>定义在程序的顶部</strong></li>
+<li><strong>程序刚运行时，没有数据</strong>，所以是 <strong>空列表</strong></li>
+</ol>
+<h2 id="03-新增名片"><a href="#03-新增名片" class="headerlink" title="03. 新增名片"></a>03. 新增名片</h2><h3 id="3-1-功能分析"><a href="#3-1-功能分析" class="headerlink" title="3.1 功能分析"></a>3.1 功能分析</h3><ol>
+<li>提示用户依次输入名片信息</li>
+<li>将名片信息保存到一个字典</li>
+<li>将字典添加到名片列表</li>
+<li>提示名片添加完成</li>
+</ol>
+<h3 id="3-2-实现-new-card-方法"><a href="#3-2-实现-new-card-方法" class="headerlink" title="3.2 实现 new_card 方法"></a>3.2 实现 new_card 方法</h3><ul>
+<li>根据步骤实现代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">new_card</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;新建名片</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：新建名片&quot;</span>)<br><br>    <span class="hljs-comment"># 1. 提示用户输入名片信息</span><br>    name = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入姓名：&quot;</span>)<br>    phone = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入电话：&quot;</span>)<br>    qq = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入 QQ 号码：&quot;</span>)<br>    email = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入邮箱：&quot;</span>)<br><br>    <span class="hljs-comment"># 2. 将用户信息保存到一个字典</span><br>    card_dict = &#123;<span class="hljs-string">&quot;name&quot;</span>: name,<br>                 <span class="hljs-string">&quot;phone&quot;</span>: phone,<br>                 <span class="hljs-string">&quot;qq&quot;</span>: qq,<br>                 <span class="hljs-string">&quot;email&quot;</span>: email&#125;<br><br>    <span class="hljs-comment"># 3. 将用户字典添加到名片列表</span><br>    card_list.append(card_dict)<br><br>    <span class="hljs-built_in">print</span>(card_list)<br>    <br>    <span class="hljs-comment"># 4. 提示添加成功信息</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;成功添加 %s 的名片&quot;</span> % card_dict[<span class="hljs-string">&quot;name&quot;</span>])<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>技巧：在 <code>PyCharm</code> 中，可以使用 <code>SHIFT + F6</code> 统一修改变量名</p>
+</blockquote>
+<h2 id="04-显示所有名片"><a href="#04-显示所有名片" class="headerlink" title="04. 显示所有名片"></a>04. 显示所有名片</h2><h3 id="4-1-功能分析"><a href="#4-1-功能分析" class="headerlink" title="4.1 功能分析"></a>4.1 功能分析</h3><ul>
+<li>循环遍历名片列表，顺序显示每一个字典的信息</li>
+</ul>
+<h3 id="4-2-基础代码实现"><a href="#4-2-基础代码实现" class="headerlink" title="4.2 基础代码实现"></a>4.2 基础代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_all</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;显示全部</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：显示全部&quot;</span>)<br><br>    <span class="hljs-keyword">for</span> card_dict <span class="hljs-keyword">in</span> card_list:<br><br>        <span class="hljs-built_in">print</span>(card_dict)<br>        <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示效果不好！</li>
+</ul>
+<h3 id="4-3-增加标题和使用-t-显示"><a href="#4-3-增加标题和使用-t-显示" class="headerlink" title="4.3 增加标题和使用 \t 显示"></a>4.3 增加标题和使用 <code>\t</code> 显示</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_all</span>():<br>    <span class="hljs-string">&quot;&quot;&quot;显示全部</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：显示全部&quot;</span>)<br><br>    <span class="hljs-comment"># 打印表头</span><br>    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;姓名&quot;</span>, <span class="hljs-string">&quot;电话&quot;</span>, <span class="hljs-string">&quot;QQ&quot;</span>, <span class="hljs-string">&quot;邮箱&quot;</span>]:<br>        <span class="hljs-built_in">print</span>(name, end=<span class="hljs-string">&quot;\t\t&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>)<br><br>    <span class="hljs-comment"># 打印分隔线</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=&quot;</span> * <span class="hljs-number">50</span>)<br><br>    <span class="hljs-keyword">for</span> card_dict <span class="hljs-keyword">in</span> card_list:<br><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s\t\t%s\t\t%s\t\t%s&quot;</span> % (card_dict[<span class="hljs-string">&quot;name&quot;</span>],<br>                                        card_dict[<span class="hljs-string">&quot;phone&quot;</span>],<br>                                        card_dict[<span class="hljs-string">&quot;qq&quot;</span>],<br>                                        card_dict[<span class="hljs-string">&quot;email&quot;</span>]))<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-4-增加没有名片记录判断"><a href="#4-4-增加没有名片记录判断" class="headerlink" title="4.4 增加没有名片记录判断"></a>4.4 增加没有名片记录判断</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_all</span>():<br>    <span class="hljs-string">&quot;&quot;&quot;显示全部</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：显示全部&quot;</span>)<br><br>    <span class="hljs-comment"># 1. 判断是否有名片记录</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(card_list) == <span class="hljs-number">0</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;提示：没有任何名片记录&quot;</span>)<br><br>        <span class="hljs-keyword">return</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ul>
+<li>在函数中使用 <code>return</code> 表示返回</li>
+<li>如果在 <code>return</code> 后没有跟任何内容，只是表示该函数执行到此就不再执行后续的代码</li>
+</ul>
+<h2 id="05-查询名片"><a href="#05-查询名片" class="headerlink" title="05. 查询名片"></a>05. 查询名片</h2><h3 id="5-1-功能分析"><a href="#5-1-功能分析" class="headerlink" title="5.1 功能分析"></a>5.1 功能分析</h3><ol>
+<li>提示用户要搜索的姓名</li>
+<li>根据用户输入的姓名遍历列表</li>
+<li>搜索到指定的名片后，再执行后续的操作</li>
+</ol>
+<h3 id="5-2-代码实现"><a href="#5-2-代码实现" class="headerlink" title="5.2 代码实现"></a>5.2 代码实现</h3><ul>
+<li>查询功能实现</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">search_card</span>():<br><br>    <span class="hljs-string">&quot;&quot;&quot;搜索名片</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;功能：搜索名片&quot;</span>)<br><br>    <span class="hljs-comment"># 1. 提示要搜索的姓名</span><br>    find_name = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入要搜索的姓名：&quot;</span>)<br><br>    <span class="hljs-comment"># 2. 遍历字典</span><br>    <span class="hljs-keyword">for</span> card_dict <span class="hljs-keyword">in</span> card_list:<br><br>        <span class="hljs-keyword">if</span> card_dict[<span class="hljs-string">&quot;name&quot;</span>] == find_name:<br><br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;姓名\t\t\t电话\t\t\tQQ\t\t\t邮箱&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)<br>            <br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s\t\t\t%s\t\t\t%s\t\t\t%s&quot;</span> % (<br>                card_dict[<span class="hljs-string">&quot;name&quot;</span>],<br>                card_dict[<span class="hljs-string">&quot;phone&quot;</span>],<br>                card_dict[<span class="hljs-string">&quot;qq&quot;</span>],<br>                card_dict[<span class="hljs-string">&quot;email&quot;</span>]))<br><br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)<br>            <br>            <span class="hljs-comment"># TODO(小明) 针对找到的字典进行后续操作：修改/删除</span><br><br>            <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;没有找到 %s&quot;</span> % find_name)<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>增加名片操作函数：<strong>修改</strong>&#x2F;<strong>删除</strong>&#x2F;<strong>返回主菜单</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">deal_card</span>(<span class="hljs-params">find_dict</span>):<br><br>    <span class="hljs-string">&quot;&quot;&quot;操作搜索到的名片字典</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param find_dict:找到的名片字典</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-built_in">print</span>(find_dict)<br><br>    action_str = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请选择要执行的操作 &quot;</span><br>                       <span class="hljs-string">&quot;[1] 修改 [2] 删除 [0] 返回上级菜单&quot;</span>)<br><br>    <span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;1&quot;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;修改&quot;</span>)<br>    <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;2&quot;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;删除&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="06-修改和删除"><a href="#06-修改和删除" class="headerlink" title="06. 修改和删除"></a>06. 修改和删除</h2><h3 id="6-1-查询成功后删除名片"><a href="#6-1-查询成功后删除名片" class="headerlink" title="6.1 查询成功后删除名片"></a>6.1 查询成功后删除名片</h3><ul>
+<li>由于找到的字典记录已经在列表中保存</li>
+<li>要删除名片记录，只需要把列表中对应的字典删除即可</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;2&quot;</span>:<br>    card_list.remove(find_dict)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;删除成功&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-修改名片"><a href="#6-2-修改名片" class="headerlink" title="6.2 修改名片"></a>6.2 修改名片</h3><ul>
+<li>由于找到的字典记录已经在列表中保存</li>
+<li>要修改名片记录，只需要把列表中对应的字典中每一个键值对的数据修改即可</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;1&quot;</span>:<br><br>    find_dict[<span class="hljs-string">&quot;name&quot;</span>] = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入姓名：&quot;</span>)<br>    find_dict[<span class="hljs-string">&quot;phone&quot;</span>] = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入电话：&quot;</span>)<br>    find_dict[<span class="hljs-string">&quot;qq&quot;</span>] = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入QQ：&quot;</span>)<br>    find_dict[<span class="hljs-string">&quot;email&quot;</span>] = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入邮件：&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 的名片修改成功&quot;</span> % find_dict[<span class="hljs-string">&quot;name&quot;</span>])<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="修改名片细化"><a href="#修改名片细化" class="headerlink" title="修改名片细化"></a>修改名片细化</h4><ul>
+<li><strong>如果用户在使用时，某些名片内容并不想修改</strong>，应该如何做呢？—— 既然系统提供的 <code>input</code> 函数不能满足需求，那么就新定义一个函数 <code>input_card_info</code> 对系统的 <code>input</code> 函数进行扩展</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">input_card_info</span>(<span class="hljs-params">dict_value, tip_message</span>):<br><br>    <span class="hljs-string">&quot;&quot;&quot;输入名片信息</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param dict_value: 字典原有值</span><br><span class="hljs-string">    :param tip_message: 输入提示信息</span><br><span class="hljs-string">    :return: 如果输入，返回输入内容，否则返回字典原有值</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 1. 提示用户输入内容</span><br>    result_str = <span class="hljs-built_in">input</span>(tip_message)<br><br>    <span class="hljs-comment"># 2. 针对用户的输入进行判断，如果用户输入了内容，直接返回结果</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(result_str) &gt; <span class="hljs-number">0</span>:<br><br>        <span class="hljs-keyword">return</span> result_str<br>    <span class="hljs-comment"># 3. 如果用户没有输入内容，返回 `字典中原有的值`</span><br>    <span class="hljs-keyword">else</span>:<br><br>        <span class="hljs-keyword">return</span> dict_value<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="07-LINUX-上的-Shebang-符号"><a href="#07-LINUX-上的-Shebang-符号" class="headerlink" title="07. LINUX 上的 Shebang 符号(#!)"></a>07. LINUX 上的 <code>Shebang</code> 符号(<code>#!</code>)</h2><ul>
+<li><code>#!</code>这个符号叫做 <code>Shebang</code> 或者 <code>Sha-bang</code></li>
+<li><code>Shebang</code> 通常在 <code>Unix</code> 系统脚本的中 <strong>第一行开头</strong> 使用</li>
+<li>指明 <strong>执行这个脚本文件</strong> 的 <strong>解释程序</strong></li>
+</ul>
+<h3 id="使用-Shebang-的步骤"><a href="#使用-Shebang-的步骤" class="headerlink" title="使用 Shebang 的步骤"></a>使用 Shebang 的步骤</h3><ul>
+<li><ol>
+<li>使用 <code>which</code> 查询 <code>python3</code> 解释器所在路径</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">which</span> python3<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="2">
+<li>修改要运行的 <strong>主 python 文件</strong>，在第一行增加以下内容</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#! /usr/bin/python3</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="3">
+<li>修改 <strong>主 python 文件</strong> 的文件权限，增加执行权限</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">chmod</span> +x cards_main.py<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="4">
+<li>在需要时执行程序即可</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./cards_main.py<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/PyCharm/" class="category-chain-item">PyCharm</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用PyCharm编写Python.PartⅥ</div>
+      <div>http://example.com/2021/08/28/使用PyCharm编写Python-PartⅥ/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A6/" title="使用PyCharm编写Python.PartⅦ">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用PyCharm编写Python.PartⅦ</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A4/" title="使用PyCharm编写Python.PartⅤ">
+                        <span class="hidden-mobile">使用PyCharm编写Python.PartⅤ</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

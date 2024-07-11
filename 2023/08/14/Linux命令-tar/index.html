@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="tar将许多文件一起保存至一个单独的磁带或磁盘归档，并能从归档中单独还原所需文件。 补充说明tar命令 可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。tar最初被用来在磁带上创建档案，现在，用户可以在任何设备上创建档案。利用tar命令，可以把一大堆的文件和目录全部打包成一个文件，这对于备份文件或将几个文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-tar">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-tar/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="tar将许多文件一起保存至一个单独的磁带或磁盘归档，并能从归档中单独还原所需文件。 补充说明tar命令 可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。tar最初被用来在磁带上创建档案，现在，用户可以在任何设备上创建档案。利用tar命令，可以把一大堆的文件和目录全部打包成一个文件，这对于备份文件或将几个文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:41.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:41.182Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-tar - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-tar"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          90 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-tar</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>将许多文件一起保存至一个单独的磁带或磁盘归档，并能从归档中单独还原所需文件。</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>tar命令</strong> 可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。tar最初被用来在磁带上创建档案，现在，用户可以在任何设备上创建档案。利用tar命令，可以把一大堆的文件和目录全部打包成一个文件，这对于备份文件或将几个文件组合成为一个文件以便于网络传输是非常有用的。</p>
+<p>首先要弄清两个概念：打包和压缩。打包是指将一大堆文件或目录变成一个总的文件；压缩则是将一个大的文件通过一些压缩算法变成一个小文件。</p>
+<p>为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar [选项...] [FILE]...<br></code></pre></td></tr></table></figure>
+
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br></pre></td><td class="code"><pre><code class="hljs shell">-A, --catenate, --concatenate   追加 tar 文件至归档<br>-c, --create               创建一个新归档<br>-d, --diff, --compare      找出归档和文件系统的差异<br>    --delete               从归档(非磁带！)中删除<br>-r, --append               追加文件至归档结尾<br>-t, --list                 列出归档内容<br>    --test-label           测试归档卷标并退出<br>-u, --update               仅追加比归档中副本更新的文件<br>-x, --extract, --get       从归档中解出文件<br><br>操作修饰符:<br><br>      --check-device         当创建增量归档时检查设备号(默认)<br>  -g, --listed-incremental=FILE   处理新式的 GNU 格式的增量备份<br>  -G, --incremental          处理老式的 GNU 格式的增量备份<br>      --ignore-failed-read<br>                             当遇上不可读文件时不要以非零值退出<br>      --level=NUMBER         所创建的增量列表归档的输出级别<br>  -n, --seek                 归档可检索<br>      --no-check-device      当创建增量归档时不要检查设备号<br>      --no-seek              归档不可检索<br>      --occurrence[=NUMBER]  仅处理归档中每个文件的第 NUMBER<br>                             个事件；仅当与以下子命令 --delete,<br>                             --diff, --extract 或是 --list<br>                             中的一个联合使用时，此选项才有效。而且不管文件列表是以命令行形式给出或是通过<br>                             -T 选项指定的；NUMBER 值默认为 1<br>      --sparse-version=MAJOR[.MINOR]<br>                             设置所用的离散格式版本(隐含<br>                             --sparse)<br>  -S, --sparse               高效处理离散文件<br><br> 重写控制:<br><br>  -k, --keep-old-files       don&#x27;t replace existing files when extracting,<br>                             treat them as errors<br>      --keep-directory-symlink   preserve existing symlinks to directories when<br>                             extracting<br>      --keep-newer-files<br>                             不要替换比归档中副本更新的已存在的文件<br>      --no-overwrite-dir     保留已存在目录的元数据<br>      --overwrite            解压时重写存在的文件<br>      --overwrite-dir        解压时重写已存在目录的元数据(默认)<br><br>      --recursive-unlink     解压目录之前先清除目录层次<br>      --remove-files         在添加文件至归档后删除它们<br>      --skip-old-files       don&#x27;t replace existing files when extracting,<br>                             silently skip over them<br>  -U, --unlink-first         在解压要重写的文件之前先删除它们<br>  -W, --verify               在写入以后尝试校验归档<br><br> 选择输出流:<br><br>      --ignore-command-error 忽略子进程的退出代码<br>      --no-ignore-command-error<br>                             将子进程的非零退出代码认为发生错误<br>  -O, --to-stdout            解压文件至标准输出<br>      --to-command=COMMAND<br>                             将解压的文件通过管道传送至另一个程序<br><br> 操作文件属性:<br><br>      --atime-preserve[=METHOD]<br>                             在输出的文件上保留访问时间，要么通过在读取(默认<br>                             METHOD=‘replace’)后还原时间，要不就不要在第一次(METHOD=‘system’)设置时间<br>      --delay-directory-restore<br>                             直到解压结束才设置修改时间和所解目录的权限<br>      --group=名称         强制将 NAME<br>                             作为所添加的文件的组所有者<br>      --mode=CHANGES         强制将所添加的文件(符号)更改为权限<br>                             CHANGES<br>      --mtime=DATE-OR-FILE   从 DATE-OR-FILE 中为添加的文件设置<br>                             mtime<br>  -m, --touch                不要解压文件的修改时间<br>      --no-delay-directory-restore<br>                             取消 --delay-directory-restore 选项的效果<br>      --no-same-owner<br>                             将文件解压为您所有(普通用户默认此项)<br>      --no-same-permissions<br>                             从归档中解压权限时使用用户的掩码位(默认为普通用户服务)<br>      --numeric-owner        总是以数字代表用户/组的名称<br>      --owner=名称         强制将 NAME<br>                             作为所添加的文件的所有者<br>  -p, --preserve-permissions, --same-permissions<br>                             解压文件权限信息(默认只为超级用户服务)<br>      --preserve             与 -p 和 -s 一样<br>      --same-owner<br>                             尝试解压时保持所有者关系一致(超级用户默认此项)<br>  -s, --preserve-order, --same-order<br>                             member arguments are listed in the same order as<br>                             the files in the archive<br><br> Handling of extended file attributes:<br><br>      --acls                 Enable the POSIX ACLs support<br>      --no-acls              Disable the POSIX ACLs support<br>      --no-selinux           Disable the SELinux context support<br>      --no-xattrs            Disable extended attributes support<br>      --selinux              Enable the SELinux context support<br>      --xattrs               Enable extended attributes support<br>      --xattrs-exclude=MASK  specify the exclude pattern for xattr keys<br>      --xattrs-include=MASK  specify the include pattern for xattr keys<br><br> 设备选择和切换:<br><br>  -f, --file=ARCHIVE         使用归档文件或 ARCHIVE 设备<br>      --force-local<br>                             即使归档文件存在副本还是把它认为是本地归档<br>  -F, --info-script=名称, --new-volume-script=名称<br>                             在每卷磁带最后运行脚本(隐含 -M)<br>  -L, --tape-length=NUMBER   写入 NUMBER × 1024 字节后更换磁带<br>  -M, --multi-volume         创建/列出/解压多卷归档文件<br>      --rmt-command=COMMAND  使用指定的 rmt COMMAND 代替 rmt<br>      --rsh-command=COMMAND  使用远程 COMMAND 代替 rsh<br>      --volno-file=FILE      使用/更新 FILE 中的卷数<br><br> 设备分块:<br><br>  -b, --blocking-factor=BLOCKS   每个记录 BLOCKS x 512 字节<br>  -B, --read-full-records    读取时重新分块(只对 4.2BSD 管道有效)<br>  -i, --ignore-zeros         忽略归档中的零字节块(即文件结尾)<br>      --record-size=NUMBER   每个记录的字节数 NUMBER，乘以 512<br><br> 选择归档格式:<br><br>  -H, --format=FORMAT        创建指定格式的归档<br><br> FORMAT 是以下格式中的一种:<br><br>    gnu                      GNU tar 1.13.x 格式<br>    oldgnu                   GNU 格式 as per tar &lt;= 1.12<br>    pax                      POSIX 1003.1-2001 (pax) 格式<br>    posix                    等同于 pax<br>    ustar                    POSIX 1003.1-1988 (ustar) 格式<br>    v7                       old V7 tar 格式<br><br>      --old-archive, --portability<br>                             等同于 --format=v7<br>      --pax-option=关键字[[:]=值][,关键字[[:]=值]]...<br>                             控制 pax 关键字<br>      --posix                等同于 --format=posix<br>  -V, --label=TEXT           创建带有卷名 TEXT<br>                             的归档；在列出/解压时，使用 TEXT<br>                             作为卷名的模式串<br><br> 压缩选项:<br><br>  -a, --auto-compress        使用归档后缀名来决定压缩程序<br>  -I, --use-compress-program=PROG<br>                             通过 PROG 过滤(必须是能接受 -d<br>                             选项的程序)<br>  -j, --bzip2                通过 bzip2 过滤归档<br>  -J, --xz                   通过 xz 过滤归档<br>      --lzip                 通过 lzip 过滤归档<br>      --lzma                 通过 lzma 过滤归档<br>      --lzop<br>      --no-auto-compress     不使用归档后缀名来决定压缩程序<br>  -z, --gzip, --gunzip, --ungzip   通过 gzip 过滤归档<br>  -Z, --compress, --uncompress   通过 compress 过滤归档<br><br> 本地文件选择:<br><br>      --add-file=FILE        添加指定的 FILE 至归档(如果名字以 -<br>                             开始会很有用的)<br>      --backup[=CONTROL]     在删除前备份，选择 CONTROL 版本<br>  -C, --directory=DIR        改变至目录 DIR<br>      --exclude=PATTERN      排除以 PATTERN 指定的文件<br>      --exclude-backups      排除备份和锁文件<br>      --exclude-caches       除标识文件本身外，排除包含<br>                             CACHEDIR.TAG 的目录中的内容<br>      --exclude-caches-all   排除包含 CACHEDIR.TAG 的目录<br>      --exclude-caches-under 排除包含 CACHEDIR.TAG 的目录中所有内容<br><br>      --exclude-tag=FILE     除 FILE 自身外，排除包含 FILE<br>                             的目录中的内容<br>      --exclude-tag-all=FILE 排除包含 FILE 的目录<br>      --exclude-tag-under=FILE   排除包含 FILE 的目录中的所有内容<br>      --exclude-vcs          排除版本控制系统目录<br>  -h, --dereference<br>                             跟踪符号链接；将它们所指向的文件归档并输出<br>      --hard-dereference<br>                             跟踪硬链接；将它们所指向的文件归档并输出<br>  -K, --starting-file=MEMBER-NAME<br>                             begin at member MEMBER-NAME when reading the<br>                             archive<br>      --newer-mtime=DATE     当只有数据改变时比较数据和时间<br>      --no-null              禁用上一次的效果 --null 选项<br>      --no-recursion         避免目录中的自动降级<br>      --no-unquote           不以 -T 读取的文件名作为引用结束<br>      --null                 -T 读取以空终止的名字，-C 禁用<br>  -N, --newer=DATE-OR-FILE, --after-date=DATE-OR-FILE<br>                             只保存比 DATE-OR-FILE 更新的文件<br>      --one-file-system      创建归档时保存在本地文件系统中<br>  -P, --absolute-names       不要从文件名中清除引导符‘/’<br>      --recursion            目录递归(默认)<br>      --suffix=STRING        在删除前备份，除非被环境变量<br>                             SIMPLE_BACKUP_SUFFIX<br>                             覆盖，否则覆盖常用后缀(‘’)<br>  -T, --files-from=FILE      从 FILE<br>                             中获取文件名来解压或创建文件<br>      --unquote              以 -T<br>                             读取的文件名作为引用结束(默认)<br>  -X, --exclude-from=FILE    排除 FILE 中列出的模式串<br><br> 文件名变换:<br><br>      --strip-components=NUMBER   解压时从文件名中清除 NUMBER<br>                             个引导部分<br>      --transform=EXPRESSION, --xform=EXPRESSION<br>                             使用 sed 代替 EXPRESSION<br>                             来进行文件名变换<br><br> 文件名匹配选项(同时影响排除和包括模式串):<br><br>      --anchored             模式串匹配文件名头部<br>      --ignore-case          忽略大小写<br>      --no-anchored          模式串匹配任意‘/’后字符(默认对<br>                             exclusion 有效)<br>      --no-ignore-case       匹配大小写(默认)<br>      --no-wildcards         逐字匹配字符串<br>      --no-wildcards-match-slash   通配符不匹配‘/’<br>      --wildcards            use wildcards (default)<br>      --wildcards-match-slash<br>                             通配符匹配‘/’(默认对排除操作有效)<br><br> 提示性输出:<br><br>      --checkpoint[=NUMBER]  每隔 NUMBER<br>                             个记录显示进度信息(默认为 10 个)<br>      --checkpoint-action=ACTION   在每个检查点上执行 ACTION<br>      --full-time            print file time to its full resolution<br>      --index-file=FILE      将详细输出发送至 FILE<br>  -l, --check-links<br>                             只要不是所有链接都被输出就打印信息<br>      --no-quote-chars=STRING   禁用来自 STRING 的字符引用<br>      --quote-chars=STRING   来自 STRING 的额外的引用字符<br>      --quoting-style=STYLE  设置名称引用风格；有效的 STYLE<br>                             值请参阅以下说明<br>  -R, --block-number         每个信息都显示归档内的块数<br>      --show-defaults        显示 tar 默认选项<br>      --show-omitted-dirs<br>                             列表或解压时，列出每个不匹配查找标准的目录<br>      --show-transformed-names, --show-stored-names<br>                             显示变换后的文件名或归档名<br>      --totals[=SIGNAL]      处理归档后打印出总字节数；当此<br>                             SIGNAL 被触发时带参数 -<br>                             打印总字节数；允许的信号为:<br>                             SIGHUP，SIGQUIT，SIGINT，SIGUSR1 和<br>                             SIGUSR2；同时也接受不带 SIG<br>                             前缀的信号名称<br>      --utc                  以 UTC 格式打印文件修改时间<br>  -v, --verbose              详细地列出处理的文件<br>      --warning=KEYWORD      警告控制:<br>  -w, --interactive, --confirmation<br>                             每次操作都要求确认<br><br> 兼容性选项:<br><br>  -o                         创建归档时，相当于<br>                             --old-archive；展开归档时，相当于<br>                             --no-same-owner<br><br> 其它选项:<br><br>  -?, --help                 显示此帮助列表<br>      --restrict             禁用某些潜在的有危险的选项<br>      --usage                显示简短的用法说明<br>      --version              打印程序版本<br><br>长选项和相应短选项具有相同的强制参数或可选参数。<br><br>除非以 --suffix 或 SIMPLE_BACKUP_SUFFIX<br>设置备份后缀，否则备份后缀就是“~”。<br>可以用 --backup 或 VERSION_CONTROL 设置版本控制，可能的值为：<br><br>  none, off	   从不做备份<br>  t, numbered     进行编号备份<br>  nil, existing<br>如果编号备份存在则进行编号备份，否则进行简单备份<br>  never, simple   总是使用简单备份<br><br>--quoting-style 选项的有效参数为:<br><br>  literal<br>  shell<br>  shell-always<br>  c<br>  c-maybe<br>  escape<br>  locale<br>  clocale<br><br>此 tar 默认为:<br>--format=gnu -f- -b20 --quoting-style=escape --rmt-command=/etc/rmt<br>--rsh-command=/usr/bin/ssh<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>文件或目录：指定要打包的文件或目录列表。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>将 <code>/home/vivek/bin/</code> 目录打包，并使用 gzip 算法压缩。保存为 <code>/tmp/bin-backup.tar.gz</code> 文件。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">tar -zcvf <span class="hljs-regexp">/tmp/</span>bin-backup.tar.gz <span class="hljs-regexp">/home/</span>vivek<span class="hljs-regexp">/bin/</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">- z：有gzip属性的<br>- j：有bz2属性的<br>- Z：有compress属性的<br>- v：显示所有过程<br>- O：将文件解开到标准输出<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -cf archive.tar foo bar  # 从文件 foo 和 bar 创建归档文件 archive.tar。<br>tar -tvf archive.tar         # 详细列举归档文件 archive.tar 中的所有文件。<br>tar -xf archive.tar          # 展开归档文件 archive.tar 中的所有文件。<br></code></pre></td></tr></table></figure>
+
+
+<p>下面的参数-f是必须的</p>
+<p>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -cf all.tar *.jpg<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</span><br><br>tar -rf all.tar *.gif<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</span><br><br>tar -uf all.tar logo.gif<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</span><br><br>tar -tf all.tar<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这条命令是列出all.tar包中所有文件，-t是列出文件的意思</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -cvf archive.tar foo bar  # 从文件foo和bar创建archive.tar。<br>tar -tvf archive.tar         # 详细列出archive.tar中的所有文件。<br>tar -xf archive.tar          # 从archive.tar提取所有文件。<br></code></pre></td></tr></table></figure>
+
+<h4 id="zip格式"><a href="#zip格式" class="headerlink" title="zip格式"></a>zip格式</h4><p>压缩： zip -r [目标文件名].zip [原文件&#x2F;目录名]<br>解压： unzip [原文件名].zip<br>注：-r参数代表递归  </p>
+<h4 id="tar格式（该格式仅仅打包，不压缩）"><a href="#tar格式（该格式仅仅打包，不压缩）" class="headerlink" title="tar格式（该格式仅仅打包，不压缩）"></a>tar格式（该格式仅仅打包，不压缩）</h4><p>打包：tar -cvf [目标文件名].tar [原文件名&#x2F;目录名]<br>解包：tar -xvf [原文件名].tar<br>注：c参数代表create（创建），x参数代表extract（解包），v参数代表verbose（详细信息），f参数代表filename（文件名），所以f后必须接文件名。  </p>
+<h4 id="tar-gz格式"><a href="#tar-gz格式" class="headerlink" title="tar.gz格式"></a>tar.gz格式</h4><p>方式一：利用前面已经打包好的tar文件，直接用压缩命令。</p>
+<p>压缩：gzip [原文件名].tar<br>解压：gunzip [原文件名].tar.gz  </p>
+<p>方式二：一次性打包并压缩、解压并解包</p>
+<p>打包并压缩： tar -zcvf [目标文件名].tar.gz [原文件名&#x2F;目录名]<br>解压并解包： tar -zxvf [原文件名].tar.gz<br>注：z代表用gzip算法来压缩&#x2F;解压。  </p>
+<h4 id="tar-bz2格式"><a href="#tar-bz2格式" class="headerlink" title="tar.bz2格式"></a>tar.bz2格式</h4><p>方式一：利用已经打包好的tar文件，直接执行压缩命令：</p>
+<p>压缩：bzip2 [原文件名].tar<br>解压：bunzip2 [原文件名].tar.bz2<br>方式二：一次性打包并压缩、解压并解包  </p>
+<p>打包并压缩： tar -jcvf [目标文件名].tar.bz2 [原文件名&#x2F;目录名]<br>解压并解包： tar -jxvf [原文件名].tar.bz2<br>注：小写j代表用bzip2算法来压缩&#x2F;解压。  </p>
+<h4 id="tar-xz格式"><a href="#tar-xz格式" class="headerlink" title="tar.xz格式"></a>tar.xz格式</h4><p>方式一：利用已经打包好的tar文件，直接用压缩命令：</p>
+<p>压缩：xz [原文件名].tar<br>解压：unxz [原文件名].tar.xz<br>方式二：一次性打包并压缩、解压并解包  </p>
+<p>打包并压缩： tar -Jcvf [目标文件名].tar.xz [原文件名&#x2F;目录名]<br>解压并解包： tar -Jxvf [原文件名].tar.xz<br>注：大写J代表用xz算法来压缩&#x2F;解压。  </p>
+<h4 id="tar-Z格式（已过时）"><a href="#tar-Z格式（已过时）" class="headerlink" title="tar.Z格式（已过时）"></a>tar.Z格式（已过时）</h4><p>方式一：利用已经打包好的tar文件，直接用压缩命令：</p>
+<p>压缩：compress [原文件名].tar<br>解压：uncompress [原文件名].tar.Z<br>方式二：一次性打包并压缩、解压并解包  </p>
+<p>打包并压缩： tar -Zcvf [目标文件名].tar.Z [原文件名&#x2F;目录名]<br>解压并解包： tar -Zxvf [原文件名].tar.Z<br>注：大写Z代表用ncompress算法来压缩&#x2F;解压。另，ncompress是早期Unix系统的压缩格式，但由于ncompress的压缩率太低，现已过时。  </p>
+<h4 id="jar格式"><a href="#jar格式" class="headerlink" title="jar格式"></a>jar格式</h4><p>压缩：jar -cvf [目标文件名].jar [原文件名&#x2F;目录名]<br>解压：jar -xvf [原文件名].jar  </p>
+<p>注：如果是打包的是Java类库，并且该类库中存在主类，那么需要写一个META-INF&#x2F;MANIFEST.MF配置文件，内容如下：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">Manifest-Version: 1.0<br>Created-By: 1.6.0_27 (Sun Microsystems Inc.)<br>Main-class: the_name_of_the_main_class_should_be_put_here<br></code></pre></td></tr></table></figure>
+
+<p>然后用如下命令打包：</p>
+<p>jar -cvfm [目标文件名].jar META-INF&#x2F;MANIFEST.MF [原文件名&#x2F;目录名]<br>这样以后就能用“java -jar [文件名].jar”命令直接运行主类中的public static void main方法了。  </p>
+<h4 id="7z格式"><a href="#7z格式" class="headerlink" title="7z格式"></a>7z格式</h4><p>压缩：7z a [目标文件名].7z [原文件名&#x2F;目录名]<br>解压：7z x [原文件名].7z<br>注：这个7z解压命令支持rar格式，即：  </p>
+<p>7z x [原文件名].rar</p>
+<h4 id="其它例子"><a href="#其它例子" class="headerlink" title="其它例子"></a>其它例子</h4><p><strong>将文件全部打包成tar包</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -cvf log.tar log2012.log    仅打包，不压缩！<br>tar -zcvf log.tar.gz log2012.log   打包后，以 gzip 压缩<br>tar -jcvf log.tar.bz2 log2012.log  打包后，以 bzip2 压缩<br></code></pre></td></tr></table></figure>
+
+<p>在选项<code>f</code>之后的文件档名是自己取的，我们习惯上都用 .tar 来作为辨识。 如果加<code>z</code>选项，则以.tar.gz或.tgz来代表gzip压缩过的tar包；如果加<code>j</code>选项，则以.tar.bz2来作为tar包名。</p>
+<p><strong>解压目录</strong></p>
+<p>参数–strip-components NUMBER，在提取时从文件名中删除NUMBER个前导组件，如要去除前二层，参数为–strip-components 2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xvf portal-web-v2.0.0.tar --strip-components 1  -C 指定目录<br></code></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xvf xxx.tar.gz -C /usr/src/a<br>/usr/src/a/xxxxx/src/opp/b.txt<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xvf xxx.tar.gz -strip-components=1 -C /usr/src/a<br>/usr/src/a/src/opp/b.txt<br></code></pre></td></tr></table></figure>
+
+<p><strong>查阅上述tar包内有哪些文件</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -ztvf log.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>由于我们使用 gzip 压缩的log.tar.gz，所以要查阅log.tar.gz包内的文件时，就得要加上<code>z</code>这个选项了。</p>
+<p><strong>将tar包解压缩</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -zxvf /opt/soft/test/log.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>在预设的情况下，我们可以将压缩档在任何地方解开的</p>
+<p><strong>只将tar内的部分文件解压出来</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -zxvf /opt/soft/test/log30.tar.gz log2013.log<br></code></pre></td></tr></table></figure>
+
+<p>我可以透过<code>tar -ztvf</code>来查阅 tar 包内的文件名称，如果单只要一个文件，就可以透过这个方式来解压部分文件！</p>
+<p><strong>文件备份下来，并且保存其权限</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -zcvpf log31.tar.gz log2014.log log2015.log log2016.log<br></code></pre></td></tr></table></figure>
+
+<p>这个<code>-p</code>的属性是很重要的，尤其是当您要保留原本文件的属性时。</p>
+<p><strong>在文件夹当中，比某个日期新的文件才备份</strong> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -N &quot;2012/11/13&quot; -zcvf log17.tar.gz test<br></code></pre></td></tr></table></figure>
+
+<p><strong>备份文件夹内容是排除部分文件：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar --exclude scf/service -zcvf scf.tar.gz scf/*<br></code></pre></td></tr></table></figure>
+
+<p><strong>打包文件之后删除源文件：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -cvf test.tar test --remove-files<br></code></pre></td></tr></table></figure>
+
+<p><strong>其实最简单的使用 tar 就只要记忆底下的方式即可：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">压　缩：tar -jcv -f filename.tar.bz2 要被压缩的文件或目录名称<br>查　询：tar -jtv -f filename.tar.bz2<br>解压缩：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-tar</div>
+      <div>http://example.com/2023/08/14/Linux命令-tar/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-talk/" title="Linux命令-talk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-talk</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-tcpdump/" title="Linux命令-tcpdump">
+                        <span class="hidden-mobile">Linux命令-tcpdump</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

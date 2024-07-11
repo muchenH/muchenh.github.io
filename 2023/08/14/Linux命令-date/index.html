@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="date显示或设置系统时间与日期 概要12date [OPTION]... [+FORMAT]date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]  主要用途 转换时间到选定的格式，默认为当前。 设置系统时间。  参数format：输出的时间格式。 12345678910111213141516171819202122232425262728293">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-date">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-date/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="date显示或设置系统时间与日期 概要12date [OPTION]... [+FORMAT]date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]  主要用途 转换时间到选定的格式，默认为当前。 设置系统时间。  参数format：输出的时间格式。 12345678910111213141516171819202122232425262728293">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:18.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:30.410Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-date - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-date"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-date</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="date"><a href="#date" class="headerlink" title="date"></a>date</h1><p>显示或设置系统时间与日期</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">date [OPTION]... [+FORMAT]<br>date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]<br></code></pre></td></tr></table></figure>
+
+<h2 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h2><ul>
+<li>转换时间到选定的格式，默认为当前。</li>
+<li>设置系统时间。</li>
+</ul>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>format：输出的时间格式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs shell">format可用的转义序列如下：<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">%      百分号</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">a      当地缩写的工作日名称（例如，Sun）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">A      当地完整的工作日名称（例如，Sunday）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">b      当地缩写的月份名称（例如，Jan）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">B      当地完整的月份名称（例如，January）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">c      当地的日期和时间（例如，Thu Mar  3 23:05:25 2005）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">C      世纪，和%Y类似，但是省略后两位（例如，20）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">d      一月中的一天（例如，01）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">D      日期，等价于%m/%d/%y</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">e      一月中的一天，格式使用空格填充，等价于%_d</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">F      完整的日期；等价于%+4Y-%m-%d</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">g      ISO标准计数周的年份的最后两位数字</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">G      ISO标准计数周的年份，通常只对%V有用</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">h      等价于%b</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">H      小时，范围（00..23）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">I      小时，范围（00..23）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">j      一年中的一天，范围（001..366）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">k      小时，使用空格填充，范围（0..23），等价于%_H</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">l      小时，使用空格填充，范围（1..12），等价于%_I</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">m      月，范围（01..12）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">M      分钟，范围（00..59）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">n      换行符</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">N      纳秒，范围（000000000..000000000）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">p      用于表示当地的AM或PM，如果未知则为空白</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">P      类似于%p，但用小写表示</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">q      季度，范围（1..4）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">r      当地以12小时表示的时钟时间（例如，11:11:04 PM）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">R      24小时每分钟；等价于%H:%M</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">s      自协调世界时1970年01月01日00时00分以来的秒数</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">S      秒数，范围（00..60）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">t      水平制表符</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">T      时间；等价于%H:%M:%S</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">u      一周中的一天（1..7），1代表星期一</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">U      一年中的第几周，周日作为一周的起始（00..53）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">V      ISO标准计数周，该方法将周一作为一周的起始（01..53）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">w      一周中的一天（0..6），0代表星期天</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">W      一年中的第几周，周一作为一周的起始（00..53）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">x      当地的日期表示（例如，12/31/99）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">X      当地的时间表示（例如，23:13:48）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">y      年份后两位数字，范围（00..99）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">Y      年份</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">z      +hhmm格式的数值化时区格式（例如，-0400）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">:z     +hh:mm格式的数值化时区格式（例如，-04:00）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">::z    +hh:mm:ss格式的数值化时区格式（例如，-04:00:00）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">:::z   数值化时区格式，相比上一个格式增加<span class="hljs-string">&#x27;:&#x27;</span>以显示必要的精度（例如，-04，+05:30）</span><br><span class="hljs-meta prompt_">%</span><span class="language-bash">Z      时区缩写（如EDT）</span><br><br>默认情况下，日期用零填充数字字段；以下可选的符号可以跟在&#x27;%&#x27;后面:<br><br>-      (连字符) 不要填充相应的字段。<br>_      (下划线) 使用空格填充相应的字段。<br>0      (数字0) 使用数字0填充相应的字段。<br>+      用数字0填充，未来年份大于4位数字则在前面加上&#x27;+&#x27;号。<br>^      允许的情况下使用大写。<br><span class="hljs-meta prompt_"># </span><span class="language-bash">     允许的情况下将默认的大写转换为小写，默认的小写转换为大写。</span><br><br>在任何标志之后都有一个可选的字段宽度，如小数；然后是一个可选的修饰符，在可用的情况下，使用E来使用当地语言环境的替代表示，<br>使用O来使用当地语言环境的替代数字符号。<br></code></pre></td></tr></table></figure>
+
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">长选项与短选项等价<br><br>-d, --date=STRING          解析字符串并按照指定格式输出，字符串不能是&#x27;now&#x27;。<br>--debug                    注释已解析的日期，并将有疑问的用法发送到标准错误。<br>-f, --file=DATEFILE        类似于--date; 一次从DATEFILE处理一行。<br>-I[FMT], --iso-8601[=FMT]  按照ISO 8601格式输出，FMT可以为&#x27;date&#x27;(默认)，&#x27;hours&#x27;，&#x27;minutes&#x27;，&#x27;seconds&#x27;，&#x27;ns&#x27;。例如：2006-08-14T02:34:56-06:00<br>-R, --rfc-email            按照RFC 5322格式输出，例如: Mon, 14 Aug 2006 02:34:56 -0600<br>--rfc-3339=FMT             按照RFC 3339格式输出，FMT可以为&#x27;date&#x27;, &#x27;seconds&#x27;,&#x27;ns&#x27;中的一个，例如：2006-08-14 02:34:56-06:00<br>-r, --reference=FILE       显示文件的上次修改时间。<br>-s, --set=STRING           根据字符串设置系统时间。<br>-u, --utc, --universal     显示或设置世界协调时(UTC)。<br>--help                     显示帮助信息并退出。<br>--version                  显示版本信息并退出。<br></code></pre></td></tr></table></figure>
+
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>返回状态为成功除非给出了非法选项或非法参数。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">格式化输出：</span><br>date +&quot;%Y-%m-%d&quot;<br>2009-12-07<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出昨天日期：</span><br>date -d &quot;1 day ago&quot; +&quot;%Y-%m-%d&quot;<br>2012-11-19<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2秒后输出：</span><br>date -d &quot;2 second&quot; +&quot;%Y-%m-%d %H:%M.%S&quot;<br>2012-11-20 14:21.31<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">传说中的 1234567890 秒：</span><br>date -d &quot;1970-01-01 1234567890 seconds&quot; +&quot;%Y-%m-%d %H:%M:%S&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">或者</span><br>date -d@1234567890 +&quot;%F %T&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出结果</span><br>2009-02-13 23:02:30<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">时间格式转换：</span><br>date -d &quot;2009-12-12&quot; +&quot;%Y/%m/%d %H:%M.%S&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出结果</span><br>2009/12/12 00:00.00<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">apache格式转换：</span><br>date -d &quot;Dec 5, 2009 12:00:37 AM&quot; +&quot;%Y-%m-%d %H:%M.%S&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出结果</span><br>2009-12-05 00:00.37<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">格式转换后时间游走：</span><br>date -d &quot;Dec 5, 2009 12:00:37 AM 2 year ago&quot; +&quot;%Y-%m-%d %H:%M.%S&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出结果</span><br>2007-12-05 00:00.37<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">时间加减操作：</span><br>date +%Y%m%d                   # 显示年月日<br>date -d &quot;+1 day&quot; +%Y%m%d       # 显示前一天的日期<br>date -d &quot;-1 day&quot; +%Y%m%d       # 显示后一天的日期<br>date -d &quot;-1 month&quot; +%Y%m%d     # 显示上一月的日期<br>date -d &quot;+1 month&quot; +%Y%m%d     # 显示下一月的日期<br>date -d &quot;-1 year&quot; +%Y%m%d      # 显示前一年的日期<br>date -d &quot;+1 year&quot; +%Y%m%d      # 显示下一年的日期<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设定时间：</span><br>date -s                         # 设置当前时间，只有root权限才能设置，其他只能查看<br>date -s 20120523                # 设置成20120523，这样会把具体时间设置成00:00:00<br>date -s 01:01:01                # 设置具体时间，不会对日期做更改<br>date -s &quot;01:01:01 2012-05-23&quot;   # 这样可以设置全部时间<br>date -s &quot;01:01:01 20120523&quot;     # 这样可以设置全部时间<br>date -s &quot;2012-05-23 01:01:01&quot;   # 这样可以设置全部时间<br>date -s &quot;20120523 01:01:01&quot;     # 这样可以设置全部时间<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">有时需要检查一组命令花费的时间：</span><br>start=$(date +%s)<br>nmap wangchujiang.com &amp;&gt; /dev/null<br>end=$(date +%s)<br>difference=$(( end - start ))<br><span class="hljs-meta prompt_"># </span><span class="language-bash">显示执行时间</span><br>echo $difference seconds.<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">当你考虑输出带有时间的字符串时，例如（Current time: 2019/05/19）：</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">通常使用的方法：</span><br>echo &quot;Current time: $(date +&quot;%Y/%m/%d&quot;)&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">另一种方法：</span><br>suffix=&#x27;Current time:&#x27;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">注意如果换成单引号就不能替换变量了。</span><br>date +&quot;$&#123;suffix&#125; %Y/%m/%d&quot;<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>该命令是<code>GNU coreutils</code>包中的命令，相关的帮助信息请查看<code>man -s 1 date</code>或<code>info coreutils &#39;date invocation&#39;</code>。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-date</div>
+      <div>http://example.com/2023/08/14/Linux命令-date/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-cut/" title="Linux命令-cut">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-cut</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-dc/" title="Linux命令-dc">
+                        <span class="hidden-mobile">Linux命令-dc</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

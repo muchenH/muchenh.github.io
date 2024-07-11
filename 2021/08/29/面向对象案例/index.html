@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="面向对象封装案例Ⅰ目标 封装 小明爱跑步 存放家具  01. 封装 封装 是面向对象编程的一大特点 面向对象编程的 第一步 —— 将 属性 和 方法 封装 到一个抽象的 类 中 外界 使用 类 创建 对象，然后 让对象调用方法 对象方法的细节 都被 封装 在 类的内部  02. 小明爱跑步需求  小明 体重 75.0 公斤 小明每次 跑步 会减肥 0.5 公斤 小明每次 吃东西 体重增加 1 公斤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象案例">
+<meta property="og:url" content="http://example.com/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="面向对象封装案例Ⅰ目标 封装 小明爱跑步 存放家具  01. 封装 封装 是面向对象编程的一大特点 面向对象编程的 第一步 —— 将 属性 和 方法 封装 到一个抽象的 类 中 外界 使用 类 创建 对象，然后 让对象调用方法 对象方法的细节 都被 封装 在 类的内部  02. 小明爱跑步需求  小明 体重 75.0 公斤 小明每次 跑步 会减肥 0.5 公斤 小明每次 吃东西 体重增加 1 公斤">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/OOP.jpg">
+<meta property="article:published_time" content="2021-08-29T09:51:42.000Z">
+<meta property="article:modified_time" content="2021-09-10T09:41:43.000Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Python面向对象">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/OOP.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>面向对象案例 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="面向对象案例"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-29 17:51" pubdate>
+          2021年8月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面向对象案例</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="面向对象封装案例Ⅰ"><a href="#面向对象封装案例Ⅰ" class="headerlink" title="面向对象封装案例Ⅰ"></a>面向对象封装案例Ⅰ</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>封装</li>
+<li>小明爱跑步</li>
+<li>存放家具</li>
+</ul>
+<h3 id="01-封装"><a href="#01-封装" class="headerlink" title="01. 封装"></a>01. 封装</h3><ol>
+<li><strong>封装</strong> 是面向对象编程的一大特点</li>
+<li>面向对象编程的 <strong>第一步</strong> —— 将 <strong>属性</strong> 和 <strong>方法</strong> <strong>封装</strong> 到一个抽象的 <strong>类</strong> 中</li>
+<li><strong>外界</strong> 使用 <strong>类</strong> 创建 <strong>对象</strong>，然后 <strong>让对象调用方法</strong></li>
+<li><strong>对象方法的细节</strong> 都被 <strong>封装</strong> 在 <strong>类的内部</strong></li>
+</ol>
+<h2 id="02-小明爱跑步"><a href="#02-小明爱跑步" class="headerlink" title="02. 小明爱跑步"></a>02. 小明爱跑步</h2><p><strong>需求</strong></p>
+<ol>
+<li><strong>小明</strong> <strong>体重</strong> <code>75.0</code> 公斤</li>
+<li>小明每次 <strong>跑步</strong> 会减肥 <code>0.5</code> 公斤</li>
+<li>小明每次 <strong>吃东西</strong> 体重增加 <code>1</code> 公斤</li>
+</ol>
+<p><img src="/media/15006177106970/007_%E5%B0%8F%E6%98%8E%E7%88%B1%E8%B7%91%E6%AD%A5.png" srcset="/img/loading.gif" lazyload alt="007_小明爱跑步-w328"></p>
+<blockquote>
+<p>提示：在 <strong>对象的方法内部</strong>，是可以 <strong>直接访问对象的属性</strong> 的！</p>
+</blockquote>
+<ul>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>:<br>    <span class="hljs-string">&quot;&quot;&quot;人类&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, weight</span>):<br><br>        self.name = name<br>        self.weight = weight<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我的名字叫 %s 体重 %.2f 公斤&quot;</span> % (self.name, self.weight)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;跑步&quot;&quot;&quot;</span><br><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 爱跑步，跑步锻炼身体&quot;</span> % self.name)<br>        self.weight -= <span class="hljs-number">0.5</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">eat</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;吃东西&quot;&quot;&quot;</span><br><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 是吃货，吃完这顿再减肥&quot;</span> % self.name)<br>        self.weight += <span class="hljs-number">1</span><br><br><br>xiaoming = Person(<span class="hljs-string">&quot;小明&quot;</span>, <span class="hljs-number">75</span>)<br><br>xiaoming.run()<br>xiaoming.eat()<br>xiaoming.eat()<br><br><span class="hljs-built_in">print</span>(xiaoming)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-小明爱跑步扩展-——-小美也爱跑步"><a href="#2-1-小明爱跑步扩展-——-小美也爱跑步" class="headerlink" title="2.1 小明爱跑步扩展 —— 小美也爱跑步"></a>2.1 小明爱跑步扩展 —— 小美也爱跑步</h3><p><strong>需求</strong></p>
+<ol>
+<li><strong>小明</strong> 和 <strong>小美</strong> 都爱跑步</li>
+<li><strong>小明</strong> <strong>体重</strong> <code>75.0</code> 公斤</li>
+<li><strong>小美</strong> <strong>体重</strong> <code>45.0</code> 公斤</li>
+<li>每次 <strong>跑步</strong> 都会减少 <code>0.5</code> 公斤</li>
+<li>每次 <strong>吃东西</strong> 都会增加 <code>1</code> 公斤</li>
+</ol>
+<p><img src="/media/15006177106970/007_%E5%B0%8F%E6%98%8E%E7%88%B1%E8%B7%91%E6%AD%A5.png" srcset="/img/loading.gif" lazyload alt="007_小明爱跑步-w328"></p>
+<p><strong>提示</strong></p>
+<ol>
+<li>在 <strong>对象的方法内部</strong>，是可以 <strong>直接访问对象的属性</strong> 的</li>
+<li><strong>同一个类</strong> 创建的 <strong>多个对象</strong> 之间，<strong>属性</strong> 互不干扰！</li>
+</ol>
+<p><img src="/media/15006177106970/001_%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8.png" srcset="/img/loading.gif" lazyload alt="001_植物大战僵尸"></p>
+<h2 id="03-摆放家具"><a href="#03-摆放家具" class="headerlink" title="03. 摆放家具"></a>03. 摆放家具</h2><p><strong>需求</strong></p>
+<ol>
+<li><strong>房子(House)</strong> 有 <strong>户型</strong>、<strong>总面积</strong> 和 <strong>家具名称列表</strong><ul>
+<li>新房子没有任何的家具</li>
+</ul>
+</li>
+<li><strong>家具(HouseItem)</strong> 有 <strong>名字</strong> 和 <strong>占地面积</strong>，其中<ul>
+<li><strong>席梦思(bed)</strong> 占地 <code>4</code> 平米</li>
+<li><strong>衣柜(chest)</strong> 占地 <code>2</code> 平米</li>
+<li><strong>餐桌(table)</strong> 占地 <code>1.5</code> 平米</li>
+</ul>
+</li>
+<li>将以上三件 <strong>家具</strong> <strong>添加</strong> 到 <strong>房子</strong> 中</li>
+<li>打印房子时，要求输出：<strong>户型</strong>、<strong>总面积</strong>、<strong>剩余面积</strong>、<strong>家具名称列表</strong></li>
+</ol>
+<p><img src="/media/15006177106970/008_%E6%91%86%E6%94%BE%E5%AE%B6%E5%85%B7.png" srcset="/img/loading.gif" lazyload alt="008_摆放家具-w723"></p>
+<p><strong>剩余面积</strong></p>
+<ol>
+<li>在创建房子对象时，定义一个 <strong>剩余面积的属性</strong>，<strong>初始值和总面积相等</strong></li>
+<li>当调用 <code>add_item</code> 方法，向房间 <strong>添加家具</strong> 时，让 <strong>剩余面积</strong> -&#x3D; <strong>家具面积</strong></li>
+</ol>
+<p><strong>思考</strong>：应该先开发哪一个类？</p>
+<p><strong>答案</strong> —— <strong>家具类</strong></p>
+<ol>
+<li>家具简单</li>
+<li>房子要使用到家具，<strong>被使用的类</strong>，通常应该先开发</li>
+</ol>
+<h3 id="3-1-创建家具"><a href="#3-1-创建家具" class="headerlink" title="3.1 创建家具"></a>3.1 创建家具</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">HouseItem</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, area</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param name: 家具名称</span><br><span class="hljs-string">        :param area: 占地面积</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        self.name = name<br>        self.area = area<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;[%s] 占地面积 %.2f&quot;</span> % (self.name, self.area)<br><br><br><span class="hljs-comment"># 1. 创建家具</span><br>bed = HouseItem(<span class="hljs-string">&quot;席梦思&quot;</span>, <span class="hljs-number">4</span>)<br>chest = HouseItem(<span class="hljs-string">&quot;衣柜&quot;</span>, <span class="hljs-number">2</span>)<br>table = HouseItem(<span class="hljs-string">&quot;餐桌&quot;</span>, <span class="hljs-number">1.5</span>)<br><br><span class="hljs-built_in">print</span>(bed)<br><span class="hljs-built_in">print</span>(chest)<br><span class="hljs-built_in">print</span>(table)<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>小结</strong></p>
+<ol>
+<li>创建了一个 <strong>家具类</strong>，使用到 <code>__init__</code> 和 <code>__str__</code> 两个内置方法</li>
+<li>使用 <strong>家具类</strong> 创建了 <strong>三个家具对象</strong>，并且 <strong>输出家具信息</strong></li>
+</ol>
+<h3 id="3-2-创建房间"><a href="#3-2-创建房间" class="headerlink" title="3.2 创建房间"></a>3.2 创建房间</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">House</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, house_type, area</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param house_type: 户型</span><br><span class="hljs-string">        :param area: 总面积</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        self.house_type = house_type<br>        self.area = area<br>        <br>        <span class="hljs-comment"># 剩余面积默认和总面积一致</span><br>        self.free_area = area<br>        <span class="hljs-comment"># 默认没有任何的家具</span><br>        self.item_list = []<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-comment"># Python 能够自动的将一对括号内部的代码连接在一起</span><br>        <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;户型：%s\n总面积：%.2f[剩余：%.2f]\n家具：%s&quot;</span><br>                % (self.house_type, self.area,<br>                   self.free_area, self.item_list))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_item</span>(<span class="hljs-params">self, item</span>):<br><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;要添加 %s&quot;</span> % item)<br><br>...<br><br><span class="hljs-comment"># 2. 创建房子对象</span><br>my_home = House(<span class="hljs-string">&quot;两室一厅&quot;</span>, <span class="hljs-number">60</span>)<br><br>my_home.add_item(bed)<br>my_home.add_item(chest)<br>my_home.add_item(table)<br><br><span class="hljs-built_in">print</span>(my_home)<br></code></pre></td></tr></table></figure>
+
+<p><strong>小结</strong></p>
+<ol>
+<li>创建了一个 <strong>房子类</strong>，使用到 <code>__init__</code> 和 <code>__str__</code> 两个内置方法</li>
+<li>准备了一个 <code>add_item</code> 方法 <strong>准备添加家具</strong></li>
+<li>使用 <strong>房子类</strong> 创建了 <strong>一个房子对象</strong></li>
+<li>让 <strong>房子对象</strong> 调用了三次 <code>add_item</code> 方法，将 <strong>三件家具</strong> 以实参传递到 <code>add_item</code> 内部</li>
+</ol>
+<h3 id="3-3-添加家具"><a href="#3-3-添加家具" class="headerlink" title="3.3 添加家具"></a>3.3 添加家具</h3><p><strong>需求</strong></p>
+<ul>
+<li>1&gt; <strong>判断</strong> <strong>家具的面积</strong> 是否 <strong>超过剩余面积</strong>，<strong>如果超过</strong>，提示不能添加这件家具</li>
+<li>2&gt; 将 <strong>家具的名称</strong> 追加到 <strong>家具名称列表</strong> 中</li>
+<li>3&gt; 用 <strong>房子的剩余面积</strong> - <strong>家具面积</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_item</span>(<span class="hljs-params">self, item</span>):<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;要添加 %s&quot;</span> % item)<br>    <span class="hljs-comment"># 1. 判断家具面积是否大于剩余面积</span><br>    <span class="hljs-keyword">if</span> item.area &gt; self.free_area:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 的面积太大，不能添加到房子中&quot;</span> % item.name)<br><br>        <span class="hljs-keyword">return</span><br><br>    <span class="hljs-comment"># 2. 将家具的名称追加到名称列表中</span><br>    self.item_list.append(item.name)<br><br>    <span class="hljs-comment"># 3. 计算剩余面积</span><br>    self.free_area -= item.area<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-小结"><a href="#3-4-小结" class="headerlink" title="3.4 小结"></a>3.4 小结</h3><ul>
+<li>主程序只负责创建 <strong>房子</strong> 对象和 <strong>家具</strong> 对象</li>
+<li>让 <strong>房子</strong> 对象调用 <code>add_item</code> 方法 <strong>将家具添加到房子</strong>中</li>
+<li><strong>面积计算</strong>、<strong>剩余面积</strong>、<strong>家具列表</strong> 等处理都被 <strong>封装</strong> 到 <strong>房子类的内部</strong></li>
+</ul>
+<h1 id="面向对象封装案例-II"><a href="#面向对象封装案例-II" class="headerlink" title="面向对象封装案例 II"></a>面向对象封装案例 II</h1><h2 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>士兵突击案例</li>
+<li>身份运算符</li>
+</ul>
+<p><strong>封装</strong></p>
+<ol>
+<li><strong>封装</strong> 是面向对象编程的一大特点</li>
+<li>面向对象编程的 <strong>第一步</strong> —— 将 <strong>属性</strong> 和 <strong>方法</strong> <strong>封装</strong> 到一个抽象的 <strong>类</strong> 中</li>
+<li><strong>外界</strong> 使用 <strong>类</strong> 创建 <strong>对象</strong>，然后 <strong>让对象调用方法</strong></li>
+<li><strong>对象方法的细节</strong> 都被 <strong>封装</strong> 在 <strong>类的内部</strong></li>
+</ol>
+<blockquote>
+<p>一个对象的 <strong>属性</strong> 可以是 <strong>另外一个类创建的对象</strong></p>
+</blockquote>
+<h2 id="01-士兵突击"><a href="#01-士兵突击" class="headerlink" title="01. 士兵突击"></a>01. 士兵突击</h2><p><strong>需求</strong></p>
+<ol>
+<li><strong>士兵</strong> <strong>许三多</strong> 有一把 <strong>AK47</strong></li>
+<li><strong>士兵</strong> 可以 <strong>开火</strong></li>
+<li><strong>枪</strong> 能够 <strong>发射</strong> 子弹</li>
+<li><strong>枪</strong> 装填 <strong>装填子弹</strong> —— <strong>增加子弹数量</strong></li>
+</ol>
+<p><img src="/media/15006304901683/009_%E5%A3%AB%E5%85%B5%E7%AA%81%E5%87%BB.png" srcset="/img/loading.gif" lazyload alt="009_士兵突击-w610"></p>
+<h3 id="1-1-开发枪类"><a href="#1-1-开发枪类" class="headerlink" title="1.1 开发枪类"></a>1.1 开发枪类</h3><p><strong><code>shoot</code> 方法需求</strong></p>
+<ul>
+<li>1&gt; 判断是否有子弹，没有子弹无法射击</li>
+<li>2&gt; 使用 <code>print</code> 提示射击，并且输出子弹数量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Gun</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, model</span>):<br><br>        <span class="hljs-comment"># 枪的型号</span><br>        self.model = model<br>        <span class="hljs-comment"># 子弹数量</span><br>        self.bullet_count = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_bullet</span>(<span class="hljs-params">self, count</span>):<br><br>        self.bullet_count += count<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">shoot</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-comment"># 判断是否还有子弹</span><br>        <span class="hljs-keyword">if</span> self.bullet_count &lt;= <span class="hljs-number">0</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;没有子弹了...&quot;</span>)<br><br>            <span class="hljs-keyword">return</span><br><br>        <span class="hljs-comment"># 发射一颗子弹</span><br>        self.bullet_count -= <span class="hljs-number">1</span><br>        <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 发射子弹[%d]...&quot;</span> % (self.model, self.bullet_count))<br><br><span class="hljs-comment"># 创建枪对象</span><br>ak47 = Gun(<span class="hljs-string">&quot;ak47&quot;</span>)<br>ak47.add_bullet(<span class="hljs-number">50</span>)<br>ak47.shoot()<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-开发士兵类"><a href="#1-2-开发士兵类" class="headerlink" title="1.2 开发士兵类"></a>1.2 开发士兵类</h3><blockquote>
+<p>假设：每一个新兵 都 <strong>没有枪</strong></p>
+</blockquote>
+<p><strong>定义没有初始值的属性</strong></p>
+<p>在定义属性时，如果 <strong>不知道设置什么初始值</strong>，可以设置为 <code>None</code></p>
+<ul>
+<li><code>None</code> <strong>关键字</strong> 表示 <strong>什么都没有</strong></li>
+<li>表示一个 <strong>空对象</strong>，<strong>没有方法和属性，是一个特殊的常量</strong></li>
+<li>可以将 <code>None</code> 赋值给任何一个变量</li>
+</ul>
+<p><strong><code>fire</code> 方法需求</strong></p>
+<ul>
+<li>1&gt; 判断是否有枪，没有枪没法冲锋</li>
+<li>2&gt; 喊一声口号</li>
+<li>3&gt; 装填子弹</li>
+<li>4&gt; 射击</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Soldier</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br><br>        <span class="hljs-comment"># 姓名</span><br>        self.name = name<br>        <span class="hljs-comment"># 枪，士兵初始没有枪 None 关键字表示什么都没有</span><br>        self.gun = <span class="hljs-literal">None</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">fire</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-comment"># 1. 判断士兵是否有枪</span><br>        <span class="hljs-keyword">if</span> self.gun <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[%s] 还没有枪...&quot;</span> % self.name)<br><br>            <span class="hljs-keyword">return</span><br><br>        <span class="hljs-comment"># 2. 高喊口号</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;冲啊...[%s]&quot;</span> % self.name)<br><br>        <span class="hljs-comment"># 3. 让枪装填子弹</span><br>        self.gun.add_bullet(<span class="hljs-number">50</span>)<br><br>        <span class="hljs-comment"># 4. 让枪发射子弹</span><br>        self.gun.shoot()<br></code></pre></td></tr></table></figure>
+
+<p><strong>小结</strong></p>
+<ol>
+<li>创建了一个 <strong>士兵类</strong>，使用到 <code>__init__</code> 内置方法</li>
+<li>在定义属性时，如果 <strong>不知道设置什么初始值</strong>，可以设置为 <code>None</code></li>
+<li>在 <strong>封装的</strong> 方法内部，还可以让 <strong>自己的</strong> <strong>使用其他类创建的对象属性</strong> 调用已经 <strong>封装好的方法</strong></li>
+</ol>
+<h2 id="02-身份运算符"><a href="#02-身份运算符" class="headerlink" title="02. 身份运算符"></a>02. 身份运算符</h2><p>身份运算符用于 <strong>比较</strong> 两个对象的 <strong>内存地址</strong> 是否一致 —— <strong>是否是对同一个对象的引用</strong></p>
+<ul>
+<li>在 <code>Python</code> 中针对 <code>None</code> 比较时，建议使用 <code>is</code> 判断</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is</td>
+<td>is 是判断两个标识符是不是引用同一个对象</td>
+<td>x is y，类似 id(x) &#x3D;&#x3D; id(y)</td>
+</tr>
+<tr>
+<td>is not</td>
+<td>is not 是判断两个标识符是不是引用不同对象</td>
+<td>x is not y，类似 id(a) !&#x3D; id(b)</td>
+</tr>
+</tbody></table>
+<h3 id="is-与-x3D-x3D-区别："><a href="#is-与-x3D-x3D-区别：" class="headerlink" title="is 与 &#x3D;&#x3D; 区别："></a>is 与 &#x3D;&#x3D; 区别：</h3><p><code>is</code> 用于判断 <strong>两个变量 引用对象是否为同一个</strong><br><code>==</code> 用于判断 <strong>引用变量的值</strong> 是否相等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>b = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>b <span class="hljs-keyword">is</span> a <br><span class="hljs-literal">False</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>b == a<br><span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="category-chain-item">面向对象</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Python面向对象</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>面向对象案例</div>
+      <div>http://example.com/2021/08/29/面向对象案例/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89/" title="面向对象（私有属性和方法）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面向对象（私有属性和方法）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">
+                        <span class="hidden-mobile">面向对象</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

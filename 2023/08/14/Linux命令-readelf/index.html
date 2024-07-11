@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="readelf用于显示elf格式文件的信息 补充说明readelf命令 用来显示一个或者多个elf格式的目标文件的信息，可以通过它的选项来控制显示哪些信息。这里的elf-file(s)就表示那些被检查的文件。可以支持32位，64位的elf格式文件，也支持包含elf文件的文档（这里一般指的是使用ar命令将一些elf文件打包之后生成的例如lib*.a之类的“静态库”文件）。  这个程序和objdump">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-readelf">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readelf/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="readelf用于显示elf格式文件的信息 补充说明readelf命令 用来显示一个或者多个elf格式的目标文件的信息，可以通过它的选项来控制显示哪些信息。这里的elf-file(s)就表示那些被检查的文件。可以支持32位，64位的elf格式文件，也支持包含elf文件的文档（这里一般指的是使用ar命令将一些elf文件打包之后生成的例如lib*.a之类的“静态库”文件）。  这个程序和objdump">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:35.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:38.617Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-readelf - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-readelf"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          129 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-readelf</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="readelf"><a href="#readelf" class="headerlink" title="readelf"></a>readelf</h1><p>用于显示elf格式文件的信息</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>readelf命令</strong> 用来显示一个或者多个elf格式的目标文件的信息，可以通过它的选项来控制显示哪些信息。这里的elf-file(s)就表示那些被检查的文件。可以支持32位，64位的elf格式文件，也支持包含elf文件的文档（这里一般指的是使用ar命令将一些elf文件打包之后生成的例如lib*.a之类的“静态库”文件）。 </p>
+<p>这个程序和objdump提供的功能类似，但是它显示的信息更为具体，并且它不依赖BFD库(BFD库是一个GNU项目，它的目标就是希望通过一种统一的接口来处理不同的目标文件)，所以即使BFD库有什么bug存在的话也不会影响到readelf程序。 </p>
+<p>运行readelf的时候，除了-v和-H之外，其它的选项必须有一个被指定。 </p>
+<h3 id="ELF文件类型"><a href="#ELF文件类型" class="headerlink" title="ELF文件类型"></a>ELF文件类型</h3><p> <strong>种类型的ELF文件：</strong> </p>
+<ol>
+<li>可重定位文件:用户和其他目标文件一起创建可执行文件或者共享目标文件,例如lib*.a文件。 </li>
+<li>可执行文件：用于生成进程映像，载入内存执行,例如编译好的可执行文件a.out。 </li>
+<li>共享目标文件：用于和其他共享目标文件或者可重定位文件一起生成elf目标文件或者和执行文件一起创建进程映像，例如lib*.so文件。</li>
+</ol>
+<p> </p>
+<p> <strong>ELF文件作用：</strong> </p>
+<p>ELF文件参与程序的连接(建立一个程序)和程序的执行(运行一个程序)，所以可以从不同的角度来看待elf格式的文件： </p>
+<ol>
+<li>如果用于编译和链接（可重定位文件），则编译器和链接器将把elf文件看作是节头表描述的节的集合,程序头表可选。 </li>
+<li>如果用于加载执行（可执行文件），则加载器则将把elf文件看作是程序头表描述的段的集合，一个段可能包含多个节，节头表可选。 </li>
+<li>如果是共享文件，则两者都含有。</li>
+</ol>
+<p> </p>
+<p> <strong>ELF文件总体组成：</strong>  </p>
+<p>elf文件头描述elf文件的总体信息。包括：系统相关，类型相关，加载相关，链接相关。 </p>
+<ul>
+<li>系统相关表示：elf文件标识的魔术数，以及硬件和平台等相关信息，增加了elf文件的移植性,使交叉编译成为可能。 </li>
+<li>类型相关就是前面说的那个类型。 </li>
+<li>加载相关：包括程序头表相关信息。 </li>
+<li>链接相关：节头表相关信息。</li>
+</ul>
+<p> </p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a <br>--all 显示全部信息,等价于 -h -l -S -s -r -d -V -A -I. <br><br>-h <br>--file-header 显示elf文件开始的文件头信息. <br><br>-l <br>--program-headers  <br>--segments 显示程序头（段头）信息(如果有的话)。 <br><br>-S <br>--section-headers  <br>--sections 显示节头信息(如果有的话)。 <br><br>-g <br>--section-groups 显示节组信息(如果有的话)。 <br><br>-t <br>--section-details 显示节的详细信息(-S的)。 <br><br>-s <br>--syms        <br>--symbols 显示符号表段中的项（如果有的话）。 <br><br>-e <br>--headers 显示全部头信息，等价于: -h -l -S <br><br>-n <br>--notes 显示note段（内核注释）的信息。 <br><br>-r <br>--relocs 显示可重定位段的信息。 <br><br>-u <br>--unwind 显示unwind段信息。当前只支持IA64 ELF的unwind段信息。 <br><br>-d <br>--dynamic 显示动态段的信息。 <br><br>-V <br>--version-info 显示版本段的信息。 <br><br>-A <br>--arch-specific 显示CPU构架信息。 <br><br>-D <br>--use-dynamic 使用动态段中的符号表显示符号，而不是使用符号段。 <br><br>-x &lt;number or name&gt; <br>--hex-dump=&lt;number or name&gt; 以16进制方式显示指定段内内容。number指定段表中段的索引,或字符串指定文件中的段名。 <br><br>-w[liaprmfFsoR] or <br>--debug-dump[=line,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges] 显示调试段中指定的内容。 <br><br>-I <br>--histogram 显示符号的时候，显示bucket list长度的柱状图。 <br><br>-v <br>--version 显示readelf的版本信息。 <br><br>-H <br>--help 显示readelf所支持的命令行选项。 <br><br>-W <br>--wide 宽行输出。 <br><br>@file 可以将选项集中到一个文件中，然后使用这个@file选项载入。 <br></code></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>先给出如下例子：</p>
+<p> <strong>1.对于可执行文件形式的elf格式文件：</strong> </p>
+<p>1)查看可执行程序的源代码如下： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@localhost [test]$ cat main.cpp <br><span class="hljs-meta prompt_">#</span><span class="language-bash">include &lt;iostream&gt;</span> <br>using std::cout; <br>using std::endl; <br>void my_print(); <br><br>int main(int argc, char *argv[]) <br>&#123; <br>        my_print(); <br>        cout&lt;&lt;&quot;hello!&quot;&lt;&lt;endl; <br>        return 0; <br>&#125; <br><br>void  my_print() <br>&#123; <br>        cout&lt;&lt;&quot;print!&quot;&lt;&lt;endl; <br>&#125; <br></code></pre></td></tr></table></figure>
+
+<p>2)编译如下： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ g++ main.cpp -o main <br>[root@localhost test]$ g++ -g main.cpp -o main.debug <br></code></pre></td></tr></table></figure>
+
+<p>3)编译之后，查看生成的文件： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ ls -l <br>总计 64 <br>-rwxr-xr-x 1 quietheart quietheart  6700 07-07 18:04 main <br>-rw-r--r-- 1 quietheart quietheart   201 07-07 18:02 main.cpp <br>-rwxr-xr-x 1 quietheart quietheart 38932 07-07 18:04 main.debug <br></code></pre></td></tr></table></figure>
+
+<p>这里，main.debug是带有调试信息的可执行文件，main是一般的可执行文件。 </p>
+<p> <strong>2.对于库文件形式的elf格式文件：</strong> </p>
+<p>1)查看库的源代码如下： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">//myfile.h <br><span class="hljs-meta prompt_">#</span><span class="language-bash">ifndef __MYFILE_H</span> <br><span class="hljs-meta prompt_">#</span><span class="language-bash">define __MYFILE_H</span> <br>void printInfo(); <br><span class="hljs-meta prompt_">#</span><span class="language-bash">endif</span> <br><br>//myfile.cpp <br><span class="hljs-meta prompt_">#</span><span class="language-bash">include <span class="hljs-string">&quot;myfile.h&quot;</span></span> <br><span class="hljs-meta prompt_">#</span><span class="language-bash">include &lt;iostream&gt;</span> <br>using std::cout; <br>using std::endl; <br>void printInfo() <br>&#123; <br>    cout&lt;&lt;&quot;hello&quot;&lt;&lt;endl; <br>&#125; <br></code></pre></td></tr></table></figure>
+
+<p>2)编译如下： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ g++ -c myfile.cpp <br>[root@localhost test]$ g++ -shared -fPCI -o libmy.so myfile.o <br>[root@localhost test]$ ar -r libmy.a myfile.o <br>ar: creating libmy.a <br></code></pre></td></tr></table></figure>
+
+<p>3)编译之后，查看生成的文件： </p>
+<p>[root@localhost test]$ ls -l </p>
+<p>总计 44 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">-rw-r--r-- 1 quietheart quietheart 2154 07-08 16:14 libmy.a <br>-rwxr-xr-x 1 quietheart quietheart 5707 07-08 16:08 libmy.so <br>-rwxr-xr-x 1 quietheart quietheart  117 07-08 16:06 myfile.cpp <br>-rwxr-xr-x 1 quietheart quietheart   63 07-08 16:08 myfile.h <br>-rw-r--r-- 1 quietheart quietheart 2004 07-08 16:08 myfile.o <br>libmy.a  libmy.so  myfile.cpp  myfile.h  myfile.o <br></code></pre></td></tr></table></figure>
+
+<p>这里，分别生成目标文件myfile.o，共享库文件libmy.so，和静态库文件libmy.a。 </p>
+<p>基于以上可执行文件和库，这里给出一些常用的命令。 </p>
+<p> <strong>读取可执行文件形式的elf文件头信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -h main <br>ELF Header: <br>  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 <br>  Class:                             ELF32 <br>  Data:                              2&#x27;s complement, little endian <br>  Version:                           1 (current) <br>  OS/ABI:                            UNIX - System V <br>  ABI Version:                       0 <br>  type:                              exec (Executable file) <br>  Machine:                           Intel 80386 <br>  Version:                           0x1 <br>  Entry point address:               0x8048580 <br>  Start of program headers:          52 (bytes into file) <br>  Start of section headers:          3232 (bytes into file) <br>  Flags:                             0x0 <br>  Size of this header:               52 (bytes) <br>  Size of program headers:           32 (bytes) <br>  Number of program headers:         8 <br>  Size of section headers:           40 (bytes) <br>  Number of section headers:         29 <br>  Section header string table index: 26 <br></code></pre></td></tr></table></figure>
+
+<p>这里，可见可执行文件的elf文件，其类型为EXEC(可执行文件)。另外，含调试信息的”main.debug”和不含调试信息的”main”除了一些大小信息之外，其内容是一样的。并且由此可见文件的体系结构为Intel 80386。 </p>
+<p> <strong>读取目标文件形式的elf文件头信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -h myfile.o <br>ELF Header: <br>  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 <br>  Class:                             ELF32 <br>  Data:                              2&#x27;s complement, little endian <br>  Version:                           1 (current) <br>  OS/ABI:                            UNIX - System V <br>  ABI Version:                       0 <br>  Type:                              REL (Relocatable file) <br>  Machine:                           Intel 80386 <br>  Version:                           0x1 <br>  Entry point address:               0x0 <br>  Start of program headers:          0 (bytes into file) <br>  Start of section headers:          516 (bytes into file) <br>  Flags:                             0x0 <br>  Size of this header:               52 (bytes) <br>  Size of program headers:           0 (bytes) <br>  Number of program headers:         0 <br>  Size of section headers:           40 (bytes) <br>  Number of section headers:         15 <br>  Section header string table index: 12 <br></code></pre></td></tr></table></figure>
+
+<p>这里，可见目标文件的elf文件，其类型为REL(可重定位文件)。 </p>
+<p> <strong>读取静态库文件形式的elf文件头信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -h libmy.a <br>File: libmy.a(myfile.o) <br>ELF Header: <br>  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 <br>  Class:                             ELF32 <br>  Data:                              2&#x27;s complement, little endian <br>  Version:                           1 (current) <br>  OS/ABI:                            UNIX - System V <br>  ABI Version:                       0 <br>  Type:                              REL (Relocatable file) <br>  Machine:                           Intel 80386 <br>  Version:                           0x1 <br>  Entry point address:               0x0 <br>  Start of program headers:          0 (bytes into file) <br>  Start of section headers:          516 (bytes into file) <br>  Flags:                             0x0 <br>  Size of this header:               52 (bytes) <br>  Size of program headers:           0 (bytes) <br>  Number of program headers:         0 <br>  Size of section headers:           40 (bytes) <br>  Number of section headers:         15 <br>  Section header string table index: 12 <br></code></pre></td></tr></table></figure>
+
+<p>这里，可见静态库文件的elf文件，其类型为REL(可重定位文件)。 </p>
+<p> <strong>读取动态库文件形式的elf文件头信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -h libmy.so <br>ELF Header: <br>  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 <br>  Class:                             ELF32 <br>  Data:                              2&#x27;s complement, little endian <br>  Version:                           1 (current) <br>  OS/ABI:                            UNIX - System V <br>  ABI Version:                       0 <br>  Type:                              DYN (Shared object file) <br>  Machine:                           Intel 80386 <br>  Version:                           0x1 <br>  Entry point address:               0x550 <br>  Start of program headers:          52 (bytes into file) <br>  Start of section headers:          2768 (bytes into file) <br>  Flags:                             0x0 <br>  Size of this header:               52 (bytes) <br>  Size of program headers:           32 (bytes) <br>  Number of program headers:         5 <br>  Size of section headers:           40 (bytes) <br>  Number of section headers:         27 <br>  Section header string table index: 24 <br></code></pre></td></tr></table></figure>
+
+<p>这里，可见动态库文件的elf文件，其类型为DYN(共享目标文件)。 </p>
+<p> <strong>查看可执行的elf文件程序头表信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -l main <br>Elf file type is EXEC (Executable file) <br>Entry point 0x8048580 <br>There are 8 program headers, starting at offset 52 <br><br>Program Headers: <br>  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align <br>  PHDR           0x000034 0x08048034 0x08048034 0x00100 0x00100 R E 0x4 <br>  INTERP         0x000134 0x08048134 0x08048134 0x00013 0x00013 R   0x1 <br>      Requesting program interpreter: /lib/[ld-linux.so.2] <br>  LOAD           0x000000 0x08048000 0x08048000 0x00970 0x00970 R E 0x1000 <br>  LOAD           0x000970 0x08049970 0x08049970 0x00130 0x001c8 RW  0x1000 <br>  DYNAMIC        0x000988 0x08049988 0x08049988 0x000e0 0x000e0 RW  0x4 <br>  NOTE           0x000148 0x08048148 0x08048148 0x00020 0x00020 R   0x4 <br>  GNU_EH_FRAME   0x000820 0x08048820 0x08048820 0x00044 0x00044 R   0x4 <br>  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4 <br><br>Section to Segment mapping: <br>  Segment Sections... <br>   00     <br>   01     .interp <br>   02     .interp .note.ABI-tag .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame <br>   03     .ctors .dtors .jcr .dynamic .got .got.plt .data .bss <br>   04     .dynamic <br>   05     .note.ABI-tag <br>   06     .eh_frame_hdr <br>   07     <br></code></pre></td></tr></table></figure>
+
+<p>这里，含调试信息的”main.debug”和不含调试信息的”main”其内容是一样的。 </p>
+<p> **查看目标文件的elf文件程序头表信息： ** </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -l myfile.o <br>There are no program headers in this file. <br></code></pre></td></tr></table></figure>
+
+<p>这里可知，可重定位的目标文件，它没程序头表。 </p>
+<p> <strong>查看静态库文件的elf文件程序头表信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -l libmy.a <br>File: libmy.a(myfile.o) <br>There are no program headers in this file. <br></code></pre></td></tr></table></figure>
+
+<p>这里可知，可重定位的静态库文件，它没程序头表。 </p>
+<p> <strong>查看动态库文件的elf文件程序头表信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -l libmy.so <br>Elf file type is DYN (Shared object file) <br>Entry point 0x550 <br>There are 5 program headers, starting at offset 52 <br><br>Program Headers: <br>  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align <br>  LOAD           0x000000 0x00000000 0x00000000 0x007f4 0x007f4 R E 0x1000 <br>  LOAD           0x0007f4 0x000017f4 0x000017f4 0x0011c 0x00128 RW  0x1000 <br>  DYNAMIC        0x000810 0x00001810 0x00001810 0x000e0 0x000e0 RW  0x4 <br>  GNU_EH_FRAME   0x000738 0x00000738 0x00000738 0x0002c 0x0002c R   0x4 <br>  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4 <br><br>Section to Segment mapping: <br>  Segment Sections... <br>   00     .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame <br>   01     .ctors .dtors .jcr .data.rel.ro .dynamic .got .got.plt .bss <br>   02     .dynamic <br>   03     .eh_frame_hdr <br>   04     <br></code></pre></td></tr></table></figure>
+
+<p>这里可知，做为共享目标文件的动态库，它程序头表。 </p>
+<p> <strong>查看一个可执行的elf文件的节信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -S main <br>There are 29 section headers, starting at offset 0xca0: <br>Section Headers: <br>  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al <br>  [ 0]                   NULL            00000000 000000 000000 00      0   0  0 <br>  [ 1] .interp           PROGBITS        08048134 000134 000013 00   A  0   0  1 <br>  [ 2] .note.ABI-tag     NOTE            08048148 000148 000020 00   A  0   0  4 <br>  [ 3] .gnu.hash         GNU_HASH        08048168 000168 000030 04   A  4   0  4 <br>  [ 4] .dynsym           DYNSYM          08048198 000198 0000d0 10   A  5   1  4 <br>  [ 5] .dynstr           STRTAB          08048268 000268 000183 00   A  0   0  1 <br>  [ 6] .gnu.version      VERSYM          080483ec 0003ec 00001a 02   A  4   0  2 <br>  [ 7] .gnu.version_r    VERNEED         08048408 000408 000060 00   A  5   2  4 <br>  [ 8] .rel.dyn          REL             08048468 000468 000010 08   A  4   0  4 <br>  [ 9] .rel.plt          REL             08048478 000478 000048 08   A  4  11  4 <br>  [10] .init             PROGBITS        080484c0 0004c0 000017 00  AX  0   0  4 <br>  [11] .plt              PROGBITS        080484d8 0004d8 0000a0 04  AX  0   0  4 <br>  [12] .text             PROGBITS        08048580 000580 000268 00  AX  0   0 16 <br>  [13] .fini             PROGBITS        080487e8 0007e8 00001c 00  AX  0   0  4 <br>  [14] .rodata           PROGBITS        08048804 000804 00001a 00   A  0   0  4 <br>  [15] .eh_frame_hdr     PROGBITS        08048820 000820 000044 00   A  0   0  4 <br>  [16] .eh_frame         PROGBITS        08048864 000864 00010c 00   A  0   0  4 <br>  [17] .ctors            PROGBITS        08049970 000970 00000c 00  WA  0   0  4 <br>  [18] .dtors            PROGBITS        0804997c 00097c 000008 00  WA  0   0  4 <br>  [19] .jcr              PROGBITS        08049984 000984 000004 00  WA  0   0  4 <br>  [20] .dynamic          DYNAMIC         08049988 000988 0000e0 08  WA  5   0  4 <br>  [21] .got              PROGBITS        08049a68 000a68 000004 04  WA  0   0  4 <br>  [22] .got.plt          PROGBITS        08049a6c 000a6c 000030 04  WA  0   0  4 <br>  [23] .data             PROGBITS        08049a9c 000a9c 000004 00  WA  0   0  4 <br>  [24] .bss              NOBITS          08049aa0 000aa0 000098 00  WA  0   0  8 <br>  [25] .comment          PROGBITS        00000000 000aa0 000114 00      0   0  1 <br>  [26] .shstrtab         STRTAB          00000000 000bb4 0000e9 00      0   0  1 <br>  [27] .symtab           SYMTAB          00000000 001128 000510 10     28  53  4 <br>  [28] .strtab           STRTAB          00000000 001638 0003f4 00      0   0  1 <br>Key to Flags: <br>  W (write), A (alloc), X (execute), M (merge), S (strings) <br>  I (info), L (link order), G (group), x (unknown) <br>  O (extra OS processing required) o (OS specific), p (processor specific) <br></code></pre></td></tr></table></figure>
+
+<p>这里，main是可执行文件，不含调试信息。 </p>
+<p> <strong>查看一个包含调试信息的可执行的elf文件的节信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -S main.debug <br>There are 37 section headers, starting at offset 0x88c8: <br><br>Section Headers: <br>  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al <br>  [ 0]                   NULL            00000000 000000 000000 00      0   0  0 <br>  [ 1] .interp           PROGBITS        08048134 000134 000013 00   A  0   0  1 <br>  [ 2] .note.ABI-tag     NOTE            08048148 000148 000020 00   A  0   0  4 <br>  [ 3] .gnu.hash         GNU_HASH        08048168 000168 000030 04   A  4   0  4 <br>  [ 4] .dynsym           DYNSYM          08048198 000198 0000d0 10   A  5   1  4 <br>  [ 5] .dynstr           STRTAB          08048268 000268 000183 00   A  0   0  1 <br>  [ 6] .gnu.version      VERSYM          080483ec 0003ec 00001a 02   A  4   0  2 <br>  [ 7] .gnu.version_r    VERNEED         08048408 000408 000060 00   A  5   2  4 <br>  [ 8] .rel.dyn          REL             08048468 000468 000010 08   A  4   0  4 <br>  [ 9] .rel.plt          REL             08048478 000478 000048 08   A  4  11  4 <br>  [10] .init             PROGBITS        080484c0 0004c0 000017 00  AX  0   0  4 <br>  [11] .plt              PROGBITS        080484d8 0004d8 0000a0 04  AX  0   0  4 <br>  [12] .text             PROGBITS        08048580 000580 000268 00  AX  0   0 16 <br>  [13] .fini             PROGBITS        080487e8 0007e8 00001c 00  AX  0   0  4 <br>  [14] .rodata           PROGBITS        08048804 000804 00001a 00   A  0   0  4 <br>  [15] .eh_frame_hdr     PROGBITS        08048820 000820 000044 00   A  0   0  4 <br>  [16] .eh_frame         PROGBITS        08048864 000864 00010c 00   A  0   0  4 <br>  [17] .ctors            PROGBITS        08049970 000970 00000c 00  WA  0   0  4 <br>  [18] .dtors            PROGBITS        0804997c 00097c 000008 00  WA  0   0  4 <br>  [19] .jcr              PROGBITS        08049984 000984 000004 00  WA  0   0  4 <br>  [20] .dynamic          DYNAMIC         08049988 000988 0000e0 08  WA  5   0  4 <br>  [21] .got              PROGBITS        08049a68 000a68 000004 04  WA  0   0  4 <br>  [22] .got.plt          PROGBITS        08049a6c 000a6c 000030 04  WA  0   0  4 <br>  [23] .data             PROGBITS        08049a9c 000a9c 000004 00  WA  0   0  4 <br>  [24] .bss              NOBITS          08049aa0 000aa0 000098 00  WA  0   0  8 <br>  [25] .comment          PROGBITS        00000000 000aa0 000114 00      0   0  1 <br>  [26] .debug_aranges    PROGBITS        00000000 000bb4 000020 00      0   0  1 <br>  [27] .debug_pubnames   PROGBITS        00000000 000bd4 000028 00      0   0  1 <br>  [28] .debug_info       PROGBITS        00000000 000bfc 0067aa 00      0   0  1 <br>  [29] .debug_abbrev     PROGBITS        00000000 0073a6 000726 00      0   0  1 <br>  [30] .debug_line       PROGBITS        00000000 007acc 0003e1 00      0   0  1 <br>  [31] .debug_frame      PROGBITS        00000000 007eb0 00009c 00      0   0  4 <br>  [32] .debug_str        PROGBITS        00000000 007f4c 000735 00      0   0  1 <br>  [33] .debug_loc        PROGBITS        00000000 008681 0000f3 00      0   0  1 <br>  [34] .shstrtab         STRTAB          00000000 008774 000151 00      0   0  1 <br>  [35] .symtab           SYMTAB          00000000 008e90 000590 10     36  61  4 <br>  [36] .strtab           STRTAB          00000000 009420 0003f4 00      0   0  1 <br>Key to Flags: <br>  W (write), A (alloc), X (execute), M (merge), S (strings) <br>  I (info), L (link order), G (group), x (unknown) <br>  O (extra OS processing required) o (OS specific), p (processor specific) <br></code></pre></td></tr></table></figure>
+
+<p>可见，相对非调试版本的可执行文件，多了”.debug*”段的信息。 </p>
+<p> <strong>查看一个目标文件的elf文件的节信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -S myfile.o <br>There are 15 section headers, starting at offset 0x204: <br><br>Section Headers: <br>  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al <br>  [ 0]                   NULL            00000000 000000 000000 00      0   0  0 <br>  [ 1] .text             PROGBITS        00000000 000034 00009e 00  AX  0   0  4 <br>  [ 2] .rel.text         REL             00000000 000744 000060 08     13   1  4 <br>  [ 3] .data             PROGBITS        00000000 0000d4 000000 00  WA  0   0  4 <br>  [ 4] .bss              NOBITS          00000000 0000d4 000001 00  WA  0   0  4 <br>  [ 5] .ctors            PROGBITS        00000000 0000d4 000004 00  WA  0   0  4 <br>  [ 6] .rel.ctors        REL             00000000 0007a4 000008 08     13   5  4 <br>  [ 7] .rodata           PROGBITS        00000000 0000d8 000006 00   A  0   0  1 <br>  [ 8] .eh_frame         PROGBITS        00000000 0000e0 00008c 00   A  0   0  4 <br>  [ 9] .rel.eh_frame     REL             00000000 0007ac 000028 08     13   8  4 <br>  [10] .comment          PROGBITS        00000000 00016c 00002e 00      0   0  1 <br>  [11] .note.GNU-stack   PROGBITS        00000000 00019a 000000 00      0   0  1 <br>  [12] .shstrtab         STRTAB          00000000 00019a 00006a 00      0   0  1 <br>  [13] .symtab           SYMTAB          00000000 00045c 000180 10     14  14  4 <br>  [14] .strtab           STRTAB          00000000 0005dc 000166 00      0   0  1 <br>Key to Flags: <br>  W (write), A (alloc), X (execute), M (merge), S (strings) <br>  I (info), L (link order), G (group), x (unknown) <br>  O (extra OS processing required) o (OS specific), p (processor specific) <br><br><br>```shell<br><br> **查看一个静态库文件的elf文件的节信息：** <br><br>```shell<br>[root@localhost test]$ readelf -S libmy.a <br>File: libmy.a(myfile.o) <br>There are 15 section headers, starting at offset 0x204: <br><br>Section Headers: <br>  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al <br>  [ 0]                   NULL            00000000 000000 000000 00      0   0  0 <br>  [ 1] .text             PROGBITS        00000000 000034 00009e 00  AX  0   0  4 <br>  [ 2] .rel.text         REL             00000000 000744 000060 08     13   1  4 <br>  [ 3] .data             PROGBITS        00000000 0000d4 000000 00  WA  0   0  4 <br>  [ 4] .bss              NOBITS          00000000 0000d4 000001 00  WA  0   0  4 <br>  [ 5] .ctors            PROGBITS        00000000 0000d4 000004 00  WA  0   0  4 <br>  [ 6] .rel.ctors        REL             00000000 0007a4 000008 08     13   5  4 <br>  [ 7] .rodata           PROGBITS        00000000 0000d8 000006 00   A  0   0  1 <br>  [ 8] .eh_frame         PROGBITS        00000000 0000e0 00008c 00   A  0   0  4 <br>  [ 9] .rel.eh_frame     REL             00000000 0007ac 000028 08     13   8  4 <br>  [10] .comment          PROGBITS        00000000 00016c 00002e 00      0   0  1 <br>  [11] .note.GNU-stack   PROGBITS        00000000 00019a 000000 00      0   0  1 <br>  [12] .shstrtab         STRTAB          00000000 00019a 00006a 00      0   0  1 <br>  [13] .symtab           SYMTAB          00000000 00045c 000180 10     14  14  4 <br>  [14] .strtab           STRTAB          00000000 0005dc 000166 00      0   0  1 <br>Key to Flags: <br>  W (write), A (alloc), X (execute), M (merge), S (strings) <br>  I (info), L (link order), G (group), x (unknown) <br>  O (extra OS processing required) o (OS specific), p (processor specific) <br></code></pre></td></tr></table></figure>
+
+<p> <strong>查看一个动态库文件的elf文件的节信息：</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost test]$ readelf -S libmy.so <br>There are 27 section headers, starting at offset 0xad0: <br><br>Section Headers: <br>  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al <br>  [ 0]                   NULL            00000000 000000 000000 00      0   0  0 <br>  [ 1] .gnu.hash         GNU_HASH        000000d4 0000d4 00003c 04   A  2   0  4 <br>  [ 2] .dynsym           DYNSYM          00000110 000110 000120 10   A  3   1  4 <br>  [ 3] .dynstr           STRTAB          00000230 000230 000199 00   A  0   0  1 <br>  [ 4] .gnu.version      VERSYM          000003ca 0003ca 000024 02   A  2   0  2 <br>  [ 5] .gnu.version_r    VERNEED         000003f0 0003f0 000050 00   A  3   2  4 <br>  [ 6] .rel.dyn          REL             00000440 000440 0000b0 08   A  2   0  4 <br>  [ 7] .rel.plt          REL             000004f0 0004f0 000010 08   A  2   9  4 <br>  [ 8] .init             PROGBITS        00000500 000500 000017 00  AX  0   0  4 <br>  [ 9] .plt              PROGBITS        00000518 000518 000030 04  AX  0   0  4 <br>  [10] .text             PROGBITS        00000550 000550 0001c4 00  AX  0   0 16 <br>  [11] .fini             PROGBITS        00000714 000714 00001c 00  AX  0   0  4 <br>  [12] .rodata           PROGBITS        00000730 000730 000006 00   A  0   0  1 <br>  [13] .eh_frame_hdr     PROGBITS        00000738 000738 00002c 00   A  0   0  4 <br>  [14] .eh_frame         PROGBITS        00000764 000764 000090 00   A  0   0  4 <br>  [15] .ctors            PROGBITS        000017f4 0007f4 00000c 00  WA  0   0  4 <br>  [16] .dtors            PROGBITS        00001800 000800 000008 00  WA  0   0  4 <br>  [17] .jcr              PROGBITS        00001808 000808 000004 00  WA  0   0  4 <br>  [18] .data.rel.ro      PROGBITS        0000180c 00080c 000004 00  WA  0   0  4 <br>  [19] .dynamic          DYNAMIC         00001810 000810 0000e0 08  WA  3   0  4 <br>  [20] .got              PROGBITS        000018f0 0008f0 00000c 04  WA  0   0  4 <br>  [21] .got.plt          PROGBITS        000018fc 0008fc 000014 04  WA  0   0  4 <br>  [22] .bss              NOBITS          00001910 000910 00000c 00  WA  0   0  4 <br>  [23] .comment          PROGBITS        00000000 000910 0000e6 00      0   0  1 <br>  [24] .shstrtab         STRTAB          00000000 0009f6 0000da 00      0   0  1 <br>  [25] .symtab           SYMTAB          00000000 000f08 000410 10     26  48  4 <br>  [26] .strtab           STRTAB          00000000 001318 000333 00      0   0  1 <br>Key to Flags: <br>  W (write), A (alloc), X (execute), M (merge), S (strings) <br>  I (info), L (link order), G (group), x (unknown) <br>  O (extra OS processing required) o (OS specific), p (processor specific) <br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-readelf</div>
+      <div>http://example.com/2023/08/14/Linux命令-readelf/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" title="Linux命令-readonly">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-readonly</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-reboot/" title="Linux命令-reboot">
+                        <span class="hidden-mobile">Linux命令-reboot</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

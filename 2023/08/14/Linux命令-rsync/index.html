@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="rsync远程数据同步工具 补充说明rsync命令 是一个远程数据同步工具，可通过LAN&#x2F;WAN快速同步多台主机间的文件。rsync使用所谓的“rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。 rsync是一个功能非常强大的工具，其命令也有很多功能特色选项，我们下面就对它的选项一一进行分析说明。 语法123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-rsync">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rsync/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="rsync远程数据同步工具 补充说明rsync命令 是一个远程数据同步工具，可通过LAN&#x2F;WAN快速同步多台主机间的文件。rsync使用所谓的“rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。 rsync是一个功能非常强大的工具，其命令也有很多功能特色选项，我们下面就对它的选项一一进行分析说明。 语法123">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:37.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:39.291Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-rsync - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-rsync"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-rsync</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><p>远程数据同步工具</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>rsync命令</strong> 是一个远程数据同步工具，可通过LAN&#x2F;WAN快速同步多台主机间的文件。rsync使用所谓的“rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。 rsync是一个功能非常强大的工具，其命令也有很多功能特色选项，我们下面就对它的选项一一进行分析说明。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">rsync [OPTION]... SRC DEST<br>rsync [OPTION]... SRC [USER@]host:DEST<br>rsync [OPTION]... [USER@]HOST:SRC DEST<br>rsync [OPTION]... [USER@]HOST::SRC DEST<br>rsync [OPTION]... SRC [USER@]HOST::DEST<br>rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]<br></code></pre></td></tr></table></figure>
+
+<p>对应于以上六种命令格式，rsync有六种不同的工作模式：</p>
+<ol>
+<li>拷贝本地文件。当SRC和DES路径信息都不包含有单个冒号”:”分隔符时就启动这种工作模式。如：<code>rsync -a /data /backup</code></li>
+<li>使用一个远程shell程序(如rsh、ssh)来实现将本地机器的内容拷贝到远程机器。当DST路径地址包含单个冒号”:”分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code></li>
+<li>使用一个远程shell程序(如rsh、ssh)来实现将远程机器的内容拷贝到本地机器。当SRC地址路径包含单个冒号”:”分隔符时启动该模式。如：<code>rsync -avz foo:src/bar /data</code></li>
+<li>从远程rsync服务器中拷贝文件到本地机。当SRC路径信息包含”::”分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code></li>
+<li>从本地机器拷贝文件到远程rsync服务器中。当DST路径信息包含”::”分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code></li>
+<li>列远程机的文件列表。这类似于rsync传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></li>
+</ol>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs shell">-v, --verbose 详细模式输出。<br>-q, --quiet 精简输出模式。<br>-c, --checksum 打开校验开关，强制对文件传输进行校验。<br>-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD。<br>-r, --recursive 对子目录以递归模式处理。<br>-R, --relative 使用相对路径信息。<br>-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为~filename。可以使用--suffix选项来指定不同的备份文件前缀。<br>--backup-dir 将备份文件(如~filename)存放在在目录下。<br>-suffix=SUFFIX 定义备份文件前缀。<br>-u, --update 仅仅进行更新，也就是跳过所有已经存在于DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。<br>-l, --links 保留软链结。<br>-L, --copy-links 想对待常规文件一样处理软链结。<br>--copy-unsafe-links 仅仅拷贝指向SRC路径目录树以外的链结。<br>--safe-links 忽略指向SRC路径目录树以外的链结。<br>-H, --hard-links 保留硬链结。<br>-p, --perms 保持文件权限。<br>-o, --owner 保持文件属主信息。<br>-g, --group 保持文件属组信息。<br>-D, --devices 保持设备文件信息。<br>-t, --times 保持文件时间信息。<br>-S, --sparse 对稀疏文件进行特殊处理以节省DST的空间。<br>-n, --dry-run 显示哪些文件将被传输。<br>-w, --whole-file 拷贝文件，不进行增量检测。<br>-x, --one-file-system 不要跨越文件系统边界。<br>-B, --block-size=SIZE 检验算法使用的块尺寸，默认是700字节。<br>-e, --rsh=command 指定使用rsh、ssh方式进行数据同步。<br>--rsync-path=PATH 指定远程服务器上的rsync命令所在路径信息。<br>-C, --cvs-exclude 使用和CVS一样的方法自动忽略文件，用来排除那些不希望传输的文件。<br>--existing 仅仅更新那些已经存在于DST的文件，而不备份那些新创建的文件。<br>--delete 删除那些DST中SRC没有的文件。<br>--delete-excluded 同样删除接收端那些被该选项指定排除的文件。<br>--delete-after 传输结束以后再删除。<br>--ignore-errors 及时出现IO错误也进行删除。<br>--max-delete=NUM 最多删除NUM个文件。<br>--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。<br>--force 强制删除目录，即使不为空。<br>--numeric-ids 不将数字的用户和组id匹配为用户名和组名。<br>--timeout=time ip超时时间，单位为秒。<br>-I, --ignore-times 不跳过那些有同样的时间和长度的文件。<br>--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。<br>--modify-window=NUM 决定文件是否时间相同时使用的时间戳窗口，默认为0。<br>-T --temp-dir=DIR 在DIR中创建临时文件。<br>--compare-dest=DIR 同样比较DIR中的文件来决定是否需要备份。<br>-P 等同于 --partial。<br>--progress 显示备份过程。<br>-z, --compress 对备份的文件在传输时进行压缩处理。<br>--exclude=PATTERN 指定排除不需要传输的文件模式。<br>--include=PATTERN 指定不排除而需要传输的文件模式。<br>--exclude-from=FILE 排除FILE中指定模式的文件。<br>--include-from=FILE 不排除FILE指定模式匹配的文件。<br>--version 打印版本信息。<br>--address 绑定到特定的地址。<br>--config=FILE 指定其他的配置文件，不使用默认的rsyncd.conf文件。<br>--port=PORT 指定其他的rsync服务端口。<br>--blocking-io 对远程shell使用阻塞IO。<br>-stats 给出某些文件的传输状态。<br>--progress 在传输时显示传输过程。<br>--log-format=formAT 指定日志文件格式。<br>--password-file=FILE 从FILE中得到密码。<br>--bwlimit=KBPS 限制I/O带宽，KBytes per second。<br>-h, --help 显示帮助信息。<br></code></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p> <strong>SSH方式</strong></p>
+<p>首先在服务端启动ssh服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">service sshd start<br>启动 sshd： [确定]<br></code></pre></td></tr></table></figure>
+
+<p> <strong>使用rsync进行同步</strong></p>
+<p>接下来就可以在客户端使用rsync命令来备份服务端上的数据了，SSH方式是通过系统用户来进行备份的，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">rsync -vzrtopg --progress -e ssh --delete work@172.16.78.192:/www/* /databack/experiment/rsync<br>work@172.16.78.192&#x27;s password:<br>receiving file list ...<br>5 files to consider<br>test/<br>a<br>0 100% 0.00kB/s 527:35:41 (1, 20.0% of 5)<br>b<br>67 100% 65.43kB/s 0:00:00 (2, 40.0% of 5)<br>c<br>0 100% 0.00kB/s 527:35:41 (3, 60.0% of 5)<br>dd<br>100663296 100% 42.22MB/s 0:00:02 (4, 80.0% of 5)<br>sent 96 bytes received 98190 bytes 11563.06 bytes/sec<br>total size is 100663363 speedup is 1024.19<br></code></pre></td></tr></table></figure>
+
+<p>上面的信息描述了整个的备份过程，以及总共备份数据的大小。</p>
+<p> <strong>后台服务方式</strong></p>
+<p>启动rsync服务，编辑<code>/etc/xinetd.d/rsync</code>文件，将其中的<code>disable=yes</code>改为<code>disable=no</code>，并重启xinetd服务，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/xinetd.d/rsync<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">default: off</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">description: The rsync server is a good addition to an ftp server, as it \</span><br><span class="language-bash"><span class="hljs-comment"># allows crc checksumming etc.</span></span><br>service rsync &#123;<br>disable = no<br>socket_type = stream<br>wait = no<br>user = root<br>server = /usr/bin/rsync<br>server_args = --daemon<br>log_on_failure += USERID<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/init.d/xinetd restart<br>停止 xinetd： [确定]<br>启动 xinetd： [确定]<br></code></pre></td></tr></table></figure>
+
+<p>创建配置文件，默认安装好rsync程序后，并不会自动创建rsync的主配置文件，需要手工来创建，其主配置文件为“&#x2F;etc&#x2F;rsyncd.conf”，创建该文件并插入如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/rsyncd.conf<br><br>uid=root<br>gid=root<br>max connections=4<br>log file=/var/log/rsyncd.log<br>pid file=/var/run/rsyncd.pid<br>lock file=/var/run/rsyncd.lock<br>secrets file=/etc/rsyncd.passwd<br>hosts deny=172.16.78.0/22<br><br>[www]<br>comment= backup web<br>path=/www<br>read only = no<br>exclude=test<br>auth users=work<br></code></pre></td></tr></table></figure>
+
+<p>创建密码文件，采用这种方式不能使用系统用户对客户端进行认证，所以需要创建一个密码文件，其格式为“username:password”，用户名可以和密码可以随便定义，最好不要和系统帐户一致，同时要把创建的密码文件权限设置为600，这在前面的模块参数做了详细介绍。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &quot;work:abc123&quot; &gt; /etc/rsyncd.passwd<br>chmod 600 /etc/rsyncd.passwd<br></code></pre></td></tr></table></figure>
+
+<p>备份，完成以上工作，现在就可以对数据进行备份了，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">rsync -avz --progress --delete work@172.16.78.192::www /databack/experiment/rsync<br><br>Password:<br>receiving file list ...<br>6 files to consider<br>./ files...<br>a<br>0 100% 0.00kB/s 528:20:41 (1, 50.0% of 6)<br>b<br>67 100% 65.43kB/s 0:00:00 (2, 66.7% of 6)<br>c<br>0 100% 0.00kB/s 528:20:41 (3, 83.3% of 6)<br>dd<br>100663296 100% 37.49MB/s 0:00:02 (4, 100.0% of 6)<br>sent 172 bytes received 98276 bytes 17899.64 bytes/sec<br>total size is 150995011 speedup is 1533.75<br></code></pre></td></tr></table></figure>
+
+<p>恢复，当服务器的数据出现问题时，那么这时就需要通过客户端的数据对服务端进行恢复，但前提是服务端允许客户端有写入权限，否则也不能在客户端直接对服务端进行恢复，使用rsync对数据进行恢复的方法如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">rsync -avz --progress /databack/experiment/rsync/ work@172.16.78.192::www<br><br>Password:<br>building file list ...<br>6 files to consider<br>./<br>a<br>b<br>67 100% 0.00kB/s 0:00:00 (2, 66.7% of 6)<br>c<br>sent 258 bytes received 76 bytes 95.43 bytes/sec<br>total size is 150995011 speedup is 452080.87<br></code></pre></td></tr></table></figure>
+
+<p><strong>将源目录同步到目标目录</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -r <span class="hljs-built_in">source</span> destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>-r</code> 表示递归，即包含子目录。注意，<code>-r</code>是必须的，否则 <code>rsync</code> 运行不会成功。<code>source</code> 目录表示源目录，<code>destination</code> 表示目标目录。</p>
+<p><strong>多个文件或目录同步</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -r source1 source2 destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>source1</code>、<code>source2</code> 都会被同步到 <code>destination</code> 目录。</p>
+<p><strong>同步元信息</strong></p>
+<p><code>-a</code> 参数可以替代 <code>-r</code>，除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）。由于 <code>rsync</code> 默认使用文件大小和修改时间决定文件是否需要更新，所以 <code>-a</code> 比 <code>-r</code> 更有用。下面的用法才是常见的写法。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -a <span class="hljs-built_in">source</span> destination</span><br></code></pre></td></tr></table></figure>
+
+<p>目标目录 <code>destination</code> 如果不存在，<code>rsync</code> 会自动创建。执行上面的命令后，源目录 <code>source</code> 被完整地复制到了目标目录 <code>destination</code> 下面，即形成了 <code>destination/source</code> 的目录结构。</p>
+<p>如果只想同步源目录 <code>source</code> 里面的内容到目标目录 <code>destination</code> ，则需要在源目录后面加上斜杠。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -a <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令执行后，<code>source</code> 目录里面的内容，就都被复制到了 <code>destination</code> 目录里面，并不会在 <code>destination</code> 下面创建一个 <code>source</code> 子目录。</p>
+<p><strong>模拟执行的结果</strong></p>
+<p>如果不确定 <code>rsync</code> 执行后会产生什么结果，可以先用 <code>-n</code> 或 <code>--dry-run</code> 参数模拟执行的结果。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -anv <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>-n</code> 参数模拟命令执行的结果，并不真的执行命令。<code>-v</code> 参数则是将结果输出到终端，这样就可以看到哪些内容会被同步。</p>
+<p><strong>目标目录成为源目录的镜像副本</strong></p>
+<p>默认情况下，<code>rsync</code> 只确保源目录的所有内容（明确排除的文件除外）都复制到目标目录。它不会使两个目录保持相同，并且不会删除文件。如果要使得目标目录成为源目录的镜像副本，则必须使用 <code>--delete</code> 参数，这将删除只存在于目标目录、不存在于源目录的文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --delete <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>--delete</code> 参数会使得 <code>destination</code> 成为 <code>source</code> 的一个镜像。</p>
+<p><strong>排除文件</strong></p>
+<p>有时，我们希望同步时排除某些文件或目录，这时可以用–exclude参数指定排除模式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude=<span class="hljs-string">&#x27;*.txt&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">或者</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude <span class="hljs-string">&#x27;*.txt&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令排除了所有 <code>TXT</code> 文件。</p>
+<p>注意，<code>rsync</code> 会同步以”点”开头的隐藏文件，如果要排除隐藏文件，可以这样写 <code>--exclude=&quot;.*&quot;</code>。</p>
+<p>如果要排除某个目录里面的所有文件，但不希望排除目录本身，可以写成下面这样。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude <span class="hljs-string">&#x27;dir1/*&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>多个排除模式，可以用多个 <code>--exclude</code> 参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude <span class="hljs-string">&#x27;file1.txt&#x27;</span> --exclude <span class="hljs-string">&#x27;dir1/*&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>多个排除模式也可以利用 Bash 的大扩号的扩展功能，只用一个 <code>--exclude</code> 参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude=&#123;<span class="hljs-string">&#x27;file1.txt&#x27;</span>,<span class="hljs-string">&#x27;dir1/*&#x27;</span>&#125; <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>如果排除模式很多，可以将它们写入一个文件，每个模式一行，然后用 <code>--exclude-from</code> 参数指定这个文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --exclude-from=<span class="hljs-string">&#x27;exclude-file.txt&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>指定必须同步的文件模式</strong></p>
+<p><code>--include</code> 参数用来指定必须同步的文件模式，往往与 <code>--exclude</code> 结合使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">rsync -av --include=<span class="hljs-string">&quot;*.txt&quot;</span> --exclude=<span class="hljs-string">&#x27;*&#x27;</span> <span class="hljs-built_in">source</span>/ destination</span><br></code></pre></td></tr></table></figure>
+
+<p>上面命令指定同步时，排除所有文件，但是会包括 <code>TXT</code> 文件。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-rsync</div>
+      <div>http://example.com/2023/08/14/Linux命令-rsync/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rsh/" title="Linux命令-rsh">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-rsh</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-runlevel/" title="Linux命令-runlevel">
+                        <span class="hidden-mobile">Linux命令-runlevel</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
