@@ -238,23 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpm">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpm2cpio">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
-          Linux命令-rpm
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
+          Linux命令-rpm2cpio
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
         <div>
-          rpmRPM软件包的管理工具 补充说明rpm命令 是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度。 语法1rpm(选项)(参数)  选项1234567891011121314151
+          rpm2cpio将RPM软件包转换为cpio格式的文件 补充说明rpm2cpio命令 用于将rpm软件包转换为cpio格式的文件。 语法1rpm2cpio(参数)  参数文件：指定要转换的rpm包的文件名。 实例1rpm2cpio ../libstdc++-4.3.0-8.i386.rpm | cpio -idv
         </div>
       </a>
 
@@ -774,6 +774,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwdx">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
+          Linux命令-pwdx
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
+        <div>
+          pwdx用于显示指定进程的当前工作目录 内建命令概要1pwdx [进程ID]  参数说明 进程ID：要查询的进程ID，可以使用 ps 命令查看。  示例下面示例中，使用 ps 命令查看 nginx 进程的信息，然后使用 pwdx 命令查询进程ID为 5678 的进程的当前工作目录。 123456$ ps -ef | grep nginx# root      1234     1  0 10:00
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwd">
         </a>
@@ -975,73 +1042,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotaoff">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
-          Linux命令-quotaoff
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
-        <div>
-          quotaoff关闭Linux内核中指定文件系统的磁盘配额功能 补充说明quotaoff命令 用于关闭Linux内核中指定文件系统的磁盘配额功能。 语法1quotaoff(选项)(参数)  选项1234-a：关闭在/etc/fstab文件里，有加入quota设置的分区的空间限制；-g：关闭群组的磁盘空间限制；-u：关闭用户的磁盘空间限制；-v：显示指令执行过程。  参数文件系统：指定要关闭磁盘配额
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotacheck">
         </a>
@@ -1059,73 +1059,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
         <div>
           quotacheck检查磁盘的使用空间与限制 补充说明quotacheck命令 通过扫描指定的文件系统，获取磁盘的使用情况，创建、检查和修复磁盘配额（quota）文件。执行quotacheck指令，扫描挂入系统的分区，并在各分区的文件系统根目录下产生quota.user和quota.group文件，设置用户和群组的磁盘空间限制。 如果在执行quotacheck命令时出现了以下信息： 1quotac
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwdx">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
-          Linux命令-pwdx
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwdx/" target="_self">
-        <div>
-          pwdx用于显示指定进程的当前工作目录 内建命令概要1pwdx [进程ID]  参数说明 进程ID：要查询的进程ID，可以使用 ps 命令查看。  示例下面示例中，使用 ps 命令查看 nginx 进程的信息，然后使用 pwdx 命令查询进程ID为 5678 的进程的当前工作目录。 123456$ ps -ef | grep nginx# root      1234     1  0 10:00
         </div>
       </a>
 
@@ -1243,6 +1176,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotaoff">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
+          Linux命令-quotaoff
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
+        <div>
+          quotaoff关闭Linux内核中指定文件系统的磁盘配额功能 补充说明quotaoff命令 用于关闭Linux内核中指定文件系统的磁盘配额功能。 语法1quotaoff(选项)(参数)  选项1234-a：关闭在/etc/fstab文件里，有加入quota设置的分区的空间限制；-g：关闭群组的磁盘空间限制；-u：关闭用户的磁盘空间限制；-v：显示指令执行过程。  参数文件系统：指定要关闭磁盘配额
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcconf">
         </a>
@@ -1310,23 +1310,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcp">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-read">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
-          Linux命令-rcp
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
+          Linux命令-read
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
         <div>
-          rcp使在两台Linux主机之间的文件复制操作更简单 补充说明rcp命令 使在两台Linux主机之间的文件复制操作更简单。通过适当的配置，在两台Linux主机之间复制文件而无需输入密码，就像本地文件复制一样简单。 语法1rcp(选项)(参数)  选项1234-p：保留源文件或目录的属性，包括拥有者、所属群组、权限与时间；-r：递归处理，将指定目录下的文件与子目录一并处理；-x：加密两台Linux主
+          read从键盘读取变量值 补充说明read命令 从键盘读取变量的值，通常用在shell脚本中与用户进行交互的场合。该命令可以一次读取多个变量的值，变量和输入的值都需要使用空格隔开。在read命令后面，如果没有指定变量名，读取的数据将被自动赋值给特定的变量REPLY 语法1read(选项)(参数)  选项12-p：指定读取值时的提示符；-t：指定读取值时等待的时间（秒）。  参数变量：指定读取值的变
         </div>
       </a>
 
@@ -1377,23 +1377,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-read">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcp">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
-          Linux命令-read
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+          Linux命令-rcp
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
         <div>
-          read从键盘读取变量值 补充说明read命令 从键盘读取变量的值，通常用在shell脚本中与用户进行交互的场合。该命令可以一次读取多个变量的值，变量和输入的值都需要使用空格隔开。在read命令后面，如果没有指定变量名，读取的数据将被自动赋值给特定的变量REPLY 语法1read(选项)(参数)  选项12-p：指定读取值时的提示符；-t：指定读取值时等待的时间（秒）。  参数变量：指定读取值的变
+          rcp使在两台Linux主机之间的文件复制操作更简单 补充说明rcp命令 使在两台Linux主机之间的文件复制操作更简单。通过适当的配置，在两台Linux主机之间复制文件而无需输入密码，就像本地文件复制一样简单。 语法1rcp(选项)(参数)  选项1234-p：保留源文件或目录的属性，包括拥有者、所属群组、权限与时间；-r：递归处理，将指定目录下的文件与子目录一并处理；-x：加密两台Linux主
         </div>
       </a>
 
