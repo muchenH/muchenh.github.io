@@ -238,23 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-su/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-su">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sudo/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-sudo">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-su/" target="_self">
-          Linux命令-su
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sudo/" target="_self">
+          Linux命令-sudo
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-su/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sudo/" target="_self">
         <div>
-          su用于切换当前用户身份到其他用户身份 补充说明su命令 用于切换当前用户身份到其他用户身份，变更时须输入所要变更的用户帐号与密码。 语法1su(选项)(参数)  选项1234567-c&lt;指令&gt;或--command=&lt;指令&gt;：执行完指定的指令后，即恢复原来的身份；-f或——fast：适用于csh与tsch，使shell不用去读取启动文件；-l或——login：改变身份时，也
+          sudo以其他身份来执行命令 补充说明sudo命令 用来以其他身份来执行命令，预设的身份为root。在/etc/sudoers中设置了可执行sudo指令的用户。若其未经授权的用户企图使用sudo，则会发出警告的邮件给管理员。用户使用sudo时，必须先输入密码，之后有5分钟的有效期限，超过期限则必须重新输入密码。 语法1sudo(选项)(参数)  选项1234567891011-b：在后台执行指令；
         </div>
       </a>
 
@@ -439,73 +439,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-suspend">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
-          Linux命令-suspend
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
-        <div>
-          suspend挂起shell的执行。 概要1suspend [-f]  主要用途 挂起shell的执行，直到收到SIGCONT信号。  除非使用-f选项，否则无法对login shell使用。   选项1-f    对login shell执行挂起操作。  返回值返回成功除非未开启作业控制或发生了错误。 例子1234# 打开一个终端，首先获取PID。echo $$# 执行挂起命令suspend
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-swapoff/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-swapoff">
         </a>
@@ -523,73 +456,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-swapoff/" target="_self">
         <div>
           swapoff关闭指定的交换空间 补充说明swapoff命令 用于关闭指定的交换空间（包括交换文件和交换分区）。swapoff实际上为swapon的符号连接，可用来关闭系统的交换区。 语法1swapoff(选项)(参数)  选项1-a：关闭配置文件“/etc/fstab”中所有的交换空间。  参数交换空间：指定需要激活的交换空间，可以是交换文件和交换分区，如果是交换分区则指定交换分区对应的设备文件
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-sync">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
-          Linux命令-sync
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
-        <div>
-          sync用于强制被改变的内容立刻写入磁盘 补充说明sync命令 用于强制被改变的内容立刻写入磁盘，更新超块信息。 在Linux&#x2F;Unix系统中，在文件或数据处理过程中一般先放到内存缓冲区中，等到适当的时候再写入磁盘，以提高系统的运行效率。sync命令则可用来强制将内存缓冲区中的数据立即写入磁盘中。用户通常不需执行sync命令，系统会自动执行update或bdflush操作，将缓冲区的数据
         </div>
       </a>
 
@@ -707,6 +573,140 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-suspend">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
+          Linux命令-suspend
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-suspend/" target="_self">
+        <div>
+          suspend挂起shell的执行。 概要1suspend [-f]  主要用途 挂起shell的执行，直到收到SIGCONT信号。  除非使用-f选项，否则无法对login shell使用。   选项1-f    对login shell执行挂起操作。  返回值返回成功除非未开启作业控制或发生了错误。 例子1234# 打开一个终端，首先获取PID。echo $$# 执行挂起命令suspend
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-sync">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
+          Linux命令-sync
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sync/" target="_self">
+        <div>
+          sync用于强制被改变的内容立刻写入磁盘 补充说明sync命令 用于强制被改变的内容立刻写入磁盘，更新超块信息。 在Linux&#x2F;Unix系统中，在文件或数据处理过程中一般先放到内存缓冲区中，等到适当的时候再写入磁盘，以提高系统的运行效率。sync命令则可用来强制将内存缓冲区中的数据立即写入磁盘中。用户通常不需执行sync命令，系统会自动执行update或bdflush操作，将缓冲区的数据
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-sysctl/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-sysctl">
         </a>
@@ -774,23 +774,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-systool">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-syslog">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
-          Linux命令-systool
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
+          Linux命令-syslog
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
         <div>
-          systool显示基于总线、类和拓扑显示系统中设备的信息 补充说明systool命令 指令显示基于总线、类和拓扑显示系统中设备的信息。 语法1systool(选项)(参数)  选项1234567891011-a：显示被请求资源的属性；-b&lt;总线&gt;：显示指定总线的信息；-c&lt;class&gt;：显示指定类的信息；-d：仅显示设备；-h：显示指令的用法；-m&lt;模块名称&gt;：
+          syslog系统默认的日志守护进程 补充说明syslog 是Linux系统默认的日志守护进程。默认的syslog配置文件是&#x2F;etc&#x2F;syslog.conf文件。程序，守护进程和内核提供了访问系统的日志信息。因此，任何希望生成日志信息的程序都可以向 syslog 接口呼叫生成该信息。 几乎所有的网络设备都可以通过syslog协议，将日志信息以用户数据报协议(UDP)方式传送到远端
         </div>
       </a>
 
@@ -908,23 +908,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-syslog">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-systool">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
-          Linux命令-syslog
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
+          Linux命令-systool
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-syslog/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-systool/" target="_self">
         <div>
-          syslog系统默认的日志守护进程 补充说明syslog 是Linux系统默认的日志守护进程。默认的syslog配置文件是&#x2F;etc&#x2F;syslog.conf文件。程序，守护进程和内核提供了访问系统的日志信息。因此，任何希望生成日志信息的程序都可以向 syslog 接口呼叫生成该信息。 几乎所有的网络设备都可以通过syslog协议，将日志信息以用户数据报协议(UDP)方式传送到远端
+          systool显示基于总线、类和拓扑显示系统中设备的信息 补充说明systool命令 指令显示基于总线、类和拓扑显示系统中设备的信息。 语法1systool(选项)(参数)  选项1234567891011-a：显示被请求资源的属性；-b&lt;总线&gt;：显示指定总线的信息；-c&lt;class&gt;：显示指定类的信息；-d：仅显示设备；-h：显示指令的用法；-m&lt;模块名称&gt;：
         </div>
       </a>
 
@@ -1444,23 +1444,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-spell">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-split">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
-          Linux命令-spell
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
+          Linux命令-split
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
         <div>
-          spell对文件进行拼写检查 补充说明spell命令 对文件进行拼写检查，并把拼写错误的单词输出。 语法1spell(参数)  参数文件：指定需要进行拼写检查的文件。
+          split分割任意大小的文件 补充说明split命令 可以将一个大文件分割成很多个小文件，有时需要将文件分割成更小的片段，比如为提高可读性，生成日志等。 选项12345-b：值为每一输出档案的大小，单位为 byte。-C：每一输出档中，单行的最大 byte 数。-d：使用数字作为后缀。-l：值为每一输出档的行数大小。-a：指定后缀长度(默认为2)。  实例生成一个大小为100KB的测试文件： 12
         </div>
       </a>
 
@@ -1511,23 +1511,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-split">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-spell">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
-          Linux命令-split
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
+          Linux命令-spell
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-split/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-spell/" target="_self">
         <div>
-          split分割任意大小的文件 补充说明split命令 可以将一个大文件分割成很多个小文件，有时需要将文件分割成更小的片段，比如为提高可读性，生成日志等。 选项12345-b：值为每一输出档案的大小，单位为 byte。-C：每一输出档中，单行的最大 byte 数。-d：使用数字作为后缀。-l：值为每一输出档的行数大小。-a：指定后缀长度(默认为2)。  实例生成一个大小为100KB的测试文件： 12
+          spell对文件进行拼写检查 补充说明spell命令 对文件进行拼写检查，并把拼写错误的单词输出。 语法1spell(参数)  参数文件：指定需要进行拼写检查的文件。
         </div>
       </a>
 
