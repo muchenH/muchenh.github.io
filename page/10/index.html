@@ -238,23 +238,90 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpm">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpm2cpio">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
-          Linux命令-rpm
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
+          Linux命令-rpm2cpio
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpm2cpio/" target="_self">
         <div>
-          rpmRPM软件包的管理工具 补充说明rpm命令 是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度。 语法1rpm(选项)(参数)  选项1234567891011121314151
+          rpm2cpio将RPM软件包转换为cpio格式的文件 补充说明rpm2cpio命令 用于将rpm软件包转换为cpio格式的文件。 语法1rpm2cpio(参数)  参数文件：指定要转换的rpm包的文件名。 实例1rpm2cpio ../libstdc++-4.3.0-8.i386.rpm | cpio -idv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpmbuild">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
+          Linux命令-rpmbuild
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
+        <div>
+          rpmbuild创建RPM的二进制软件包和源码软件包 补充说明rpmbuild命令 被用于创建rpm的二进制软件包和源码软件包。 语法1rpmbuild(选项)  选项12345--initdb：初始化RPM数据库；--rebuilddb：从已安装的包头文件，方向重建RPM数据库；-ba：创建二进制和源代码包；-bb：创建二进制代码包；-bs：创建源代码包。  实例1rpmbuild -ba &#
         </div>
       </a>
 
@@ -389,73 +456,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmquery/" target="_self">
         <div>
           rpmquery从RPM数据库中查询软件包信息 补充说明rpmquery命令 使用多种依据从rpm数据库中查询软件包信息。 语法1rpmquery(选项)  选项12345-qf：查询指定的文件所属的软件包；-q：查询指定的软件包是否被安装；-qc：查询软件包中的配置文件；-qd：查询软件包中的文档文件；-qi：查询软件包的基本信息。  实例使用rpmquery命令查询指定文件所属的软件包： 12
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rpmbuild">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
-          Linux命令-rpmbuild
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rpmbuild/" target="_self">
-        <div>
-          rpmbuild创建RPM的二进制软件包和源码软件包 补充说明rpmbuild命令 被用于创建rpm的二进制软件包和源码软件包。 语法1rpmbuild(选项)  选项12345--initdb：初始化RPM数据库；--rebuilddb：从已安装的包头文件，方向重建RPM数据库；-ba：创建二进制和源代码包；-bb：创建二进制代码包；-bs：创建源代码包。  实例1rpmbuild -ba &#
         </div>
       </a>
 
@@ -774,23 +774,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwunconv">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwd">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
-          Linux命令-pwunconv
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
+          Linux命令-pwd
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
         <div>
-          pwunconv用来关闭用户的投影密码 补充说明pwunconv命令 与pwconv功能相反，用来关闭用户的投影密码。它会把密码从shadow文件内，重回存到passwd文件里。 语法1pwunconv  实例123456pwunconv     # 关闭影子密码cat /etc/passwd | grep test     # 发现密码已经在passwd文件中了test:$6$nYOEWamm$
+          pwd显示当前工作目录的绝对路径。 补充说明pwd（英文全拼：print working directory） 命令用于显示用户当前所在的工作目录（以绝对路径显示）。 内建命令概要1pwd [-LP]  选项12-L （默认值）打印环境变量&quot;$PWD&quot;的值，可能为符号链接。-P 打印当前工作目录的物理位置。  返回值返回状态为成功除非给出了非法选项或是当前目录无法读取。 注意
         </div>
       </a>
 
@@ -908,90 +908,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwd">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pwunconv">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
-          Linux命令-pwd
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
+          Linux命令-pwunconv
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwd/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pwunconv/" target="_self">
         <div>
-          pwd显示当前工作目录的绝对路径。 补充说明pwd（英文全拼：print working directory） 命令用于显示用户当前所在的工作目录（以绝对路径显示）。 内建命令概要1pwd [-LP]  选项12-L （默认值）打印环境变量&quot;$PWD&quot;的值，可能为符号链接。-P 打印当前工作目录的物理位置。  返回值返回状态为成功除非给出了非法选项或是当前目录无法读取。 注意
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotacheck">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
-          Linux命令-quotacheck
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
-        <div>
-          quotacheck检查磁盘的使用空间与限制 补充说明quotacheck命令 通过扫描指定的文件系统，获取磁盘的使用情况，创建、检查和修复磁盘配额（quota）文件。执行quotacheck指令，扫描挂入系统的分区，并在各分区的文件系统根目录下产生quota.user和quota.group文件，设置用户和群组的磁盘空间限制。 如果在执行quotacheck命令时出现了以下信息： 1quotac
+          pwunconv用来关闭用户的投影密码 补充说明pwunconv命令 与pwconv功能相反，用来关闭用户的投影密码。它会把密码从shadow文件内，重回存到passwd文件里。 语法1pwunconv  实例123456pwunconv     # 关闭影子密码cat /etc/passwd | grep test     # 发现密码已经在passwd文件中了test:$6$nYOEWamm$
         </div>
       </a>
 
@@ -1109,73 +1042,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcconf">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
-          Linux命令-rcconf
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
-        <div>
-          rcconfDebian Linux下的运行等级服务配置工具 补充说明rcconf命令 是Debian Linux下的运行等级服务配置工具，用以设置在特定的运行等级下系统服务的启动配置。 语法1rcconf(选项)  选项123--help：打印帮助信息；--dialog：使用对话命令显示菜单；--notermcheck：不按照终端属性来设置窗口尺寸。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotaoff/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotaoff">
         </a>
@@ -1243,23 +1109,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcp">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-quotacheck">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
-          Linux命令-rcp
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
+          Linux命令-quotacheck
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-quotacheck/" target="_self">
         <div>
-          rcp使在两台Linux主机之间的文件复制操作更简单 补充说明rcp命令 使在两台Linux主机之间的文件复制操作更简单。通过适当的配置，在两台Linux主机之间复制文件而无需输入密码，就像本地文件复制一样简单。 语法1rcp(选项)(参数)  选项1234-p：保留源文件或目录的属性，包括拥有者、所属群组、权限与时间；-r：递归处理，将指定目录下的文件与子目录一并处理；-x：加密两台Linux主
+          quotacheck检查磁盘的使用空间与限制 补充说明quotacheck命令 通过扫描指定的文件系统，获取磁盘的使用情况，创建、检查和修复磁盘配额（quota）文件。执行quotacheck指令，扫描挂入系统的分区，并在各分区的文件系统根目录下产生quota.user和quota.group文件，设置用户和群组的磁盘空间限制。 如果在执行quotacheck命令时出现了以下信息： 1quotac
         </div>
       </a>
 
@@ -1377,6 +1243,140 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcconf">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
+          Linux命令-rcconf
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcconf/" target="_self">
+        <div>
+          rcconfDebian Linux下的运行等级服务配置工具 补充说明rcconf命令 是Debian Linux下的运行等级服务配置工具，用以设置在特定的运行等级下系统服务的启动配置。 语法1rcconf(选项)  选项123--help：打印帮助信息；--dialog：使用对话命令显示菜单；--notermcheck：不按照终端属性来设置窗口尺寸。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-rcp">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+          Linux命令-rcp
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rcp/" target="_self">
+        <div>
+          rcp使在两台Linux主机之间的文件复制操作更简单 补充说明rcp命令 使在两台Linux主机之间的文件复制操作更简单。通过适当的配置，在两台Linux主机之间复制文件而无需输入密码，就像本地文件复制一样简单。 语法1rcp(选项)(参数)  选项1234-p：保留源文件或目录的属性，包括拥有者、所属群组、权限与时间；-r：递归处理，将指定目录下的文件与子目录一并处理；-x：加密两台Linux主
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-read/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-read">
         </a>
@@ -1444,23 +1444,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-readonly">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readelf/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-readelf">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
-          Linux命令-readonly
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readelf/" target="_self">
+          Linux命令-readelf
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readelf/" target="_self">
         <div>
-          readonly标记shell变量或函数为只读 语法12readonly [-aAf] [name[=value] ...]readonly -p  主要用途 定义一到多个变量并设置只读属性。 为已定义的一到多个变量设置只读属性。 显示全部包含只读属性的变量。 为已定义的一到多个函数设置只读属性。 显示全部包含只读属性的函数。  选项12345-a：指向数组。-A：指向关联数组。-f：指向函数。-
+          readelf用于显示elf格式文件的信息 补充说明readelf命令 用来显示一个或者多个elf格式的目标文件的信息，可以通过它的选项来控制显示哪些信息。这里的elf-file(s)就表示那些被检查的文件。可以支持32位，64位的elf格式文件，也支持包含elf文件的文档（这里一般指的是使用ar命令将一些elf文件打包之后生成的例如lib*.a之类的“静态库”文件）。  这个程序和objdump
         </div>
       </a>
 
@@ -1511,23 +1511,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-reject/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-reject">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-readonly">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-reject/" target="_self">
-          Linux命令-reject
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
+          Linux命令-readonly
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-reject/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-readonly/" target="_self">
         <div>
-          reject指示打印系统拒绝发往指定目标打印机的打印任务 补充说明reject命令 属于CUPS套件，用于指示打印系统拒绝发往指定目标打印机的打印任务。 语法1reject(选项)(参数)  选项1234-E：当连接到服务器时强制使用加密；-U：指定连接服务器时使用的用户名；-h：指定连接服务器名和端口号；-r：指定拒绝打印任务的原因。  参数目标：指定目标打印机。
+          readonly标记shell变量或函数为只读 语法12readonly [-aAf] [name[=value] ...]readonly -p  主要用途 定义一到多个变量并设置只读属性。 为已定义的一到多个变量设置只读属性。 显示全部包含只读属性的变量。 为已定义的一到多个函数设置只读属性。 显示全部包含只读属性的函数。  选项12345-a：指向数组。-A：指向关联数组。-f：指向函数。-
         </div>
       </a>
 
