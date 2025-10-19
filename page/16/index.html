@@ -238,90 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvextend/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvextend">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvcreate/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvcreate">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvextend/" target="_self">
-          Linux命令-lvextend
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvcreate/" target="_self">
+          Linux命令-lvcreate
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvextend/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvcreate/" target="_self">
         <div>
-          lvextend扩展逻辑卷空间 补充说明lvextend命令 用于在线扩展逻辑卷的空间大小，而不中断应用程序对逻辑卷的访问。使用lvextend命令动态在线扩展磁盘空间，整个空间扩展过程对于应用程序来说是完全透明的。 语法1lvextend(选项)(参数)  选项12-L：指定逻辑卷的大小，单位为“kKmMgGtT”字节；-l：指定逻辑卷的大小（LE数）。  参数逻辑卷：指定要扩展空间的逻辑卷。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvremove">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
-          Linux命令-lvremove
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
-        <div>
-          lvremove删除指定LVM逻辑卷 补充说明lvremove命令 用于删除指定LVM逻辑卷。如果逻辑卷已经使用mount命令加载，则不能使用lvremove命令删除。必须使用umount命令卸载后，逻辑卷方可被删除。 语法1lvremove(选项)(参数)  选项1-f：强制删除。  参数逻辑卷：指定要删除的逻辑卷。 实例使用lvremove命令删除指定的逻辑卷。在命令行中输入下面的命令： 1[
+          lvcreate用于创建LVM的逻辑卷 补充说明lvcreate命令 用于创建LVM的逻辑卷。逻辑卷是创建在卷组之上的。逻辑卷对应的设备文件保存在卷组目录下，例如：在卷组”vg1000”上创建一个逻辑卷”lvol0”，则此逻辑卷对应的设备文件为”&#x2F;dev&#x2F;vg1000&#x2F;lvol0”。 语法1lvcreate(选项)(参数)  选项12-L：指定逻辑卷的大小，单位为“k
         </div>
       </a>
 
@@ -439,6 +372,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvremove">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+          Linux命令-lvremove
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+        <div>
+          lvremove删除指定LVM逻辑卷 补充说明lvremove命令 用于删除指定LVM逻辑卷。如果逻辑卷已经使用mount命令加载，则不能使用lvremove命令删除。必须使用umount命令卸载后，逻辑卷方可被删除。 语法1lvremove(选项)(参数)  选项1-f：强制删除。  参数逻辑卷：指定要删除的逻辑卷。 实例使用lvremove命令删除指定的逻辑卷。在命令行中输入下面的命令： 1[
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvresize/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvresize">
         </a>
@@ -506,23 +506,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvscan">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lynx">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
-          Linux命令-lvscan
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
+          Linux命令-lynx
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
         <div>
-          lvscan扫描逻辑卷 补充说明lvscan命令 用于扫描当前系统中存在的所有的LVM逻辑卷。使用lvscan指令可以发现系统中的所有逻辑卷，及其对应的设备文件。 语法1lvscan(选项)  选项1-b：显示逻辑卷的主设备和次设备号。  实例使用lvscan命令扫描系统中的所有逻辑卷。在命令行中输入下面的命令： 1[root@localhost ~]# lvscan     #扫描所有的逻辑卷
+          lynx纯文本模式的网页浏览器 补充说明lynx命令 是纯文本模式的网页浏览器，不支持图形、音视频等多媒体信息。 语法1lynx(选项)(参数)  选项12345678-case：在搜索字符串时，区分大小写；-ftp：关闭ftp功能；-nobrowse：关闭目录浏览功能；-noclor：关闭色彩显示模式；-reload：更新代理服务器的缓存，只对首页有效；--color：如果系统支持彩色模式，则激
         </div>
       </a>
 
@@ -573,23 +573,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lynx">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvscan">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
-          Linux命令-lynx
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
+          Linux命令-lvscan
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lynx/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvscan/" target="_self">
         <div>
-          lynx纯文本模式的网页浏览器 补充说明lynx命令 是纯文本模式的网页浏览器，不支持图形、音视频等多媒体信息。 语法1lynx(选项)(参数)  选项12345678-case：在搜索字符串时，区分大小写；-ftp：关闭ftp功能；-nobrowse：关闭目录浏览功能；-noclor：关闭色彩显示模式；-reload：更新代理服务器的缓存，只对首页有效；--color：如果系统支持彩色模式，则激
+          lvscan扫描逻辑卷 补充说明lvscan命令 用于扫描当前系统中存在的所有的LVM逻辑卷。使用lvscan指令可以发现系统中的所有逻辑卷，及其对应的设备文件。 语法1lvscan(选项)  选项1-b：显示逻辑卷的主设备和次设备号。  实例使用lvscan命令扫描系统中的所有逻辑卷。在命令行中输入下面的命令： 1[root@localhost ~]# lvscan     #扫描所有的逻辑卷
         </div>
       </a>
 
@@ -841,6 +841,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logger">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
+          Linux命令-logger
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
+        <div>
+          logger在系统日志中记录相应条目 补充说明logger命令 是用于往系统中写入日志，他提供一个shell命令接口到syslog系统模块 语法1logger [options] [message]  选项1234567891011121314-T, --tcp             使用流连接(TCP)-d, --udp             使用数据报(UDP)-i, --id
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-login/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-login">
         </a>
@@ -975,23 +1042,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logger">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logout">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
-          Linux命令-logger
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
+          Linux命令-logout
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logger/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
         <div>
-          logger在系统日志中记录相应条目 补充说明logger命令 是用于往系统中写入日志，他提供一个shell命令接口到syslog系统模块 语法1logger [options] [message]  选项1234567891011121314-T, --tcp             使用流连接(TCP)-d, --udp             使用数据报(UDP)-i, --id
+          logout退出当前登录的Shell 补充说明logout命令 用于退出当前登录的Shell，logout指令让用户退出系统，其功能和login指令相互对应。 语法1logout
         </div>
       </a>
 
@@ -1059,73 +1126,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
         <div>
           logrotate系统日志进行轮转、压缩和删除 补充说明logrotate命令 用于对系统日志进行轮转、压缩和删除，也可以将日志发送到指定邮箱。使用logrotate指令，可让你轻松管理系统所产生的记录文件。每个记录文件都可被设置成每日，每周或每月处理，也能在文件太大时立即处理。您必须自行编辑，指定配置文件，预设的配置文件存放在/etc/logrotate.conf文件中。 语法1logrotat
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logout">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
-          Linux命令-logout
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logout/" target="_self">
-        <div>
-          logout退出当前登录的Shell 补充说明logout命令 用于退出当前登录的Shell，logout指令让用户退出系统，其功能和login指令相互对应。 语法1logout
         </div>
       </a>
 
