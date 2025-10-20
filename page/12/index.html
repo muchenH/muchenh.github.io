@@ -238,23 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-passwd">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-partprobe">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
-          Linux命令-passwd
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+          Linux命令-partprobe
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
         <div>
-          passwd用于让用户可以更改自己的密码 补充说明passwd命令 用于设置用户的认证信息，包括用户密码、密码过期时间等。系统管理者则能用它管理系统用户的密码。只有管理者可以指定用户名称，一般用户只能变更自己的密码。 语法1passwd(选项)(参数)  选项123456-d：删除密码，仅有系统管理者才能使用；-f：强制执行；-k：设置只有在密码过期失效后，方能更新；-l：锁住密码；-s：列出密码
+          partprobe不重启的情况下重读分区 补充说明partprobe命令 用于重读分区表，当出现删除文件后，出现仍然占用空间。可以partprobe在不重启的情况下重读分区。 语法1partprobe(选项)(参数)  选项1234-d：不更新内核；-s：显示摘要和分区；-h：显示帮助信息；-v：显示版本信息。  参数设备：指定需要确认分区表改变的硬盘对应的设备文件。 实例使用partprobe不
         </div>
       </a>
 
@@ -305,23 +305,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-partprobe">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-passwd">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
-          Linux命令-partprobe
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
+          Linux命令-passwd
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
         <div>
-          partprobe不重启的情况下重读分区 补充说明partprobe命令 用于重读分区表，当出现删除文件后，出现仍然占用空间。可以partprobe在不重启的情况下重读分区。 语法1partprobe(选项)(参数)  选项1234-d：不更新内核；-s：显示摘要和分区；-h：显示帮助信息；-v：显示版本信息。  参数设备：指定需要确认分区表改变的硬盘对应的设备文件。 实例使用partprobe不
+          passwd用于让用户可以更改自己的密码 补充说明passwd命令 用于设置用户的认证信息，包括用户密码、密码过期时间等。系统管理者则能用它管理系统用户的密码。只有管理者可以指定用户名称，一般用户只能变更自己的密码。 语法1passwd(选项)(参数)  选项123456-d：删除密码，仅有系统管理者才能使用；-f：强制执行；-k：设置只有在密码过期失效后，方能更新；-l：锁住密码；-s：列出密码
         </div>
       </a>
 
@@ -640,6 +640,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pfctl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
+          Linux命令-pfctl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
+        <div>
+          pfctlPF防火墙的配置命令 补充说明pfctl命令 是PF防火墙的配置命令，PF防火墙( 全称：Packet Filter )是UNIX LIKE系统上进行TCP&#x2F;ip流量过滤和网络地址转换的软件系统。PF同样也能提供TCP&#x2F;IP流量的整形和控制，并且提供带宽控制和数据包优先集控制。PF最早是由Daniel Hartmeier开发的，现在的开发和维护由Daniel和open
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pgrep/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pgrep">
         </a>
@@ -657,6 +724,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pgrep/" target="_self">
         <div>
           pgrep根据用户给出的信息在当前运行进程中查找并列出符合条件的进程ID（PID） 补充说明pgrep命令 以名称为依据从运行进程队列中查找进程，并显示查找到的进程id。每一个进程ID以一个十进制数表示，通过一个分割字符串和下一个ID分开，默认的分割字符串是一个新行。对于每个属性选项，用户可以在命令行上指定一个以逗号分割的可能值的集合。 语法1pgrep(选项)(参数)  选项1234567891
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-php">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
+          Linux命令-php
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
+        <div>
+          phpPHP语言的命令行接口 补充说明php命令 是流行的Web开发语言PHP的命令行接口，可以使用PHP语言开发基于命令行的系统管理脚本程序。 语法1php(选项)(参数)  选项12-a：进入交互模式；-c：指定“php.ini”的搜索路径。  参数文件：要执行的php脚本。
         </div>
       </a>
 
@@ -1042,23 +1176,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pfctl">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-ping6">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
-          Linux命令-pfctl
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
+          Linux命令-ping6
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pfctl/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
         <div>
-          pfctlPF防火墙的配置命令 补充说明pfctl命令 是PF防火墙的配置命令，PF防火墙( 全称：Packet Filter )是UNIX LIKE系统上进行TCP&#x2F;ip流量过滤和网络地址转换的软件系统。PF同样也能提供TCP&#x2F;IP流量的整形和控制，并且提供带宽控制和数据包优先集控制。PF最早是由Daniel Hartmeier开发的，现在的开发和维护由Daniel和open
+          ping6测试主机之间网络的连通性(ipv6) 补充说明ping6命令 ping6 是 ICMPv6 版的 ping 实现。正确使用、访问 IPv6 网站需要您提前配置本地环境，选择支持 v6 的网站进行访问(ping)。执行 ping6 指令会使用 ICMPv6 传输(OSI)协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。 语法1ping6 (选
         </div>
       </a>
 
@@ -1260,140 +1394,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-popd/" target="_self">
         <div>
           popd从目录堆栈中删除目录。 概要1popd [-n] [+N | -N]  主要用途 从目录堆栈中删除目录，如果是顶部目录被删除，那么当前工作目录会切换到新的顶部目录。  没有参数时，删除目录堆栈顶部。   选项1-n    抑制删除目录引起的当前工作目录变化。  参数+N（可选）：不带参数执行dirs命令显示的列表中，左起的第N个目录将被删除。（从0开始计数） -N（可选）：不带参数执行di
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-php">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
-          Linux命令-php
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-php/" target="_self">
-        <div>
-          phpPHP语言的命令行接口 补充说明php命令 是流行的Web开发语言PHP的命令行接口，可以使用PHP语言开发基于命令行的系统管理脚本程序。 语法1php(选项)(参数)  选项12-a：进入交互模式；-c：指定“php.ini”的搜索路径。  参数文件：要执行的php脚本。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-ping6">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-          Linux命令-ping6
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-        <div>
-          ping6测试主机之间网络的连通性(ipv6) 补充说明ping6命令 ping6 是 ICMPv6 版的 ping 实现。正确使用、访问 IPv6 网站需要您提前配置本地环境，选择支持 v6 的网站进行访问(ping)。执行 ping6 指令会使用 ICMPv6 传输(OSI)协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。 语法1ping6 (选
         </div>
       </a>
 
