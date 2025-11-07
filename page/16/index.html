@@ -305,23 +305,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvreduce">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvremove">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
-          Linux命令-lvreduce
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+          Linux命令-lvremove
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
         <div>
-          lvreduce收缩逻辑卷空间 补充说明lvreduce命令 用于减少LVM逻辑卷占用的空间大小。使用lvreduce命令收缩逻辑卷的空间大小有可能会删除逻辑卷上已有的数据，所以在操作前必须进行确认。 语法1lvreduce(选项)(参数)  选项12-L：指定逻辑卷的大小，单位为“kKmMgGtT”字节；-l：指定逻辑卷的大小（LE数）。  参数逻辑卷：指定要操作的逻辑卷对应的设备文件。 实例使
+          lvremove删除指定LVM逻辑卷 补充说明lvremove命令 用于删除指定LVM逻辑卷。如果逻辑卷已经使用mount命令加载，则不能使用lvremove命令删除。必须使用umount命令卸载后，逻辑卷方可被删除。 语法1lvremove(选项)(参数)  选项1-f：强制删除。  参数逻辑卷：指定要删除的逻辑卷。 实例使用lvremove命令删除指定的逻辑卷。在命令行中输入下面的命令： 1[
         </div>
       </a>
 
@@ -372,23 +372,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvremove">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lvreduce">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
-          Linux命令-lvremove
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
+          Linux命令-lvreduce
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvremove/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lvreduce/" target="_self">
         <div>
-          lvremove删除指定LVM逻辑卷 补充说明lvremove命令 用于删除指定LVM逻辑卷。如果逻辑卷已经使用mount命令加载，则不能使用lvremove命令删除。必须使用umount命令卸载后，逻辑卷方可被删除。 语法1lvremove(选项)(参数)  选项1-f：强制删除。  参数逻辑卷：指定要删除的逻辑卷。 实例使用lvremove命令删除指定的逻辑卷。在命令行中输入下面的命令： 1[
+          lvreduce收缩逻辑卷空间 补充说明lvreduce命令 用于减少LVM逻辑卷占用的空间大小。使用lvreduce命令收缩逻辑卷的空间大小有可能会删除逻辑卷上已有的数据，所以在操作前必须进行确认。 语法1lvreduce(选项)(参数)  选项12-L：指定逻辑卷的大小，单位为“kKmMgGtT”字节；-l：指定逻辑卷的大小（LE数）。  参数逻辑卷：指定要操作的逻辑卷对应的设备文件。 实例使
         </div>
       </a>
 
@@ -1109,73 +1109,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logrotate">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
-          Linux命令-logrotate
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
-        <div>
-          logrotate系统日志进行轮转、压缩和删除 补充说明logrotate命令 用于对系统日志进行轮转、压缩和删除，也可以将日志发送到指定邮箱。使用logrotate指令，可让你轻松管理系统所产生的记录文件。每个记录文件都可被设置成每日，每周或每月处理，也能在文件太大时立即处理。您必须自行编辑，指定配置文件，预设的配置文件存放在/etc/logrotate.conf文件中。 语法1logrotat
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logsave/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logsave">
         </a>
@@ -1310,6 +1243,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-logrotate">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
+          Linux命令-logrotate
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-logrotate/" target="_self">
+        <div>
+          logrotate系统日志进行轮转、压缩和删除 补充说明logrotate命令 用于对系统日志进行轮转、压缩和删除，也可以将日志发送到指定邮箱。使用logrotate指令，可让你轻松管理系统所产生的记录文件。每个记录文件都可被设置成每日，每周或每月处理，也能在文件太大时立即处理。您必须自行编辑，指定配置文件，预设的配置文件存放在/etc/logrotate.conf文件中。 语法1logrotat
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-look/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-look">
         </a>
@@ -1327,6 +1327,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-look/" target="_self">
         <div>
           look显示文件中以指定字符串开头的任意行 补充说明look命令 用于显示文件中以指定字符串开头的任意行。 语法1look(选项)(参数)  选项1234-a：使用另一个字典文件web2，该文件也位于/usr/dict目录下；-d：只对比英文字母和数字，其余一概忽略不予比对；-f：忽略字符大小写差别；-t&lt;字尾字符串&gt;：设置字尾字符串。  参数 字符串：指定要查找的字符串； 文件：指定
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-losetup/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-losetup">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-losetup/" target="_self">
+          Linux命令-losetup
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-losetup/" target="_self">
+        <div>
+          losetup设定与控制循环（loop）设备 补充说明losetup命令 用来设置循环设备。循环设备可把文件虚拟成块设备，籍此来模拟整个文件系统，让用户得以将其视为硬盘驱动器，光驱或软驱等设备，并挂入当作目录来使用。 语法12losetup [ -e encryption ] [ -o offset ] loop_device filelosetup [ -d ] loop_device  选项1
         </div>
       </a>
 
@@ -1461,73 +1528,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lpadmin/" target="_self">
         <div>
           lpadmin配置CUPS套件中的打印机和类 补充说明lpadmin命令 用于配置CUPS套件中的打印机和类，也被用来设置打印服务器默认打印机。 语法1lpadmin(选项)(参数)  选项123456789101112-c：将打印机加入类；-i：为打印机设置“system V”风格的接口脚本；-m：从mode目录设置一个标准的“system V”接口脚本或“PPD”文件；-o：为“PPD”或服务
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lpc/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-lpc">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lpc/" target="_self">
-          Linux命令-lpc
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lpc/" target="_self">
-        <div>
-          lpc命令行方式打印机控制程序 补充说明lpc命令 式命令行方式打印机控制程序，有5个内置命令。 语法1lpc  实例123456[root@localhost ~]# lpclpc&gt; ?         命令可能是缩写。命令是：exit    help    quit    status  ?lpc&gt; exit
         </div>
       </a>
 
