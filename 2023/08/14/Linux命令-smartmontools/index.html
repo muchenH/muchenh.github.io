@@ -313,7 +313,7 @@
 <p>下一步，编辑smartd的配置文件（&#x2F;etc&#x2F;smartd.conf），添加以下行内容。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/dev/sda -m myemail@mydomain.com -M test<br></code></pre></td></tr></table></figure>
 
-<p>选项说明 <br>-m ：指定发送测试报告到某个电子邮件地址。这里可以是系统用户比如root，或者如果服务器已经配置成发送电子邮件到系统外部，则是类似于 <a href="mailto:&#x6d;&#121;&#x65;&#x6d;&#x61;&#105;&#108;&#x40;&#109;&#121;&#100;&#x6f;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#111;&#x6d;">&#x6d;&#121;&#x65;&#x6d;&#x61;&#105;&#108;&#x40;&#109;&#121;&#100;&#x6f;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#111;&#x6d;</a> 的邮件地址。<br>-M ：指定发送邮件报告的期望类型。<br>once：为检测到的每种磁盘问题只发送一封警告邮件。<br>daily：为检测到的每种磁盘问题每隔一天发送一封额外的警告提醒邮件。<br>diminishing：为检测到的每种问题发送一封额外的警告提醒邮件，开始是每隔一天，然后每隔两天，每隔四天，以此类推。每个间隔是前一次间隔的2倍。<br>test：只要smartd一启动，立即发送一封测试邮件。<br>exec PATH：取代默认的邮件命令，运行PATH路径下的可执行文件。PATH必须指向一个可执行的二进制文件或脚本。当检测到一个问题时，可以指定执行一个期望的动作（闪烁控制台、关闭系统等等）。</p>
+<p>选项说明 <br>-m ：指定发送测试报告到某个电子邮件地址。这里可以是系统用户比如root，或者如果服务器已经配置成发送电子邮件到系统外部，则是类似于 <a href="mailto:&#109;&#121;&#x65;&#109;&#97;&#x69;&#x6c;&#64;&#x6d;&#121;&#100;&#x6f;&#x6d;&#x61;&#x69;&#110;&#x2e;&#99;&#111;&#x6d;">&#109;&#121;&#x65;&#109;&#97;&#x69;&#x6c;&#64;&#x6d;&#121;&#100;&#x6f;&#x6d;&#x61;&#x69;&#110;&#x2e;&#99;&#111;&#x6d;</a> 的邮件地址。<br>-M ：指定发送邮件报告的期望类型。<br>once：为检测到的每种磁盘问题只发送一封警告邮件。<br>daily：为检测到的每种磁盘问题每隔一天发送一封额外的警告提醒邮件。<br>diminishing：为检测到的每种问题发送一封额外的警告提醒邮件，开始是每隔一天，然后每隔两天，每隔四天，以此类推。每个间隔是前一次间隔的2倍。<br>test：只要smartd一启动，立即发送一封测试邮件。<br>exec PATH：取代默认的邮件命令，运行PATH路径下的可执行文件。PATH必须指向一个可执行的二进制文件或脚本。当检测到一个问题时，可以指定执行一个期望的动作（闪烁控制台、关闭系统等等）。</p>
 <p>保存改动并重启smartd。</p>
 
                 
@@ -405,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-skill/" title="Linux命令-skill">
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-slocate/" title="Linux命令-slocate">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux命令-skill</span>
+                        <span class="hidden-mobile">Linux命令-slocate</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -415,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-rsh/" title="Linux命令-rsh">
-                        <span class="hidden-mobile">Linux命令-rsh</span>
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-smbclient/" title="Linux命令-smbclient">
+                        <span class="hidden-mobile">Linux命令-smbclient</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
