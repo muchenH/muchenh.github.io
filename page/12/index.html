@@ -238,23 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvcreate/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pvcreate">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvremove/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pvremove">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvcreate/" target="_self">
-          Linux命令-pvcreate
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvremove/" target="_self">
+          Linux命令-pvremove
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvcreate/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvremove/" target="_self">
         <div>
-          pvcreate将物理硬盘分区初始化为物理卷 补充说明pvcreate命令 用于将物理硬盘分区初始化为物理卷，以便LVM使用。 语法1pvcreate(选项)(参数)  选项1234-f：强制创建物理卷，不需要用户确认；-u：指定设备的UUID；-y：所有的问题都回答“yes”；-Z：是否利用前4个扇区。  参数物理卷：指定要创建的物理卷对应的设备文件名。 实例查看磁盘信息： 1234567891
+          pvremove删除一个存在的物理卷 补充说明pvremove命令 用于删除一个存在的物理卷。使用pvremove指令删除物理卷时，它将LVM分区上的物理卷信息删除，使其不再被视为一个物理卷。 语法1pvremove(选项)(参数)  选项123-d # 调试模式；-f # 强制删除；-y # 对提问回答“yes”。  参数物理卷：指定要删除的物理卷对应的设备文件名。 实例使用pvremove指令
         </div>
       </a>
 
@@ -372,23 +372,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-partprobe">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvdisplay/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pvdisplay">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
-          Linux命令-partprobe
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvdisplay/" target="_self">
+          Linux命令-pvdisplay
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pvdisplay/" target="_self">
         <div>
-          partprobe不重启的情况下重读分区 补充说明partprobe命令 用于重读分区表，当出现删除文件后，出现仍然占用空间。可以partprobe在不重启的情况下重读分区。 语法1partprobe(选项)(参数)  选项1234-d：不更新内核；-s：显示摘要和分区；-h：显示帮助信息；-v：显示版本信息。  参数设备：指定需要确认分区表改变的硬盘对应的设备文件。 实例使用partprobe不
+          pvdisplay显示物理卷的属性 补充说明pvdisplay命令 用于显示物理卷的属性。pvdisplay命令显示的物理卷信息包括：物理卷名称、所属的卷组、物理卷大小、PE大小、总PE数、可用PE数、已分配的PE数和UUID。 语法1pvdisplay(选项)(参数)  选项12-s：以短格式输出；-m：显示PE到LE的映射。  参数物理卷：要显示的物理卷对应的设备文件名。 实例使用pvdisp
         </div>
       </a>
 
@@ -456,6 +456,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-passwd/" target="_self">
         <div>
           passwd用于让用户可以更改自己的密码 补充说明passwd命令 用于设置用户的认证信息，包括用户密码、密码过期时间等。系统管理者则能用它管理系统用户的密码。只有管理者可以指定用户名称，一般用户只能变更自己的密码。 语法1passwd(选项)(参数)  选项123456-d：删除密码，仅有系统管理者才能使用；-f：强制执行；-k：设置只有在密码过期失效后，方能更新；-l：锁住密码；-s：列出密码
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-partprobe">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+          Linux命令-partprobe
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-partprobe/" target="_self">
+        <div>
+          partprobe不重启的情况下重读分区 补充说明partprobe命令 用于重读分区表，当出现删除文件后，出现仍然占用空间。可以partprobe在不重启的情况下重读分区。 语法1partprobe(选项)(参数)  选项1234-d：不更新内核；-s：显示摘要和分区；-h：显示帮助信息；-v：显示版本信息。  参数设备：指定需要确认分区表改变的硬盘对应的设备文件。 实例使用partprobe不
         </div>
       </a>
 
@@ -1109,73 +1176,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pidstat">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
-          Linux命令-pidstat
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
-        <div>
-          pidstat监控进程的系统资源占用情况 说明pidstat是sysstat工具的一个命令，用于监控全部或指定进程的cpu、内存、线程、设备IO等系统资源的占用情况。pidstat首次运行时显示自系统启动开始的各项统计信息，之后运行pidstat将显示自上次运行该命令以后的统计信息。用户可以通过指定统计的次数和时间来获得所需的统计信息。 语法1pidstat [ 选项 ] [ &lt;时间间隔&g
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pigz/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pigz">
         </a>
@@ -1243,90 +1243,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-ping">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-pidstat">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
-          Linux命令-ping
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
+          Linux命令-pidstat
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pidstat/" target="_self">
         <div>
-          ping测试主机之间网络的连通性(ipv4) 补充说明ping命令 用来测试主机之间网络的连通性。执行ping指令会使用ICMP传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。 语法1ping (选项) (参数)  选项123456789101112131415-d：使用Socket的SO_DEBUG功能；-c&lt;完成次数&gt;：设置完成要
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-ping6">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-          Linux命令-ping6
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping6/" target="_self">
-        <div>
-          ping6测试主机之间网络的连通性(ipv6) 补充说明ping6命令 ping6 是 ICMPv6 版的 ping 实现。正确使用、访问 IPv6 网站需要您提前配置本地环境，选择支持 v6 的网站进行访问(ping)。执行 ping6 指令会使用 ICMPv6 传输(OSI)协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。 语法1ping6 (选
+          pidstat监控进程的系统资源占用情况 说明pidstat是sysstat工具的一个命令，用于监控全部或指定进程的cpu、内存、线程、设备IO等系统资源的占用情况。pidstat首次运行时显示自系统启动开始的各项统计信息，之后运行pidstat将显示自上次运行该命令以后的统计信息。用户可以通过指定统计的次数和时间来获得所需的统计信息。 语法1pidstat [ 选项 ] [ &lt;时间间隔&g
         </div>
       </a>
 
@@ -1394,6 +1327,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-pkill/" target="_self">
         <div>
           pkill可以按照进程名杀死进程 补充说明pkill命令 可以按照进程名杀死进程。pkill和killall应用方法差不多，也是直接杀死运行中的程序；如果您想杀掉单个进程，请用kill来杀掉。 语法1pkill(选项)(参数)  选项12345-o：仅向找到的最小（起始）进程号发送信号；-n：仅向找到的最大（结束）进程号发送信号；-P：指定父进程号发送信号；-g：指定进程组；-t：指定开启进程的终
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-ping">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
+          Linux命令-ping
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ping/" target="_self">
+        <div>
+          ping测试主机之间网络的连通性(ipv4) 补充说明ping命令 用来测试主机之间网络的连通性。执行ping指令会使用ICMP传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。 语法1ping (选项) (参数)  选项123456789101112131415-d：使用Socket的SO_DEBUG功能；-c&lt;完成次数&gt;：设置完成要
         </div>
       </a>
 
