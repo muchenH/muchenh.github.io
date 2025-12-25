@@ -238,23 +238,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcmp/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-bzcmp">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcat/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-bzcat">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcmp/" target="_self">
-          Linux命令-bzcmp
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcat/" target="_self">
+          Linux命令-bzcat
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcmp/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzcat/" target="_self">
         <div>
-          bzcmp比较两个压缩包中的文件 补充说明bzcmp命令 主要功能是在不真正解压缩.bz2压缩包的情况下，比较两个压缩包中的文件，省去了解压缩后在调用cmp命令的过程。 语法1bzcmp(参数)  参数 文件1：指定要比较的第一个.bz2压缩包； 文件2：指定要比较的第二个.bz2压缩包。
+          bzcat不解压，直接查看指定的.bz2文件 补充说明bzcat命令 无需解压缩指定的.bz2文件，即可显示解压缩后的文件内容。 语法1bzcat(参数)  参数.bz2压缩文件：指定要显示内容的.bz2压缩文件。 实例将/tmp/man.config以bzip2格式压缩： 1bzip2 -z man.config  此时man.config会变成man.config.bz2 将上面的压缩文件内容
         </div>
       </a>
 
@@ -305,23 +305,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzgrep/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-bzgrep">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzdiff/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-bzdiff">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzgrep/" target="_self">
-          Linux命令-bzgrep
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzdiff/" target="_self">
+          Linux命令-bzdiff
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzgrep/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzdiff/" target="_self">
         <div>
-          bzgrep使用正则表达式搜索.bz2压缩包中文件 补充说明bzgrep命令 使用正则表达式搜索“.bz2”压缩包中文件，将匹配的行显示到标注输出。 语法1bzgrep(参数)  参数 搜索模式：指定要搜索的模式； .bz2文件：指定要搜索的.bz2压缩包。
+          bzdiff直接比较两个.bz2压缩包中文件的不同 补充说明bzdiff命令 用于直接比较两个“.bz2”压缩包中文件的不同，省去了解压缩后再调用diff命令的过程。 语法1bzdiff(参数)  参数 文件1：指定要比较的第一个.bz2压缩包； 文件2：指定要比较的第二个.bz2压缩包。
         </div>
       </a>
 
@@ -389,6 +389,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-bzip2/" target="_self">
         <div>
           bzip2将文件压缩成bz2格式 补充说明bzip2命令 用于创建和管理（包括解压缩）“.bz2”格式的压缩包。 bzip2 采用 Burrows-Wheeler 块排序文本压缩算法和 Huffman 编码方式压缩文件。 压缩率一般比基于 LZ77&#x2F;LZ78 的压缩软件好得多，其性能接近 PPM 族统计类压缩软件。 命令行参数有意设计为非常接近 GNU gzip 的形式，但也不完全相同。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-apt-key">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
+          Linux命令-apt-key
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
+        <div>
+          apt-key管理Debian Linux系统中的软件包密钥 补充说明apt-key命令 用于管理Debian Linux系统中的软件包密钥。每个发布的deb包，都是通过密钥认证的，apt-key用来管理密钥。 语法1apt-key(参数)  参数操作指令：APT密钥操作指令。 实例1234apt-key list          # 列出已保存在系统中key。apt-key add keyna
         </div>
       </a>
 
@@ -573,140 +640,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-apt-key">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
-          Linux命令-apt-key
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-apt-key/" target="_self">
-        <div>
-          apt-key管理Debian Linux系统中的软件包密钥 补充说明apt-key命令 用于管理Debian Linux系统中的软件包密钥。每个发布的deb包，都是通过密钥认证的，apt-key用来管理密钥。 语法1apt-key(参数)  参数操作指令：APT密钥操作指令。 实例1234apt-key list          # 列出已保存在系统中key。apt-key add keyna
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arpd">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
-          Linux命令-arpd
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
-        <div>
-          arpd收集免费ARP信息 补充说明arpd命令 是用来收集免费arp信息的一个守护进程，它将收集到的信息保存在磁盘上或者在需要时，提供给内核用户用于避免多余广播。 语法1arpd(选项)(参数)  选项123456-l：将arp数据库输出到标准输出设备显示并退出；-f：指定读取和加载arpd数据库的文本文件，文件的格式与“-l”输出信息类似；-b：指定arpd数据库文件，默认的位置为“/var/
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arch/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arch">
         </a>
@@ -724,6 +657,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arch/" target="_self">
         <div>
           arch显示当前主机的硬件架构类型 概要1arch [OPTION]...  主要用途 打印机器架构信息；arch 命令输出结果有：i386、i486、i586、alpha、sparc、arm、m68k、mips、ppc、i686等。  选项12--help       显示帮助信息并退出。--version    显示版本信息并退出。  例子12[root@localhost ~]# archx
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arp">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
+          Linux命令-arp
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
+        <div>
+          arparp 命令用于显示和修改 IP 到 MAC 转换表 补充说明arp 命令 是 Address Resolution Protocol，地址解析协议，是通过解析网络层地址来找寻数据链路层地址的一个网络协议包中极其重要的网络传输协议。而该命令可以显示和修改 arp 协议解析表中的缓冲数据。 这个核心协议模块实现RFC826中定义的 Address Resolution Protocol [译注
         </div>
       </a>
 
@@ -908,23 +908,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arp">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arpd">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
-          Linux命令-arp
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
+          Linux命令-arpd
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arp/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpd/" target="_self">
         <div>
-          arparp 命令用于显示和修改 IP 到 MAC 转换表 补充说明arp 命令 是 Address Resolution Protocol，地址解析协议，是通过解析网络层地址来找寻数据链路层地址的一个网络协议包中极其重要的网络传输协议。而该命令可以显示和修改 arp 协议解析表中的缓冲数据。 这个核心协议模块实现RFC826中定义的 Address Resolution Protocol [译注
+          arpd收集免费ARP信息 补充说明arpd命令 是用来收集免费arp信息的一个守护进程，它将收集到的信息保存在磁盘上或者在需要时，提供给内核用户用于避免多余广播。 语法1arpd(选项)(参数)  选项123456-l：将arp数据库输出到标准输出设备显示并退出；-f：指定读取和加载arpd数据库的文本文件，文件的格式与“-l”输出信息类似；-b：指定arpd数据库文件，默认的位置为“/var/
         </div>
       </a>
 
@@ -1042,140 +1042,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arpwatch">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
-          Linux命令-arpwatch
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
-        <div>
-          arpwatch监听网络上ARP的记录 补充说明arpwatch命令 用来监听网络上arp的记录。 语法1arpwatch(选项)  选项1234-d：启动排错模式；-f&lt;记录文件&gt;：设置存储ARP记录的文件，预设为/var/arpwatch/arp.dat；-i&lt;接口&gt;：指定监听ARP的接口，预设的接口为eth0；-r&lt;记录文件&gt;：从指定的文件中读取ARP记录
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-as">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
-          Linux命令-as
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
-        <div>
-          as汇编语言编译器 补充说明as命令 GNU组织推出的一款汇编语言编译器，它支持多种不同类型的处理器。 语法1as(选项)(参数)  选项123456789101112131415-ac：忽略失败条件；-ad：忽略调试指令；-ah：包括高级源；-al：包括装配；-am：包括宏扩展；-an：忽略形式处理；-as：包括符号；=file：设置列出文件的名字；--alternate：以交互宏模式开始；-f
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-at/" target="_self">
           <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-at">
         </a>
@@ -1193,73 +1059,6 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-at/" target="_self">
         <div>
           at在指定时间执行一个任务 补充说明at命令 用于在指定时间执行命令。at允许使用一套相当复杂的指定时间的方法。它能够接受在当天的hh:mm（小时:分钟）式的时间指定。假如该时间已过去，那么就放在第二天执行。当然也能够使用midnight（深夜），noon（中午），teatime（饮茶时间，一般是下午4点）等比较模糊的 词语来指定时间。用户还能够采用12小时计时制，即在时间后面加上AM（上午）或P
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-14 17:52" pubdate>
-              2023-08-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-atq">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
-          Linux命令-atq
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
-        <div>
-          atq列出当前用户的at任务列表 补充说明atq命令 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。 语法1atq [-V] [-q 队列] [-v]  选项12-V：显示版本号；-q：查询指定队列的任务。  实例1234567at now + 10 minutesat&gt; echo 1111at&gt; &lt;eot&gt;job 3 at Fri Apr 26 12:56
         </div>
       </a>
 
@@ -1377,23 +1176,157 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
-          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-atrm">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-arpwatch">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
-          Linux命令-atrm
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
+          Linux命令-arpwatch
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-arpwatch/" target="_self">
         <div>
-          atrm删除待执行任务队列中的指定任务 补充说明atrm命令 用于删除待执行任务队列中的指定任务。 语法1atrm(选项)(参数)  选项1-V：显示版本号。  参数任务号：指定待执行队列中要删除的任务。 实例删除已经排队的任务 12345atq        # 显示当前已经设置的任务2 Mon May 17 08:00:00 2010 a root1 Sat May 15 17:00:00 2
+          arpwatch监听网络上ARP的记录 补充说明arpwatch命令 用来监听网络上arp的记录。 语法1arpwatch(选项)  选项1234-d：启动排错模式；-f&lt;记录文件&gt;：设置存储ARP记录的文件，预设为/var/arpwatch/arp.dat；-i&lt;接口&gt;：指定监听ARP的接口，预设的接口为eth0；-r&lt;记录文件&gt;：从指定的文件中读取ARP记录
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-atq">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
+          Linux命令-atq
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atq/" target="_self">
+        <div>
+          atq列出当前用户的at任务列表 补充说明atq命令 显示系统中待执行的任务列表，也就是列出当前用户的at任务列表。 语法1atq [-V] [-q 队列] [-v]  选项12-V：显示版本号；-q：查询指定队列的任务。  实例1234567at now + 10 minutesat&gt; echo 1111at&gt; &lt;eot&gt;job 3 at Fri Apr 26 12:56
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-as">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
+          Linux命令-as
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-as/" target="_self">
+        <div>
+          as汇编语言编译器 补充说明as命令 GNU组织推出的一款汇编语言编译器，它支持多种不同类型的处理器。 语法1as(选项)(参数)  选项123456789101112131415-ac：忽略失败条件；-ad：忽略调试指令；-ah：包括高级源；-al：包括装配；-am：包括宏扩展；-an：忽略形式处理；-as：包括符号；=file：设置列出文件的名字；--alternate：以交互宏模式开始；-f
         </div>
       </a>
 
@@ -1461,6 +1394,73 @@
       <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-axel/" target="_self">
         <div>
           axel多线程下载工具 补充说明axel 是Linux下一个不错的HTTP&#x2F;ftp高速下载工具。支持多线程下载、断点续传，且可以从多个地址或者从一个地址的多个连接来下载同一个文件。适合网速不给力时多线程下载提高下载速度。比如在国内VPS或服务器上下载lnmp一键安装包用Axel就比wget快。 安装CentOS安装Axel： 目前yum源上没有Axel，我们可以到 http://pkgs
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-14 17:52" pubdate>
+              2023-08-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
+          <img src="/img/default.png" srcset="/img/loading.gif" lazyload alt="Linux命令-atrm">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
+          Linux命令-atrm
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-atrm/" target="_self">
+        <div>
+          atrm删除待执行任务队列中的指定任务 补充说明atrm命令 用于删除待执行任务队列中的指定任务。 语法1atrm(选项)(参数)  选项1-V：显示版本号。  参数任务号：指定待执行队列中要删除的任务。 实例删除已经排队的任务 12345atq        # 显示当前已经设置的任务2 Mon May 17 08:00:00 2010 a root1 Sat May 15 17:00:00 2
         </div>
       </a>
 
