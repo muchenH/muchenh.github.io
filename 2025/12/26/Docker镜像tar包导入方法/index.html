@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
 <meta property="article:published_time" content="2025-12-26T14:09:45.000Z">
-<meta property="article:modified_time" content="2025-12-27T03:48:53.591Z">
+<meta property="article:modified_time" content="2025-12-27T03:51:16.634Z">
 <meta property="article:author" content="muchenH">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -349,12 +349,12 @@
 
 <p>更完善的版本可参考带日志和错误处理的脚本。</p>
 <hr>
-<h2 id="五、与-docker-import-的区别"><a href="#五、与-docker-import-的区别" class="headerlink" title="五、与 docker import 的区别"></a>五、与 <code>docker import</code> 的区别</h2><p>需要注意的是，<code>docker load</code> 用于加载由 <code>docker save</code> 生成的镜像归档（保留完整历史和标签），而 <code>docker import</code> 用于从容器快照（如 <code>docker export</code> 生成的文件）创建新镜像，<strong>不保留构建历史</strong>，也不包含 CMD、ENV 等元数据(11)。</p>
+<h2 id="五、与-docker-import-的区别"><a href="#五、与-docker-import-的区别" class="headerlink" title="五、与 docker import 的区别"></a>五、与 <code>docker import</code> 的区别</h2><p>需要注意的是，<code>docker load</code> 用于加载由 <code>docker save</code> 生成的镜像归档（保留完整历史和标签），而 <code>docker import</code> 用于从容器快照（如 <code>docker export</code> 生成的文件）创建新镜像，<strong>不保留构建历史</strong>，也不包含 CMD、ENV 等元数据。</p>
 <p>因此，**导入 <code>.tar</code> 镜像应始终优先使用 <code>docker load</code>**，除非你明确知道该 <code>.tar</code> 是容器导出文件。</p>
 <hr>
 <h2 id="六、跨平台与兼容性注意事项"><a href="#六、跨平台与兼容性注意事项" class="headerlink" title="六、跨平台与兼容性注意事项"></a>六、跨平台与兼容性注意事项</h2><ul>
-<li><strong>架构匹配</strong>：Linux 导出的镜像不能直接在 Windows ARM 架构上运行，需确保目标系统与镜像架构一致(13)。</li>
-<li><strong>Docker 版本</strong>：尽量在相近版本的 Docker 环境中导出和导入，避免兼容性问题(17)。</li>
+<li><strong>架构匹配</strong>：Linux 导出的镜像不能直接在 Windows ARM 架构上运行，需确保目标系统与镜像架构一致。</li>
+<li><strong>Docker 版本</strong>：尽量在相近版本的 Docker 环境中导出和导入，避免兼容性问题。</li>
 </ul>
 <hr>
 <h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>导入 <code>.tar</code> 镜像的核心命令是 <code>docker load -i</code>，操作简单但需注意文件完整性、权限、标签信息等细节。适用于离线环境部署、镜像迁移、灾备恢复等场景。配合 <code>docker images</code> 和 <code>docker run</code>，即可完成从文件到运行容器的全流程。</p>
