@@ -1,0 +1,2321 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux 终端命令格式目标 了解终端命令格式 知道如何查阅终端命令帮助信息  01. 终端命令格式1command [-options] [parameter]  说明：  command：命令名，相应功能的英文单词或单词的缩写 [-options]：选项，可用来对命令进行控制，也可以省略 parameter：传给命令的参数，可以是 零个、一个 或者 多个   [] 代表可选   02. 查阅命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令（以Ubuntu为例）">
+<meta property="og:url" content="http://example.com/2021/08/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BB%A5Ubuntu%E4%B8%BA%E4%BE%8B%EF%BC%89/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="Linux 终端命令格式目标 了解终端命令格式 知道如何查阅终端命令帮助信息  01. 终端命令格式1command [-options] [parameter]  说明：  command：命令名，相应功能的英文单词或单词的缩写 [-options]：选项，可用来对命令进行控制，也可以省略 parameter：传给命令的参数，可以是 零个、一个 或者 多个   [] 代表可选   02. 查阅命">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2021-08-28T03:51:15.000Z">
+<meta property="article:modified_time" content="2023-02-25T12:51:39.256Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux常用命令（以Ubuntu为例） - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux常用命令（以Ubuntu为例）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-28 11:51" pubdate>
+          2021年8月28日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux常用命令（以Ubuntu为例）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux-终端命令格式"><a href="#Linux-终端命令格式" class="headerlink" title="Linux 终端命令格式"></a>Linux 终端命令格式</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>了解终端命令格式</li>
+<li>知道如何查阅终端命令帮助信息</li>
+</ul>
+<h2 id="01-终端命令格式"><a href="#01-终端命令格式" class="headerlink" title="01. 终端命令格式"></a>01. 终端命令格式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> [-options] [parameter]<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>command</code>：命令名，相应功能的英文单词或单词的缩写</li>
+<li><code>[-options]</code>：选项，可用来对命令进行控制，也可以省略</li>
+<li><code>parameter</code>：传给命令的参数，可以是 <strong>零个</strong>、<strong>一个</strong> 或者 <strong>多个</strong></li>
+</ul>
+<blockquote>
+<p><code>[]</code> 代表可选 </p>
+</blockquote>
+<h2 id="02-查阅命令帮助信息（知道）"><a href="#02-查阅命令帮助信息（知道）" class="headerlink" title="02. 查阅命令帮助信息（知道）"></a>02. 查阅命令帮助信息（知道）</h2><blockquote>
+<p>提示</p>
+<ul>
+<li>现阶段只需要 <strong>知道</strong> 通过以下两种方式可以查询命令的帮助信息</li>
+<li>先学习<strong>常用命令</strong>及<strong>常用选项</strong>的使用即可，工作中如果遇到问题可以借助 <strong>网络搜索</strong></li>
+</ul>
+</blockquote>
+<h3 id="2-1-help"><a href="#2-1-help" class="headerlink" title="2.1 --help"></a>2.1 <code>--help</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> --<span class="hljs-built_in">help</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>显示 <code>command</code> 命令的帮助信息</li>
+</ul>
+<h3 id="2-2-man"><a href="#2-2-man" class="headerlink" title="2.2 man"></a>2.2 man</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">man <span class="hljs-built_in">command</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>查阅 <code>command</code> 命令的使用手册</li>
+</ul>
+<blockquote>
+<p><code>man</code> 是 <strong>manual</strong> 的缩写，是 Linux 提供的一个 <strong>手册</strong>，包含了绝大部分的命令、函数的详细使用说明</p>
+</blockquote>
+<p>使用 <code>man</code> 时的操作键：</p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter 键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>&#x2F;word</td>
+<td>搜索 <strong>word</strong> 字符串</td>
+</tr>
+</tbody></table>
+<h1 id="常用-Linux-命令的基本使用"><a href="#常用-Linux-命令的基本使用" class="headerlink" title="常用 Linux 命令的基本使用"></a>常用 Linux 命令的基本使用</h1><h2 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>理解学习 Linux 终端命令的原因</li>
+<li>常用 Linux 命令体验</li>
+</ul>
+<h2 id="01-学习-Linux-终端命令的原因"><a href="#01-学习-Linux-终端命令的原因" class="headerlink" title="01. 学习 Linux 终端命令的原因"></a>01. 学习 Linux 终端命令的原因</h2><ul>
+<li>Linux 刚面世时并没有图形界面，所有的操作全靠命令完成，如 <strong>磁盘操作</strong>、<strong>文件存取</strong>、<strong>目录操作</strong>、<strong>进程管理</strong>、<strong>文件权限</strong> 设定等</li>
+<li>在职场中，大量的 <strong>服务器维护工作</strong> 都是在 <strong>远程</strong> 通过 <strong>SSH 客户端</strong> 来完成的，并没有图形界面，所有的维护工作都需要通过命令来完成</li>
+<li>在职场中，作为后端程序员，必须要或多或少的掌握一些 Linux 常用的终端命令</li>
+<li>Linux 发行版本的命令大概有 200 多个，但是常用的命令只有 10 多个而已</li>
+</ul>
+<blockquote>
+<p>学习终端命令的技巧：</p>
+<ul>
+<li>不需要死记硬背，对于常用命令，用的多了，自然就记住了</li>
+<li>不要尝试一次学会所有的命令，有些命令是非常不常用的，临时遇到，临时百度就可以</li>
+</ul>
+</blockquote>
+<h2 id="02-常用-Linux-命令的基本使用"><a href="#02-常用-Linux-命令的基本使用" class="headerlink" title="02. 常用 Linux 命令的基本使用"></a>02. 常用 Linux 命令的基本使用</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>ls</td>
+<td>list</td>
+<td>查看当前文件夹下的内容</td>
+</tr>
+<tr>
+<td>02</td>
+<td>pwd</td>
+<td>print work directory</td>
+<td>查看当前所在文件夹</td>
+</tr>
+<tr>
+<td>03</td>
+<td>cd [目录名]</td>
+<td>change directory</td>
+<td>切换文件夹</td>
+</tr>
+<tr>
+<td>04</td>
+<td>touch [文件名]</td>
+<td>touch</td>
+<td>如果文件不存在，新建文件</td>
+</tr>
+<tr>
+<td>05</td>
+<td>mkdir [目录名]</td>
+<td>make directory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>06</td>
+<td>rm [文件名]</td>
+<td>remove</td>
+<td>删除指定的文件名</td>
+</tr>
+<tr>
+<td>07</td>
+<td>clear</td>
+<td>clear</td>
+<td>清屏</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>小技巧</p>
+<ul>
+<li><code>ctrl + shift + = </code> <strong>放大</strong>终端窗口的字体显示</li>
+<li><code>ctrl + - </code> <strong>缩小</strong>终端窗口的字体显示</li>
+</ul>
+</blockquote>
+<h3 id="03-自动补全"><a href="#03-自动补全" class="headerlink" title="03. 自动补全"></a>03. 自动补全</h3><ul>
+<li>在敲出 <code>文件</code>／<code>目录</code>／<code>命令</code> 的前几个字母之后，按下 <code>tab</code> 键<ul>
+<li>如果输入的没有歧义，系统会自动补全</li>
+<li>如果还存在其他 <code>文件</code>／<code>目录</code>／<code>命令</code>，再按一下 <code>tab</code> 键，系统会提示可能存在的命令</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>小技巧</p>
+<ul>
+<li>按 <code>上</code>／<code>下</code> 光标键可以在曾经使用过的命令之间来回切换</li>
+<li>如果想要退出选择，并且不想执行当前选中的命令，可以按 <code>ctrl + c</code></li>
+</ul>
+</blockquote>
+<h1 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h1><h2 id="目标-2"><a href="#目标-2" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>查找文件<ul>
+<li><code>find</code></li>
+</ul>
+</li>
+<li>软链接<ul>
+<li><code>ln</code></li>
+</ul>
+</li>
+<li>打包和压缩<ul>
+<li><code>tar</code></li>
+</ul>
+</li>
+<li>软件安装<ul>
+<li><code>apt-get</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="01-查找文件"><a href="#01-查找文件" class="headerlink" title="01. 查找文件"></a>01. 查找文件</h2><ul>
+<li><code>find</code> 命令功能非常强大，通常用来在 <strong>特定的目录下</strong> <strong>搜索</strong> 符合条件的文件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>find [路径] -name “*.py”</td>
+<td>查找指定路径下扩展名是 <code>.py</code> 的文件，包括子目录</td>
+</tr>
+</tbody></table>
+<ul>
+<li>如果省略路径，表示在当前文件夹下查找</li>
+<li>之前学习的通配符，在使用 <code>find</code> 命令时同时可用</li>
+<li>有关 <code>find</code> 的高级使用，在就业班会讲</li>
+</ul>
+<h3 id="演练目标"><a href="#演练目标" class="headerlink" title="演练目标"></a>演练目标</h3><ul>
+<li><ol>
+<li>搜索桌面目录下，文件名包含 <code>1</code> 的文件</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find -name <span class="hljs-string">&quot;*1*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="2">
+<li>搜索桌面目录下，所有以 <code>.txt</code> 为扩展名的文件</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find -name <span class="hljs-string">&quot;*.txt&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="3">
+<li>搜索桌面目录下，以数字 <code>1</code> 开头的文件</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find -name <span class="hljs-string">&quot;1*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="02-软链接"><a href="#02-软链接" class="headerlink" title="02. 软链接"></a>02. 软链接</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>ln -s 被链接的源文件 链接文件</td>
+<td>建立文件的软链接，用通俗的方式讲<strong>类似于</strong> Windows 下的<strong>快捷方式</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：</li>
+<li><ol>
+<li>没有 <code>-s</code> 选项建立的是一个 <strong>硬链接文件</strong></li>
+</ol>
+<ul>
+<li>两个文件占用相同大小的硬盘空间，<strong>工作中几乎不会建立文件的硬链接</strong></li>
+</ul>
+</li>
+<li><ol start="2">
+<li><strong>源文件要使用绝对路径</strong>，不能使用相对路径，这样可以方便移动链接文件后，仍然能够正常使用</li>
+</ol>
+</li>
+</ul>
+<h3 id="演练目标-1"><a href="#演练目标-1" class="headerlink" title="演练目标"></a>演练目标</h3><ul>
+<li><ol>
+<li>将桌面目录下的 <code>01.py</code> <strong>移动</strong>到 <code>demo/b/c</code> 目录下</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>在桌面目录下新建 <code>01.py</code> 的 <strong>软链接</strong> <code>FirstPython</code></li>
+</ol>
+<ul>
+<li>分别使用 <strong>相对路径</strong> 和 <strong>绝对路径</strong> 建立 <code>FirstPython</code> 的软链接</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>将 <code>FirstPython</code> <strong>移动</strong>到 <code>demo</code> 目录下，对比使用 <strong>相对路径</strong> 和 <strong>绝对路径</strong> 的区别</li>
+</ol>
+</li>
+</ul>
+<h3 id="硬链接简介（知道）"><a href="#硬链接简介（知道）" class="headerlink" title="硬链接简介（知道）"></a>硬链接简介（知道）</h3><ul>
+<li>在使用 <code>ln</code> 创建链接时，如果没有 <code>-s</code> 选项，会创建一个 <strong>硬链接</strong>，而不是软链接</li>
+</ul>
+<h4 id="硬链接演练"><a href="#硬链接演练" class="headerlink" title="硬链接演练"></a>硬链接演练</h4><ul>
+<li><ol>
+<li>在 <code>~/Desktop/demo</code> 目录下建立 <code>~/Desktop/demo/b/c/01.py</code> 的硬链接 <code>01_hard</code></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用 <code>ls -l</code> 查看文件的<strong>硬链接数</strong>（硬链接——有多少种方式可以访问文件或者目录）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>删除 <code>~/Desktop/demo/b/c/01.py</code>，并且使用 <code>tree</code> 来确认 <code>demo</code> 目录下的三个链接文件</li>
+</ol>
+</li>
+</ul>
+<h4 id="文件软硬链接的示意图"><a href="#文件软硬链接的示意图" class="headerlink" title="文件软硬链接的示意图"></a>文件软硬链接的示意图</h4><blockquote>
+<p>在 Linux 中，<strong>文件名</strong> 和 <strong>文件的数据</strong> 是分开存储的</p>
+</blockquote>
+<ul>
+<li>提示：<ul>
+<li>在 Linux 中，只有文件的 <code>硬链接数 == 0</code> 才会被删除</li>
+<li>使用 <code>ls -l</code> 可以查看一个文件的硬链接的数量</li>
+<li>在日常工作中，几乎不会建立文件的硬链接，知道即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="03-打包压缩"><a href="#03-打包压缩" class="headerlink" title="03. 打包压缩"></a>03. 打包压缩</h2><ul>
+<li><strong>打包压缩</strong> 是日常工作中备份文件的一种方式</li>
+<li>在不同操作系统中，常用的打包压缩方式是不同的<ul>
+<li><code>Windows</code> 常用 <code>rar</code></li>
+<li><code>Mac</code> 常用 <code>zip</code></li>
+<li><code>Linux</code> 常用 <code>tar.gz</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-1-打包-／-解包"><a href="#3-1-打包-／-解包" class="headerlink" title="3.1 打包 ／ 解包"></a>3.1 打包 ／ 解包</h3><ul>
+<li><code>tar</code> 是 Linux 中最常用的 <strong>备份</strong>工具，此命令可以 <strong>把一系列文件</strong> 打包到 <strong>一个大文件中</strong>，也可以把一个 <strong>打包的大文件恢复成一系列文件</strong></li>
+<li><code>tar</code> 的命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 打包文件</span><br>tar -cvf 打包文件.tar 被打包的文件／路径...<br><br><span class="hljs-comment"># 解包文件</span><br>tar -xvf 打包文件.tar<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>tar</code> 选项说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>生成档案文件，创建打包文件</td>
+</tr>
+<tr>
+<td>x</td>
+<td>解开档案文件</td>
+</tr>
+<tr>
+<td>v</td>
+<td>列出归档解档的详细过程，显示进度</td>
+</tr>
+<tr>
+<td>f</td>
+<td>指定档案文件名称，f 后面一定是 .tar 文件，所以必须放选项最后</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：<code>f</code> 选项必须放在最后，其他选项顺序可以随意</p>
+</blockquote>
+<h4 id="打包解包演练"><a href="#打包解包演练" class="headerlink" title="打包解包演练"></a>打包解包演练</h4><ol>
+<li>删除桌面下的所有内容</li>
+<li>在桌面下新建三个空白文件 <code>01.py</code>、<code>02.py</code>、<code>03.py</code></li>
+<li>将这三个文件打一个 <code>py.tar</code> 的包</li>
+<li>新建 <code>tar</code> 目录，并且将 <code>py.tar</code> 移动到 <code>tar</code> 目录下</li>
+<li>解包 <code>py.tar</code></li>
+</ol>
+<h3 id="3-2-压缩／解压缩"><a href="#3-2-压缩／解压缩" class="headerlink" title="3.2 压缩／解压缩"></a>3.2 压缩／解压缩</h3><h4 id="1-gzip"><a href="#1-gzip" class="headerlink" title="1) gzip"></a>1) <code>gzip</code></h4><ul>
+<li><code>tar</code> 与 <code>gzip</code> 命令结合可以使用实现文件 <strong>打包和压缩</strong><ul>
+<li><code>tar</code> 只负责打包文件，但不压缩</li>
+<li>用 <code>gzip</code> 压缩 <code>tar</code> 打包后的文件，其扩展名一般用 <code>xxx.tar.gz</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在 <code>Linux</code> 中，最常见的压缩文件格式就是 <code>xxx.tar.gz</code></p>
+</blockquote>
+<ul>
+<li><p>在 <code>tar</code> 命令中有一个选项 <strong>-z</strong> 可以调用 <code>gzip</code>，从而可以方便的实现压缩和解压缩的功能</p>
+</li>
+<li><p>命令格式如下：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 压缩文件</span><br>tar -zcvf 打包文件.tar.gz 被压缩的文件／路径...<br><br><span class="hljs-comment"># 解压缩文件</span><br>tar -zxvf 打包文件.tar.gz<br><br><span class="hljs-comment"># 解压缩到指定路径</span><br>tar -zxvf 打包文件.tar.gz -C 目标路径<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-C</td>
+<td>解压缩到指定目录，注意：要解压缩的目录必须存在</td>
+</tr>
+</tbody></table>
+<h4 id="2-bzip2-two"><a href="#2-bzip2-two" class="headerlink" title="2) bzip2(two)"></a>2) <code>bzip2(two)</code></h4><ul>
+<li><p><code>tar</code> 与 <code>bzip2</code> 命令结合可以使用实现文件 <strong>打包和压缩</strong>（用法和 <code>gzip</code> 一样）</p>
+<ul>
+<li><code>tar</code> 只负责打包文件，但不压缩，</li>
+<li>用 <code>bzip2</code> 压缩 <code>tar</code> 打包后的文件，其扩展名一般用 <code>xxx.tar.bz2</code></li>
+</ul>
+</li>
+<li><p>在 <code>tar</code> 命令中有一个选项 <strong>-j</strong> 可以调用 <code>bzip2</code>，从而可以方便的实现压缩和解压缩的功能</p>
+</li>
+<li><p>命令格式如下：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 压缩文件</span><br>tar -jcvf 打包文件.tar.bz2 被压缩的文件／路径...<br><br><span class="hljs-comment"># 解压缩文件</span><br>tar -jxvf 打包文件.tar.bz2<br></code></pre></td></tr></table></figure>
+
+<h2 id="04-软件安装"><a href="#04-软件安装" class="headerlink" title="04. 软件安装"></a>04. 软件安装</h2><h2 id="4-1-通过-apt-安装／卸载软件"><a href="#4-1-通过-apt-安装／卸载软件" class="headerlink" title="4.1 通过 apt 安装／卸载软件"></a>4.1 通过 apt 安装／卸载软件</h2><ul>
+<li>apt 是 <code>Advanced Packaging Tool</code>，是 Linux 下的一款安装包管理工具</li>
+<li>可以在终端中方便的 <strong>安装</strong>／<strong>卸载</strong>／<strong>更新软件包</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 安装软件</span><br>$ sudo apt install 软件包<br><br><span class="hljs-comment"># 2. 卸载软件</span><br>$ sudo apt remove 软件名<br><br><span class="hljs-comment"># 3. 更新已安装的包</span><br>$ sudo apt upgrade <br></code></pre></td></tr></table></figure>
+
+<h3 id="安装演练"><a href="#安装演练" class="headerlink" title="安装演练"></a>安装演练</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 一个小火车提示</span><br>$ sudo apt install sl<br><br><span class="hljs-comment"># 一个比较漂亮的查看当前进程排名的软件</span><br>$ sudo apt install htop<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-2-配置软件源"><a href="#4-2-配置软件源" class="headerlink" title="4.2 配置软件源"></a>4.2 配置软件源</h2><ul>
+<li>如果希望在 <code>ubuntu</code> 中安装软件，<strong>更加快速</strong>，可以通过设置<strong>镜像源</strong>，选择一个访问网速更快的服务器，来提供软件下载／安装服务</li>
+<li>提示：更换服务器之后，需要一个相对比较长时间的更新过程，需要耐心等待。更新完成后，再安装软件都会从新设置的服务器下载软件了</li>
+</ul>
+<blockquote>
+<p>所谓镜像源，就是<strong>所有服务器的内容是相同的（镜像）</strong>，但是根据所在位置不同，国内服务器通常速度会更快一些！</p>
+</blockquote>
+<h1 id="文件和目录常用命令"><a href="#文件和目录常用命令" class="headerlink" title="文件和目录常用命令"></a>文件和目录常用命令</h1><h2 id="目标-3"><a href="#目标-3" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>查看目录内容<ul>
+<li><code>ls</code></li>
+</ul>
+</li>
+<li>切换目录<ul>
+<li><code>cd</code></li>
+</ul>
+</li>
+<li>创建和删除操作<ul>
+<li><code>touch</code></li>
+<li><code>rm</code></li>
+<li><code>mkdir</code></li>
+</ul>
+</li>
+<li>拷贝和移动文件<ul>
+<li><code>cp</code></li>
+<li><code>mv</code></li>
+</ul>
+</li>
+<li>查看文件内容<ul>
+<li><code>cat</code></li>
+<li><code>more</code></li>
+<li><code>grep</code></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><code>echo</code></li>
+<li>重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></li>
+<li>管道 <code>|</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="01-查看目录内容"><a href="#01-查看目录内容" class="headerlink" title="01. 查看目录内容"></a>01. 查看目录内容</h2><h3 id="1-1-终端实用技巧"><a href="#1-1-终端实用技巧" class="headerlink" title="1.1 终端实用技巧"></a>1.1 终端实用技巧</h3><h4 id="1-gt-自动补全"><a href="#1-gt-自动补全" class="headerlink" title="1&gt; 自动补全"></a>1&gt; 自动补全</h4><ul>
+<li>在敲出 <code>文件</code>／<code>目录</code>／<code>命令</code> 的前几个字母之后，按下 <code>tab</code> 键<ul>
+<li>如果输入的没有歧义，系统会自动补全</li>
+<li>如果还存在其他 <code>文件</code>／<code>目录</code>／<code>命令</code>，再按一下 <code>tab</code> 键，系统会提示可能存在的命令</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-gt-曾经使用过的命令"><a href="#2-gt-曾经使用过的命令" class="headerlink" title="2&gt; 曾经使用过的命令"></a>2&gt; 曾经使用过的命令</h4><ul>
+<li>按 <code>上</code>／<code>下</code> 光标键可以在曾经使用过的命令之间来回切换</li>
+<li>如果想要退出选择，并且不想执行当前选中的命令，可以按 <code>ctrl + c</code></li>
+</ul>
+<h3 id="1-2-ls-命令说明"><a href="#1-2-ls-命令说明" class="headerlink" title="1.2 ls 命令说明"></a>1.2 <code>ls</code> 命令说明</h3><ul>
+<li><code>ls</code> 是英文单词 <strong>list</strong> 的简写，其功能为列出目录的内容，是用户最常用的命令之一，类似于 <strong>DOS</strong> 下的 <code>dir</code> 命令</li>
+</ul>
+<h4 id="Linux-下文件和目录的特点"><a href="#Linux-下文件和目录的特点" class="headerlink" title="Linux 下文件和目录的特点"></a>Linux 下文件和目录的特点</h4><ul>
+<li>Linux <strong>文件</strong> 或者 <strong>目录</strong> 名称最长可以有 <code>256</code> 个字符</li>
+<li>以 <code>.</code> 开头的文件为隐藏文件，需要用 -a 参数才能显示</li>
+<li><strong>.</strong> 代表当前目录</li>
+<li><strong>..</strong> 代表上一级目录</li>
+</ul>
+<h3 id="1-3-ls-常用选项"><a href="#1-3-ls-常用选项" class="headerlink" title="1.3 ls 常用选项"></a>1.3 ls 常用选项</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>配合 -l 以人性化的方式显示文件大小</td>
+</tr>
+</tbody></table>
+<h4 id="计算机中文件大小的表示方式（科普）"><a href="#计算机中文件大小的表示方式（科普）" class="headerlink" title="计算机中文件大小的表示方式（科普）"></a>计算机中文件大小的表示方式（科普）</h4><table>
+<thead>
+<tr>
+<th>单位</th>
+<th>英文</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字节</td>
+<td>B（Byte）</td>
+<td>在计算机中作为一个数字单元，一般为 8 位二进制数</td>
+</tr>
+<tr>
+<td>千</td>
+<td>K（Kibibyte）</td>
+<td>1 KB &#x3D; 1024 B，千字节 （1024 &#x3D; 2 ** 10）</td>
+</tr>
+<tr>
+<td>兆</td>
+<td>M（Mebibyte）</td>
+<td>1 MB &#x3D; 1024 KB，百万字节</td>
+</tr>
+<tr>
+<td>千兆</td>
+<td>G（Gigabyte）</td>
+<td>1 GB &#x3D; 1024 MB，十亿字节，千兆字节</td>
+</tr>
+<tr>
+<td>太</td>
+<td>T（Terabyte）</td>
+<td>1 TB &#x3D; 1024 GB，万亿字节，太字节</td>
+</tr>
+<tr>
+<td>拍</td>
+<td>P（Petabyte）</td>
+<td>1 PB &#x3D; 1024 TB，千万亿字节，拍字节</td>
+</tr>
+<tr>
+<td>艾</td>
+<td>E（Exabyte）</td>
+<td>1 EB &#x3D; 1024 PB，百亿亿字节，艾字节</td>
+</tr>
+<tr>
+<td>泽</td>
+<td>Z（Zettabyte）</td>
+<td>1 ZB &#x3D; 1024 EB，十万亿亿字节，泽字节</td>
+</tr>
+<tr>
+<td>尧</td>
+<td>Y（Yottabyte）</td>
+<td>1 YB &#x3D; 1024 ZB，一亿亿亿字节，尧字节</td>
+</tr>
+</tbody></table>
+<h3 id="1-4-ls-通配符的使用"><a href="#1-4-ls-通配符的使用" class="headerlink" title="1.4 ls 通配符的使用"></a>1.4 ls 通配符的使用</h3><table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>代表任意个数个字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>代表任意一个字符，至少 1 个</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>表示可以匹配字符组中的任一一个</td>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>匹配 a、b、c 中的任意一个</td>
+</tr>
+<tr>
+<td>[a-f]</td>
+<td>匹配从 a 到 f 范围内的的任意一个字符</td>
+</tr>
+</tbody></table>
+<h2 id="02-切换目录"><a href="#02-切换目录" class="headerlink" title="02. 切换目录"></a>02. 切换目录</h2><h3 id="2-1-cd"><a href="#2-1-cd" class="headerlink" title="2.1 cd"></a>2.1 <code>cd</code></h3><ul>
+<li><code>cd</code> 是英文单词 <strong>change directory</strong> 的简写，其功能为更改当前的工作目录，也是用户最常用的命令之一</li>
+</ul>
+<blockquote>
+<p>注意：Linux 所有的 <strong>目录</strong> 和 <strong>文件名</strong> 都是大小写敏感的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>切换到当前用户的主目录(&#x2F;home&#x2F;用户目录)</td>
+</tr>
+<tr>
+<td>cd ~</td>
+<td>切换到当前用户的主目录(&#x2F;home&#x2F;用户目录)</td>
+</tr>
+<tr>
+<td>cd .</td>
+<td>保持在当前目录不变</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>切换到上级目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>可以在最近两次工作目录之间来回切换</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-相对路径和绝对路径"><a href="#2-2-相对路径和绝对路径" class="headerlink" title="2.2 相对路径和绝对路径"></a>2.2 相对路径和绝对路径</h3><ul>
+<li><strong>相对路径</strong> 在输入路径时，最前面不是 <strong>&#x2F;</strong> 或者 **~**，表示相对 <strong>当前目录</strong> 所在的目录位置</li>
+<li><strong>绝对路径</strong> 在输入路径时，最前面是 <strong>&#x2F;</strong> 或者 **~**，表示从 <strong>根目录&#x2F;家目录</strong> 开始的具体目录位置</li>
+</ul>
+<h2 id="03-创建和删除操作"><a href="#03-创建和删除操作" class="headerlink" title="03. 创建和删除操作"></a>03. 创建和删除操作</h2><h3 id="3-1-touch"><a href="#3-1-touch" class="headerlink" title="3.1 touch"></a>3.1 <code>touch</code></h3><ul>
+<li>创建文件或修改文件时间<ul>
+<li>如果文件 <strong>不存在</strong>，可以创建一个空白文件</li>
+<li>如果文件 <strong>已经存在</strong>，可以修改文件的末次修改日期</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-mkdir"><a href="#3-2-mkdir" class="headerlink" title="3.2 mkdir"></a>3.2 <code>mkdir</code></h3><ul>
+<li>创建一个新的目录</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p</td>
+<td>可以递归创建目录</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>新建目录的名称</strong> 不能与当前目录中 <strong>已有的目录或文件</strong> 同名</p>
+</blockquote>
+<h3 id="3-3-rm"><a href="#3-3-rm" class="headerlink" title="3.3 rm"></a>3.3 <code>rm</code></h3><ul>
+<li>删除文件或目录</li>
+</ul>
+<blockquote>
+<p>使用 <code>rm</code> 命令要小心，因为文件删除后不能恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-f</td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归地删除目录下的内容，<strong>删除文件夹</strong> 时必须加此参数</td>
+</tr>
+</tbody></table>
+<h2 id="04-拷贝和移动文件"><a href="#04-拷贝和移动文件" class="headerlink" title="04. 拷贝和移动文件"></a>04. 拷贝和移动文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>tree [目录名]</td>
+<td>tree</td>
+<td>以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td>02</td>
+<td>cp 源文件 目标文件</td>
+<td>copy</td>
+<td>复制文件或者目录</td>
+</tr>
+<tr>
+<td>03</td>
+<td>mv 源文件 目标文件</td>
+<td>move</td>
+<td>移动文件或者目录／文件或者目录重命名</td>
+</tr>
+</tbody></table>
+<h3 id="4-1-tree"><a href="#4-1-tree" class="headerlink" title="4.1 tree"></a>4.1 <code>tree</code></h3><ul>
+<li><code>tree</code> 命令可以以树状图列出文件目录结构</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-d</td>
+<td>只显示目录</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-cp"><a href="#4-2-cp" class="headerlink" title="4.2 cp"></a>4.2 <code>cp</code></h3><ul>
+<li><code>cp</code> 命令的功能是将给出的 <strong>文件</strong> 或 <strong>目录</strong> 复制到另一个 <strong>文件</strong> 或 <strong>目录</strong> 中，相当于 <strong>DOS</strong> 下的 <code>copy</code> 命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-mv"><a href="#4-3-mv" class="headerlink" title="4.3 mv"></a>4.3 <code>mv</code></h3><ul>
+<li><code>mv</code> 命令可以用来 <strong>移动</strong> <strong>文件</strong> 或 <strong>目录</strong>，也可以给 <strong>文件或目录重命名</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+</tbody></table>
+<h2 id="05-查看文件内容"><a href="#05-查看文件内容" class="headerlink" title="05. 查看文件内容"></a>05. 查看文件内容</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>cat 文件名</td>
+<td>concatenate</td>
+<td>查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td>02</td>
+<td>more 文件名</td>
+<td>more</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>03</td>
+<td>grep 搜索文本 文件名</td>
+<td>grep</td>
+<td>搜索文本文件内容</td>
+</tr>
+</tbody></table>
+<h3 id="5-1-cat"><a href="#5-1-cat" class="headerlink" title="5.1 cat"></a>5.1 <code>cat</code></h3><ul>
+<li><code>cat</code> 命令可以用来 <strong>查看文件内容</strong>、<strong>创建文件</strong>、<strong>文件合并</strong>、<strong>追加文件内容</strong> 等功能</li>
+<li><code>cat</code> 会一次显示所有的内容，适合 <strong>查看内容较少</strong> 的文本文件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b</td>
+<td>对非空输出行编号</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>对输出的所有行编号</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Linux 中还有一个 <code>nl</code> 的命令和 <code>cat -b</code> 的效果等价</p>
+</blockquote>
+<h3 id="5-2-more"><a href="#5-2-more" class="headerlink" title="5.2 more"></a>5.2 <code>more</code></h3><ul>
+<li><code>more</code> 命令可以用于分屏显示文件内容，每次只显示一页内容</li>
+<li>适合于 <strong>查看内容较多</strong>的文本文件</li>
+</ul>
+<p>使用 <code>more</code> 的操作键：</p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter 键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>&#x2F;word</td>
+<td>搜索 <strong>word</strong> 字符串</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-grep"><a href="#5-3-grep" class="headerlink" title="5.3 grep"></a>5.3 <code>grep</code></h3><ul>
+<li>Linux 系统中 <code>grep</code> 命令是一种强大的文本搜索工具</li>
+<li><code>grep</code>允许对文本文件进行 <strong>模式</strong>查找，所谓模式查找，又被称为正则表达式，在就业班会详细讲解</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-n</td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常用的两种模式查找</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^a</td>
+<td>行首，搜寻以 <strong>a</strong> 开头的行</td>
+</tr>
+<tr>
+<td>ke$</td>
+<td>行尾，搜寻以 <strong>ke</strong> 结束的行</td>
+</tr>
+</tbody></table>
+<h2 id="06-其他"><a href="#06-其他" class="headerlink" title="06. 其他"></a>06. 其他</h2><h3 id="6-1-echo-文字内容"><a href="#6-1-echo-文字内容" class="headerlink" title="6.1 echo 文字内容"></a>6.1 <code>echo 文字内容</code></h3><ul>
+<li><code>echo</code> 会在终端中显示参数指定的文字，通常会和 <strong>重定向</strong> 联合使用</li>
+</ul>
+<h3 id="6-2-重定向-gt-和-gt-gt"><a href="#6-2-重定向-gt-和-gt-gt" class="headerlink" title="6.2 重定向 &gt; 和 &gt;&gt;"></a>6.2 重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></h3><ul>
+<li>Linux 允许将命令执行结果 <strong>重定向</strong>到一个 <strong>文件</strong></li>
+<li>将本应显示在<strong>终端上的内容</strong> <strong>输出／追加</strong> 到<strong>指定文件中</strong></li>
+</ul>
+<p>其中</p>
+<ul>
+<li><code>&gt;</code> 表示输出，会覆盖文件原有的内容</li>
+<li><code>&gt;&gt;</code> 表示追加，会将内容追加到已有文件的末尾</li>
+</ul>
+<h3 id="6-3-管道"><a href="#6-3-管道" class="headerlink" title="6.3 管道 |"></a>6.3 管道 <code>|</code></h3><ul>
+<li>Linux 允许将 <strong>一个命令的输出</strong> 可以<strong>通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
+<li>可以理解现实生活中的管子，管子的一头塞东西进去，另一头取出来，这里 <code>|</code> 的左右分为两端，左端塞东西（写），右端取东西（读）</li>
+</ul>
+<p>常用的管道命令有：</p>
+<ul>
+<li><code>more</code>：分屏显示内容</li>
+<li><code>grep</code>：在命令执行结果的基础上查询指定的文本</li>
+</ul>
+<h1 id="系统信息相关命令"><a href="#系统信息相关命令" class="headerlink" title="系统信息相关命令"></a>系统信息相关命令</h1><ul>
+<li>本节内容主要是为了方便通过远程终端维护服务器时，查看服务器上当前 <strong>系统日期和时间</strong> ／ <strong>磁盘空间占用情况</strong> ／ <strong>程序执行情况</strong></li>
+<li>本小结学习的终端命令基本都是查询命令，通过这些命令对系统资源的使用情况有个了解</li>
+</ul>
+<h2 id="目标-4"><a href="#目标-4" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>时间和日期<ul>
+<li><code>date</code></li>
+<li><code>cal</code></li>
+</ul>
+</li>
+<li>磁盘和目录空间<ul>
+<li><code>df</code></li>
+<li><code>du</code></li>
+</ul>
+</li>
+<li>进程信息<ul>
+<li><code>ps</code></li>
+<li><code>top</code></li>
+<li><code>kill</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="01-时间和日期"><a href="#01-时间和日期" class="headerlink" title="01. 时间和日期"></a>01. 时间和日期</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>date</td>
+<td>查看系统时间</td>
+</tr>
+<tr>
+<td>02</td>
+<td>cal</td>
+<td><code>calendar</code> 查看日历，<code>-y</code> 选项可以查看一年的日历</td>
+</tr>
+</tbody></table>
+<h2 id="02-磁盘信息"><a href="#02-磁盘信息" class="headerlink" title="02. 磁盘信息"></a>02. 磁盘信息</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>df -h</td>
+<td><code>disk free</code> 显示磁盘剩余空间</td>
+</tr>
+<tr>
+<td>02</td>
+<td>du -h [目录名]</td>
+<td><code>disk usage</code> 显示目录下的文件大小</td>
+</tr>
+</tbody></table>
+<ul>
+<li>选项说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-h</td>
+<td>以人性化的方式显示文件大小</td>
+</tr>
+</tbody></table>
+<h2 id="03-进程信息"><a href="#03-进程信息" class="headerlink" title="03. 进程信息"></a>03. 进程信息</h2><ul>
+<li>所谓 <strong>进程</strong>，通俗地说就是 <strong>当前正在执行的一个程序</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>ps aux</td>
+<td><code>process status</code> 查看进程的详细状况</td>
+</tr>
+<tr>
+<td>02</td>
+<td>top</td>
+<td>动态显示运行中的进程并且排序</td>
+</tr>
+<tr>
+<td>03</td>
+<td>kill [-9] 进程代号</td>
+<td>终止指定代号的进程，<code>-9</code> 表示强行终止</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>ps</code> 默认只会显示当前用户通过终端启动的应用程序</p>
+</blockquote>
+<ul>
+<li><code>ps</code> 选项说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>显示终端上的所有进程，包括其他用户的进程</td>
+</tr>
+<tr>
+<td>u</td>
+<td>显示进程的详细状态</td>
+</tr>
+<tr>
+<td>x</td>
+<td>显示没有控制终端的进程</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>提示：使用 <code>kill</code> 命令时，最好只终止由当前用户开启的进程，而不要终止 <code>root</code> 身份开启的进程，否则可能导致系统崩溃</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>要退出 <code>top</code> 可以直接输入 <code>q</code></li>
+</ul>
+</blockquote>
+<h1 id="用户权限相关命令"><a href="#用户权限相关命令" class="headerlink" title="用户权限相关命令"></a>用户权限相关命令</h1><h2 id="目标-5"><a href="#目标-5" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><strong>用户</strong> 和 <strong>权限</strong> 的基本概念</li>
+<li><strong>用户管理</strong> 终端命令</li>
+<li><strong>组管理</strong> 终端命令</li>
+<li><strong>修改权限</strong> 终端命令</li>
+</ul>
+<h2 id="01-用户-和-权限-的基本概念"><a href="#01-用户-和-权限-的基本概念" class="headerlink" title="01. 用户 和 权限 的基本概念"></a>01. <strong>用户</strong> 和 <strong>权限</strong> 的基本概念</h2><h3 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h3><ul>
+<li><strong>用户</strong> 是 Linux 系统工作中重要的一环，用户管理包括 <strong>用户</strong> 与 <strong>组</strong> 管理</li>
+<li>在 Linux 系统中，不论是由本机或是远程登录系统，每个系统都<strong>必须拥有一个账号</strong>，并且<strong>对于不同的系统资源拥有不同的使用权限</strong></li>
+<li>在 Linux 中，可以指定 <strong>每一个用户</strong> 针对 <strong>不同的文件或者目录</strong> 的 <strong>不同权限</strong></li>
+<li>对 <strong>文件／目录</strong> 的权限包括：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">权限</th>
+<th align="center">英文</th>
+<th align="center">缩写</th>
+<th align="center">数字代号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">01</td>
+<td align="center">读</td>
+<td align="center">read</td>
+<td align="center">r</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">02</td>
+<td align="center">写</td>
+<td align="center">write</td>
+<td align="center">w</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">03</td>
+<td align="center">执行</td>
+<td align="center">excute</td>
+<td align="center">x</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-组"><a href="#1-2-组" class="headerlink" title="1.2 组"></a>1.2 组</h3><ul>
+<li><p>为了方便用户管理，提出了 <strong>组</strong> 的概念，如下图所示</p>
+</li>
+<li><p>在实际应用中，可以预先针对 <strong>组</strong> 设置好权限，然后 <strong>将不同的用户添加到对应的组中</strong>，从而<strong>不用依次为每一个用户设置权限</strong></p>
+</li>
+</ul>
+<h3 id="1-3-ls-l-扩展"><a href="#1-3-ls-l-扩展" class="headerlink" title="1.3 ls -l 扩展"></a>1.3 ls -l 扩展</h3><ul>
+<li><p><code>ls -l</code> 可以查看文件夹下文件的详细信息，从左到右依次是：</p>
+<ul>
+<li><strong>权限</strong>，第 1 个字符如果是 <code>d</code> 表示目录</li>
+<li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
+<li><strong>拥有者</strong>，家目录下 文件／目录 的拥有者通常都是当前用户</li>
+<li><strong>组</strong>，在 Linux 中，很多时候，会出现组名和用户名相同的情况，后续会讲</li>
+<li><strong>大小</strong></li>
+<li><strong>时间</strong></li>
+<li><strong>名称</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-chmod-简单使用（重要）"><a href="#1-4-chmod-简单使用（重要）" class="headerlink" title="1.4 chmod 简单使用（重要）"></a>1.4 <code>chmod</code> 简单使用（重要）</h3><ul>
+<li><code>chmod</code> 可以修改 <strong>用户／组</strong> 对 <strong>文件／目录</strong> 的权限</li>
+<li>命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +/-rwx 文件名|目录名<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：以上方式会一次性修改 <code>拥有者</code> &#x2F; <code>组</code> 权限，有关 <code>chmod</code> 的高级用法，后续会讲</p>
+</blockquote>
+<h3 id="1-5-超级用户"><a href="#1-5-超级用户" class="headerlink" title="1.5 超级用户"></a>1.5 超级用户</h3><ul>
+<li>Linux 系统中的 <code>root</code> 账号通常 <strong>用于系统的维护和管理</strong>，对操作系统的所有资源 <strong>具有所有访问权限</strong></li>
+<li>在大多数版本的 Linux 中，都不推荐 <strong>直接使用 root 账号登录系统</strong></li>
+<li>在 Linux 安装的过程中，系统会自动创建一个用户账号，而这个默认的用户就称为“标准用户”</li>
+</ul>
+<h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h4><ul>
+<li><code>su</code> 是 <code>substitute user</code> 的缩写，表示 <strong>使用另一个用户的身份</strong></li>
+<li><code>sudo</code> 命令用来以其他身份来执行命令，预设的身份为 <code>root</code></li>
+<li>用户使用 <code>sudo</code> 时，必须先输入密码，之后有 <strong>5 分钟的有效期限</strong>，超过期限则必须重新输入密码</li>
+</ul>
+<blockquote>
+<p>若其未经授权的用户企图使用 <code>sudo</code>，则会发出警告邮件给管理员</p>
+</blockquote>
+<h2 id="02-组管理-终端命令"><a href="#02-组管理-终端命令" class="headerlink" title="02. 组管理 终端命令"></a>02. <strong>组管理</strong> 终端命令</h2><blockquote>
+<p>提示：<strong>创建组</strong> &#x2F; <strong>删除组</strong> 的终端命令都需要通过 <code>sudo</code> 执行</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>groupadd 组名</td>
+<td>添加组</td>
+</tr>
+<tr>
+<td>02</td>
+<td>groupdel 组名</td>
+<td>删除组</td>
+</tr>
+<tr>
+<td>03</td>
+<td>cat &#x2F;etc&#x2F;group</td>
+<td>确认组信息</td>
+</tr>
+<tr>
+<td>04</td>
+<td>chgrp -R 组名 文件&#x2F;目录名</td>
+<td>递归修改文件&#x2F;目录的所属组</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>组信息保存在 <code>/etc/group</code> 文件中</li>
+<li><code>/etc</code> 目录是专门用来保存 <strong>系统配置信息</strong> 的目录</li>
+</ul>
+</blockquote>
+<ul>
+<li>在实际应用中，可以预先针对 <strong>组</strong> 设置好权限，然后 <strong>将不同的用户添加到对应的组中</strong>，从而<strong>不用依次为每一个用户设置权限</strong></li>
+</ul>
+<h4 id="演练目标-2"><a href="#演练目标-2" class="headerlink" title="演练目标"></a>演练目标</h4><ol>
+<li>在 <code>python</code> 用户的桌面文件夹下创建 <code>Python学习</code> 目录</li>
+<li>新建 <code>dev</code> 组</li>
+<li>将 <code>Python学习</code> 目录的组修改为 <code>dev</code></li>
+</ol>
+<h2 id="03-用户管理-终端命令"><a href="#03-用户管理-终端命令" class="headerlink" title="03. 用户管理 终端命令"></a>03. <strong>用户管理</strong> 终端命令</h2><blockquote>
+<p>提示：<strong>创建用户</strong> &#x2F; <strong>删除用户</strong> &#x2F; <strong>修改其他用户密码</strong> 的终端命令都需要通过 <code>sudo</code> 执行</p>
+</blockquote>
+<h3 id="3-1-创建用户／设置密码／删除用户"><a href="#3-1-创建用户／设置密码／删除用户" class="headerlink" title="3.1 创建用户／设置密码／删除用户"></a>3.1 创建用户／设置密码／删除用户</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>useradd -m -g 组 新建用户名</td>
+<td>添加新用户</td>
+<td><ul><li>-m 自动建立用户家目录</li><li>-g 指定用户所在的组，否则会建立一个和同名的组</li></ul></td>
+</tr>
+<tr>
+<td>02</td>
+<td>passwd 用户名</td>
+<td>设置用户密码</td>
+<td>如果是普通用户，直接用 passwd 可以修改自己的账户密码</td>
+</tr>
+<tr>
+<td>03</td>
+<td>userdel -r 用户名</td>
+<td>删除用户</td>
+<td>-r 选项会自动删除用户家目录</td>
+</tr>
+<tr>
+<td>04</td>
+<td>cat &#x2F;etc&#x2F;passwd | grep 用户名</td>
+<td>确认用户信息</td>
+<td>新建用户后，用户信息会保存在 &#x2F;etc&#x2F;passwd 文件中</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>创建用户时，如果忘记添加 <code>-m</code> 选项指定新用户的家目录 —— 最简单的方法就是<strong>删除用户，重新创建</strong></li>
+<li>创建用户时，默认会创建一个和<strong>用户名</strong>同名的<strong>组名</strong></li>
+<li>用户信息保存在 <code>/etc/passwd</code> 文件中</li>
+</ul>
+</blockquote>
+<h3 id="3-2-查看用户信息"><a href="#3-2-查看用户信息" class="headerlink" title="3.2 查看用户信息"></a>3.2 查看用户信息</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>id [用户名]</td>
+<td>查看用户 UID 和 GID 信息</td>
+</tr>
+<tr>
+<td>02</td>
+<td>who</td>
+<td>查看当前所有登录的用户列表</td>
+</tr>
+<tr>
+<td>03</td>
+<td>whoami</td>
+<td>查看当前登录用户的账户名</td>
+</tr>
+</tbody></table>
+<h4 id="passwd-文件"><a href="#passwd-文件" class="headerlink" title="passwd 文件"></a>passwd 文件</h4><p><code>/etc/passwd</code> 文件存放的是用户的信息，由 6 个分号组成的 7 个信息，分别是</p>
+<ol>
+<li>用户名</li>
+<li>密码（x，表示加密的密码）</li>
+<li>UID（用户标识）</li>
+<li>GID（组标识）</li>
+<li>用户全名或本地帐号</li>
+<li>家目录</li>
+<li>登录使用的 Shell，就是登录之后，使用的终端命令，<code>ubuntu</code> 默认是 <code>dash</code></li>
+</ol>
+<h4 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h4><ul>
+<li><code>usermod</code> 可以用来设置 <strong>用户</strong> 的 <strong>主组</strong> ／ <strong>附加组</strong> 和 <strong>登录 Shell</strong>，命令格式如下：</li>
+<li><strong>主组</strong>：通常在新建用户时指定，在 <code>etc/passwd</code> 的第 4 列 <strong>GID 对应的组</strong></li>
+<li><strong>附加组</strong>：在 <code>etc/group</code> 中最后一列表示该组的用户列表，用于指定 <strong>用户的附加权限</strong></li>
+</ul>
+<blockquote>
+<p>提示：设置了用户的附加组之后，需要重新登录才能生效！</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 修改用户的主组（passwd 中的 GID）</span><br>usermod -g 组 用户名<br><br><span class="hljs-comment"># 修改用户的附加组</span><br>usermod -G 组 用户名<br><br><span class="hljs-comment"># 修改用户登录 Shell</span><br>usermod -s /bin/bash 用户名<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：默认使用 <code>useradd</code> 添加的用户是没有权限使用 <code>sudo</code> 以 <code>root</code> 身份执行命令的，可以使用以下命令，将用户添加到 <code>sudo</code> 附加组中</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">usermod -G sudo 用户名<br></code></pre></td></tr></table></figure>
+<h4 id="which（重要）"><a href="#which（重要）" class="headerlink" title="which（重要）"></a>which（重要）</h4><blockquote>
+<p>提示</p>
+<ul>
+<li><code>/etc/passwd</code> 是用于保存用户信息的文件</li>
+<li><code>/usr/bin/passwd</code> 是用于修改用户密码的程序</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>which</code> 命令可以查看执行命令所在位置，例如：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> <span class="hljs-built_in">ls</span><br><br><span class="hljs-comment"># 输出</span><br><span class="hljs-comment"># /bin/ls</span><br><br><span class="hljs-built_in">which</span> useradd<br><br><span class="hljs-comment"># 输出</span><br><span class="hljs-comment"># /usr/sbin/useradd</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="bin-和-sbin"><a href="#bin-和-sbin" class="headerlink" title="bin 和 sbin"></a><code>bin</code> 和 <code>sbin</code></h5><ul>
+<li>在 <code>Linux</code> 中，绝大多数可执行文件都是保存在 <code>/bin</code>、<code>/sbin</code>、<code>/usr/bin</code>、<code>/usr/sbin</code></li>
+<li><code>/bin</code>（<code>binary</code>）是二进制执行文件目录，主要用于具体应用</li>
+<li><code>/sbin</code>（<code>system binary</code>）是系统管理员专用的二进制代码存放目录，主要用于系统管理</li>
+<li><code>/usr/bin</code>（<code>user commands for applications</code>）后期安装的一些软件</li>
+<li><code>/usr/sbin</code>（<code>super user commands for applications</code>）超级用户的一些管理程序</li>
+</ul>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li><code>cd</code> 这个终端命令是内置在系统内核中的，没有独立的文件，因此用 <code>which</code> 无法找到 <code>cd</code> 命令的位置</li>
+</ul>
+</blockquote>
+<h3 id="3-3-切换用户"><a href="#3-3-切换用户" class="headerlink" title="3.3 切换用户"></a>3.3 切换用户</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>su - 用户名</td>
+<td>切换用户，并且切换目录</td>
+<td>- 可以切换到用户家目录，否则保持位置不变</td>
+</tr>
+<tr>
+<td>02</td>
+<td>exit</td>
+<td>退出当前登录账户</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>su</code> 不接用户名，可以切换到 <code>root</code>，但是不推荐使用，因为不安全</li>
+<li><code>exit</code> 示意图如下：</li>
+</ul>
+<h2 id="04-修改文件权限"><a href="#04-修改文件权限" class="headerlink" title="04. 修改文件权限"></a>04. 修改文件权限</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>chown</td>
+<td>修改拥有者</td>
+</tr>
+<tr>
+<td>02</td>
+<td>chgrp</td>
+<td>修改组</td>
+</tr>
+<tr>
+<td>03</td>
+<td>chmod</td>
+<td>修改权限</td>
+</tr>
+</tbody></table>
+<ul>
+<li>命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 修改文件|目录的拥有者</span><br><span class="hljs-built_in">chown</span> 用户名 文件名|目录名<br><br><span class="hljs-comment"># 递归修改文件|目录的组</span><br><span class="hljs-built_in">chgrp</span> -R 组名 文件名|目录名<br><br><span class="hljs-comment"># 递归修改文件权限</span><br><span class="hljs-built_in">chmod</span> -R 755 文件名|目录名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>chmod</code> 在设置权限时，可以简单地使用三个数字分别对应 <strong>拥有者</strong> ／ <strong>组</strong> 和 <strong>其他</strong> 用户的权限</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span><br><span class="hljs-built_in">chmod</span> +/-rwx 文件名|目录名<br></code></pre></td></tr></table></figure>
+
+
+<ul>
+<li>常见数字组合有（<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他）：<ul>
+<li><code>777</code> &#x3D;&#x3D;&#x3D;&gt; <code>u=rwx,g=rwx,o=rwx</code> </li>
+<li><code>755</code> &#x3D;&#x3D;&#x3D;&gt; <code>u=rwx,g=rx,o=rx</code></li>
+<li><code>644</code> &#x3D;&#x3D;&#x3D;&gt; <code>u=rw,g=r,o=r</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="chmod-演练目标"><a href="#chmod-演练目标" class="headerlink" title="chmod 演练目标"></a><code>chmod</code> 演练目标</h4><ol>
+<li>将 <code>01.py</code> 的权限修改为 <code>u=rwx,g=rx,o=r</code> </li>
+<li>将 <code>123.txt</code> 的权限修改为 <code>u=rw,g=r,o=-</code> </li>
+<li>将 <code>test</code> 目录以及目录下的 <strong>所有</strong> 文件权限修改为 <code>u=rwx,g=rwx,o=rx</code></li>
+</ol>
+<h1 id="远程管理常用命令"><a href="#远程管理常用命令" class="headerlink" title="远程管理常用命令"></a>远程管理常用命令</h1><h2 id="目标-6"><a href="#目标-6" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>关机&#x2F;重启<ul>
+<li><code>shutdown</code></li>
+</ul>
+</li>
+<li>查看或配置网卡信息<ul>
+<li><code>ifconfig</code></li>
+<li><code>ping</code></li>
+</ul>
+</li>
+<li>远程登录和复制文件<ul>
+<li><code>ssh</code></li>
+<li><code>scp</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="01-关机-x2F-重启"><a href="#01-关机-x2F-重启" class="headerlink" title="01. 关机&#x2F;重启"></a>01. 关机&#x2F;重启</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>shutdown 选项 时间</td>
+<td>shutdown</td>
+<td>关机／重新启动</td>
+</tr>
+</tbody></table>
+<h3 id="1-1-shutdown"><a href="#1-1-shutdown" class="headerlink" title="1.1 shutdown"></a>1.1 <code>shutdown</code></h3><ul>
+<li><code>shutdown</code> 命令可以 <strong>安全</strong> <strong>关闭</strong> 或者 <strong>重新启动系统</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>重新启动</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li><strong>不指定选项和参数</strong>，默认表示 <strong>1 分钟</strong>之后 <strong>关闭电脑</strong></li>
+<li>远程维护服务器时，最好不要关闭系统，而应该重新启动系统</li>
+</ul>
+</blockquote>
+<ul>
+<li>常用命令示例</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 重新启动操作系统，其中 now 表示现在</span><br>$ shutdown -r now<br><br><span class="hljs-comment"># 立刻关机，其中 now 表示现在</span><br>$ shutdown now<br><br><span class="hljs-comment"># 系统在今天的 20:25 会关机</span><br>$ shutdown 20:25<br><br><span class="hljs-comment"># 系统再过十分钟后自动关机</span><br>$ shutdown +10<br><br><span class="hljs-comment"># 取消之前指定的关机计划</span><br>$ shutdown -c<br></code></pre></td></tr></table></figure>
+
+<h2 id="02-查看或配置网卡信息"><a href="#02-查看或配置网卡信息" class="headerlink" title="02. 查看或配置网卡信息"></a>02. 查看或配置网卡信息</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>ifconfig</td>
+<td>configure a network interface</td>
+<td>查看&#x2F;配置计算机当前的网卡配置信息</td>
+</tr>
+<tr>
+<td>02</td>
+<td>ping ip地址</td>
+<td>ping</td>
+<td>检测到目标 ip地址 的连接是否正常</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-网卡-和-IP-地址"><a href="#2-1-网卡-和-IP-地址" class="headerlink" title="2.1 网卡 和 IP 地址"></a>2.1 网卡 和 IP 地址</h3><h4 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h4><ul>
+<li>网卡是一个专门负责网络通讯的硬件设备</li>
+<li><strong>IP 地址</strong>是设置在网卡上的地址信息</li>
+</ul>
+<blockquote>
+<p>我们可以把 <strong>电脑</strong> 比作 <strong>电话</strong>，<strong>网卡</strong> 相当于 <strong>SIM 卡</strong>，<strong>IP 地址</strong> 相当于 <strong>电话号码</strong></p>
+</blockquote>
+<h4 id="IP-地址"><a href="#IP-地址" class="headerlink" title="IP 地址"></a>IP 地址</h4><ul>
+<li><strong>每台联网的电脑上</strong>都有 <strong>IP 地址</strong>，<strong>是保证电脑之间正常通讯的重要设置</strong></li>
+</ul>
+<blockquote>
+<p>注意：每台电脑的 IP 地址不能相同，否则会出现 IP 地址冲突，并且没有办法正常通讯</p>
+<p>提示：有关 <strong>IP 地址</strong>的详细内容，在就业班会详细讲解！</p>
+</blockquote>
+<h3 id="2-2-ifconfig"><a href="#2-2-ifconfig" class="headerlink" title="2.2 ifconfig"></a>2.2 <code>ifconfig</code></h3><ul>
+<li><code>ifconfig</code> 可以查看／配置计算机当前的网卡配置信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看网卡配置信息</span><br>$ ifconfig<br><br><span class="hljs-comment"># 查看网卡对应的 IP 地址</span><br>$ ifconfig | grep inet<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：一台计算机中有可能会有一个 <strong>物理网卡</strong> 和 <strong>多个虚拟网卡</strong>，在 Linux 中物理网卡的名字通常以 <code>ensXX</code> 表示</p>
+</blockquote>
+<ul>
+<li><code>127.0.0.1</code> 被称为 <strong>本地回环&#x2F;环回地址</strong>，一般用来测试本机网卡是否正常</li>
+</ul>
+<h3 id="2-3-ping"><a href="#2-3-ping" class="headerlink" title="2.3 ping"></a>2.3 <code>ping</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 检测到目标主机是否连接正常</span><br>$ ping IP地址<br><br><span class="hljs-comment"># 检测本地网卡工作正常</span><br>$ ping 127.0.0.1<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ping</code> 一般用于检测当前计算机到目标计算机之间的网络 <strong>是否通畅</strong>，<strong>数值越大，速度越慢</strong></li>
+</ul>
+<blockquote>
+<ul>
+<li><code>ping</code> 的工作原理与潜水艇的声纳相似，<code>ping</code> 这个命令就是取自 <strong>声纳的声音</strong> </li>
+<li>网络管理员之间也常将 <code>ping</code> 用作动词 —— <strong>ping 一下计算机X，看他是否开着</strong></li>
+</ul>
+</blockquote>
+<p>原理：网络上的机器都有 <strong>唯一确定的 IP 地址</strong>，我们给<strong>目标 IP 地址</strong>发送一个数据包，对方就要返回一个数据包，根据返回的数据包以及时间，我们可以确定目标主机的存在</p>
+<blockquote>
+<p>提示：在 Linux 中，想要终止一个终端程序的执行，绝大多数都可以使用 <code>CTRL + C</code></p>
+</blockquote>
+<h2 id="03-远程登录和复制文件"><a href="#03-远程登录和复制文件" class="headerlink" title="03. 远程登录和复制文件"></a>03. 远程登录和复制文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>ssh 用户名@ip</td>
+<td>secure shell</td>
+<td>关机／重新启动</td>
+</tr>
+<tr>
+<td>02</td>
+<td>scp 用户名@ip:文件名或路径 用户名@ip:文件名或路径</td>
+<td>secure copy</td>
+<td>远程复制文件</td>
+</tr>
+</tbody></table>
+<h3 id="3-1-ssh-基础（重点）"><a href="#3-1-ssh-基础（重点）" class="headerlink" title="3.1 ssh 基础（重点）"></a>3.1 <code>ssh</code> 基础（重点）</h3><p>在 Linux 中 SSH 是 <strong>非常常用</strong> 的工具，通过 <strong>SSH 客户端</strong> 我们可以连接到运行了 <strong>SSH 服务器</strong> 的远程机器上</p>
+<ul>
+<li><strong>SSH 客户端</strong>是一种使用 <code>Secure Shell（SSH）</code> 协议连接到远程计算机的软件程序</li>
+<li><code>SSH</code> 是目前较可靠，<strong>专为远程登录会话和其他网络服务</strong> 提供安全性的协议<ul>
+<li>利用 <code>SSH 协议</code> 可以有效<strong>防止远程管理过程中的信息泄露</strong></li>
+<li>通过 <code>SSH 协议</code> 可以对所有传输的数据进行加密，也能够防止 DNS 欺骗和 IP 欺骗</li>
+</ul>
+</li>
+<li><code>SSH</code> 的另一项优点是传输的数据可以是经过压缩的，所以可以加快传输的速度</li>
+</ul>
+<h4 id="1-域名-和-端口号"><a href="#1-域名-和-端口号" class="headerlink" title="1) 域名 和 端口号"></a>1) 域名 和 端口号</h4><h5 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h5><ul>
+<li>由一串 <strong>用点分隔</strong> 的名字组成，例如：<code>www.itcast.cn</code></li>
+<li>是 <strong>IP 地址</strong> 的别名，方便用户记忆</li>
+</ul>
+<h5 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h5><ul>
+<li><p><strong>IP 地址</strong>：通过 <strong>IP 地址</strong> 找到网络上的 <strong>计算机</strong></p>
+</li>
+<li><p><strong>端口号</strong>：通过 <strong>端口号</strong> 可以找到 <strong>计算机上运行的应用程序</strong></p>
+<ul>
+<li><strong>SSH 服务器</strong> 的默认端口号是 <code>22</code>，如果是默认端口号，在连接的时候，可以省略</li>
+</ul>
+</li>
+<li><p>常见服务端口号列表：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>服务</th>
+<th>端口号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>SSH 服务器</td>
+<td>22</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Web 服务器</td>
+<td>80</td>
+</tr>
+<tr>
+<td>03</td>
+<td>HTTPS</td>
+<td>443</td>
+</tr>
+<tr>
+<td>04</td>
+<td>FTP 服务器</td>
+<td>21</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>提示：有关 <strong>端口号</strong>的详细内容，在就业班会详细讲解！</p>
+</blockquote>
+<h4 id="2-SSH-客户端的简单使用"><a href="#2-SSH-客户端的简单使用" class="headerlink" title="2) SSH 客户端的简单使用"></a>2) SSH 客户端的简单使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh [-p port] user@remote<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 是在远程机器上的用户名，如果不指定的话默认为当前用户</li>
+<li><code>remote</code> 是远程机器的地址，可以是 <strong>IP</strong>／<strong>域名</strong>，或者是 <strong>后面会提到的别名</strong></li>
+<li><code>port</code> 是 <strong>SSH Server 监听的端口</strong>，如果不指定，就为默认值 <code>22</code></li>
+</ul>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>使用 <code>exit</code> 退出当前用户的登录</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li><code>ssh</code> 这个终端命令只能在 <code>Linux</code> 或者 <code>UNIX</code> 系统下使用</li>
+<li>如果在 <code>Windows</code> 系统中，可以安装 <code>PuTTY</code> 或者 <code>XShell</code> 客户端软件即可</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li>在工作中，SSH 服务器的端口号很有可能<strong>不是 22</strong>，如果遇到这种情况就需要使用 <code>-p</code> 选项，指定正确的端口号，否则无法正常连接到服务器</li>
+</ul>
+</blockquote>
+<h4 id="3-Windows-下-SSH-客户端的安装"><a href="#3-Windows-下-SSH-客户端的安装" class="headerlink" title="3) Windows 下 SSH 客户端的安装"></a>3) Windows 下 SSH 客户端的安装</h4><ul>
+<li><code>Putty</code> <a target="_blank" rel="noopener" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a></li>
+<li><code>XShell</code> <a target="_blank" rel="noopener" href="http://xshellcn.com/">http://xshellcn.com</a></li>
+</ul>
+<blockquote>
+<p>建议从官方网站下载正式的安装程序</p>
+</blockquote>
+<h3 id="3-2-scp（掌握）"><a href="#3-2-scp（掌握）" class="headerlink" title="3.2 scp（掌握）"></a>3.2 <code>scp</code>（掌握）</h3><ul>
+<li>scp 就是 <code>secure copy</code>，是一个在 Linux 下用来进行 <strong>远程拷贝文件</strong> 的命令</li>
+<li>它的<strong>地址格式与 ssh 基本相同</strong>，<strong>需要注意的是</strong>，在指定端口时用的是大写的 <code>-P</code> 而不是小写的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 把本地当前目录下的 01.py 文件 复制到 远程 家目录下的 Desktop/01.py</span><br><span class="hljs-comment"># 注意：`:` 后面的路径如果不是绝对路径，则以用户的家目录作为参照路径</span><br>scp -P port 01.py user@remote:Desktop/01.py<br><br><span class="hljs-comment"># 把远程 家目录下的 Desktop/01.py 文件 复制到 本地当前目录下的 01.py</span><br>scp -P port user@remote:Desktop/01.py 01.py<br><br><span class="hljs-comment"># 加上 -r 选项可以传送文件夹</span><br><span class="hljs-comment"># 把当前目录下的 demo 文件夹 复制到 远程 家目录下的 Desktop</span><br>scp -r demo user@remote:Desktop<br><br><span class="hljs-comment"># 把远程 家目录下的 Desktop 复制到 当前目录下的 demo 文件夹</span><br>scp -r user@remote:Desktop demo<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>若给出的源文件是目录文件，则 scp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>若远程 SSH 服务器的端口不是 22，需要使用大写字母 -P 选项指定端口</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li><code>scp</code> 这个终端命令只能在 <code>Linux</code> 或者 <code>UNIX</code> 系统下使用</li>
+<li>如果在 <code>Windows</code> 系统中，可以安装 <code>PuTTY</code>，使用 <code>pscp</code> 命令行工具或者安装 <code>FileZilla</code> 使用 <code>FTP</code> 进行文件传输</li>
+</ul>
+</blockquote>
+<h4 id="FileZilla"><a href="#FileZilla" class="headerlink" title="FileZilla"></a><code>FileZilla</code></h4><ul>
+<li>官方网站：<a target="_blank" rel="noopener" href="https://www.filezilla.cn/download/client">https://www.filezilla.cn/download/client</a></li>
+<li><code>FileZilla</code> 在传输文件时，使用的是 <code>FTP 服务</code> 而不是 <code>SSH 服务</code>，因此端口号应该设置为 <code>21</code></li>
+</ul>
+<h3 id="3-3-SSH-高级（知道）"><a href="#3-3-SSH-高级（知道）" class="headerlink" title="3.3 SSH 高级（知道）"></a>3.3 SSH 高级（知道）</h3><ul>
+<li>免密码登录</li>
+<li>配置别名</li>
+</ul>
+<blockquote>
+<p>提示：有关 SSH 配置信息都保存在用户家目录下的 <code>.ssh</code> 目录下</p>
+</blockquote>
+<h4 id="1）免密码登录"><a href="#1）免密码登录" class="headerlink" title="1）免密码登录"></a>1）免密码登录</h4><h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
+<li>配置公钥<ul>
+<li>执行 <code>ssh-keygen</code> 即可生成 SSH 钥匙，一路回车即可</li>
+</ul>
+</li>
+<li>上传公钥到服务器<ul>
+<li>执行 <code>ssh-copy-id -p port user@remote</code>，可以让远程服务器记住我们的公钥</li>
+</ul>
+</li>
+</ul>
+<h5 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h5><blockquote>
+<p>非对称加密算法</p>
+<ul>
+<li>使用 <strong>公钥</strong> 加密的数据，需要使用 <strong>私钥</strong> 解密</li>
+<li>使用 <strong>私钥</strong> 加密的数据，需要使用 <strong>公钥</strong> 解密</li>
+</ul>
+</blockquote>
+<h4 id="2-配置别名"><a href="#2-配置别名" class="headerlink" title="2) 配置别名"></a>2) 配置别名</h4><p>每次都输入 <code>ssh -p port user@remote</code>，时间久了会觉得很麻烦，特别是当 <code>user</code>, <code>remote</code> 和 <code>port</code> 都得输入，而且还不好记忆</p>
+<p>而 <strong>配置别名</strong> 可以让我们进一步偷懒，譬如用：<code>ssh mac</code> 来替代上面这么一长串，那么就在 <code>~/.ssh/config</code> 里面追加以下内容：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Host mac<br>    HostName ip地址<br>    <span class="hljs-keyword">User</span> <span class="hljs-title">itheima</span><br>    Port <span class="hljs-number">22</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>保存之后，即可用 <code>ssh mac</code> 实现远程登录了，<code>scp</code> 同样可以使用</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux常用命令（以Ubuntu为例）</div>
+      <div>http://example.com/2021/08/28/Linux常用命令（以Ubuntu为例）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A0/" title="使用PyCharm编写Python.PartⅠ">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用PyCharm编写Python.PartⅠ</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

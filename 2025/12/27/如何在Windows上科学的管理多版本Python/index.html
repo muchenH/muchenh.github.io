@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在 Windows 上科学地管理多个 Python 版本，核心目标是 避免版本冲突、实现项目隔离、简化切换流程。根据你的开发场景（普通开发 &#x2F; 数据科学 &#x2F; 遗留系统维护等），以下是目前最主流、最推荐的几种方案及其适用建议：  ✅ 一、推荐方案总览   方案 工具 适用场景 优点 缺点    轻量级多版本管理 + 项目隔离 pyenv-win + venv Web 开发、脚本开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在Windows上科学的管理多版本Python">
+<meta property="og:url" content="http://example.com/2025/12/27/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E4%B8%8A%E7%A7%91%E5%AD%A6%E7%9A%84%E7%AE%A1%E7%90%86%E5%A4%9A%E7%89%88%E6%9C%ACPython/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="在 Windows 上科学地管理多个 Python 版本，核心目标是 避免版本冲突、实现项目隔离、简化切换流程。根据你的开发场景（普通开发 &#x2F; 数据科学 &#x2F; 遗留系统维护等），以下是目前最主流、最推荐的几种方案及其适用建议：  ✅ 一、推荐方案总览   方案 工具 适用场景 优点 缺点    轻量级多版本管理 + 项目隔离 pyenv-win + venv Web 开发、脚本开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2025-12-27T14:09:45.000Z">
+<meta property="article:modified_time" content="2025-12-28T07:17:06.822Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>如何在Windows上科学的管理多版本Python - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何在Windows上科学的管理多版本Python"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-27 22:09" pubdate>
+          2025年12月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何在Windows上科学的管理多版本Python</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在 Windows 上科学地管理多个 Python 版本，核心目标是 <strong>避免版本冲突、实现项目隔离、简化切换流程</strong>。根据你的开发场景（普通开发 &#x2F; 数据科学 &#x2F; 遗留系统维护等），以下是目前最主流、最推荐的几种方案及其适用建议：</p>
+<hr>
+<h2 id="✅-一、推荐方案总览"><a href="#✅-一、推荐方案总览" class="headerlink" title="✅ 一、推荐方案总览"></a>✅ 一、推荐方案总览</h2><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>工具</th>
+<th>适用场景</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>轻量级多版本管理 + 项目隔离</strong></td>
+<td><code>pyenv-win</code> + <code>venv</code></td>
+<td>Web 开发、脚本开发、跨主版本项目</td>
+<td>精准控制解释器版本、无依赖污染、命令统一</td>
+<td>需命令行操作、首次配置略复杂</td>
+</tr>
+<tr>
+<td><strong>数据科学&#x2F;科研&#x2F;AI项目</strong></td>
+<td><code>Miniconda</code> &#x2F; <code>Anaconda</code></td>
+<td>科学计算、机器学习、深度学习</td>
+<td>自带预编译包、依赖兼容性好、环境隔离强</td>
+<td>占用磁盘空间大、启动稍慢</td>
+</tr>
+<tr>
+<td><strong>简单项目、单一主版本多依赖</strong></td>
+<td>原生 <code>venv</code></td>
+<td>小型项目、教学、快速原型</td>
+<td>无需额外安装、Python 自带</td>
+<td><strong>不能切换 Python 主版本</strong></td>
+</tr>
+<tr>
+<td><strong>临时&#x2F;手动调试</strong></td>
+<td>手动 PATH 或 <code>py</code> 启动器</td>
+<td>快速测试、不常切换</td>
+<td>无需工具</td>
+<td>易出错、维护成本高</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📌 <strong>结论：日常开发首选 <code>pyenv-win + venv</code>；数据科学首选 <code>Miniconda</code>。</strong></p>
+</blockquote>
+<hr>
+<h2 id="✅-二、详细方案说明"><a href="#✅-二、详细方案说明" class="headerlink" title="✅ 二、详细方案说明"></a>✅ 二、详细方案说明</h2><h3 id="方案-1：使用-pyenv-win（推荐给大多数开发者）"><a href="#方案-1：使用-pyenv-win（推荐给大多数开发者）" class="headerlink" title="方案 1：使用 pyenv-win（推荐给大多数开发者）"></a>方案 1：使用 <code>pyenv-win</code>（推荐给大多数开发者）</h3><h4 id="🔧-安装步骤（PowerShell）："><a href="#🔧-安装步骤（PowerShell）：" class="headerlink" title="🔧 安装步骤（PowerShell）："></a>🔧 安装步骤（PowerShell）：</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 下载并运行安装脚本（自动配置环境变量）</span><br><span class="hljs-built_in">Invoke-WebRequest</span> <span class="hljs-literal">-UseBasicParsing</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="hljs-literal">-OutFile</span> <span class="hljs-string">&quot;./install-pyenv-win.ps1&quot;</span><br>.\<span class="hljs-built_in">install-pyenv</span><span class="hljs-literal">-win</span>.ps1<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装后重启终端。</p>
+</blockquote>
+<h4 id="🛠-常用命令："><a href="#🛠-常用命令：" class="headerlink" title="🛠 常用命令："></a>🛠 常用命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看可安装版本（过滤 3.x）</span><br>pyenv install --list | findstr <span class="hljs-string">&quot;3.1&quot;</span><br><br><span class="hljs-comment"># 安装指定版本</span><br>pyenv install 3.10.12<br>pyenv install 3.12.3<br><br><span class="hljs-comment"># 查看已安装版本</span><br>pyenv versions<br><br><span class="hljs-comment"># 全局默认版本（所有项目）</span><br>pyenv global 3.12.3<br><br><span class="hljs-comment"># 项目级版本（在项目根目录执行）</span><br><span class="hljs-built_in">cd</span> my_project<br>pyenv <span class="hljs-built_in">local</span> 3.10.12   <span class="hljs-comment"># 自动生成 .python-version 文件</span><br><br><span class="hljs-comment"># 临时使用某版本（仅当前会话）</span><br>pyenv shell 3.9.18<br>python --version<br><br><span class="hljs-comment"># 卸载版本</span><br>pyenv uninstall 3.8.10<br></code></pre></td></tr></table></figure>
+
+<h4 id="💡-结合-venv-使用（最佳实践）："><a href="#💡-结合-venv-使用（最佳实践）：" class="headerlink" title="💡 结合 venv 使用（最佳实践）："></a>💡 结合 <code>venv</code> 使用（最佳实践）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 设置项目所需 Python 版本</span><br>pyenv <span class="hljs-built_in">local</span> 3.11.9<br><br><span class="hljs-comment"># 2. 创建虚拟环境（使用当前 pyenv 指定的 python）</span><br>python -m venv .venv<br><br><span class="hljs-comment"># 3. 激活环境（PowerShell）</span><br>.venv\Scripts\Activate.ps1<br><br><span class="hljs-comment"># 此时 pip install 的包仅限该项目，且 Python 版本固定</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 优势：<strong>解释器版本 + 依赖包双重隔离</strong>，彻底解决“这个项目跑通，那个崩了”的问题。</p>
+</blockquote>
+<hr>
+<h3 id="方案-2：使用-Miniconda（数据科学首选）"><a href="#方案-2：使用-Miniconda（数据科学首选）" class="headerlink" title="方案 2：使用 Miniconda（数据科学首选）"></a>方案 2：使用 <code>Miniconda</code>（数据科学首选）</h3><h4 id="🔧-安装："><a href="#🔧-安装：" class="headerlink" title="🔧 安装："></a>🔧 安装：</h4><ul>
+<li>下载 <a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda for Windows</a></li>
+<li>安装时勾选 <strong>“Add to PATH”</strong>（方便命令行调用）</li>
+</ul>
+<h4 id="🛠-常用命令：-1"><a href="#🛠-常用命令：-1" class="headerlink" title="🛠 常用命令："></a>🛠 常用命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建不同 Python 版本的环境</span><br>conda create -n py38 python=3.8<br>conda create -n py312 python=3.12<br><br><span class="hljs-comment"># 激活/退出环境</span><br>conda activate py38<br>conda deactivate<br><br><span class="hljs-comment"># 在环境中安装包</span><br>conda install numpy pandas jupyter<br><br><span class="hljs-comment"># 查看当前环境信息</span><br>conda list<br>conda info --envs<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 优势：Conda 提供 <strong>预编译二进制包</strong>，避免 Windows 上因缺少 Visual Studio Build Tools 导致的 <code>pip install</code> 失败（如 <code>torch</code>, <code>scipy</code> 等）。</p>
+</blockquote>
+<hr>
+<h3 id="方案-3：原生-venv（仅适用于同一-Python-主版本）"><a href="#方案-3：原生-venv（仅适用于同一-Python-主版本）" class="headerlink" title="方案 3：原生 venv（仅适用于同一 Python 主版本）"></a>方案 3：原生 <code>venv</code>（仅适用于同一 Python 主版本）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 假设你全局只有 Python 3.11</span><br>python -m venv project_a_env<br>project_a_env\Scripts\activate<br>pip install django==4.2<br><br><span class="hljs-comment"># 另一个项目</span><br>python -m venv project_b_env<br>project_b_env\Scripts\activate<br>pip install flask==2.3<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 注意：<strong>无法切换 Python 主版本</strong>（如从 3.11 切到 3.8），仅适合单一主版本下的多项目隔离。</p>
+</blockquote>
+<hr>
+<h3 id="方案-4：Windows-自带-py-启动器（辅助工具）"><a href="#方案-4：Windows-自带-py-启动器（辅助工具）" class="headerlink" title="方案 4：Windows 自带 py 启动器（辅助工具）"></a>方案 4：Windows 自带 <code>py</code> 启动器（辅助工具）</h3><p>如果你已手动安装多个 Python（如 3.8 和 3.12）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">py --list<br><span class="hljs-comment"># 输出：</span><br><span class="hljs-comment"># -3.12-64 *</span><br><span class="hljs-comment"># -3.8-64</span><br><br><span class="hljs-comment"># 指定版本运行脚本</span><br>py -3.8 my_legacy_script.py<br>py -3.12 new_project.py<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 适合偶尔切换，但<strong>不推荐作为主力方案</strong>，因为无法自动管理 PATH 或创建隔离环境。</p>
+</blockquote>
+<hr>
+<h2 id="✅-三、避坑指南-amp-最佳实践"><a href="#✅-三、避坑指南-amp-最佳实践" class="headerlink" title="✅ 三、避坑指南 &amp; 最佳实践"></a>✅ 三、避坑指南 &amp; 最佳实践</h2><ol>
+<li><p><strong>不要混用多种方案</strong><br>比如同时用 <code>pyenv-win</code> 和手动安装的 Python，容易导致 <code>PATH</code> 冲突。</p>
+</li>
+<li><p><strong>卸载旧版本要彻底</strong><br>控制面板卸载后，手动删除残留目录（如 <code>C:\Python39</code>）和 PATH 中的旧路径。</p>
+</li>
+<li><p><strong>优先使用项目级配置</strong><br>用 <code>pyenv local</code> 或 <code>conda env</code> 为每个项目绑定版本，避免全局污染。</p>
+</li>
+<li><p><strong>国内用户加速下载</strong>  </p>
+<ul>
+<li><code>pyenv</code> 安装慢？可手动下载 <code>.exe</code> 安装包放入 <code>%USERPROFILE%\.pyenv\cache\</code></li>
+<li><code>pip</code> 用清华源：<code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+</ul>
+</li>
+<li><p><strong>IDE 配置</strong><br>VS Code &#x2F; PyCharm 中选择解释器时，指向 <code>.venv\Scripts\python.exe</code> 或 conda 环境中的 <code>python.exe</code>。</p>
+</li>
+</ol>
+<hr>
+<h2 id="✅-四、总结：如何选择？"><a href="#✅-四、总结：如何选择？" class="headerlink" title="✅ 四、总结：如何选择？"></a>✅ 四、总结：如何选择？</h2><table>
+<thead>
+<tr>
+<th>你的场景</th>
+<th>推荐工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Web 开发、自动化脚本、跨版本项目</td>
+<td><code>pyenv-win</code> + <code>venv</code></td>
+</tr>
+<tr>
+<td>机器学习、数据分析、科研</td>
+<td><code>Miniconda</code></td>
+</tr>
+<tr>
+<td>教学、小工具、单一版本</td>
+<td>原生 <code>venv</code></td>
+</tr>
+<tr>
+<td>临时测试旧脚本</td>
+<td><code>py -3.x script.py</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💬 <strong>一句话建议</strong>：<br><strong>普通开发者 → 装 <code>pyenv-win</code>；数据科学家 → 装 <code>Miniconda</code>。两者都能让你告别“Python 环境地狱”。</strong></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Docker/" class="category-chain-item">Docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何在Windows上科学的管理多版本Python</div>
+      <div>http://example.com/2025/12/27/如何在Windows上科学的管理多版本Python/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/26/Docker%E9%95%9C%E5%83%8Ftar%E5%8C%85%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95/" title="Docker镜像tar包导入方法">
+                        <span class="hidden-mobile">Docker镜像tar包导入方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

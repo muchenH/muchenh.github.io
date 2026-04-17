@@ -1,0 +1,1447 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="高级变量类型目标 列表 元组 字典 字符串 公共方法 变量高级  知识点回顾 Python 中数据类型可以分为 数字型 和 非数字型  数字型  整型 (int) 浮点型（float） 布尔型（bool）  真 True 非 0 数 —— 非零即真 假 False 0   复数型 (complex) 主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题     非数字型  字符串 列表 元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用PyCharm编写Python.PartⅤ">
+<meta property="og:url" content="http://example.com/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A4/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="高级变量类型目标 列表 元组 字典 字符串 公共方法 变量高级  知识点回顾 Python 中数据类型可以分为 数字型 和 非数字型  数字型  整型 (int) 浮点型（float） 布尔型（bool）  真 True 非 0 数 —— 非零即真 假 False 0   复数型 (complex) 主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题     非数字型  字符串 列表 元">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/pycharm.png">
+<meta property="article:published_time" content="2021-08-28T15:02:59.000Z">
+<meta property="article:modified_time" content="2021-09-10T09:38:48.000Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/pycharm.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>使用PyCharm编写Python.PartⅤ - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用PyCharm编写Python.PartⅤ"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-28 23:02" pubdate>
+          2021年8月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          77 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用PyCharm编写Python.PartⅤ</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="高级变量类型"><a href="#高级变量类型" class="headerlink" title="高级变量类型"></a>高级变量类型</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>字符串</li>
+<li>公共方法</li>
+<li>变量高级</li>
+</ul>
+<h3 id="知识点回顾"><a href="#知识点回顾" class="headerlink" title="知识点回顾"></a>知识点回顾</h3><ul>
+<li><p>Python 中数据类型可以分为 <strong>数字型</strong> 和 <strong>非数字型</strong></p>
+</li>
+<li><p>数字型</p>
+<ul>
+<li>整型 (<code>int</code>)</li>
+<li>浮点型（<code>float</code>）</li>
+<li>布尔型（<code>bool</code>） <ul>
+<li>真 <code>True</code> <code>非 0 数</code> —— <strong>非零即真</strong></li>
+<li>假 <code>False</code> <code>0</code></li>
+</ul>
+</li>
+<li>复数型 (<code>complex</code>)<ul>
+<li>主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>非数字型</p>
+<ul>
+<li>字符串</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+</ul>
+</li>
+<li><p>在 <code>Python</code> 中，所有 <strong>非数字型变量</strong> 都支持以下特点：</p>
+<ol>
+<li>都是一个 <strong>序列</strong> <code>sequence</code>，也可以理解为 <strong>容器</strong></li>
+<li><strong>取值</strong> <code>[]</code></li>
+<li><strong>遍历</strong> <code>for in</code></li>
+<li><strong>计算长度</strong>、<strong>最大&#x2F;最小值</strong>、<strong>比较</strong>、<strong>删除</strong></li>
+<li><strong>链接</strong> <code>+</code> 和 <strong>重复</strong> <code>*</code></li>
+<li><strong>切片</strong></li>
+</ol>
+</li>
+</ul>
+<h2 id="01-列表"><a href="#01-列表" class="headerlink" title="01. 列表"></a>01. 列表</h2><h3 id="1-1-列表的定义"><a href="#1-1-列表的定义" class="headerlink" title="1.1 列表的定义"></a>1.1 列表的定义</h3><ul>
+<li><code>List</code>（列表） 是 <code>Python</code> 中使用 <strong>最频繁</strong> 的数据类型，在其他语言中通常叫做 <strong>数组</strong></li>
+<li>专门用于存储 <strong>一串 信息</strong></li>
+<li>列表用 <code>[]</code> 定义，<strong>数据</strong> 之间使用 <code>,</code> 分隔</li>
+<li>列表的 <strong>索引</strong> 从 <code>0</code> 开始<ul>
+<li><strong>索引</strong> 就是数据在 <strong>列表</strong> 中的位置编号，<strong>索引</strong> 又可以被称为 <strong>下标</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：从列表中取值时，如果 <strong>超出索引范围</strong>，程序会报错</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">name_list = [<span class="hljs-string">&quot;zhangsan&quot;</span>, <span class="hljs-string">&quot;lisi&quot;</span>, <span class="hljs-string">&quot;wangwu&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/14972568611505/001_%E5%88%97%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="001_列表示意图"></p>
+<h3 id="1-2-列表常用操作"><a href="#1-2-列表常用操作" class="headerlink" title="1.2 列表常用操作"></a>1.2 列表常用操作</h3><ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>列表</strong>，例如：<code>name_list = []</code></li>
+<li>输入 <code>name_list.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>列表</strong> 能够使用的 <strong>方法</strong> 如下：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">In <span class="hljs-selector-attr">[1]</span>: name_list.<br>name_list<span class="hljs-selector-class">.append</span>   name_list<span class="hljs-selector-class">.count</span>    name_list<span class="hljs-selector-class">.insert</span>   name_list<span class="hljs-selector-class">.reverse</span><br>name_list<span class="hljs-selector-class">.clear</span>    name_list<span class="hljs-selector-class">.extend</span>   name_list<span class="hljs-selector-class">.pop</span>      name_list<span class="hljs-selector-class">.sort</span><br>name_list<span class="hljs-selector-class">.copy</span>     name_list<span class="hljs-selector-class">.index</span>    name_list<span class="hljs-selector-class">.remove</span> <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>分类</th>
+<th>关键字 &#x2F; 函数 &#x2F; 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>增加</td>
+<td>列表.insert(索引, 数据)</td>
+<td>在指定位置插入数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.append(数据)</td>
+<td>在末尾追加数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.extend(列表2)</td>
+<td>将列表2 的数据追加到列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td>修改</td>
+<td>列表[索引] &#x3D; 数据</td>
+<td>修改指定索引的数据</td>
+</tr>
+<tr>
+<td>3</td>
+<td>删除</td>
+<td>del 列表[索引]</td>
+<td>删除指定索引的数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.remove[数据]</td>
+<td>删除第一个出现的指定数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.pop</td>
+<td>删除末尾数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.pop(索引)</td>
+<td>删除指定索引数据</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.clear</td>
+<td>清空列表</td>
+</tr>
+<tr>
+<td>4</td>
+<td>统计</td>
+<td>len(列表)</td>
+<td>列表长度</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.count(数据)</td>
+<td>数据在列表中出现的次数</td>
+</tr>
+<tr>
+<td>5</td>
+<td>排序</td>
+<td>列表.sort()</td>
+<td>升序排序</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.sort(reverse&#x3D;True)</td>
+<td>降序排序</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>列表.reverse()</td>
+<td>逆序、反转</td>
+</tr>
+</tbody></table>
+<h4 id="del-关键字（科普）"><a href="#del-关键字（科普）" class="headerlink" title="del 关键字（科普）"></a>del 关键字（科普）</h4><ul>
+<li>使用 <code>del</code> 关键字(<code>delete</code>) 同样可以删除列表中元素</li>
+<li><code>del</code> 关键字本质上是用来 <strong>将一个变量从内存中删除的</strong></li>
+<li>如果使用 <code>del</code> 关键字将变量从内存中删除，后续的代码就不能再使用这个变量了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">del</span> name_list[<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在日常开发中，要从列表删除数据，建议 <strong>使用列表提供的方法</strong></p>
+</blockquote>
+<h4 id="关键字、函数和方法（科普）"><a href="#关键字、函数和方法（科普）" class="headerlink" title="关键字、函数和方法（科普）"></a>关键字、函数和方法（科普）</h4><ul>
+<li><strong>关键字</strong> 是 Python 内置的、具有特殊意义的标识符</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">1</span>]: <span class="hljs-keyword">import</span> keyword<br>In [<span class="hljs-number">2</span>]: <span class="hljs-built_in">print</span>(keyword.kwlist)<br>In [<span class="hljs-number">3</span>]: <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(keyword.kwlist))<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关键字后面不需要使用括号</p>
+</blockquote>
+<ul>
+<li><strong>函数</strong> 封装了独立功能，可以直接调用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">函数名(参数)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数需要死记硬背</p>
+</blockquote>
+<ul>
+<li><strong>方法</strong> 和函数类似，同样是封装了独立的功能</li>
+<li><strong>方法</strong> 需要通过 <strong>对象</strong> 来调用，表示针对这个 <strong>对象</strong> 要做的操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">对象.方法名(参数)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在变量后面输入 <code>.</code>，然后选择针对这个变量要执行的操作，记忆起来比函数要简单很多</p>
+</blockquote>
+<h3 id="1-3-循环遍历"><a href="#1-3-循环遍历" class="headerlink" title="1.3 循环遍历"></a>1.3 循环遍历</h3><ul>
+<li><p><strong>遍历</strong> 就是 <strong>从头到尾</strong> <strong>依次</strong> 从 <strong>列表</strong> 中获取数据</p>
+<ul>
+<li>在 <strong>循环体内部</strong> 针对 <strong>每一个元素</strong>，执行相同的操作</li>
+</ul>
+</li>
+<li><p>在 <code>Python</code> 中为了提高列表的遍历效率，专门提供的 <strong>迭代 iteration 遍历</strong></p>
+</li>
+<li><p>使用 <code>for</code> 就能够实现迭代遍历</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># for 循环内部使用的变量 in 列表</span><br><span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> name_list:<br><br>    循环内部针对列表元素进行操作<br>    <span class="hljs-built_in">print</span>(name)<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/14972568611505/002_forin%E5%BE%AA%E7%8E%AF%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="002_forin循环流程图-w420"></p>
+<h3 id="1-4-应用场景"><a href="#1-4-应用场景" class="headerlink" title="1.4 应用场景"></a>1.4 <strong>应用场景</strong></h3><ul>
+<li>尽管 <code>Python</code> 的 <strong>列表</strong> 中可以 <strong>存储不同类型的数据</strong></li>
+<li>但是在开发中，更多的应用场景是<ol>
+<li><strong>列表</strong> 存储相同类型的数据</li>
+<li>通过 <strong>迭代遍历</strong>，在循环体内部，针对列表中的每一项元素，执行相同的操作</li>
+</ol>
+</li>
+</ul>
+<h2 id="02-元组"><a href="#02-元组" class="headerlink" title="02. 元组"></a>02. 元组</h2><h3 id="2-1-元组的定义"><a href="#2-1-元组的定义" class="headerlink" title="2.1 元组的定义"></a>2.1 元组的定义</h3><ul>
+<li><code>Tuple</code>（元组）与列表类似，不同之处在于元组的 <strong>元素不能修改</strong><ul>
+<li><strong>元组</strong> 表示多个元素组成的序列</li>
+<li><strong>元组</strong> 在 <code>Python</code> 开发中，有特定的应用场景</li>
+</ul>
+</li>
+<li>用于存储 <strong>一串 信息</strong>，<strong>数据</strong> 之间使用 <code>,</code> 分隔</li>
+<li>元组用 <code>()</code> 定义</li>
+<li>元组的 <strong>索引</strong> 从 <code>0</code> 开始<ul>
+<li><strong>索引</strong> 就是数据在 <strong>元组</strong> 中的位置编号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">info_tuple = (<span class="hljs-string">&quot;zhangsan&quot;</span>, <span class="hljs-number">18</span>, <span class="hljs-number">1.75</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="创建空元组"><a href="#创建空元组" class="headerlink" title="创建空元组"></a>创建空元组</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">info_tuple = ()<br></code></pre></td></tr></table></figure>
+
+<h4 id="元组中-只包含一个元素-时，需要-在元素后面添加逗号"><a href="#元组中-只包含一个元素-时，需要-在元素后面添加逗号" class="headerlink" title="元组中 只包含一个元素 时，需要 在元素后面添加逗号"></a>元组中 <strong>只包含一个元素</strong> 时，需要 <strong>在元素后面添加逗号</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">info_tuple = (<span class="hljs-number">50</span>, )<br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/14972568611505/003_%E5%85%83%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="003_元组示意图-w500"></p>
+<h3 id="2-2-元组常用操作"><a href="#2-2-元组常用操作" class="headerlink" title="2.2 元组常用操作"></a>2.2 元组常用操作</h3><ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>元组</strong>，例如：<code>info = ()</code></li>
+<li>输入 <code>info.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>元组</strong> 能够使用的函数如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">info.count  info.index<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有关 <strong>元组</strong> 的 <strong>常用操作</strong> 可以参照上图练习</p>
+</blockquote>
+<h3 id="2-3-循环遍历"><a href="#2-3-循环遍历" class="headerlink" title="2.3 循环遍历"></a>2.3 循环遍历</h3><ul>
+<li><strong>取值</strong> 就是从 <strong>元组</strong> 中获取存储在指定位置的数据</li>
+<li><strong>遍历</strong> 就是 <strong>从头到尾</strong> <strong>依次</strong> 从 <strong>元组</strong> 中获取数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># for 循环内部使用的变量 in 元组</span><br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> info:<br><br>    循环内部针对元组元素进行操作<br>    <span class="hljs-built_in">print</span>(item)<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>在 <code>Python</code> 中，可以使用 <code>for</code> 循环遍历所有非数字型类型的变量：<strong>列表</strong>、<strong>元组</strong>、<strong>字典</strong> 以及 <strong>字符串</strong></li>
+<li>提示：在实际开发中，除非 <strong>能够确认元组中的数据类型</strong>，否则针对元组的循环遍历需求并不是很多</li>
+</ul>
+</blockquote>
+<h3 id="2-4-应用场景"><a href="#2-4-应用场景" class="headerlink" title="2.4 应用场景"></a>2.4 应用场景</h3><ul>
+<li>尽管可以使用 <code>for in</code> 遍历 <strong>元组</strong></li>
+<li>但是在开发中，更多的应用场景是：<ul>
+<li><strong>函数的 参数 和 返回值</strong>，一个函数可以接收 <strong>任意多个参数</strong>，或者 <strong>一次返回多个数据</strong><ul>
+<li>有关 <strong>函数的参数 和 返回值</strong>，在后续 <strong>函数高级</strong> 给大家介绍</li>
+</ul>
+</li>
+<li><strong>格式字符串</strong>，格式化字符串后面的 <code>()</code> 本质上就是一个元组</li>
+<li><strong>让列表不可以被修改</strong>，以保护数据安全</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">info = (<span class="hljs-string">&quot;zhangsan&quot;</span>, <span class="hljs-number">18</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s 的年龄是 %d&quot;</span> % info)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="元组和列表之间的转换"><a href="#元组和列表之间的转换" class="headerlink" title="元组和列表之间的转换"></a>元组和列表之间的转换</h4><ul>
+<li>使用 <code>list</code> 函数可以把元组转换成列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">list</span>(元组) <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>tuple</code> 函数可以把列表转换成元组</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">tuple</span>(列表)<br></code></pre></td></tr></table></figure>
+
+<h2 id="03-字典"><a href="#03-字典" class="headerlink" title="03. 字典"></a>03. 字典</h2><h3 id="3-1-字典的定义"><a href="#3-1-字典的定义" class="headerlink" title="3.1 字典的定义"></a>3.1 字典的定义</h3><ul>
+<li><code>dictionary</code>（字典） 是 <strong>除列表以外</strong> <code>Python</code> 之中 <strong>最灵活</strong> 的数据类型</li>
+<li>字典同样可以用来 <strong>存储多个数据</strong><ul>
+<li>通常用于存储 <strong>描述一个 <code>物体</code> 的相关信息</strong></li>
+</ul>
+</li>
+<li>和列表的区别<ul>
+<li><strong>列表</strong> 是 <strong>有序</strong> 的对象集合</li>
+<li><strong>字典</strong> 是 <strong>无序</strong> 的对象集合</li>
+</ul>
+</li>
+<li>字典用 <code>&#123;&#125;</code> 定义</li>
+<li>字典使用 <strong>键值对</strong> 存储数据，键值对之间使用 <code>,</code> 分隔<ul>
+<li><strong>键</strong> <code>key</code> 是索引</li>
+<li><strong>值</strong> <code>value</code> 是数据</li>
+<li><strong>键</strong> 和 <strong>值</strong> 之间使用 <code>:</code> 分隔</li>
+<li><strong>键必须是唯一的</strong></li>
+<li><strong>值</strong> 可以取任何数据类型，但 <strong>键</strong> 只能使用 <strong>字符串</strong>、<strong>数字</strong>或 <strong>元组</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">xiaoming = &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;小明&quot;</span>,<br>            <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>,<br>            <span class="hljs-string">&quot;gender&quot;</span>: <span class="hljs-literal">True</span>,<br>            <span class="hljs-string">&quot;height&quot;</span>: <span class="hljs-number">1.75</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/14972568611505/002_%E5%AD%97%E5%85%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="002_字典示意图"></p>
+<h3 id="3-2-字典常用操作"><a href="#3-2-字典常用操作" class="headerlink" title="3.2 字典常用操作"></a>3.2 字典常用操作</h3><ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>字典</strong>，例如：<code>xiaoming = &#123;&#125;</code></li>
+<li>输入 <code>xiaoming.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>字典</strong> 能够使用的函数如下：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">In <span class="hljs-selector-attr">[1]</span>: xiaoming.<br>xiaoming<span class="hljs-selector-class">.clear</span>       xiaoming<span class="hljs-selector-class">.items</span>       xiaoming<span class="hljs-selector-class">.setdefault</span><br>xiaoming<span class="hljs-selector-class">.copy</span>        xiaoming<span class="hljs-selector-class">.keys</span>        xiaoming<span class="hljs-selector-class">.update</span><br>xiaoming<span class="hljs-selector-class">.fromkeys</span>    xiaoming<span class="hljs-selector-class">.pop</span>         xiaoming<span class="hljs-selector-class">.values</span><br>xiaoming<span class="hljs-selector-class">.get</span>         xiaoming<span class="hljs-selector-class">.popitem</span>    <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有关 <strong>字典</strong> 的 <strong>常用操作</strong> 可以参照上图练习</p>
+</blockquote>
+<h3 id="3-3-循环遍历"><a href="#3-3-循环遍历" class="headerlink" title="3.3 循环遍历"></a>3.3 循环遍历</h3><ul>
+<li><strong>遍历</strong> 就是 <strong>依次</strong> 从 <strong>字典</strong> 中获取所有键值对</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># for 循环内部使用的 `key 的变量` in 字典</span><br><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> xiaoming:<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s: %s&quot;</span> % (k, xiaoming[k]))<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：在实际开发中，由于字典中每一个键值对保存数据的类型是不同的，所以针对字典的循环遍历需求并不是很多</p>
+</blockquote>
+<h3 id="3-4-应用场景"><a href="#3-4-应用场景" class="headerlink" title="3.4 应用场景"></a>3.4 <strong>应用场景</strong></h3><ul>
+<li>尽管可以使用 <code>for in</code> 遍历 <strong>字典</strong></li>
+<li>但是在开发中，更多的应用场景是：<ul>
+<li>使用 <strong>多个键值对</strong>，存储 <strong>描述一个 <code>物体</code> 的相关信息</strong> —— 描述更复杂的数据信息</li>
+<li>将 <strong>多个字典</strong> 放在 <strong>一个列表</strong> 中，再进行遍历，在循环体内部针对每一个字典进行 <strong>相同的处理</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">card_list = [&#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;张三&quot;</span>,<br>              <span class="hljs-string">&quot;qq&quot;</span>: <span class="hljs-string">&quot;12345&quot;</span>,<br>              <span class="hljs-string">&quot;phone&quot;</span>: <span class="hljs-string">&quot;110&quot;</span>&#125;,<br>             &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;李四&quot;</span>,<br>              <span class="hljs-string">&quot;qq&quot;</span>: <span class="hljs-string">&quot;54321&quot;</span>,<br>              <span class="hljs-string">&quot;phone&quot;</span>: <span class="hljs-string">&quot;10086&quot;</span>&#125;<br>             ]<br><br></code></pre></td></tr></table></figure>
+<h2 id="04-字符串"><a href="#04-字符串" class="headerlink" title="04. 字符串"></a>04. 字符串</h2><h3 id="4-1-字符串的定义"><a href="#4-1-字符串的定义" class="headerlink" title="4.1 字符串的定义"></a>4.1 字符串的定义</h3><ul>
+<li><strong>字符串</strong> 就是 <strong>一串字符</strong>，是编程语言中表示文本的数据类型</li>
+<li>在 Python 中可以使用 <strong>一对双引号</strong> <code>&quot;</code> 或者 <strong>一对单引号</strong> <code>&#39;</code> 定义一个字符串<ul>
+<li>虽然可以使用 <code>\&quot;</code> 或者 <code>\&#39;</code> 做字符串的转义，但是在实际开发中：<ul>
+<li>如果字符串内部需要使用 <code>&quot;</code>，可以使用 <code>&#39;</code> 定义字符串</li>
+<li>如果字符串内部需要使用 <code>&#39;</code>，可以使用 <code>&quot;</code> 定义字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可以使用 <strong>索引</strong> 获取一个字符串中 <strong>指定位置的字符</strong>，索引计数从 <strong>0</strong> 开始</li>
+<li>也可以使用 <code>for</code> <strong>循环遍历</strong> 字符串中每一个字符</li>
+</ul>
+<blockquote>
+<p>大多数编程语言都是用 <code>&quot;</code> 来定义字符串</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">string = <span class="hljs-string">&quot;Hello Python&quot;</span><br><br><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> string:<br>    <span class="hljs-built_in">print</span>(c)<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/14972568611505/005_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="005_字符串示意图-w500"></p>
+<h3 id="4-2-字符串的常用操作"><a href="#4-2-字符串的常用操作" class="headerlink" title="4.2 字符串的常用操作"></a>4.2 字符串的常用操作</h3><ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>字符串</strong>，例如：<code>hello_str = &quot;&quot;</code></li>
+<li>输入 <code>hello_str.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>字符串</strong> 能够使用的 <strong>方法</strong> 如下：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs stylus">In <span class="hljs-selector-attr">[1]</span>: hello_str.<br>hello_str<span class="hljs-selector-class">.capitalize</span>    hello_str<span class="hljs-selector-class">.isidentifier</span>  hello_str<span class="hljs-selector-class">.rindex</span><br>hello_str<span class="hljs-selector-class">.casefold</span>      hello_str<span class="hljs-selector-class">.islower</span>       hello_str<span class="hljs-selector-class">.rjust</span><br>hello_str<span class="hljs-selector-class">.center</span>        hello_str<span class="hljs-selector-class">.isnumeric</span>     hello_str<span class="hljs-selector-class">.rpartition</span><br>hello_str<span class="hljs-selector-class">.count</span>         hello_str<span class="hljs-selector-class">.isprintable</span>   hello_str<span class="hljs-selector-class">.rsplit</span><br>hello_str<span class="hljs-selector-class">.encode</span>        hello_str<span class="hljs-selector-class">.isspace</span>       hello_str<span class="hljs-selector-class">.rstrip</span><br>hello_str<span class="hljs-selector-class">.endswith</span>      hello_str<span class="hljs-selector-class">.istitle</span>       hello_str<span class="hljs-selector-class">.split</span><br>hello_str<span class="hljs-selector-class">.expandtabs</span>    hello_str<span class="hljs-selector-class">.isupper</span>       hello_str<span class="hljs-selector-class">.splitlines</span><br>hello_str<span class="hljs-selector-class">.find</span>          hello_str<span class="hljs-selector-class">.join</span>          hello_str<span class="hljs-selector-class">.startswith</span><br>hello_str<span class="hljs-selector-class">.format</span>        hello_str<span class="hljs-selector-class">.ljust</span>         hello_str<span class="hljs-selector-class">.strip</span><br>hello_str<span class="hljs-selector-class">.format_map</span>    hello_str<span class="hljs-selector-class">.lower</span>         hello_str<span class="hljs-selector-class">.swapcase</span><br>hello_str<span class="hljs-selector-class">.index</span>         hello_str<span class="hljs-selector-class">.lstrip</span>        hello_str<span class="hljs-selector-class">.title</span><br>hello_str<span class="hljs-selector-class">.isalnum</span>       hello_str<span class="hljs-selector-class">.maketrans</span>     hello_str<span class="hljs-selector-class">.translate</span><br>hello_str<span class="hljs-selector-class">.isalpha</span>       hello_str<span class="hljs-selector-class">.partition</span>     hello_str<span class="hljs-selector-class">.upper</span><br>hello_str<span class="hljs-selector-class">.isdecimal</span>     hello_str<span class="hljs-selector-class">.replace</span>       hello_str<span class="hljs-selector-class">.zfill</span><br>hello_str<span class="hljs-selector-class">.isdigit</span>       hello_str.rfind<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：正是因为 python 内置提供的方法足够多，才使得在开发时，能够针对字符串进行更加灵活的操作！应对更多的开发需求！</p>
+</blockquote>
+<h4 id="1-判断类型-9"><a href="#1-判断类型-9" class="headerlink" title="1) 判断类型 - 9"></a>1) 判断类型 - 9</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.isspace()</td>
+<td>如果 string 中只包含空格，则返回 True</td>
+</tr>
+<tr>
+<td>string.isalnum()</td>
+<td>如果 string 至少有一个字符并且所有字符都是字母或数字则返回 True</td>
+</tr>
+<tr>
+<td>string.isalpha()</td>
+<td>如果 string 至少有一个字符并且所有字符都是字母则返回 True</td>
+</tr>
+<tr>
+<td>string.isdecimal()</td>
+<td>如果 string 只包含数字则返回 True，<code>全角数字</code></td>
+</tr>
+<tr>
+<td>string.isdigit()</td>
+<td>如果 string 只包含数字则返回 True，<code>全角数字</code>、<code>⑴</code>、<code>\u00b2</code></td>
+</tr>
+<tr>
+<td>string.isnumeric()</td>
+<td>如果 string 只包含数字则返回 True，<code>全角数字</code>，<code>汉字数字</code></td>
+</tr>
+<tr>
+<td>string.istitle()</td>
+<td>如果 string 是标题化的(每个单词的首字母大写)则返回 True</td>
+</tr>
+<tr>
+<td>string.islower()</td>
+<td>如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True</td>
+</tr>
+<tr>
+<td>string.isupper()</td>
+<td>如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True</td>
+</tr>
+</tbody></table>
+<h4 id="2-查找和替换-7"><a href="#2-查找和替换-7" class="headerlink" title="2) 查找和替换 - 7"></a>2) 查找和替换 - 7</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.startswith(str)</td>
+<td>检查字符串是否是以 str 开头，是则返回 True</td>
+</tr>
+<tr>
+<td>string.endswith(str)</td>
+<td>检查字符串是否是以 str 结束，是则返回 True</td>
+</tr>
+<tr>
+<td>string.find(str, start&#x3D;0, end&#x3D;len(string))</td>
+<td>检测 str 是否包含在 string 中，如果 start 和 end 指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回 <code>-1</code></td>
+</tr>
+<tr>
+<td>string.rfind(str, start&#x3D;0, end&#x3D;len(string))</td>
+<td>类似于 find()，不过是从右边开始查找</td>
+</tr>
+<tr>
+<td>string.index(str, start&#x3D;0, end&#x3D;len(string))</td>
+<td>跟 find() 方法类似，不过如果 str 不在 string 会报错</td>
+</tr>
+<tr>
+<td>string.rindex(str, start&#x3D;0, end&#x3D;len(string))</td>
+<td>类似于 index()，不过是从右边开始</td>
+</tr>
+<tr>
+<td>string.replace(old_str, new_str, num&#x3D;string.count(old))</td>
+<td>把 string 中的 old_str 替换成 new_str，如果 num 指定，则替换不超过 num 次</td>
+</tr>
+</tbody></table>
+<h4 id="3-大小写转换-5"><a href="#3-大小写转换-5" class="headerlink" title="3) 大小写转换 - 5"></a>3) 大小写转换 - 5</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.capitalize()</td>
+<td>把字符串的第一个字符大写</td>
+</tr>
+<tr>
+<td>string.title()</td>
+<td>把字符串的每个单词首字母大写</td>
+</tr>
+<tr>
+<td>string.lower()</td>
+<td>转换 string 中所有大写字符为小写</td>
+</tr>
+<tr>
+<td>string.upper()</td>
+<td>转换 string 中的小写字母为大写</td>
+</tr>
+<tr>
+<td>string.swapcase()</td>
+<td>翻转 string 中的大小写</td>
+</tr>
+</tbody></table>
+<h4 id="4-文本对齐-3"><a href="#4-文本对齐-3" class="headerlink" title="4) 文本对齐 - 3"></a>4) 文本对齐 - 3</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.ljust(width)</td>
+<td>返回一个原字符串左对齐，并使用空格填充至长度 width 的新字符串</td>
+</tr>
+<tr>
+<td>string.rjust(width)</td>
+<td>返回一个原字符串右对齐，并使用空格填充至长度 width 的新字符串</td>
+</tr>
+<tr>
+<td>string.center(width)</td>
+<td>返回一个原字符串居中，并使用空格填充至长度 width 的新字符串</td>
+</tr>
+</tbody></table>
+<h4 id="5-去除空白字符-3"><a href="#5-去除空白字符-3" class="headerlink" title="5) 去除空白字符 - 3"></a>5) 去除空白字符 - 3</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.lstrip()</td>
+<td>截掉 string 左边（开始）的空白字符</td>
+</tr>
+<tr>
+<td>string.rstrip()</td>
+<td>截掉 string 右边（末尾）的空白字符</td>
+</tr>
+<tr>
+<td>string.strip()</td>
+<td>截掉 string 左右两边的空白字符</td>
+</tr>
+</tbody></table>
+<h4 id="6-拆分和连接-5"><a href="#6-拆分和连接-5" class="headerlink" title="6) 拆分和连接 - 5"></a>6) 拆分和连接 - 5</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string.partition(str)</td>
+<td>把字符串 string 分成一个 3 元素的元组 (str前面, str, str后面)</td>
+</tr>
+<tr>
+<td>string.rpartition(str)</td>
+<td>类似于 partition() 方法，不过是从右边开始查找</td>
+</tr>
+<tr>
+<td>string.split(str&#x3D;””, num)</td>
+<td>以 str 为分隔符拆分 string，如果 num 有指定值，则仅分隔 num + 1 个子字符串，str 默认包含 ‘\r’, ‘\t’, ‘\n’ 和空格</td>
+</tr>
+<tr>
+<td>string.splitlines()</td>
+<td>按照行(‘\r’, ‘\n’, ‘\r\n’)分隔，返回一个包含各行作为元素的列表</td>
+</tr>
+<tr>
+<td>string.join(seq)</td>
+<td>以 string 作为分隔符，将 seq 中所有的元素（的字符串表示）合并为一个新的字符串</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-字符串的切片"><a href="#4-3-字符串的切片" class="headerlink" title="4.3 字符串的切片"></a>4.3 字符串的切片</h3><ul>
+<li><strong>切片</strong> 方法适用于 <strong>字符串</strong>、<strong>列表</strong>、<strong>元组</strong><ul>
+<li><strong>切片</strong> 使用 <strong>索引值</strong> 来限定范围，从一个大的 <strong>字符串</strong> 中 <strong>切出</strong> 小的 <strong>字符串</strong></li>
+<li><strong>列表</strong> 和 <strong>元组</strong> 都是 <strong>有序</strong> 的集合，都能够 <strong>通过索引值</strong> 获取到对应的数据</li>
+<li><strong>字典</strong> 是一个 <strong>无序</strong> 的集合，是使用 <strong>键值对</strong> 保存数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="/media/14972568611505/006_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B4%A2%E5%BC%95%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="006_字符串索引示意图"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">字符串<span class="hljs-selector-attr">[开始索引:结束索引:步长]</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<ol>
+<li>指定的区间属于 <strong>左闭右开</strong> 型 <code>[开始索引,  结束索引)</code> &#x3D;&gt; <code>开始索引 &gt;= 范围 &lt; 结束索引</code><ul>
+<li>从 <code>起始</code> 位开始，到 <strong><code>结束</code>位的前一位</strong> 结束（<strong>不包含结束位本身</strong>)</li>
+</ul>
+</li>
+<li>从头开始，<strong>开始索引</strong> <strong>数字可以省略，冒号不能省略</strong></li>
+<li>到末尾结束，<strong>结束索引</strong> <strong>数字可以省略，冒号不能省略</strong></li>
+<li>步长默认为 <code>1</code>，如果连续切片，<strong>数字和冒号都可以省略</strong></li>
+</ol>
+<h4 id="索引的顺序和倒序"><a href="#索引的顺序和倒序" class="headerlink" title="索引的顺序和倒序"></a>索引的顺序和倒序</h4><ul>
+<li>在 Python 中不仅支持 <strong>顺序索引</strong>，同时还支持 <strong>倒序索引</strong></li>
+<li>所谓倒序索引就是 <strong>从右向左</strong> 计算索引<ul>
+<li>最右边的索引值是 <strong>-1</strong>，依次递减</li>
+</ul>
+</li>
+</ul>
+<p><strong>演练需求</strong></p>
+<ul>
+<li><ol>
+<li>截取从 2 ~ 5 位置 的字符串</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>截取从 2 ~ <code>末尾</code> 的字符串</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>截取从 <code>开始</code> ~ 5 位置 的字符串</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>截取完整的字符串</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>从开始位置，每隔一个字符截取字符串</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>从索引 1 开始，每隔一个取一个</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>截取从 2 ~ <code>末尾 - 1</code> 的字符串</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>截取字符串末尾两个字符</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>字符串的逆序（面试题）</li>
+</ol>
+</li>
+</ul>
+<p><strong>答案</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs routeros">num_str = <span class="hljs-string">&quot;0123456789&quot;</span><br><br><span class="hljs-comment"># 1. 截取从 2 ~ 5 位置 的字符串</span><br><span class="hljs-built_in">print</span>(num_str[2:6])<br><br><span class="hljs-comment"># 2. 截取从 2 ~ `末尾` 的字符串</span><br><span class="hljs-built_in">print</span>(num_str[2:])<br><br><span class="hljs-comment"># 3. 截取从 `开始` ~ 5 位置 的字符串</span><br><span class="hljs-built_in">print</span>(num_str[:6])<br><br><span class="hljs-comment"># 4. 截取完整的字符串</span><br><span class="hljs-built_in">print</span>(num_str[:])<br><br><span class="hljs-comment"># 5. 从开始位置，每隔一个字符截取字符串</span><br><span class="hljs-built_in">print</span>(num_str[::2])<br><br><span class="hljs-comment"># 6. 从索引 1 开始，每隔一个取一个</span><br><span class="hljs-built_in">print</span>(num_str[1::2])<br><br><span class="hljs-comment"># 倒序切片</span><br><span class="hljs-comment"># -1 表示倒数第一个字符</span><br><span class="hljs-built_in">print</span>(num_str[-1])<br><br><span class="hljs-comment"># 7. 截取从 2 ~ `末尾 - 1` 的字符串</span><br><span class="hljs-built_in">print</span>(num_str[2:-1])<br><br><span class="hljs-comment"># 8. 截取字符串末尾两个字符</span><br><span class="hljs-built_in">print</span>(num_str[-2:])<br><br><span class="hljs-comment"># 9. 字符串的逆序（面试题）</span><br><span class="hljs-built_in">print</span>(num_str[::-1])<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="05-公共方法"><a href="#05-公共方法" class="headerlink" title="05. 公共方法"></a>05. 公共方法</h2><h3 id="5-1-Python-内置函数"><a href="#5-1-Python-内置函数" class="headerlink" title="5.1 Python 内置函数"></a>5.1 Python 内置函数</h3><p>Python 包含了以下内置函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len(item)</td>
+<td>计算容器中元素个数</td>
+<td></td>
+</tr>
+<tr>
+<td>del(item)</td>
+<td>删除变量</td>
+<td>del 有两种方式</td>
+</tr>
+<tr>
+<td>max(item)</td>
+<td>返回容器中元素最大值</td>
+<td>如果是字典，只针对 key 比较</td>
+</tr>
+<tr>
+<td>min(item)</td>
+<td>返回容器中元素最小值</td>
+<td>如果是字典，只针对 key 比较</td>
+</tr>
+<tr>
+<td>cmp(item1, item2)</td>
+<td>比较两个值，-1 小于&#x2F;0 相等&#x2F;1 大于</td>
+<td>Python 3.x 取消了 cmp 函数</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong></p>
+<ul>
+<li><strong>字符串</strong> 比较符合以下规则： “0” &lt; “A” &lt; “a”</li>
+</ul>
+<h3 id="5-2-切片"><a href="#5-2-切片" class="headerlink" title="5.2 切片"></a>5.2 切片</h3><p>| 描述 | Python 表达式 | 结果 | 支持的数据类型 |<br>| :—: | — | — | — | — |<br>| 切片 | “0123456789”[::-2] | “97531” | 字符串、列表、元组 |</p>
+<ul>
+<li><strong>切片</strong> 使用 <strong>索引值</strong> 来限定范围，从一个大的 <strong>字符串</strong> 中 <strong>切出</strong> 小的 <strong>字符串</strong></li>
+<li><strong>列表</strong> 和 <strong>元组</strong> 都是 <strong>有序</strong> 的集合，都能够 <strong>通过索引值</strong> 获取到对应的数据</li>
+<li><strong>字典</strong> 是一个 <strong>无序</strong> 的集合，是使用 <strong>键值对</strong> 保存数据</li>
+</ul>
+<h3 id="5-3-运算符"><a href="#5-3-运算符" class="headerlink" title="5.3 运算符"></a>5.3 运算符</h3><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th>Python 表达式</th>
+<th>结果</th>
+<th>描述</th>
+<th>支持的数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td>[1, 2] + [3, 4]</td>
+<td>[1, 2, 3, 4]</td>
+<td>合并</td>
+<td>字符串、列表、元组</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td>[“Hi!”] * 4</td>
+<td>[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td>重复</td>
+<td>字符串、列表、元组</td>
+</tr>
+<tr>
+<td align="center">in</td>
+<td>3 in (1, 2, 3)</td>
+<td>True</td>
+<td>元素是否存在</td>
+<td>字符串、列表、元组、字典</td>
+</tr>
+<tr>
+<td align="center">not in</td>
+<td>4 not in (1, 2, 3)</td>
+<td>True</td>
+<td>元素是否不存在</td>
+<td>字符串、列表、元组、字典</td>
+</tr>
+<tr>
+<td align="center">&gt; &gt;&#x3D; &#x3D;&#x3D; &lt; &lt;&#x3D;</td>
+<td>(1, 2, 3) &lt; (2, 2, 3)</td>
+<td>True</td>
+<td>元素比较</td>
+<td>字符串、列表、元组</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>in</code> 在对 <strong>字典</strong> 操作时，判断的是 <strong>字典的键</strong></li>
+<li><code>in</code> 和 <code>not in</code> 被称为 <strong>成员运算符</strong></li>
+</ul>
+<h4 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h4><p>成员运算符用于 <strong>测试</strong> 序列中是否包含指定的 <strong>成员</strong></p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>in</td>
+<td>如果在指定的序列中找到值返回 True，否则返回 False</td>
+<td><code>3 in (1, 2, 3)</code> 返回 <code>True</code></td>
+</tr>
+<tr>
+<td>not in</td>
+<td>如果在指定的序列中没有找到值返回 True，否则返回 False</td>
+<td><code>3 not in (1, 2, 3)</code> 返回 <code>False</code></td>
+</tr>
+</tbody></table>
+<p>注意：在对 <strong>字典</strong> 操作时，判断的是 <strong>字典的键</strong></p>
+<h3 id="5-4-完整的-for-循环语法"><a href="#5-4-完整的-for-循环语法" class="headerlink" title="5.4 完整的 for 循环语法"></a>5.4 完整的 for 循环语法</h3><ul>
+<li>在 <code>Python</code> 中完整的 <code>for 循环</code> 的语法如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> 变量 <span class="hljs-keyword">in</span> 集合:<br>    <br>    循环体代码<br><span class="hljs-keyword">else</span>:<br>    没有通过 <span class="hljs-keyword">break</span> 退出循环，循环结束后，会执行的代码<br></code></pre></td></tr></table></figure>
+
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>在 <strong>迭代遍历</strong> 嵌套的数据类型时，例如 <strong>一个列表包含了多个字典</strong></li>
+<li>需求：要判断 某一个字典中 是否存在 指定的 值 <ul>
+<li>如果 <strong>存在</strong>，提示并且退出循环</li>
+<li>如果 <strong>不存在</strong>，在 <strong>循环整体结束</strong> 后，希望 <strong>得到一个统一的提示</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python">students = [<br>    &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;阿土&quot;</span>,<br>     <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">20</span>,<br>     <span class="hljs-string">&quot;gender&quot;</span>: <span class="hljs-literal">True</span>,<br>     <span class="hljs-string">&quot;height&quot;</span>: <span class="hljs-number">1.7</span>,<br>     <span class="hljs-string">&quot;weight&quot;</span>: <span class="hljs-number">75.0</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;小美&quot;</span>,<br>     <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">19</span>,<br>     <span class="hljs-string">&quot;gender&quot;</span>: <span class="hljs-literal">False</span>,<br>     <span class="hljs-string">&quot;height&quot;</span>: <span class="hljs-number">1.6</span>,<br>     <span class="hljs-string">&quot;weight&quot;</span>: <span class="hljs-number">45.0</span>&#125;,<br>]<br><br>find_name = <span class="hljs-string">&quot;阿土&quot;</span><br><br><span class="hljs-keyword">for</span> stu_dict <span class="hljs-keyword">in</span> students:<br><br>    <span class="hljs-built_in">print</span>(stu_dict)<br><br>    <span class="hljs-comment"># 判断当前遍历的字典中姓名是否为find_name</span><br>    <span class="hljs-keyword">if</span> stu_dict[<span class="hljs-string">&quot;name&quot;</span>] == find_name:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;找到了&quot;</span>)<br><br>        <span class="hljs-comment"># 如果已经找到，直接退出循环，就不需要再对后续的数据进行比较</span><br>        <span class="hljs-keyword">break</span><br><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;没有找到&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;循环结束&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/PyCharm/" class="category-chain-item">PyCharm</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用PyCharm编写Python.PartⅤ</div>
+      <div>http://example.com/2021/08/28/使用PyCharm编写Python-PartⅤ/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A5/" title="使用PyCharm编写Python.PartⅥ">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用PyCharm编写Python.PartⅥ</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A3/" title="使用PyCharm编写Python.PartⅣ">
+                        <span class="hidden-mobile">使用PyCharm编写Python.PartⅣ</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

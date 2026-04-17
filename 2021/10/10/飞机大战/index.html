@@ -1,0 +1,1784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="项目实战 —— 飞机大战目标 强化 面向对象 程序设计 体验使用 pygame 模块进行 游戏开发  实战步骤 pygame 快速体验 飞机大战 实战  确认模块 —— pygame pygame 就是一个 Python 模块，专为电子游戏设计 官方网站：https:&#x2F;&#x2F;www.pygame.org&#x2F; 提示：要学习第三方模块，通常最好的参考资料就在官方网站       网站栏目 内容    Get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="飞机大战">
+<meta property="og:url" content="http://example.com/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="项目实战 —— 飞机大战目标 强化 面向对象 程序设计 体验使用 pygame 模块进行 游戏开发  实战步骤 pygame 快速体验 飞机大战 实战  确认模块 —— pygame pygame 就是一个 Python 模块，专为电子游戏设计 官方网站：https:&#x2F;&#x2F;www.pygame.org&#x2F; 提示：要学习第三方模块，通常最好的参考资料就在官方网站       网站栏目 内容    Get">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/pygame.jpg">
+<meta property="article:published_time" content="2021-10-10T14:09:45.000Z">
+<meta property="article:modified_time" content="2021-10-10T14:20:20.000Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="pygame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/pygame.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>飞机大战 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="飞机大战"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-10-10 22:09" pubdate>
+          2021年10月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          151 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">飞机大战</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="项目实战-——-飞机大战"><a href="#项目实战-——-飞机大战" class="headerlink" title="项目实战 —— 飞机大战"></a>项目实战 —— 飞机大战</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>强化 <strong>面向对象</strong> 程序设计</li>
+<li>体验使用 <code>pygame</code> 模块进行 <strong>游戏开发</strong></li>
+</ul>
+<h2 id="实战步骤"><a href="#实战步骤" class="headerlink" title="实战步骤"></a>实战步骤</h2><ol>
+<li><code>pygame</code> 快速体验</li>
+<li><strong>飞机大战</strong> 实战</li>
+</ol>
+<h2 id="确认模块-——-pygame"><a href="#确认模块-——-pygame" class="headerlink" title="确认模块 —— pygame"></a>确认模块 —— pygame</h2><ul>
+<li><code>pygame</code> 就是一个 Python 模块，专为电子游戏设计</li>
+<li>官方网站：<a target="_blank" rel="noopener" href="https://www.pygame.org/">https://www.pygame.org/</a><ul>
+<li><strong>提示</strong>：要学习第三方模块，通常最好的参考资料就在官方网站</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>网站栏目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GettingStarted</code></td>
+<td>在各平台安装模块的说明</td>
+</tr>
+<tr>
+<td><code>Docs</code></td>
+<td><code>pygame</code> 模块所有 <strong>类</strong> 和 <strong>子类</strong> 的参考手册</td>
+</tr>
+</tbody></table>
+<h3 id="安装-pygame"><a href="#安装-pygame" class="headerlink" title="安装 pygame"></a>安装 pygame</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo pip3 install pygame<br></code></pre></td></tr></table></figure>
+
+<h3 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 -m pygame.examples.aliens<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="pygame-快速入门"><a href="#pygame-快速入门" class="headerlink" title="pygame 快速入门"></a>pygame 快速入门</h1><h2 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>项目准备</li>
+<li>使用 <code>pygame</code> 创建图形窗口</li>
+<li>理解 <strong>图像</strong> 并实现图像绘制</li>
+<li>理解 <strong>游戏循环</strong> 和 <strong>游戏时钟</strong></li>
+<li>理解 <strong>精灵</strong> 和 <strong>精灵组</strong></li>
+</ol>
+<h2 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h2><ol>
+<li>新建 <strong>飞机大战</strong> 项目</li>
+<li>新建一个 <code>hm_01_pygame入门.py</code></li>
+<li>导入 <strong>游戏素材图片</strong></li>
+</ol>
+<p><strong>游戏的第一印象</strong></p>
+<ul>
+<li>把一些 <strong>静止的图像</strong> 绘制到 <strong>游戏窗口</strong> 中</li>
+<li>根据 <strong>用户的交互</strong> 或其他情况，<strong>移动</strong> 这些图像，产生动画效果</li>
+<li>根据 <strong>图像之间</strong> 是否发生重叠，判断 <strong>敌机是否被摧毁</strong> 等其他情况</li>
+</ul>
+<h2 id="01-使用-pygame-创建图形窗口"><a href="#01-使用-pygame-创建图形窗口" class="headerlink" title="01. 使用 pygame 创建图形窗口"></a>01. 使用 <code>pygame</code> 创建图形窗口</h2><h3 id="小节目标"><a href="#小节目标" class="headerlink" title="小节目标"></a>小节目标</h3><ol>
+<li>游戏的初始化和退出</li>
+<li>理解游戏中的坐标系</li>
+<li>创建游戏主窗口</li>
+<li>简单的游戏循环</li>
+</ol>
+<blockquote>
+<p>可以将图片素材 <strong>绘制</strong> 到 <strong>游戏的窗口</strong> 上，开发游戏之前需要先知道 <strong>如何建立游戏窗口</strong>！</p>
+</blockquote>
+<h3 id="1-1-游戏的初始化和退出"><a href="#1-1-游戏的初始化和退出" class="headerlink" title="1.1 游戏的初始化和退出"></a>1.1 游戏的初始化和退出</h3><ul>
+<li>要使用 <code>pygame</code> 提供的所有功能之前，需要调用 <code>init</code> 方法</li>
+<li>在游戏结束前需要调用一下 <code>quit</code> 方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pygame.init()</code></td>
+<td>导入并初始化所有 <code>pygame</code> 模块，使用其他模块之前，必须先调用 <code>init</code> 方法</td>
+</tr>
+<tr>
+<td><code>pygame.quit()</code></td>
+<td>卸载所有 <code>pygame</code> 模块，在游戏结束之前调用！</td>
+</tr>
+</tbody></table>
+<p><img src="/media/15025046487919/001_pygame%E7%9A%84init%E5%92%8Cquit.png" srcset="/img/loading.gif" lazyload alt="001_pygame的init和quit-w254"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pygame<br><br>pygame.init()<br><br><span class="hljs-comment"># 游戏代码...</span><br><br>pygame.quit()<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-理解游戏中的坐标系"><a href="#1-2-理解游戏中的坐标系" class="headerlink" title="1.2 理解游戏中的坐标系"></a>1.2 理解游戏中的坐标系</h3><ul>
+<li><strong>坐标系</strong><ul>
+<li><strong>原点</strong> 在 <strong>左上角</strong> <code>(0, 0)</code></li>
+<li><strong>x 轴</strong> 水平方向向 <strong>右</strong>，逐渐增加</li>
+<li><strong>y 轴</strong> 垂直方向向 <strong>下</strong>，逐渐增加</li>
+</ul>
+</li>
+</ul>
+<p><img src="/media/15025046487919/002_%E6%B8%B8%E6%88%8F%E7%AA%97%E5%8F%A3%E5%92%8C%E5%9D%90%E6%A0%87%E7%B3%BB.png" srcset="/img/loading.gif" lazyload alt="002_游戏窗口和坐标系-w300"></p>
+<ul>
+<li><p>在游戏中，<strong>所有可见的元素</strong> 都是以 <strong>矩形区域</strong> 来描述位置的</p>
+<ul>
+<li>要描述一个矩形区域有四个要素：<code>(x, y) (width, height)</code></li>
+</ul>
+</li>
+<li><p><code>pygame</code> 专门提供了一个类 <code>pygame.Rect</code> 用于描述 <strong>矩形区域</strong></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">Rect(x, y, width, height) -&gt; Rect<br></code></pre></td></tr></table></figure>
+
+<p><img src="/media/15025046487919/003_pygame.Rect.png" srcset="/img/loading.gif" lazyload alt="003_pygame.Rect-w382"></p>
+<p><strong>提示</strong></p>
+<ul>
+<li><code>pygame.Rect</code> 是一个比较特殊的类，内部只是封装了一些数字计算</li>
+<li>不执行 <code>pygame.init()</code> 方法同样能够直接使用</li>
+</ul>
+<h4 id="案例演练"><a href="#案例演练" class="headerlink" title="案例演练"></a>案例演练</h4><p><strong>需求</strong></p>
+<ol>
+<li>定义 <code>hero_rect</code> 矩形描述 <strong>英雄的位置和大小</strong></li>
+<li>输出英雄的 <strong>坐标原点</strong>（<code>x</code> 和 <code>y</code>）</li>
+<li>输出英雄的 <strong>尺寸</strong>（<strong>宽度</strong> 和 <strong>高度</strong>）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">hero_rect = pygame.Rect(<span class="hljs-number">100</span>, <span class="hljs-number">500</span>, <span class="hljs-number">120</span>, <span class="hljs-number">126</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;坐标原点 %d %d&quot;</span> % (hero_rect.x, hero_rect.y))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;英雄大小 %d %d&quot;</span> % (hero_rect.width, hero_rect.height))<br><span class="hljs-comment"># size 属性会返回矩形区域的 (宽, 高) 元组</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;英雄大小 %d %d&quot;</span> % hero_rect.size)<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-创建游戏主窗口"><a href="#1-3-创建游戏主窗口" class="headerlink" title="1.3 创建游戏主窗口"></a>1.3 创建游戏主窗口</h3><ul>
+<li><code>pygame</code> 专门提供了一个 <strong>模块</strong> <code>pygame.display</code> 用于创建、管理 <strong>游戏窗口</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pygame.display.set_mode()</code></td>
+<td>初始化游戏显示窗口</td>
+</tr>
+<tr>
+<td><code>pygame.display.update()</code></td>
+<td>刷新屏幕内容显示，稍后使用</td>
+</tr>
+</tbody></table>
+<p><strong><code>set_mode</code> 方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">set_mode(resolution=(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), flags=<span class="hljs-number">0</span>, depth=<span class="hljs-number">0</span>) -&gt; Surface<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>作用</strong> —— 创建游戏显示窗口</p>
+</li>
+<li><p><strong>参数</strong></p>
+<ul>
+<li><code>resolution</code> 指定屏幕的 <code>宽</code> 和 <code>高</code>，默认创建的窗口大小和屏幕大小一致</li>
+<li><code>flags</code> 参数指定屏幕的附加选项，例如是否全屏等等，默认不需要传递</li>
+<li><code>depth</code> 参数表示颜色的位数，默认自动匹配</li>
+</ul>
+</li>
+<li><p><strong>返回值</strong></p>
+<ul>
+<li><strong>暂时</strong> 可以理解为 <strong>游戏的屏幕</strong>，<strong>游戏的元素</strong> 都需要被绘制到 <strong>游戏的屏幕</strong> 上</li>
+</ul>
+</li>
+<li><p><strong>注意</strong>：必须使用变量记录 <code>set_mode</code> 方法的返回结果！因为：后续所有的图像绘制都基于这个返回结果</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建游戏主窗口</span><br>screen = pygame.display.set_mode((<span class="hljs-number">480</span>, <span class="hljs-number">700</span>))<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-简单的游戏循环"><a href="#1-4-简单的游戏循环" class="headerlink" title="1.4 简单的游戏循环"></a>1.4 简单的游戏循环</h3><ul>
+<li>为了做到游戏程序启动后，<strong>不会立即退出</strong>，通常会在游戏程序中增加一个 <strong>游戏循环</strong></li>
+<li>所谓 <strong>游戏循环</strong> 就是一个 <strong>无限循环</strong></li>
+<li>在 <strong>创建游戏窗口</strong> 代码下方，增加一个无限循环<ul>
+<li>注意：<strong>游戏窗口不需要重复创建</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建游戏主窗口</span><br>screen = pygame.display.set_mode((<span class="hljs-number">480</span>, <span class="hljs-number">700</span>))<br><br><span class="hljs-comment"># 游戏循环</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="02-理解-图像-并实现图像绘制"><a href="#02-理解-图像-并实现图像绘制" class="headerlink" title="02. 理解 图像 并实现图像绘制"></a>02. 理解 <strong>图像</strong> 并实现图像绘制</h2><ul>
+<li>在游戏中，能够看到的 <strong>游戏元素</strong> 大多都是 <strong>图像</strong><ul>
+<li><strong>图像文件</strong> 初始是保存在磁盘上的，如果需要使用，<strong>第一步</strong> 就需要 <strong>被加载到内存</strong></li>
+</ul>
+</li>
+<li>要在屏幕上 <strong>看到某一个图像的内容</strong>，需要按照三个步骤：<ol>
+<li>使用 <code>pygame.image.load()</code> <strong>加载图像的数据</strong></li>
+<li>使用 <strong>游戏屏幕</strong> 对象，调用 <code>blit</code> 方法 将图像绘制到指定位置</li>
+<li>调用 <code>pygame.display.update()</code> 方法更新整个屏幕的显示</li>
+</ol>
+</li>
+</ul>
+<p><img src="/media/15025046487919/004_%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F.png" srcset="/img/loading.gif" lazyload alt="004_加载和显示图像-w841"></p>
+<blockquote>
+<p>提示：要想在屏幕上看到绘制的结果，就一定要调用 <code>pygame.display.update()</code> 方法</p>
+</blockquote>
+<h3 id="代码演练-I-——-绘制背景图像"><a href="#代码演练-I-——-绘制背景图像" class="headerlink" title="代码演练 I —— 绘制背景图像"></a>代码演练 I —— 绘制背景图像</h3><p><strong>需求</strong></p>
+<ol>
+<li>加载 <code>background.png</code> 创建背景</li>
+<li>将 <strong>背景</strong> 绘制在屏幕的 <code>(0, 0)</code> 位置</li>
+<li>调用屏幕更新显示背景图像</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 绘制背景图像</span><br><span class="hljs-comment"># 1&gt; 加载图像</span><br>bg = pygame.image.load(<span class="hljs-string">&quot;./images/background.png&quot;</span>)<br><br><span class="hljs-comment"># 2&gt; 绘制在屏幕</span><br>screen.blit(bg, (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>))<br><br><span class="hljs-comment"># 3&gt; 更新显示</span><br>pygame.display.update()<br></code></pre></td></tr></table></figure>
+
+<h3 id="代码演练-II-——-绘制英雄图像"><a href="#代码演练-II-——-绘制英雄图像" class="headerlink" title="代码演练 II —— 绘制英雄图像"></a>代码演练 II —— 绘制英雄图像</h3><p><strong>需求</strong></p>
+<ol>
+<li>加载 <code>me1.png</code> 创建英雄飞机</li>
+<li>将 <strong>英雄飞机</strong> 绘制在屏幕的 <code>(200, 500)</code> 位置</li>
+<li>调用屏幕更新显示飞机图像</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 1&gt; 加载图像</span><br>hero = pygame.image.load(<span class="hljs-string">&quot;./images/me1.png&quot;</span>)<br><br><span class="hljs-comment"># 2&gt; 绘制在屏幕</span><br>screen.blit(hero, (<span class="hljs-number">200</span>, <span class="hljs-number">500</span>))<br><br><span class="hljs-comment"># 3&gt; 更新显示</span><br>pygame.display.update()<br></code></pre></td></tr></table></figure>
+
+<p><strong>透明图像</strong> </p>
+<ul>
+<li><code>png</code> 格式的图像是支持 <strong>透明</strong> 的</li>
+<li>在绘制图像时，<strong>透明区域</strong> 不会显示任何内容</li>
+<li>但是如果<strong>下方已经有内容</strong>，会 <strong>透过</strong> <strong>透明区域</strong> 显示出来</li>
+</ul>
+<h3 id="理解-update-方法的作用"><a href="#理解-update-方法的作用" class="headerlink" title="理解 update() 方法的作用"></a>理解 <code>update()</code> 方法的作用</h3><blockquote>
+<p>可以在 <code>screen</code> 对象完成 <strong>所有</strong> <code>blit</code> 方法之后，<strong>统一调用一次</strong> <code>display.update</code> 方法，同样可以在屏幕上 <strong>看到最终的绘制结果</strong></p>
+</blockquote>
+<ul>
+<li>使用 <code>display.set_mode()</code> 创建的 <code>screen</code> <strong>对象</strong> 是一个 <strong>内存中的屏幕数据对象</strong><ul>
+<li>可以理解成是 <strong>油画</strong> 的 <strong>画布</strong></li>
+</ul>
+</li>
+<li><code>screen.blit</code> 方法可以在 <strong>画布</strong> 上绘制很多 <strong>图像</strong><ul>
+<li>例如：<strong>英雄</strong>、<strong>敌机</strong>、<strong>子弹</strong>…</li>
+<li><strong>这些图像</strong> 有可能 会彼此 <strong>重叠或者覆盖</strong></li>
+</ul>
+</li>
+<li><code>display.update()</code> 会将 <strong>画布</strong> 的 <strong>最终结果</strong> 绘制在屏幕上，这样可以 <strong>提高屏幕绘制效率</strong>，<strong>增加游戏的流畅度</strong></li>
+</ul>
+<p><strong>案例调整</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 绘制背景图像</span><br><span class="hljs-comment"># 1&gt; 加载图像</span><br>bg = pygame.image.load(<span class="hljs-string">&quot;./images/background.png&quot;</span>)<br><br><span class="hljs-comment"># 2&gt; 绘制在屏幕</span><br>screen.blit(bg, (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>))<br><br><span class="hljs-comment"># 绘制英雄图像</span><br><span class="hljs-comment"># 1&gt; 加载图像</span><br>hero = pygame.image.load(<span class="hljs-string">&quot;./images/me1.png&quot;</span>)<br><br><span class="hljs-comment"># 2&gt; 绘制在屏幕</span><br>screen.blit(hero, (<span class="hljs-number">200</span>, <span class="hljs-number">500</span>))<br><br><span class="hljs-comment"># 3&gt; 更新显示 - update 方法会把之前所有绘制的结果，一次性更新到屏幕窗口上</span><br>pygame.display.update()<br></code></pre></td></tr></table></figure>
+
+<h2 id="03-理解-游戏循环-和-游戏时钟"><a href="#03-理解-游戏循环-和-游戏时钟" class="headerlink" title="03. 理解 游戏循环 和 游戏时钟"></a>03. 理解 <strong>游戏循环</strong> 和 <strong>游戏时钟</strong></h2><blockquote>
+<p>现在 <strong>英雄飞机</strong> 已经被绘制到屏幕上了，<strong>怎么能够让飞机移动呢</strong> ？</p>
+</blockquote>
+<h3 id="3-1-游戏中的动画实现原理"><a href="#3-1-游戏中的动画实现原理" class="headerlink" title="3.1 游戏中的动画实现原理"></a>3.1 游戏中的动画实现原理</h3><ul>
+<li>跟 <strong>电影</strong> 的原理类似，游戏中的动画效果，本质上是 <strong>快速</strong> 的在屏幕上绘制 <strong>图像</strong><ul>
+<li>电影是将多张 <strong>静止的电影胶片</strong> <strong>连续、快速</strong>的播放，产生连贯的视觉效果！</li>
+</ul>
+</li>
+<li>一般在电脑上 <strong>每秒绘制 60 次</strong>，就能够达到非常 <strong>连续</strong> <strong>高品质</strong> 的动画效果<ul>
+<li>每次绘制的结果被称为 <strong>帧 Frame</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/media/15025046487919/%E6%89%8B%E7%BF%BB%E4%B9%A6%E5%8A%A8%E7%94%BB.gif" srcset="/img/loading.gif" lazyload alt="手翻书动画"><br><img src="/media/15025046487919/%E7%8C%AB%E6%83%8A%E8%AE%B6.gif" srcset="/img/loading.gif" lazyload alt="猫惊讶"></p>
+<h3 id="3-2-游戏循环"><a href="#3-2-游戏循环" class="headerlink" title="3.2 游戏循环"></a>3.2 <strong>游戏循环</strong></h3><h4 id="游戏的两个组成部分"><a href="#游戏的两个组成部分" class="headerlink" title="游戏的两个组成部分"></a>游戏的两个组成部分</h4><blockquote>
+<p><strong>游戏循环的开始</strong> 就意味着 <strong>游戏的正式开始</strong></p>
+</blockquote>
+<p><img src="/media/15025046487919/005_%E6%B8%B8%E6%88%8F%E4%B8%BB%E6%A8%A1%E5%9D%97.png" srcset="/img/loading.gif" lazyload alt="005_游戏主模块-w600"></p>
+<h4 id="游戏循环的作用"><a href="#游戏循环的作用" class="headerlink" title="游戏循环的作用"></a>游戏循环的作用</h4><ol>
+<li>保证游戏 <strong>不会直接退出</strong></li>
+<li><strong>变化图像位置</strong> —— 动画效果<ul>
+<li>每隔 <code>1 / 60 秒</code> 移动一下所有图像的位置</li>
+<li>调用 <code>pygame.display.update()</code> 更新屏幕显示</li>
+</ul>
+</li>
+<li><strong>检测用户交互</strong> —— 按键、鼠标等…</li>
+</ol>
+<h3 id="3-3-游戏时钟"><a href="#3-3-游戏时钟" class="headerlink" title="3.3 游戏时钟"></a>3.3 游戏时钟</h3><ul>
+<li><code>pygame</code> 专门提供了一个类 <code>pygame.time.Clock</code> 可以非常方便的设置屏幕绘制速度 —— <strong>刷新帧率</strong></li>
+<li>要使用 <strong>时钟对象</strong> 需要两步：<ul>
+<li>1）在 <strong>游戏初始化</strong> 创建一个 <strong>时钟对象</strong></li>
+<li>2）在 <strong>游戏循环</strong> 中让时钟对象调用 <code>tick(帧率)</code> 方法</li>
+</ul>
+</li>
+<li><code>tick</code> 方法会根据 <strong>上次被调用的时间</strong>，自动设置 <strong>游戏循环</strong> 中的延时</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 3. 创建游戏时钟对象</span><br>clock = pygame.time.Clock()<br>i = <span class="hljs-number">0</span><br><br><span class="hljs-comment"># 游戏循环</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br><br>    <span class="hljs-comment"># 设置屏幕刷新帧率</span><br>    clock.tick(<span class="hljs-number">60</span>)<br><br>    <span class="hljs-built_in">print</span>(i)<br>    i += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-英雄的简单动画实现"><a href="#3-4-英雄的简单动画实现" class="headerlink" title="3.4 英雄的简单动画实现"></a>3.4 英雄的简单动画实现</h3><p><strong>需求</strong></p>
+<ol>
+<li>在 <strong>游戏初始化</strong> 定义一个 <code>pygame.Rect</code> 的变量记录英雄的初始位置</li>
+<li>在 <strong>游戏循环</strong> 中每次让 <strong>英雄</strong> 的 <code>y - 1</code> —— 向上移动 </li>
+<li><code>y &lt;= 0</code> 将英雄移动到屏幕的底部</li>
+</ol>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>每一次调用 <code>update()</code> 方法之前，需要把 <strong>所有的游戏图像都重新绘制一遍</strong></li>
+<li>而且应该 <strong>最先</strong> 重新绘制 <strong>背景图像</strong></li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 4. 定义英雄的初始位置</span><br>hero_rect = pygame.Rect(<span class="hljs-number">150</span>, <span class="hljs-number">500</span>, <span class="hljs-number">102</span>, <span class="hljs-number">126</span>)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br><br>    <span class="hljs-comment"># 可以指定循环体内部的代码执行的频率</span><br>    clock.tick(<span class="hljs-number">60</span>)<br><br>    <span class="hljs-comment"># 更新英雄位置</span><br>    hero_rect.y -= <span class="hljs-number">1</span><br><br>    <span class="hljs-comment"># 如果移出屏幕，则将英雄的顶部移动到屏幕底部</span><br>    <span class="hljs-keyword">if</span> hero_rect.y &lt;= <span class="hljs-number">0</span>:<br>        hero_rect.y = <span class="hljs-number">700</span><br><br>    <span class="hljs-comment"># 绘制背景图片</span><br>    screen.blit(bg, (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>))<br>    <span class="hljs-comment"># 绘制英雄图像</span><br>    screen.blit(hero, hero_rect)<br><br>    <span class="hljs-comment"># 更新显示</span><br>    pygame.display.update()<br></code></pre></td></tr></table></figure>
+
+<h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><ol>
+<li>英雄向上飞行，当 <strong>英雄完全从上方飞出屏幕后</strong></li>
+<li>将飞机移动到屏幕的底部</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> hero_rect.y + hero_rect.height &lt;= <span class="hljs-number">0</span>:<br>    hero_rect.y = <span class="hljs-number">700</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>提示</strong></p>
+<ul>
+<li><code>Rect</code> 的属性 <code>bottom = y + height</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> hero_rect.bottom &lt;= <span class="hljs-number">0</span>:<br>    hero_rect.y = <span class="hljs-number">700</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-5-在游戏循环中-监听-事件"><a href="#3-5-在游戏循环中-监听-事件" class="headerlink" title="3.5 在游戏循环中 监听 事件"></a>3.5 在游戏循环中 监听 事件</h3><h4 id="事件-event"><a href="#事件-event" class="headerlink" title="事件 event"></a>事件 <code>event</code></h4><ul>
+<li>就是游戏启动后，<strong>用户针对游戏所做的操作</strong></li>
+<li>例如：<strong>点击关闭按钮</strong>，<strong>点击鼠标</strong>，<strong>按下键盘</strong>…</li>
+</ul>
+<h4 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h4><ul>
+<li>在 <strong>游戏循环</strong> 中，判断用户 <strong>具体的操作</strong></li>
+</ul>
+<blockquote>
+<p>只有 <strong>捕获</strong> 到用户具体的操作，才能有针对性的做出响应</p>
+</blockquote>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li><code>pygame</code> 中通过 <code>pygame.event.get()</code> 可以获得 <strong>用户当前所做动作</strong> 的 <strong>事件列表</strong><ul>
+<li>用户可以同一时间做很多事情</li>
+</ul>
+</li>
+<li>提示：<strong>这段代码非常的固定</strong>，几乎所有的 <code>pygame</code> 游戏都 <strong>大同小异</strong>！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 游戏循环</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br><br>    <span class="hljs-comment"># 设置屏幕刷新帧率</span><br>    clock.tick(<span class="hljs-number">60</span>)<br><br>    <span class="hljs-comment"># 事件监听</span><br>    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():<br><br>        <span class="hljs-comment"># 判断用户是否点击了关闭按钮</span><br>        <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;退出游戏...&quot;</span>)<br><br>            pygame.quit()<br><br>            <span class="hljs-comment"># 直接退出系统</span><br>            exit()<br></code></pre></td></tr></table></figure>
+
+<h2 id="04-理解-精灵-和-精灵组"><a href="#04-理解-精灵-和-精灵组" class="headerlink" title="04. 理解 精灵 和 精灵组"></a>04. 理解 <strong>精灵</strong> 和 <strong>精灵组</strong></h2><h3 id="4-1-精灵-和-精灵组"><a href="#4-1-精灵-和-精灵组" class="headerlink" title="4.1 精灵 和 精灵组"></a>4.1 精灵 和 精灵组</h3><ul>
+<li>在刚刚完成的案例中，<strong>图像加载</strong>、<strong>位置变化</strong>、<strong>绘制图像</strong> 都需要程序员编写代码分别处理</li>
+<li>为了简化开发步骤，<code>pygame</code> 提供了两个类<ul>
+<li><code>pygame.sprite.Sprite</code> —— 存储 <strong>图像数据 image</strong> 和 <strong>位置 rect</strong> 的 <strong>对象</strong></li>
+<li><code>pygame.sprite.Group</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/media/15025046487919/006_pygame.Sprite.png" srcset="/img/loading.gif" lazyload alt="006_pygame.Sprite"></p>
+<h4 id="精灵"><a href="#精灵" class="headerlink" title="精灵"></a>精灵</h4><ul>
+<li><p>在游戏开发中，通常把 <strong>显示图像的对象</strong> 叫做精灵 <code>Sprite</code></p>
+</li>
+<li><p><strong>精灵</strong> 需要 有 <strong>两个重要的属性</strong></p>
+<ul>
+<li><code>image</code> 要显示的图像</li>
+<li><code>rect</code> 图像要显示在屏幕的位置</li>
+</ul>
+</li>
+<li><p>默认的 <code>update()</code> 方法什么事情也没做</p>
+<ul>
+<li>子类可以重写此方法，在每次刷新屏幕时，更新精灵位置</li>
+</ul>
+</li>
+<li><p><strong>注意</strong>：<code>pygame.sprite.Sprite</code> 并没有提供 <code>image</code> 和 <code>rect</code> 两个属性</p>
+<ul>
+<li>需要程序员从 <code>pygame.sprite.Sprite</code> 派生子类</li>
+<li>并在 <strong>子类</strong> 的 <strong>初始化方法</strong> 中，设置 <code>image</code> 和 <code>rect</code> 属性</li>
+</ul>
+</li>
+</ul>
+<h4 id="精灵组"><a href="#精灵组" class="headerlink" title="精灵组"></a>精灵组</h4><ul>
+<li>一个 <strong>精灵组</strong> 可以包含多个 <strong>精灵</strong> 对象</li>
+<li>调用 <strong>精灵组</strong> 对象的 <code>update()</code> 方法<ul>
+<li>可以 <strong>自动</strong> 调用 <strong>组内每一个精灵</strong> 的 <code>update()</code> 方法</li>
+</ul>
+</li>
+<li>调用 <strong>精灵组</strong> 对象的 <code>draw(屏幕对象)</code> 方法<ul>
+<li>可以将 <strong>组内每一个精灵</strong> 的 <code>image</code> 绘制在 <code>rect</code> 位置</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">Group(*sprites) -&gt; Group<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：仍然需要调用 <code>pygame.display.update()</code> 才能在屏幕看到最终结果</p>
+</blockquote>
+<h3 id="4-2-派生精灵子类"><a href="#4-2-派生精灵子类" class="headerlink" title="4.2 派生精灵子类"></a>4.2 派生精灵子类</h3><ol>
+<li>新建 <code>plane_sprites.py</code> 文件</li>
+<li>定义 <code>GameSprite</code> 继承自 <code>pygame.sprite.Sprite</code></li>
+</ol>
+<p><strong>注意</strong></p>
+<ul>
+<li>如果一个类的 <strong>父类</strong> 不是 <code>object</code></li>
+<li>在重写 <strong>初始化方法</strong> 时，<strong>一定要</strong> 先 <code>super()</code> 一下父类的 <code>__init__</code> 方法</li>
+<li><strong>保证父类中实现的 <code>__init__</code> 代码能够被正常执行</strong></li>
+</ul>
+<p><img src="/media/15025046487919/007_GameSprite.png" srcset="/img/loading.gif" lazyload alt="007_GameSprite-w398"></p>
+<p><strong>属性</strong></p>
+<ul>
+<li><code>image</code> 精灵图像，使用 <code>image_name</code> 加载</li>
+<li><code>rect</code> 精灵大小，默认使用图像大小</li>
+<li><code>speed</code> 精灵移动速度，默认为 <code>1</code></li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li><code>update</code> 每次更新屏幕时在游戏循环内调用<ul>
+<li>让精灵的 <code>self.rect.y += self.speed</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>提示</strong></p>
+<ul>
+<li><code>image</code> 的 <code>get_rect()</code> 方法，可以返回 <strong>pygame.Rect(0, 0, 图像宽, 图像高)</strong> 的对象</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pygame<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">GameSprite</span>(pygame.sprite.Sprite):<br>    <span class="hljs-string">&quot;&quot;&quot;游戏精灵基类&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, image_name, speed=<span class="hljs-number">1</span></span>):<br>        <br>        <span class="hljs-comment"># 调用父类的初始化方法</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        <br>        <span class="hljs-comment"># 加载图像</span><br>        self.image = pygame.image.load(image_name)<br>        <span class="hljs-comment"># 设置尺寸</span><br>        self.rect = self.image.get_rect()<br>        <span class="hljs-comment"># 记录速度</span><br>        self.speed = speed<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self, *args</span>):<br>        <br>        <span class="hljs-comment"># 默认在垂直方向移动</span><br>        self.rect.y += self.speed<br>        <br></code></pre></td></tr></table></figure>
+
+<h3 id="4-3-使用-游戏精灵-和-精灵组-创建敌机"><a href="#4-3-使用-游戏精灵-和-精灵组-创建敌机" class="headerlink" title="4.3 使用 游戏精灵 和 精灵组 创建敌机"></a>4.3 使用 游戏精灵 和 精灵组 创建敌机</h3><p><strong>需求</strong></p>
+<ul>
+<li>使用刚刚派生的 <strong>游戏精灵</strong> 和 <strong>精灵组</strong> 创建 敌机 并且实现敌机动画</li>
+</ul>
+<p><strong>步骤</strong></p>
+<ol>
+<li>使用 <code>from</code> 导入 <code>plane_sprites</code> 模块 <ul>
+<li><code>from</code> 导入的模块可以 <strong>直接使用</strong></li>
+<li><code>import</code> 导入的模块需要通过 <strong>模块名.</strong> 来使用</li>
+</ul>
+</li>
+<li>在 <strong>游戏初始化</strong> 创建 <strong>精灵对象</strong> 和 <strong>精灵组对象</strong></li>
+<li>在 <strong>游戏循环中</strong> 让 <strong>精灵组</strong> 分别调用 <code>update()</code> 和 <code>draw(screen)</code> 方法</li>
+</ol>
+<p><strong>职责</strong></p>
+<ul>
+<li>精灵<ul>
+<li>封装 <strong>图像 image</strong>、<strong>位置 rect</strong> 和 <strong>速度 speed</strong></li>
+<li>提供 <code>update()</code> 方法，根据游戏需求，<strong>更新位置 rect</strong></li>
+</ul>
+</li>
+<li>精灵组<ul>
+<li>包含 <strong>多个</strong> <strong>精灵对象</strong></li>
+<li><code>update</code> 方法，让精灵组中的所有精灵调用 <code>update</code> 方法更新位置</li>
+<li><code>draw(screen)</code> 方法，在 <code>screen</code> 上绘制精灵组中的所有精灵</li>
+</ul>
+</li>
+</ul>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li><ol>
+<li>导入 <code>plane_sprites</code> 模块</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> plane_sprites <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="2">
+<li>修改初始化部分代码</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建敌机精灵和精灵组</span><br>enemy1 = GameSprite(<span class="hljs-string">&quot;./images/enemy1.png&quot;</span>)<br>enemy2 = GameSprite(<span class="hljs-string">&quot;./images/enemy1.png&quot;</span>, <span class="hljs-number">2</span>)<br>enemy2.rect.x = <span class="hljs-number">200</span><br>enemy_group = pygame.sprite.Group(enemy1, enemy2)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="3">
+<li>修改游戏循环部分代码</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 让敌机组调用 update 和 draw 方法</span><br>enemy_group.update()<br>enemy_group.draw(screen)<br><br><span class="hljs-comment"># 更新屏幕显示</span><br>pygame.display.update()<br></code></pre></td></tr></table></figure>
+
+<h1 id="游戏框架搭建"><a href="#游戏框架搭建" class="headerlink" title="游戏框架搭建"></a>游戏框架搭建</h1><p><strong>目标</strong> —— 使用 <strong>面相对象</strong> 设计 <strong>飞机大战游戏类</strong></p>
+<h2 id="目标-2"><a href="#目标-2" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>明确主程序职责</li>
+<li>实现主程序类</li>
+<li>准备游戏精灵组</li>
+</ul>
+<h2 id="01-明确主程序职责"><a href="#01-明确主程序职责" class="headerlink" title="01. 明确主程序职责"></a>01. 明确主程序职责</h2><ul>
+<li>回顾 <strong>快速入门案例</strong>，一个游戏主程序的 <strong>职责</strong> 可以分为两个部分：<ul>
+<li>游戏初始化</li>
+<li>游戏循环</li>
+</ul>
+</li>
+<li>根据明确的职责，设计 <code>PlaneGame</code> 类如下：</li>
+</ul>
+<p><img src="/media/15025159832322/009_%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%A8%8B%E5%BA%8F.png" srcset="/img/loading.gif" lazyload alt="009_游戏主程序-w600"></p>
+<blockquote>
+<p><strong>提示</strong> 根据 <strong>职责</strong> 封装私有方法，可以避免某一个方法的代码写得太过冗长</p>
+<p>如果某一个方法编写的太长，既不好阅读，也不好维护！</p>
+</blockquote>
+<ul>
+<li><strong>游戏初始化</strong> ——  <code>__init__()</code> 会调用以下方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__create_sprites(self)</code></td>
+<td>创建所有精灵和精灵组</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>游戏循环</strong> —— <code>start_game()</code> 会调用以下方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__event_handler(self)</code></td>
+<td>事件监听</td>
+</tr>
+<tr>
+<td><code>__check_collide(self)</code></td>
+<td>碰撞检测 —— 子弹销毁敌机、敌机撞毁英雄</td>
+</tr>
+<tr>
+<td><code>__update_sprites(self)</code></td>
+<td>精灵组更新和绘制</td>
+</tr>
+<tr>
+<td><code>__game_over()</code></td>
+<td>游戏结束</td>
+</tr>
+</tbody></table>
+<h2 id="02-实现飞机大战主游戏类"><a href="#02-实现飞机大战主游戏类" class="headerlink" title="02. 实现飞机大战主游戏类"></a>02. 实现飞机大战主游戏类</h2><h3 id="2-1-明确文件职责"><a href="#2-1-明确文件职责" class="headerlink" title="2.1 明确文件职责"></a>2.1 明确文件职责</h3><p><img src="/media/15025159832322/011_%E7%A8%8B%E5%BA%8F%E6%96%87%E4%BB%B6%E8%81%8C%E8%B4%A3.png" srcset="/img/loading.gif" lazyload alt="011_程序文件职责-w479"></p>
+<ul>
+<li><code>plane_main</code> <ol>
+<li>封装 <strong>主游戏类</strong></li>
+<li>创建 <strong>游戏对象</strong></li>
+<li><strong>启动游戏</strong></li>
+</ol>
+</li>
+<li><code>plane_sprites</code><ul>
+<li>封装游戏中 <strong>所有</strong> 需要使用的 <strong>精灵子类</strong></li>
+<li>提供游戏的 <strong>相关工具</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>新建 <code>plane_main.py</code> 文件，并且设置为可执行</li>
+<li>编写 <strong>基础代码</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pygame<br><span class="hljs-keyword">from</span> plane_sprites <span class="hljs-keyword">import</span> *<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">PlaneGame</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;飞机大战主游戏&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;游戏初始化&quot;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_game</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;开始游戏...&quot;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment"># 创建游戏对象</span><br>    game = PlaneGame()<br><br>    <span class="hljs-comment"># 开始游戏</span><br>    game.start_game()<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-游戏初始化部分"><a href="#2-3-游戏初始化部分" class="headerlink" title="2.3 游戏初始化部分"></a>2.3 游戏初始化部分</h3><ul>
+<li>完成 <code>__init__()</code> 代码如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;游戏初始化&quot;</span>)<br>    <br>    <span class="hljs-comment"># 1. 创建游戏的窗口</span><br>    self.screen = pygame.display.set_mode((<span class="hljs-number">480</span>, <span class="hljs-number">700</span>))<br>    <span class="hljs-comment"># 2. 创建游戏的时钟</span><br>    self.clock = pygame.time.Clock()<br>    <span class="hljs-comment"># 3. 调用私有方法，精灵和精灵组的创建</span><br>    self.__create_sprites()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__create_sprites</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-常量-代替固定的数值"><a href="#使用-常量-代替固定的数值" class="headerlink" title="使用 常量 代替固定的数值"></a>使用 常量 代替固定的数值</h4><blockquote>
+<ul>
+<li>常量 —— 不变化的量</li>
+<li>变量 —— 可以变化的量</li>
+</ul>
+</blockquote>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>在开发时，可能会需要使用 <strong>固定的数值</strong>，例如 <strong>屏幕的高度</strong> 是 <code>700</code></li>
+<li>这个时候，建议 <strong>不要</strong> 直接使用固定数值，而应该使用 <strong>常量</strong></li>
+<li>在开发时，为了保证代码的可维护性，尽量不要使用 <strong>魔法数字</strong></li>
+</ul>
+<p><strong>常量的定义</strong></p>
+<ul>
+<li>定义 <strong>常量</strong> 和 定义 <strong>变量</strong> 的语法完全一样，都是使用 <strong>赋值语句</strong></li>
+<li><strong>常量</strong> 的 <strong>命名</strong> 应该 <strong>所有字母都使用大写</strong>，<strong>单词与单词之间使用下划线连接</strong></li>
+</ul>
+<p><strong>常量的好处</strong></p>
+<ul>
+<li>阅读代码时，通过 <strong>常量名</strong> <strong>见名之意</strong>，不需要猜测数字的含义</li>
+<li>如果需要 <strong>调整值</strong>，只需要 <strong>修改常量定义</strong> 就可以实现 <strong>统一修改</strong></li>
+</ul>
+<blockquote>
+<p>提示：Python 中并没有真正意义的常量，只是通过命名的约定 —— 所有字母都是大写的就是常量，开发时不要轻易的修改！</p>
+</blockquote>
+<p><strong>代码调整</strong></p>
+<ul>
+<li>在 <code>plane_sprites.py</code> 中增加常量定义</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pygame<br><br><span class="hljs-comment"># 游戏屏幕大小</span><br>SCREEN_RECT = pygame.Rect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">480</span>, <span class="hljs-number">700</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>plane_main.py</code> 中的窗口大小</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">self.screen = pygame.display.set_mode(SCREEN_RECT.size)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-游戏循环部分"><a href="#2-4-游戏循环部分" class="headerlink" title="2.4 游戏循环部分"></a>2.4 游戏循环部分</h3><ul>
+<li>完成 <code>start_game()</code> 基础代码如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">start_game</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;开始游戏&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;开始游戏...&quot;</span>)<br>       <br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <br>        <span class="hljs-comment"># 1. 设置刷新帧率</span><br>        self.clock.tick(<span class="hljs-number">60</span>)<br>        <br>        <span class="hljs-comment"># 2. 事件监听</span><br>        self.__event_handler()<br>        <br>        <span class="hljs-comment"># 3. 碰撞检测</span><br>        self.__check_collide()<br>        <br>        <span class="hljs-comment"># 4. 更新精灵组</span><br>        self.__update_sprites()<br>        <br>        <span class="hljs-comment"># 5. 更新屏幕显示</span><br>        pygame.display.update()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__event_handler</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;事件监听&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():<br>    <br>        <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:<br>            PlaneGame.__game_over()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__check_collide</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;碰撞检测&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__update_sprites</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;更新精灵组&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">pass</span><br>    <br><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__game_over</span>():<br>   <span class="hljs-string">&quot;&quot;&quot;游戏结束&quot;&quot;&quot;</span><br><br>   <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;游戏结束&quot;</span>)<br>   pygame.quit()<br>   exit()<br></code></pre></td></tr></table></figure>
+
+<h2 id="03-准备游戏精灵组"><a href="#03-准备游戏精灵组" class="headerlink" title="03. 准备游戏精灵组"></a>03. 准备游戏精灵组</h2><h3 id="3-1-确定精灵组"><a href="#3-1-确定精灵组" class="headerlink" title="3.1 确定精灵组"></a>3.1 确定精灵组</h3><p><img src="/media/15025159832322/010_%E7%B2%BE%E7%81%B5%E7%BB%84%E7%A1%AE%E5%AE%9A.png" srcset="/img/loading.gif" lazyload alt="010_精灵组确定-w600"></p>
+<h3 id="3-2-代码实现"><a href="#3-2-代码实现" class="headerlink" title="3.2 代码实现"></a>3.2 代码实现</h3><ul>
+<li>创建精灵组方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__create_sprites</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;创建精灵组&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-comment"># 背景组</span><br>    self.back_group = pygame.sprite.Group()<br>    <span class="hljs-comment"># 敌机组</span><br>    self.enemy_group = pygame.sprite.Group()<br>    <span class="hljs-comment"># 英雄组</span><br>    self.hero_group = pygame.sprite.Group()<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>更新精灵组方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__update_sprites</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;更新精灵组&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-keyword">for</span> group <span class="hljs-keyword">in</span> [self.back_group, self.enemy_group, self.hero_group]:<br>    <br>        group.update()<br>        group.draw(self.screen)<br></code></pre></td></tr></table></figure>
+
+<h1 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h1><h2 id="目标-3"><a href="#目标-3" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>背景交替滚动的思路确定</li>
+<li>显示游戏背景</li>
+</ul>
+<h2 id="01-背景交替滚动的思路确定"><a href="#01-背景交替滚动的思路确定" class="headerlink" title="01. 背景交替滚动的思路确定"></a>01. 背景交替滚动的思路确定</h2><p>运行 <strong>备课代码</strong>，<strong>观察</strong> 背景图像的显示效果：</p>
+<ul>
+<li>游戏启动后，<strong>背景图像</strong> 会 <strong>连续不断地</strong> <strong>向下方</strong> 移动</li>
+<li>在 <strong>视觉上</strong> 产生英雄的飞机不断向上方飞行的 <strong>错觉</strong> —— 在很多跑酷类游戏中常用的套路<ul>
+<li><strong>游戏的背景</strong> 不断变化</li>
+<li><strong>游戏的主角</strong> 位置保持不变</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-实现思路分析"><a href="#1-1-实现思路分析" class="headerlink" title="1.1 实现思路分析"></a>1.1 实现思路分析</h3><p> <img src="/media/15025262948537/013_%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E4%BA%A4%E6%9B%BF%E6%BB%9A%E5%8A%A8.png" srcset="/img/loading.gif" lazyload alt="013_背景图片交替滚动-w640"></p>
+<p><strong>解决办法</strong></p>
+<ol>
+<li>创建两张背景图像精灵<ul>
+<li>第 <code>1</code> 张 <strong>完全和屏幕重合</strong></li>
+<li>第 <code>2</code> 张在 <strong>屏幕的正上方</strong></li>
+</ul>
+</li>
+<li>两张图像 <strong>一起向下方运动</strong><ul>
+<li><code>self.rect.y += self.speed</code></li>
+</ul>
+</li>
+<li>当 <strong>任意背景精灵</strong> 的 <code>rect.y &gt;= 屏幕的高度</code> 说明已经 <strong>移动到屏幕下方</strong></li>
+<li>将 <strong>移动到屏幕下方的这张图像</strong> 设置到 <strong>屏幕的正上方</strong><ul>
+<li><code>rect.y = -rect.height</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="1-2-设计背景类"><a href="#1-2-设计背景类" class="headerlink" title="1.2 设计背景类"></a>1.2 设计背景类</h3><p><img src="/media/15025262948537/012_%E6%B4%BE%E7%94%9FBackground%E5%AD%90%E7%B1%BB.png" srcset="/img/loading.gif" lazyload alt="012_派生Background子类-w398"></p>
+<ul>
+<li><strong>初始化方法</strong><ul>
+<li>直接指定 <strong>背景图片</strong></li>
+<li><code>is_alt</code> 判断是否是另一张图像<ul>
+<li><code>False</code> 表示 <strong>第一张图像</strong>，需要与屏幕重合</li>
+<li><code>True</code> 表示 <strong>另一张图像</strong>，在屏幕的正上方</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>update()</strong> 方法<ul>
+<li>判断 <strong>是否移动出屏幕</strong>，如果是，将图像设置到 <strong>屏幕的正上方</strong>，从而实现 <strong>交替滚动</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>继承</strong> 如果父类提供的方法，不能满足子类的需求：</p>
+<ul>
+<li>派生一个子类</li>
+<li>在子类中针对特有的需求，重写父类方法，并且进行扩展</li>
+</ul>
+</blockquote>
+<h2 id="02-显示游戏背景"><a href="#02-显示游戏背景" class="headerlink" title="02. 显示游戏背景"></a>02. 显示游戏背景</h2><h3 id="2-1-背景精灵的基本实现"><a href="#2-1-背景精灵的基本实现" class="headerlink" title="2.1 背景精灵的基本实现"></a>2.1 背景精灵的基本实现</h3><ul>
+<li>在 <code>plane_sprites</code> 新建 <code>Background</code> 继承自 <code>GameSprite</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Background</span>(<span class="hljs-title class_ inherited__">GameSprite</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;游戏背景精灵&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-comment"># 1. 调用父类的方法实现</span><br>        <span class="hljs-built_in">super</span>().update()<br><br>        <span class="hljs-comment"># 2. 判断是否移出屏幕，如果移出屏幕，将图像设置到屏幕的上方</span><br>        <span class="hljs-keyword">if</span> self.rect.y &gt;= SCREEN_RECT.height:<br>            self.rect.y = -self.rect.height<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-在-plane-main-py-中显示背景精灵"><a href="#2-2-在-plane-main-py-中显示背景精灵" class="headerlink" title="2.2 在 plane_main.py 中显示背景精灵"></a>2.2 在 <code>plane_main.py</code> 中显示背景精灵</h3><ol>
+<li>在 <code>__create_sprites</code> 方法中创建 <strong>精灵</strong> 和 <strong>精灵组</strong></li>
+<li>在 <code>__update_sprites</code> 方法中，让 <strong>精灵组</strong> 调用 <code>update()</code> 和 <code>draw()</code> 方法</li>
+</ol>
+<blockquote>
+<p><code>__create_sprites</code> 方法</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__create_sprites</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 创建背景精灵和精灵组</span><br>    bg1 = Background(<span class="hljs-string">&quot;./images/background.png&quot;</span>)<br>    bg2 = Background(<span class="hljs-string">&quot;./images/background.png&quot;</span>)<br>    bg2.rect.y = -bg2.rect.height<br>    <br>    self.back_group = pygame.sprite.Group(bg1, bg2)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>__update_sprites</code> 方法</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__update_sprites</span>(<span class="hljs-params">self</span>):<br><br>    self.back_group.update()<br>    self.back_group.draw(self.screen)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-利用初始化方法，简化背景精灵创建"><a href="#2-3-利用初始化方法，简化背景精灵创建" class="headerlink" title="2.3 利用初始化方法，简化背景精灵创建"></a>2.3 利用初始化方法，简化背景精灵创建</h3><blockquote>
+<p>思考 —— 上一小结完成的代码存在什么样的问题？能否简化？</p>
+</blockquote>
+<ul>
+<li>在主程序中，创建的<strong>两个背景精灵</strong>，<strong>传入了相同的图像文件路径</strong></li>
+<li>创建 <strong>第二个 背景精灵</strong> 时，<strong>在主程序中</strong>，设置背景精灵的图像位置</li>
+</ul>
+<blockquote>
+<p>思考 —— 精灵 <strong>初始位置</strong> 的设置，应该 <strong>由主程序负责</strong>？还是 <strong>由精灵自己负责</strong>？</p>
+</blockquote>
+<p><strong>答案</strong> —— <strong>由精灵自己负责</strong></p>
+<ul>
+<li>根据面向对象设计原则，应该将对象的职责，封装到类的代码内部</li>
+<li>尽量简化程序调用一方的代码调用</li>
+</ul>
+<p><img src="/media/15025262948537/012_%E6%B4%BE%E7%94%9FBackground%E5%AD%90%E7%B1%BB.png" srcset="/img/loading.gif" lazyload alt="012_派生Background子类-w398"></p>
+<ul>
+<li><strong>初始化方法</strong><ul>
+<li>直接指定 <strong>背景图片</strong></li>
+<li><code>is_alt</code> 判断是否是另一张图像<ul>
+<li><code>False</code> 表示 <strong>第一张图像</strong>，需要与屏幕重合</li>
+<li><code>True</code> 表示 <strong>另一张图像</strong>，在屏幕的正上方</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在 <code>plane_sprites.py</code> 中实现 <code>Background</code> 的 <strong>初始化方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, is_alt=<span class="hljs-literal">False</span></span>):<br><br>    image_name = <span class="hljs-string">&quot;./images/background.png&quot;</span><br>    <span class="hljs-built_in">super</span>().__init__(image_name)<br>       <br>    <span class="hljs-comment"># 判断是否交替图片，如果是，将图片设置到屏幕顶部</span><br>    <span class="hljs-keyword">if</span> is_alt:<br>        self.rect.y = -self.rect.height     <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>plane_main</code> 的 <code>__create_sprites</code> 方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建背景精灵和精灵组</span><br>bg1 = Background()<br>bg2 = Background(<span class="hljs-literal">True</span>)<br><br>self.back_group = pygame.sprite.Group(bg1, bg2)<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="敌机出场"><a href="#敌机出场" class="headerlink" title="敌机出场"></a>敌机出场</h1><h2 id="目标-4"><a href="#目标-4" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>使用 <strong>定时器</strong> 添加敌机</li>
+<li>设计 <code>Enemy</code> 类</li>
+</ul>
+<h2 id="01-使用定时器添加敌机"><a href="#01-使用定时器添加敌机" class="headerlink" title="01. 使用定时器添加敌机"></a>01. 使用定时器添加敌机</h2><p>运行 <strong>备课代码</strong>，<strong>观察</strong> 敌机的 <strong>出现规律</strong>：</p>
+<ol>
+<li>游戏启动后，<strong>每隔 1 秒</strong> 会 <strong>出现一架敌机</strong></li>
+<li>每架敌机 <strong>向屏幕下方飞行</strong>，飞行 <strong>速度各不相同</strong></li>
+<li>每架敌机出现的 <strong>水平位置</strong> 也不尽相同</li>
+<li>当敌机 <strong>从屏幕下方飞出</strong>，不会再飞回到屏幕中</li>
+</ol>
+<h3 id="1-1-定时器"><a href="#1-1-定时器" class="headerlink" title="1.1 定时器"></a>1.1 定时器</h3><ul>
+<li>在 <code>pygame</code> 中可以使用 <code>pygame.time.set_timer()</code> 来添加 <strong>定时器</strong></li>
+<li>所谓 <strong>定时器</strong>，就是 <strong>每隔一段时间</strong>，去 <strong>执行一些动作</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">set_timer(eventid, milliseconds) -&gt; <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>set_timer</code> 可以创建一个 <strong>事件</strong></li>
+<li>可以在 <strong>游戏循环</strong> 的 <strong>事件监听</strong> 方法中捕获到该事件</li>
+<li>第 1 个参数 <strong>事件代号</strong> 需要基于常量 <code>pygame.USEREVENT</code> 来指定<ul>
+<li><code>USEREVENT</code> 是一个整数，再增加的事件可以使用 <code>USEREVENT + 1</code> 指定，依次类推…</li>
+</ul>
+</li>
+<li>第 2 个参数是 <strong>事件触发</strong> 间隔的 <strong>毫秒值</strong></li>
+</ul>
+<p><strong>定时器事件的监听</strong></p>
+<ul>
+<li>通过 <code>pygame.event.get()</code> 可以获取当前时刻所有的 <strong>事件列表</strong></li>
+<li><strong>遍历列表</strong> 并且判断 <code>event.type</code> 是否等于 <code>eventid</code>，如果相等，表示 <strong>定时器事件</strong> 发生</li>
+</ul>
+<h3 id="1-2-定义并监听创建敌机的定时器事件"><a href="#1-2-定义并监听创建敌机的定时器事件" class="headerlink" title="1.2 定义并监听创建敌机的定时器事件"></a>1.2 定义并监听创建敌机的定时器事件</h3><p><code>pygame</code> 的 <strong>定时器</strong> 使用套路非常固定：</p>
+<ol>
+<li>定义 <strong>定时器常量</strong> —— <code>eventid</code></li>
+<li>在 <strong>初始化方法</strong> 中，调用 <code>set_timer</code> 方法 <strong>设置定时器事件</strong></li>
+<li>在 <strong>游戏循环</strong> 中，<strong>监听定时器事件</strong></li>
+</ol>
+<h4 id="1-定义事件"><a href="#1-定义事件" class="headerlink" title="1) 定义事件"></a>1) 定义事件</h4><ul>
+<li>在 <code>plane_sprites.py</code> 的顶部定义 <strong>事件常量</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 敌机的定时器事件常量</span><br>CREATE_ENEMY_EVENT = pygame.USEREVENT<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>PlaneGame</code> 的 <strong>初始化方法</strong> 中 <strong>创建用户事件</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 4. 设置定时器事件 - 每秒创建一架敌机</span><br>pygame.time.set_timer(CREATE_ENEMY_EVENT, <span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-监听定时器事件"><a href="#2-监听定时器事件" class="headerlink" title="2) 监听定时器事件"></a>2) 监听定时器事件</h4><ul>
+<li>在 <code>__event_handler</code> 方法中增加以下代码：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__event_handler</span>(<span class="hljs-params">self</span>):<br>    <br>    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():<br>    <br>        <span class="hljs-comment"># 判断是否退出游戏</span><br>        <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:<br>            PlaneGame.__game_over()<br>        <span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == CREATE_ENEMY_EVENT:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;敌机出场...&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="02-设计-Enemy-类"><a href="#02-设计-Enemy-类" class="headerlink" title="02. 设计 Enemy 类"></a>02. 设计 <code>Enemy</code> 类</h2><ol>
+<li>游戏启动后，<strong>每隔 1 秒</strong> 会 <strong>出现一架敌机</strong></li>
+<li>每架敌机 <strong>向屏幕下方飞行</strong>，飞行 <strong>速度各不相同</strong></li>
+<li>每架敌机出现的 <strong>水平位置</strong> 也不尽相同</li>
+<li>当敌机 <strong>从屏幕下方飞出</strong>，不会再飞回到屏幕中</li>
+</ol>
+<p><img src="/media/15025309517247/014_%E6%B4%BE%E7%94%9FEnemy%E5%AD%90%E7%B1%BB.png" srcset="/img/loading.gif" lazyload alt="014_派生Enemy子类-w657"></p>
+<ul>
+<li><strong>初始化方法</strong><ul>
+<li>指定 <strong>敌机图片</strong></li>
+<li><strong>随机</strong> 敌机的 <strong>初始位置</strong> 和 <strong>初始速度</strong></li>
+</ul>
+</li>
+<li>重写 <strong>update()</strong> 方法<ul>
+<li>判断 <strong>是否飞出屏幕</strong>，如果是，从 <strong>精灵组</strong> 删除</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-敌机类的准备"><a href="#2-1-敌机类的准备" class="headerlink" title="2.1 敌机类的准备"></a>2.1 敌机类的准备</h3><ul>
+<li>在 <code>plane_sprites</code> 新建 <code>Enemy</code> 继承自 <code>GameSprite</code></li>
+<li>重写 <strong>初始化方法</strong>，直接指定 <strong>图片名称</strong></li>
+<li>暂时 <strong>不实现</strong> <strong>随机速度</strong> 和 <strong>随机位置</strong> 的指定</li>
+<li>重写 <code>update</code> 方法，判断是否飞出屏幕</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-title class_ inherited__">GameSprite</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;敌机精灵&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <br>        <span class="hljs-comment"># 1. 调用父类方法，创建敌机精灵，并且指定敌机的图像</span><br>        <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&quot;./images/enemy1.png&quot;</span>)<br><br>        <span class="hljs-comment"># 2. 设置敌机的随机初始速度</span><br><br>        <span class="hljs-comment"># 3. 设置敌机的随机初始位置</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br>        <br>        <span class="hljs-comment"># 1. 调用父类方法，让敌机在垂直方向运动</span><br>        <span class="hljs-built_in">super</span>().update()<br>        <br>        <span class="hljs-comment"># 2. 判断是否飞出屏幕，如果是，需要将敌机从精灵组删除</span><br>        <span class="hljs-keyword">if</span> self.rect.y &gt;= SCREEN_RECT.height:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;敌机飞出屏幕...&quot;</span>)    <br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-创建敌机"><a href="#2-2-创建敌机" class="headerlink" title="2.2 创建敌机"></a>2.2 创建敌机</h3><p><strong>演练步骤</strong></p>
+<ol>
+<li>在 <code>__create_sprites</code>，添加 <strong>敌机精灵组</strong><ul>
+<li>敌机是 <strong>定时被创建的</strong>，因此在初始化方法中，不需要创建敌机</li>
+</ul>
+</li>
+<li>在 <code>__event_handler</code>，创建敌机，并且 <strong>添加到精灵组</strong><ul>
+<li>调用 <strong>精灵组</strong> 的 <code>add</code> 方法可以 <strong>向精灵组添加精灵</strong></li>
+</ul>
+</li>
+<li>在 <code>__update_sprites</code>，让 <strong>敌机精灵组</strong> 调用 <code>update</code> 和 <code>draw</code> 方法</li>
+</ol>
+<p><img src="/media/15025309517247/006_pygame.SpriteII.png" srcset="/img/loading.gif" lazyload alt="006_pygame.SpriteII"></p>
+<p><strong>演练代码</strong></p>
+<ul>
+<li>修改 <code>plane_main</code> 的 <code>__create_sprites</code> 方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 敌机组</span><br>self.enemy_group = pygame.sprite.Group()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>plane_main</code> 的 <code>__update_sprites</code> 方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">self.enemy_group.update()<br>self.enemy_group.draw(self.screen)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>定时出现敌机</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == CREATE_ENEMY_EVENT:<br>    self.enemy_group.add(Enemy())<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-随机敌机位置和速度"><a href="#2-3-随机敌机位置和速度" class="headerlink" title="2.3 随机敌机位置和速度"></a>2.3 随机敌机位置和速度</h3><h4 id="1-导入模块"><a href="#1-导入模块" class="headerlink" title="1) 导入模块"></a>1) 导入模块</h4><ul>
+<li>在导入模块时，<strong>建议</strong> 按照以下顺序导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-number">1.</span> 官方标准模块导入<br><span class="hljs-number">2.</span> 第三方模块导入<br><span class="hljs-number">3.</span> 应用程序模块导入<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>plane_sprites.py</code> 增加 <code>random</code> 的导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-随机位置"><a href="#2-随机位置" class="headerlink" title="2) 随机位置"></a>2) 随机位置</h4><p><img src="/media/15025309517247/015_%E9%A3%9E%E6%9C%BA%E5%88%9D%E5%A7%8B%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="015_飞机初始位置-w360"></p>
+<p>使用 <code>pygame.Rect</code> 提供的 <code>bottom</code> 属性，在指定敌机初始位置时，会比较方便</p>
+<ul>
+<li><code>bottom = y + height</code></li>
+<li><code>y = bottom - height</code></li>
+</ul>
+<h4 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3) 代码实现"></a>3) 代码实现</h4><ul>
+<li>修改 <strong>初始化方法</strong>，随机敌机出现 <strong>速度</strong> 和 <strong>位置</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 1. 调用父类方法，创建敌机精灵，并且指定敌机的图像</span><br>    <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&quot;./images/enemy1.png&quot;</span>)<br><br>    <span class="hljs-comment"># 2. 设置敌机的随机初始速度 1 ~ 3</span><br>    self.speed = random.randint(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>)<br><br>    <span class="hljs-comment"># 3. 设置敌机的随机初始位置</span><br>    self.rect.bottom = <span class="hljs-number">0</span><br>    <br>    max_x = SCREEN_RECT.width - self.rect.width<br>    self.rect.x = random.randint(<span class="hljs-number">0</span>, max_x)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-移出屏幕销毁敌机"><a href="#2-4-移出屏幕销毁敌机" class="headerlink" title="2.4 移出屏幕销毁敌机"></a>2.4 移出屏幕销毁敌机</h3><ul>
+<li>敌机移出屏幕之后，如果 <strong>没有撞到英雄</strong>，敌机的历史使命已经终结</li>
+<li>需要从 <strong>敌机组</strong> 删除，否则会造成 <strong>内存浪费</strong></li>
+</ul>
+<h4 id="检测敌机被销毁"><a href="#检测敌机被销毁" class="headerlink" title="检测敌机被销毁"></a>检测敌机被销毁</h4><ul>
+<li><code>__del__</code> 内置方法会在对象被销毁前调用，在开发中，可以用于 <strong>判断对象是否被销毁</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__del__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;敌机挂了 %s&quot;</span> % self.rect)<br></code></pre></td></tr></table></figure>
+
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><p><img src="/media/15025309517247/006_pygame.SpriteII.png" srcset="/img/loading.gif" lazyload alt="006_pygame.SpriteII"></p>
+<ul>
+<li>判断敌机是否飞出屏幕，如果是，调用 <code>kill()</code> 方法从所有组中删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">super</span>().update()<br>    <br>    <span class="hljs-comment"># 判断敌机是否移出屏幕</span><br>    <span class="hljs-keyword">if</span> self.rect.y &gt;= SCREEN_RECT.height:<br>        <span class="hljs-comment"># 将精灵从所有组中删除</span><br>        self.kill()<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="英雄登场"><a href="#英雄登场" class="headerlink" title="英雄登场"></a>英雄登场</h1><h2 id="目标-5"><a href="#目标-5" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>设计 <strong>英雄</strong> 和 <strong>子弹</strong> 类</li>
+<li>使用 <code>pygame.key.get_pressed()</code> 移动英雄</li>
+<li>发射子弹</li>
+</ul>
+<h2 id="01-设计-英雄-和-子弹-类"><a href="#01-设计-英雄-和-子弹-类" class="headerlink" title="01. 设计 英雄 和 子弹 类"></a>01. 设计 <strong>英雄</strong> 和 <strong>子弹</strong> 类</h2><h3 id="英雄需求"><a href="#英雄需求" class="headerlink" title="英雄需求"></a>英雄需求</h3><ol>
+<li>游戏启动后，<strong>英雄</strong> 出现在屏幕的 <strong>水平中间</strong> 位置，距离 <strong>屏幕底部</strong> <code>120</code> <strong>像素</strong></li>
+<li><strong>英雄</strong> 每隔 <code>0.5</code> 秒发射一次子弹，每次 <strong>连发三枚子弹</strong></li>
+<li><strong>英雄</strong> 默认不会移动，需要通过 <strong>左&#x2F;右</strong> 方向键，控制 <strong>英雄</strong> 在水平方向移动</li>
+</ol>
+<p><img src="/media/15025349250200/017_%E8%8B%B1%E9%9B%84%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="017_英雄位置-w480"></p>
+<h3 id="子弹需求"><a href="#子弹需求" class="headerlink" title="子弹需求"></a>子弹需求</h3><ol>
+<li><strong>子弹</strong> 从 <strong>英雄</strong> 的正上方发射 <strong>沿直线</strong> 向 <strong>上方</strong> 飞行</li>
+<li><strong>飞出屏幕后</strong>，需要从 <strong>精灵组</strong> 中删除</li>
+</ol>
+<p><img src="/media/15025349250200/016_%E6%B4%BE%E7%94%9F%E8%8B%B1%E9%9B%84%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AD%90%E7%B1%BB.png" srcset="/img/loading.gif" lazyload alt="016_派生英雄和子弹子类"></p>
+<h3 id="Hero-——-英雄"><a href="#Hero-——-英雄" class="headerlink" title="Hero —— 英雄"></a>Hero —— 英雄</h3><ul>
+<li><strong>初始化方法</strong><ul>
+<li>指定 <strong>英雄图片</strong></li>
+<li><strong>初始速度 &#x3D; 0</strong> —— 英雄默认静止不动</li>
+<li>定义 <code>bullets</code> <strong>子弹精灵组</strong> 保存子弹精灵</li>
+</ul>
+</li>
+<li>重写 <strong>update()</strong> 方法<ul>
+<li>英雄需要 <strong>水平移动</strong></li>
+<li>并且需要保证不能 <strong>移出屏幕</strong></li>
+</ul>
+</li>
+<li>增加 <code>bullets</code> 属性，记录所有 <strong>子弹精灵</strong></li>
+<li>增加 <code>fire</code> 方法，用于发射子弹</li>
+</ul>
+<h3 id="Bullet-——-子弹"><a href="#Bullet-——-子弹" class="headerlink" title="Bullet —— 子弹"></a>Bullet —— 子弹</h3><ul>
+<li><strong>初始化方法</strong><ul>
+<li>指定 <strong>子弹图片</strong></li>
+<li><strong>初始速度 &#x3D; -2</strong> —— 子弹需要向上方飞行</li>
+</ul>
+</li>
+<li>重写 <strong>update()</strong> 方法<ul>
+<li>判断 <strong>是否飞出屏幕</strong>，如果是，从 <strong>精灵组</strong> 删除</li>
+</ul>
+</li>
+</ul>
+<h2 id="02-创建英雄"><a href="#02-创建英雄" class="headerlink" title="02. 创建英雄"></a>02. 创建英雄</h2><h3 id="2-1-准备英雄类"><a href="#2-1-准备英雄类" class="headerlink" title="2.1 准备英雄类"></a>2.1 准备英雄类</h3><ul>
+<li>在 <code>plane_sprites</code> 新建 <code>Hero</code> 类</li>
+<li>重写 <strong>初始化方法</strong>，直接指定 <strong>图片名称</strong>，并且将初始速度设置为 <code>0</code></li>
+<li>设置 <strong>英雄的初始位置</strong></li>
+</ul>
+<p><img src="/media/15025349250200/003_pygame.Rect.png" srcset="/img/loading.gif" lazyload alt="003_pygame.Rect-w382"></p>
+<ul>
+<li><code>centerx = x + 0.5 * width</code></li>
+<li><code>centery = y + 0.5 * height</code></li>
+<li><code>bottom = y + height</code></li>
+</ul>
+<p><img src="/media/15025349250200/017_%E8%8B%B1%E9%9B%84%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="017_英雄位置-w480"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Hero</span>(<span class="hljs-title class_ inherited__">GameSprite</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;英雄精灵&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br><br>        <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&quot;./images/me1.png&quot;</span>, <span class="hljs-number">0</span>)<br><br>        <span class="hljs-comment"># 设置初始位置</span><br>        self.rect.centerx = SCREEN_RECT.centerx<br>        self.rect.bottom = SCREEN_RECT.bottom - <span class="hljs-number">120</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-绘制英雄"><a href="#2-2-绘制英雄" class="headerlink" title="2.2 绘制英雄"></a>2.2 绘制英雄</h3><ol>
+<li>在 <code>__create_sprites</code>，添加 <strong>英雄精灵</strong> 和 <strong>英雄精灵组</strong><ul>
+<li>后续要针对 <strong>英雄</strong> 做 <strong>碰撞检测</strong> 以及 <strong>发射子弹</strong></li>
+<li>所以 <strong>英雄</strong> 需要 <strong>单独定义成属性</strong></li>
+</ul>
+</li>
+<li>在 <code>__update_sprites</code>，让 <strong>英雄精灵组</strong> 调用 <code>update</code> 和 <code>draw</code> 方法</li>
+</ol>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>修改 <code>__create_sprites</code> 方法如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 英雄组</span><br>self.hero = Hero()<br>self.hero_group = pygame.sprite.Group(self.hero)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>__update_sprites</code> 方法如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">self.hero_group.update()<br>self.hero_group.draw(self.screen)<br></code></pre></td></tr></table></figure>
+
+<h2 id="03-移动英雄位置"><a href="#03-移动英雄位置" class="headerlink" title="03. 移动英雄位置"></a>03. 移动英雄位置</h2><blockquote>
+<p>在 <code>pygame</code> 中针对 <strong>键盘按键的捕获</strong>，有 <strong>两种</strong> 方式</p>
+</blockquote>
+<ul>
+<li><strong>第一种方式</strong> 判断 <code>event.type == pygame.KEYDOWN</code></li>
+<li><strong>第二种方式</strong> <ol>
+<li>首先使用 <code>pygame.key.get_pressed()</code> 返回 <strong>所有按键元组</strong></li>
+<li>通过 <strong>键盘常量</strong>，判断元组中 <strong>某一个键是否被按下</strong> —— 如果被按下，对应数值为 <code>1</code></li>
+</ol>
+</li>
+</ul>
+<p><strong>提问</strong> 这两种方式之间有什么区别呢？</p>
+<ul>
+<li>第一种方式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN <span class="hljs-keyword">and</span> event.key == pygame.K_RIGHT:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;向右移动...&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>第二种方式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 返回所有按键的元组，如果某个键被按下，对应的值会是1</span><br>keys_pressed = pygame.key.get_pressed()<br><span class="hljs-comment"># 判断是否按下了方向键</span><br><span class="hljs-keyword">if</span> keys_pressed[pygame.K_RIGHT]:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;向右移动...&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>结论</strong></p>
+<ul>
+<li><strong>第一种方式</strong> <code>event.type</code> 用户 <strong>必须要抬起按键</strong> 才算一次 <strong>按键事件</strong>，<strong>操作灵活性会大打折扣</strong></li>
+<li><strong>第二种方式</strong> 用户可以按住方向键不放，就能够实现持续向某一个方向移动了，<strong>操作灵活性更好</strong></li>
+</ul>
+<h3 id="3-1-移动英雄位置"><a href="#3-1-移动英雄位置" class="headerlink" title="3.1 移动英雄位置"></a>3.1 移动英雄位置</h3><p><strong>演练步骤</strong></p>
+<ol>
+<li>在 <code>Hero</code> 类中重写 <code>update</code> 方法<ul>
+<li>用 <strong>速度</strong> <code>speed</code> 和 <strong>英雄</strong> <code>rect.x</code> 进行叠加</li>
+<li><strong>不需要调用父类方法</strong> —— 父类方法只是实现了单纯的垂直运动</li>
+</ul>
+</li>
+<li>在 <code>__event_handler</code> 方法中根据 <strong>左右方向键</strong> 设置英雄的 <strong>速度</strong><ul>
+<li><strong>向右</strong> &#x3D;&gt; <code>speed = 2</code></li>
+<li><strong>向左</strong> &#x3D;&gt; <code>speed = -2</code></li>
+<li><strong>其他</strong> &#x3D;&gt; <code>speed = 0</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>代码演练</strong></p>
+<ul>
+<li>在 <code>Hero</code> 类，重写 <code>update()</code> 方法，<strong>根据速度水平移动</strong> 英雄的飞机</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 飞机水平移动</span><br>    self.rect.x += self.speed<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>调整键盘按键代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取用户按键</span><br>keys_pressed = pygame.key.get_pressed()<br><br><span class="hljs-keyword">if</span> keys_pressed[pygame.K_RIGHT]:<br>    self.hero.speed = <span class="hljs-number">2</span><br><span class="hljs-keyword">elif</span> keys_pressed[pygame.K_LEFT]:<br>    self.hero.speed = -<span class="hljs-number">2</span><br><span class="hljs-keyword">else</span>:<br>    self.hero.speed = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-控制英雄运动边界"><a href="#3-2-控制英雄运动边界" class="headerlink" title="3.2 控制英雄运动边界"></a>3.2 控制英雄运动边界</h3><ul>
+<li>在 <code>Hero</code> 类的 <code>update()</code> 方法判断 <strong>英雄</strong> 是否超出 <strong>屏幕边界</strong></li>
+</ul>
+<p><img src="/media/15025349250200/003_pygame.Rect.png" srcset="/img/loading.gif" lazyload alt="003_pygame.Rect-w382"></p>
+<ul>
+<li><code>right = x + width</code> 利用 <code>right</code> 属性可以非常容易的针对右侧设置精灵位置</li>
+</ul>
+<p><img src="/media/15025349250200/017_%E8%8B%B1%E9%9B%84%E4%BD%8D%E7%BD%AEII.png" srcset="/img/loading.gif" lazyload alt="017_英雄位置II-w408"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 飞机水平移动</span><br>    self.rect.x += self.speed<br>    <br>    <span class="hljs-comment"># 判断屏幕边界</span><br>    <span class="hljs-keyword">if</span> self.rect.left &lt; <span class="hljs-number">0</span>:<br>        self.rect.left = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> self.rect.right &gt; SCREEN_RECT.right:<br>        self.rect.right = SCREEN_RECT.right<br></code></pre></td></tr></table></figure>
+
+<h2 id="04-发射子弹"><a href="#04-发射子弹" class="headerlink" title="04. 发射子弹"></a>04. 发射子弹</h2><h3 id="需求回顾-——-英雄需求"><a href="#需求回顾-——-英雄需求" class="headerlink" title="需求回顾 —— 英雄需求"></a>需求回顾 —— 英雄需求</h3><ol>
+<li>游戏启动后，<strong>英雄</strong> 出现在屏幕的 <strong>水平中间</strong> 位置，距离 <strong>屏幕底部</strong> <code>120</code> <strong>像素</strong></li>
+<li><strong>英雄</strong> 每隔 <code>0.5</code> 秒发射一次子弹，每次 <strong>连发三枚子弹</strong></li>
+<li><strong>英雄</strong> 默认不会移动，需要通过 <strong>左&#x2F;右</strong> 方向键，控制 <strong>英雄</strong> 在水平方向移动</li>
+</ol>
+<h3 id="4-1-添加发射子弹事件"><a href="#4-1-添加发射子弹事件" class="headerlink" title="4.1 添加发射子弹事件"></a>4.1 添加发射子弹事件</h3><p><code>pygame</code> 的 <strong>定时器</strong> 使用套路非常固定：</p>
+<ol>
+<li>定义 <strong>定时器常量</strong> —— <code>eventid</code></li>
+<li>在 <strong>初始化方法</strong> 中，调用 <code>set_timer</code> 方法 <strong>设置定时器事件</strong></li>
+<li>在 <strong>游戏循环</strong> 中，<strong>监听定时器事件</strong></li>
+</ol>
+<p><strong>代码实现</strong></p>
+<ul>
+<li>在 <code>Hero</code> 中定义 <code>fire</code> 方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fire</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;发射子弹...&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>plane_main.py</code> 的顶部定义 <strong>发射子弹</strong> 事件常量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 英雄发射子弹事件</span><br>HERO_FIRE_EVENT = pygame.USEREVENT + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>__init__</code> 方法末尾中添加 <strong>发射子弹</strong> 事件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 每隔 0.5 秒发射一次子弹</span><br>pygame.time.set_timer(HERO_FIRE_EVENT, <span class="hljs-number">500</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>__event_handler</code> 方法中让英雄发射子弹</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == HERO_FIRE_EVENT:<br>    self.hero.fire()<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-2-定义子弹类"><a href="#4-2-定义子弹类" class="headerlink" title="4.2 定义子弹类"></a>4.2 定义子弹类</h3><h4 id="需求回顾-——-子弹需求"><a href="#需求回顾-——-子弹需求" class="headerlink" title="需求回顾 —— 子弹需求"></a>需求回顾 —— 子弹需求</h4><ol>
+<li><strong>子弹</strong> 从 <strong>英雄</strong> 的正上方发射 <strong>沿直线</strong> 向 <strong>上方</strong> 飞行</li>
+<li><strong>飞出屏幕后</strong>，需要从 <strong>精灵组</strong> 中删除</li>
+</ol>
+<h4 id="Bullet-——-子弹-1"><a href="#Bullet-——-子弹-1" class="headerlink" title="Bullet —— 子弹"></a>Bullet —— 子弹</h4><ul>
+<li><strong>初始化方法</strong><ul>
+<li>指定 <strong>子弹图片</strong></li>
+<li><strong>初始速度 &#x3D; -2</strong> —— 子弹需要向上方飞行</li>
+</ul>
+</li>
+<li>重写 <strong>update()</strong> 方法<ul>
+<li>判断 <strong>是否飞出屏幕</strong>，如果是，从 <strong>精灵组</strong> 删除</li>
+</ul>
+</li>
+</ul>
+<h4 id="定义子弹类"><a href="#定义子弹类" class="headerlink" title="定义子弹类"></a>定义子弹类</h4><ul>
+<li>在 <code>plane_sprites</code> 新建 <code>Bullet</code> 继承自 <code>GameSprite</code></li>
+<li>重写 <strong>初始化方法</strong>，直接指定 <strong>图片名称</strong>，并且设置 <strong>初始速度</strong></li>
+<li>重写 <code>update()</code> 方法，判断子弹 <strong>飞出屏幕从精灵组删除</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Bullet</span>(<span class="hljs-title class_ inherited__">GameSprite</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;子弹精灵&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <br>        <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&quot;./images/bullet1.png&quot;</span>, -<span class="hljs-number">2</span>)<br> <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self</span>):<br>    <br>        <span class="hljs-built_in">super</span>().update()<br>        <br>        <span class="hljs-comment"># 判断是否超出屏幕，如果是，从精灵组删除</span><br>        <span class="hljs-keyword">if</span> self.rect.bottom &lt; <span class="hljs-number">0</span>:<br>            self.kill()<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-3-发射子弹"><a href="#4-3-发射子弹" class="headerlink" title="4.3 发射子弹"></a>4.3 发射子弹</h3><p><strong>演练步骤</strong></p>
+<ol>
+<li>在 <code>Hero</code> 的 <strong>初始化方法</strong> 中创建 <strong>子弹精灵组</strong> 属性</li>
+<li>修改 <code>plane_main.py</code> 的 <code>__update_sprites</code> 方法，让 <strong>子弹精灵组</strong> 调用 <code>update</code> 和 <code>draw</code> 方法</li>
+<li>实现 <code>fire()</code> 方法<ul>
+<li>创建子弹精灵</li>
+<li>设置初始位置 —— 在 <strong>英雄的正上方</strong></li>
+<li>将 <strong>子弹</strong> 添加到精灵组</li>
+</ul>
+</li>
+</ol>
+<p><strong>代码实现</strong></p>
+<ul>
+<li>初始化方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建子弹的精灵组</span><br>self.bullets = pygame.sprite.Group()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>fire()</code> 方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fire</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 1. 创建子弹精灵</span><br>    bullet = Bullet()<br>    <br>    <span class="hljs-comment"># 2. 设置精灵的位置</span><br>    bullet.rect.bottom = self.rect.y - <span class="hljs-number">20</span><br>    bullet.rect.centerx = self.rect.centerx<br>    <br>    <span class="hljs-comment"># 3. 将精灵添加到精灵组</span><br>    self.bullets.add(bullet)<br></code></pre></td></tr></table></figure>
+
+<h4 id="一次发射三枚子弹"><a href="#一次发射三枚子弹" class="headerlink" title="一次发射三枚子弹"></a>一次发射三枚子弹</h4><p><img src="/media/15025349250200/017_%E8%8B%B1%E9%9B%84%E4%BD%8D%E7%BD%AEIII.png" srcset="/img/loading.gif" lazyload alt="017_英雄位置III-w559"></p>
+<ul>
+<li>修改 <code>fire()</code> 方法，一次发射三枚子弹</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fire</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>):<br>        <span class="hljs-comment"># 1. 创建子弹精灵</span><br>        bullet = Bullet()<br>        <br>        <span class="hljs-comment"># 2. 设置精灵的位置</span><br>        bullet.rect.bottom = self.rect.y - i * <span class="hljs-number">20</span><br>        bullet.rect.centerx = self.rect.centerx<br>        <br>        <span class="hljs-comment"># 3. 将精灵添加到精灵组</span><br>        self.bullets.add(bullet)<br></code></pre></td></tr></table></figure>
+
+<h1 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h1><h2 id="目标-6"><a href="#目标-6" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>了解碰撞检测方法</li>
+<li>碰撞实现</li>
+</ul>
+<h2 id="01-了解碰撞检测方法"><a href="#01-了解碰撞检测方法" class="headerlink" title="01. 了解碰撞检测方法"></a>01. 了解碰撞检测方法</h2><ul>
+<li><code>pygame</code> 提供了 <strong>两个非常方便</strong> 的方法可以实现碰撞检测：</li>
+</ul>
+<h3 id="pygame-sprite-groupcollide"><a href="#pygame-sprite-groupcollide" class="headerlink" title="pygame.sprite.groupcollide()"></a>pygame.sprite.groupcollide()</h3><ul>
+<li><strong>两个精灵组</strong> 中 <strong>所有的精灵</strong> 的碰撞检测</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">groupcollide(group1, group2, dokill1, dokill2, collided = <span class="hljs-literal">None</span>) -&gt; Sprite_dict<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果将 <code>dokill</code> 设置为 <code>True</code>，则 <strong>发生碰撞的精灵将被自动移除</strong></li>
+<li><code>collided</code> 参数是用于 <strong>计算碰撞的回调函数</strong><ul>
+<li>如果没有指定，则每个精灵必须有一个 <code>rect</code> 属性</li>
+</ul>
+</li>
+</ul>
+<h3 id="pygame-sprite-spritecollide"><a href="#pygame-sprite-spritecollide" class="headerlink" title="pygame.sprite.spritecollide()"></a>pygame.sprite.spritecollide()</h3><ul>
+<li>判断 <strong>某个精灵</strong> 和 <strong>指定精灵组</strong> 中的精灵的碰撞</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">spritecollide(sprite, group, dokill, collided = <span class="hljs-literal">None</span>) -&gt; Sprite_list<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果将 <code>dokill</code> 设置为 <code>True</code>，则 <strong>指定精灵组</strong> 中 <strong>发生碰撞的精灵将被自动移除</strong></li>
+<li><code>collided</code> 参数是用于 <strong>计算碰撞的回调函数</strong><ul>
+<li>如果没有指定，则每个精灵必须有一个 <code>rect</code> 属性</li>
+</ul>
+</li>
+<li>返回 <strong>精灵组</strong> 中跟 <strong>精灵</strong> 发生碰撞的 <strong>精灵列表</strong></li>
+</ul>
+<h2 id="02-碰撞实现"><a href="#02-碰撞实现" class="headerlink" title="02. 碰撞实现"></a>02. 碰撞实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__check_collide</span>(<span class="hljs-params">self</span>):<br><br>    <span class="hljs-comment"># 1. 子弹摧毁敌机</span><br>    pygame.sprite.groupcollide(self.hero.bullets, self.enemy_group, <span class="hljs-literal">True</span>, <span class="hljs-literal">True</span>)<br>    <br>    <span class="hljs-comment"># 2. 敌机撞毁英雄</span><br>    enemies = pygame.sprite.spritecollide(self.hero, self.enemy_group, <span class="hljs-literal">True</span>)<br>    <br>    <span class="hljs-comment"># 判断列表时候有内容</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(enemies) &gt; <span class="hljs-number">0</span>:<br>    <br>        <span class="hljs-comment"># 让英雄牺牲</span><br>        self.hero.kill()<br>        <br>        <span class="hljs-comment"># 结束游戏</span><br>        PlaneGame.__game_over()<br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" class="category-chain-item">项目实战</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/pygame/">#pygame</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>飞机大战</div>
+      <div>http://example.com/2021/10/10/飞机大战/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年10月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/24/%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84OpenWrt%E5%9B%BA%E4%BB%B6/" title="如何编译自己需要的 OpenWrt 固件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">如何编译自己需要的 OpenWrt 固件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/05/Linux%E9%83%A8%E5%88%86%E5%91%BD%E4%BB%A4/" title="Linux部分命令">
+                        <span class="hidden-mobile">Linux部分命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

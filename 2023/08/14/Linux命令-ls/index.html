@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ls显示目录内容列表 补充说明ls命令 就是list的缩写，用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。 语法12345ls [选项] [文件名...]   [-1abcdfgiklmnopqrstuxABCDFGLNQRSUX] [-w cols] [-T cols] [-I pattern] [--full-time]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令-ls">
+<meta property="og:url" content="http://example.com/2023/08/14/Linux%E5%91%BD%E4%BB%A4-ls/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="ls显示目录内容列表 补充说明ls命令 就是list的缩写，用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。 语法12345ls [选项] [文件名...]   [-1abcdfgiklmnopqrstuxABCDFGLNQRSUX] [-w cols] [-T cols] [-I pattern] [--full-time]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2023-08-14T09:52:28.000Z">
+<meta property="article:modified_time" content="2023-08-14T10:10:35.391Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux命令-ls - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令-ls"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 17:52" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          87 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux命令-ls</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><p>显示目录内容列表</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>ls命令</strong> 就是list的缩写，用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls [选项] [文件名...]<br>   [-1abcdfgiklmnopqrstuxABCDFGLNQRSUX] [-w cols] [-T cols] [-I pattern] [--full-time] <br>   [--format=&#123;long,verbose,commas,across,vertical,single-col‐umn&#125;] <br>   [--sort=&#123;none,time,size,extension&#125;] [--time=&#123;atime,access,use,ctime,status&#125;] <br>   [--color[=&#123;none,auto,always&#125;]] [--help] [--version] [--]<br></code></pre></td></tr></table></figure>
+
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><code class="hljs shell">-C     # 多列输出，纵向排序。<br>-F     # 每个目录名加 &quot;/&quot; 后缀，每个 FIFO 名加 &quot;|&quot; 后缀， 每个可运行名加“ * ”后缀。<br>-R     # 递归列出遇到的子目录。<br>-a     # 列出所有文件，包括以 &quot;.&quot; 开头的隐含文件。<br>-c     # 使用“状态改变时间”代替“文件修改时间”为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。<br>-d     # 将目录名像其它文件一样列出，而不是列出它们的内容。<br>-i     # 输出文件前先输出文件系列号（即 i 节点号: i-node number）。 -l  列出（以单列格式）文件模式<br>       # （file mode），文件的链接数，所有者名，组名，文件大小（以字节为单位），时间信息，及文件名。<br>       # 缺省时，时间信息显示最近修改时间；可以以选项“-c”和“-u”选择显示其它两种时间信息。对于设备文件，<br>       # 原先显示文件大小的区域通常显示的是主要和次要的信号（majorand minor device numbers）。<br>-q     # 将文件名中的非打印字符输出为问号。（对于到终端的输出这是缺省的。）<br>-r     # 逆序排列。<br>-t     # 按时间信息排序。<br>-u     # 使用最近访问时间代替最近修改时间为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。<br>-1     # 单列输出。<br>-1, --format=single-column  # 一行输出一个文件（单列输出）。如标准输出不是到终端，此选项就是缺省选项。<br>-a, --all # 列出目录中所有文件，包括以“.”开头的文件。<br>-b, --escape # 把文件名中不可输出的字符用反斜杠加字符编号(就像在 C 语言里一样)的形式列出。<br>-c, --time=ctime, --time=status<br>      # 按文件状态改变时间（i节点中的ctime）排序并输出目录内<br>      # 容。如采用长格式输出（选项“-l”），使用文件的状态改<br>      # 变时间取代文件修改时间。【译注：所谓文件状态改变（i节<br>      # 点中以ctime标志），既包括文件被修改，又包括文件属性（ 如所有者、组、链接数等等）的变化】<br>-d, --directory<br>      # 将目录名像其它文件一样列出，而不是列出它们的内容。<br>-f    # 不排序目录内容；按它们在磁盘上存储的顺序列出。同时启 动“ -a ”选项，如果在“ -f ”之前存在“ -l”、<br>      # “ - -color ”或“ -s ”，则禁止它们。<br>-g    # 忽略，为兼容UNIX用。<br>-i, --inode<br>      # 在每个文件左边打印  i  节点号（也叫文件序列号和索引号:  file  serial  number and index num‐<br>      # ber）。i节点号在每个特定的文件系统中是唯一的。<br>-k, --kilobytes<br>      # 如列出文件大小，则以千字节KB为单位。<br>-l, --format=long, --format=verbose<br>      # 输出的信息从左到右依次包括文件名、文件类型、权限、硬链接数、所有者名、组名、大小（byte）<br>      # 、及时间信息（如未指明是其它时间即指修改时间）。对于6个月以上的文件或超出未来<br>      # 1小时的文件，时间信息中的时分将被年代取代。<br>      # 每个目录列出前，有一行“总块数”显示目录下全部文件所占的磁盘空间。块默认是1024字节；<br>      # 如果设置了 POSIXLY_CORRECT 的环境变量，除非用“-k”选项，则默认块大小是 512 字节。<br>      # 每一个硬链接都计入总块数（因此可能重复计数），这无 疑是个缺点。<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">列出的权限类似于以符号表示（文件）模式的规范。但是 <span class="hljs-built_in">ls</span></span><br>      # 在每套权限的第三个字符中结合了多位（ multiple bits ） 的信息，如下： s 如果设置了  setuid<br>      # 位或 setgid   位，而且也设置了相应的可执行位。 S 如果设置了 setuid 位或 setgid<br>      # 位，但是没有设置相应的可执行位。 t 如果设置了  sticky  位，而且也设置了相应的可执行位。  T<br>      # 如果设置了 sticky 位，但是没有设置相应的可执行位。              x<br>      # 如果仅仅设置了可执行位而非以上四种情况。 - 其它情况（即可执行位未设置）。<br>-m, --format=commas<br>      # 水平列出文件，每行尽可能多，相互用逗号和一个空格分隔。<br>-n, --numeric-uid-gid<br>      # 列出数字化的 UID 和 GID 而不是用户名和组名。<br>-o    #  以长格式列出目录内容，但是不显示组信息。等于使用“         --format=long          --no-group<br>      # ”选项。提供此选项是为了与其它版本的 ls 兼容。<br>-p    #  在每个文件名后附上一个字符以说明该文件的类型。类似“ -F ”选项但是不 标示可执行文件。<br>-q, --hide-control-chars<br>      # 用问号代替文件名中非打印的字符。这是缺省选项。<br>-r, --reverse<br>      # 逆序排列目录内容。<br>-s, --size<br>      # 在每个文件名左侧输出该文件的大小，以    1024   字节的块为单位。如果设置了   POSIXLY_CORRECT<br>      # 的环境变量，除非用“ -k ”选项，块大小是 512 字节。<br>-t, --sort=time<br>      # 按文件最近修改时间（ i 节点中的 mtime ）而不是按文件名字典序排序，新文件 靠前。<br>-u, --time=atime, --time=access, --time=use<br>      # 类似选项“    -t    ”，但是用文件最近访问时间（    i     节点中的     atime     ）取代文件修<br>      # 改时间。如果使用长格式列出，打印的时间是最近访问时间。<br>-w, --width cols<br>       # 假定屏幕宽度是      cols      （      cols     以实际数字取代）列。如未用此选项，缺省值是这<br>       # 样获得的：如可能先尝试取自终端驱动，否则尝试取自环境变量          COLUMNS          （如果设<br>       # 置了的话），都不行则取 80 。<br><br>-x, --format=across, --format=horizontal<br>       # 多列输出，横向排序。<br><br>-A, --almost-all<br>       # 显示除 &quot;.&quot; 和 &quot;..&quot; 外的所有文件。<br><br>-B, --ignore-backups<br>       # 不输出以“ ~ ”结尾的备份文件，除非已经在命令行中给出。<br><br>-C, --format=vertical<br>       # 多列输出，纵向排序。当标准输出是终端时这是缺省项。使用命令名 dir 和 d 时， 则总是缺省的。<br><br>-D, --dired<br>       # 当采用长格式（“-l”选项）输出时，在主要输出后，额外打印一行：  //DIRED//  BEG1 END1 BEG2<br>       # END2 ...<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">BEGn 和 ENDn 是无符号整数，记录每个文件名的起始、结束位置在输出中的位置（</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">       字节偏移量）。这使得          Emacs          易于找到文件名，即使文件名包含空格或换行等非正</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">       常字符也无需特异的搜索。</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># 如果目录是递归列出的（“ -R ”选项），每个子目录后列出类似一行：</span></span><br>       # //SUBDIRED//  BEG1 END1 ...  【译注：我测试了 TurboLinux4.0 和 RedHat6.1 ，发现它们都是在 “<br>       # //DIRED//     BEG1...     ”之后列出“     //SUBDIRED//     BEG1     ...      ”，也即只有一个<br>       # 而不是在每个子目录后都有。而且“ //SUBDIRED// BEG1 ... ”列出的是各个子目 录名的偏移。】<br><br>-F, --classify, --file-type<br>       # 在每个文件名后附上一个字符以说明该文件的类型。“  * ”表示普通的可执行文件； “ / ”表示目录；“<br>       # @ ”表示符号链接；“ | ”表示FIFOs；“ = ”表示套接字 (sockets) ；什么也没有则表示普通文件。<br><br>-G, --no-group<br>       # 以长格式列目录时不显示组信息。<br><br>-I, --ignorepattern<br>       # 除非在命令行中给定，不要列出匹配shell文件名匹配式（pattern ，不是指一般<br>       # 表达式）的文件。在shell中，文件名以&quot;.&quot;起始的不与在文件名匹配式(pattern)<br>       # 开头的通配符匹配。<br><br>-L, --dereference<br>       # 列出符号链接指向的文件的信息，而不是符号链接本身。<br><br>-N, --literal<br>       # 不要用引号引起文件名。<br><br>-Q, --quote-name<br>       # 用双引号引起文件名，非打印字符以 C 语言的方法表示。<br><br>-R, --recursive<br>       # 递归列出全部目录的内容。<br><br>-S, --sort=size<br>       # 按文件大小而不是字典序排序目录内容，大文件靠前。<br><br>-T, --tabsize cols<br>       # 假定每个制表符宽度是 cols 。缺省为 8。为求效率， ls 可能在输出中使用制表符。  若 cols 为<br>       0，则不使用制表符。<br><br>-U, --sort=none<br>       # 不排序目录内容；按它们在磁盘上存储的顺序列出。（选项“-U”和“-f”的不<br>       # 同是前者不启动或禁止相关的选项。）这在列很大的目录时特别有用，因为不加排序<br>       # 能显著地加快速度。<br><br>-X, --sort=extension<br>       # 按文件扩展名（由最后的 &quot;.&quot; 之后的字符组成）的字典序排序。没有扩展名的先列 出。<br><br>--color[=when]<br>       # 指定是否使用颜色区别文件类别。环境变量  LS_COLORS  指定使用的颜色。如何设置 这个变量见 dir‐<br>       # colors(1) 。 when 可以被省略，或是以下几项之一：<br>none # 不使用颜色，这是缺省项。<br>       # auto 仅当标准输出是终端时使用。 always 总是使用颜色。指定 --color 而且省略 when  时就等同于<br>       # --color=always 。<br><br>--full-time<br>       # 列出完整的时间，而不是使用标准的缩写。格式如同          date(1)          的缺省格式；此格式<br>       # 是不能改变的，但是你可以用 cut(1) 取出其中的日期字串并将结果送至命令 “ date -d ”。<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">输出的时间包括秒是非常有用的。（ Unix 文件系统储存文件的时间信息精确到秒，</span><br>       # 因此这个选项已经给出了系统所知的全部信息。）例如，当你有一个         Makefile          文件<br>       # 不能恰当地生成文件时，这个选项会提供帮助。<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>目录：指定要显示列表的目录，也可以是具体的文件。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span>       <span class="hljs-comment"># 仅列出当前目录可见文件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> -l    <span class="hljs-comment"># 列出当前目录可见文件详细信息</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> -hl   <span class="hljs-comment"># 列出详细信息并以可读大小显示文件大小</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> -al   <span class="hljs-comment"># 列出所有文件（包括隐藏）的详细信息</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> --human-readable --size -1 -S --classify <span class="hljs-comment"># 按文件大小排序</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">du</span> -sh * | <span class="hljs-built_in">sort</span> -h <span class="hljs-comment"># 按文件大小排序(同上)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>显示当前目录下包括隐藏文件在内的所有文件列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# ls -a<br>.   anaconda-ks.cfg  .bash_logout   .bashrc  install.log         .mysql_history  satools  .tcshrc   .vimrc<br>..  .bash_history    .bash_profile  .cshrc   install.log.syslog  .rnd            .ssh     .viminfo<br></code></pre></td></tr></table></figure>
+
+<p>输出长格式列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# ls -1<br><br>anaconda-ks.cfg<br>install.log<br>install.log.syslog<br>satools<br></code></pre></td></tr></table></figure>
+
+<p>显示文件的inode信息</p>
+<p>索引节点（index inode简称为“inode”）是Linux中一个特殊的概念，具有相同的索引节点号的两个文本本质上是同一个文件（除文件名不同外）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# ls -i -l anaconda-ks.cfg install.log<br>2345481 -rw------- 1 root root   859 Jun 11 22:49 anaconda-ks.cfg<br>2345474 -rw-r--r-- 1 root root 13837 Jun 11 22:49 install.log<br></code></pre></td></tr></table></figure>
+
+<p>水平输出文件列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -m<br><br>bin, boot, data, dev, etc, home, lib, lost+found, media, misc, mnt, opt, proc, root, sbin, selinux, srv, sys, tmp, usr, var<br></code></pre></td></tr></table></figure>
+
+<p>修改最后一次编辑的文件</p>
+<p>最近修改的文件显示在最上面。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -t<br><br>tmp  root  etc  dev  lib  boot  sys  proc  data  home  bin  sbin  usr  var  lost+found  media  mnt  opt  selinux  srv  misc<br></code></pre></td></tr></table></figure>
+
+<p>显示递归文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# ls -R<br>.:<br>anaconda-ks.cfg  install.log  install.log.syslog  satools<br><br>./satools:<br>black.txt  freemem.sh  iptables.sh  lnmp.sh  mysql  php502_check.sh  ssh_safe.sh<br></code></pre></td></tr></table></figure>
+
+<p>打印文件的UID和GID</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -n<br><br>total 254<br>drwxr-xr-x   2 0 0  4096 Jun 12 04:03 bin<br>drwxr-xr-x   4 0 0  1024 Jun 15 14:45 boot<br>drwxr-xr-x   6 0 0  4096 Jun 12 10:26 data<br>drwxr-xr-x  10 0 0  3520 Sep 26 15:38 dev<br>drwxr-xr-x  75 0 0  4096 Oct 16 04:02 etc<br>drwxr-xr-x   4 0 0  4096 Jun 12 10:26 home<br>drwxr-xr-x  14 0 0 12288 Jun 16 04:02 lib<br>drwx------   2 0 0 16384 Jun 11 22:46 lost+found<br>drwxr-xr-x   2 0 0  4096 May 11  2011 media<br>drwxr-xr-x   2 0 0  4096 Nov  8  2010 misc<br>drwxr-xr-x   2 0 0  4096 May 11  2011 mnt<br>drwxr-xr-x   2 0 0  4096 May 11  2011 opt<br>dr-xr-xr-x 232 0 0     0 Jun 15 11:04 proc<br>drwxr-x---   4 0 0  4096 Oct 15 14:43 root<br>drwxr-xr-x   2 0 0 12288 Jun 12 04:03 sbin<br>drwxr-xr-x   2 0 0  4096 May 11  2011 selinux<br>drwxr-xr-x   2 0 0  4096 May 11  2011 srv<br>drwxr-xr-x  11 0 0     0 Jun 15 11:04 sys<br>drwxrwxrwt   3 0 0 98304 Oct 16 08:45 tmp<br>drwxr-xr-x  13 0 0  4096 Jun 11 23:38 usr<br>drwxr-xr-x  19 0 0  4096 Jun 11 23:38 var<br></code></pre></td></tr></table></figure>
+
+<p>列出文件和文件夹的详细信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -l<br><br>total 254<br>drwxr-xr-x   2 root root  4096 Jun 12 04:03 bin<br>drwxr-xr-x   4 root root  1024 Jun 15 14:45 boot<br>drwxr-xr-x   6 root root  4096 Jun 12 10:26 data<br>drwxr-xr-x  10 root root  3520 Sep 26 15:38 dev<br>drwxr-xr-x  75 root root  4096 Oct 16 04:02 etc<br>drwxr-xr-x   4 root root  4096 Jun 12 10:26 home<br>drwxr-xr-x  14 root root 12288 Jun 16 04:02 lib<br>drwx------   2 root root 16384 Jun 11 22:46 lost+found<br>drwxr-xr-x   2 root root  4096 May 11  2011 media<br>drwxr-xr-x   2 root root  4096 Nov  8  2010 misc<br>drwxr-xr-x   2 root root  4096 May 11  2011 mnt<br>drwxr-xr-x   2 root root  4096 May 11  2011 opt<br>dr-xr-xr-x 232 root root     0 Jun 15 11:04 proc<br>drwxr-x---   4 root root  4096 Oct 15 14:43 root<br>drwxr-xr-x   2 root root 12288 Jun 12 04:03 sbin<br>drwxr-xr-x   2 root root  4096 May 11  2011 selinux<br>drwxr-xr-x   2 root root  4096 May 11  2011 srv<br>drwxr-xr-x  11 root root     0 Jun 15 11:04 sys<br>drwxrwxrwt   3 root root 98304 Oct 16 08:48 tmp<br>drwxr-xr-x  13 root root  4096 Jun 11 23:38 usr<br>drwxr-xr-x  19 root root  4096 Jun 11 23:38 var<br></code></pre></td></tr></table></figure>
+
+<p>列出可读文件和文件夹详细信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -lh<br><br>total 254K<br>drwxr-xr-x   2 root root 4.0K Jun 12 04:03 bin<br>drwxr-xr-x   4 root root 1.0K Jun 15 14:45 boot<br>drwxr-xr-x   6 root root 4.0K Jun 12 10:26 data<br>drwxr-xr-x  10 root root 3.5K Sep 26 15:38 dev<br>drwxr-xr-x  75 root root 4.0K Oct 16 04:02 etc<br>drwxr-xr-x   4 root root 4.0K Jun 12 10:26 home<br>drwxr-xr-x  14 root root  12K Jun 16 04:02 lib<br>drwx------   2 root root  16K Jun 11 22:46 lost+found<br>drwxr-xr-x   2 root root 4.0K May 11  2011 media<br>drwxr-xr-x   2 root root 4.0K Nov  8  2010 misc<br>drwxr-xr-x   2 root root 4.0K May 11  2011 mnt<br>drwxr-xr-x   2 root root 4.0K May 11  2011 opt<br>dr-xr-xr-x 235 root root    0 Jun 15 11:04 proc<br>drwxr-x---   4 root root 4.0K Oct 15 14:43 root<br>drwxr-xr-x   2 root root  12K Jun 12 04:03 sbin<br>drwxr-xr-x   2 root root 4.0K May 11  2011 selinux<br>drwxr-xr-x   2 root root 4.0K May 11  2011 srv<br>drwxr-xr-x  11 root root    0 Jun 15 11:04 sys<br>drwxrwxrwt   3 root root  96K Oct 16 08:49 tmp<br>drwxr-xr-x  13 root root 4.0K Jun 11 23:38 usr<br>drwxr-xr-x  19 root root 4.0K Jun 11 23:38 var<br></code></pre></td></tr></table></figure>
+
+<p>显示文件夹信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -ld /etc/<br><br>drwxr-xr-x 75 root root 4096 Oct 16 04:02 /etc/<br></code></pre></td></tr></table></figure>
+
+<p>按时间列出文件和文件夹详细信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -lt<br><br>total 254<br>drwxrwxrwt   3 root root 98304 Oct 16 08:53 tmp<br>drwxr-xr-x  75 root root  4096 Oct 16 04:02 etc<br>drwxr-x---   4 root root  4096 Oct 15 14:43 root<br>drwxr-xr-x  10 root root  3520 Sep 26 15:38 dev<br>drwxr-xr-x  14 root root 12288 Jun 16 04:02 lib<br>drwxr-xr-x   4 root root  1024 Jun 15 14:45 boot<br>drwxr-xr-x  11 root root     0 Jun 15 11:04 sys<br>dr-xr-xr-x 232 root root     0 Jun 15 11:04 proc<br>drwxr-xr-x   6 root root  4096 Jun 12 10:26 data<br>drwxr-xr-x   4 root root  4096 Jun 12 10:26 home<br>drwxr-xr-x   2 root root  4096 Jun 12 04:03 bin<br>drwxr-xr-x   2 root root 12288 Jun 12 04:03 sbin<br>drwxr-xr-x  13 root root  4096 Jun 11 23:38 usr<br>drwxr-xr-x  19 root root  4096 Jun 11 23:38 var<br>drwx------   2 root root 16384 Jun 11 22:46 lost+found<br>drwxr-xr-x   2 root root  4096 May 11  2011 media<br>drwxr-xr-x   2 root root  4096 May 11  2011 mnt<br>drwxr-xr-x   2 root root  4096 May 11  2011 opt<br>drwxr-xr-x   2 root root  4096 May 11  2011 selinux<br>drwxr-xr-x   2 root root  4096 May 11  2011 srv<br>drwxr-xr-x   2 root root  4096 Nov  8  2010 misc<br></code></pre></td></tr></table></figure>
+
+<p>按修改时间列出文件和文件夹详细信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost /]# ls -ltr<br><br>total 254<br>drwxr-xr-x   2 root root  4096 Nov  8  2010 misc<br>drwxr-xr-x   2 root root  4096 May 11  2011 srv<br>drwxr-xr-x   2 root root  4096 May 11  2011 selinux<br>drwxr-xr-x   2 root root  4096 May 11  2011 opt<br>drwxr-xr-x   2 root root  4096 May 11  2011 mnt<br>drwxr-xr-x   2 root root  4096 May 11  2011 media<br>drwx------   2 root root 16384 Jun 11 22:46 lost+found<br>drwxr-xr-x  19 root root  4096 Jun 11 23:38 var<br>drwxr-xr-x  13 root root  4096 Jun 11 23:38 usr<br>drwxr-xr-x   2 root root 12288 Jun 12 04:03 sbin<br>drwxr-xr-x   2 root root  4096 Jun 12 04:03 bin<br>drwxr-xr-x   4 root root  4096 Jun 12 10:26 home<br>drwxr-xr-x   6 root root  4096 Jun 12 10:26 data<br>dr-xr-xr-x 232 root root     0 Jun 15 11:04 proc<br>drwxr-xr-x  11 root root     0 Jun 15 11:04 sys<br>drwxr-xr-x   4 root root  1024 Jun 15 14:45 boot<br>drwxr-xr-x  14 root root 12288 Jun 16 04:02 lib<br>drwxr-xr-x  10 root root  3520 Sep 26 15:38 dev<br>drwxr-x---   4 root root  4096 Oct 15 14:43 root<br>drwxr-xr-x  75 root root  4096 Oct 16 04:02 etc<br>drwxrwxrwt   3 root root 98304 Oct 16 08:54 tmp<br></code></pre></td></tr></table></figure>
+
+<p>按照特殊字符对文件进行分类</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost nginx-1.2.1]# ls -F<br><br>auto/  CHANGES  CHANGES.ru  conf/  configure*  contrib/  html/  LICENSE  Makefile  man/  objs/  README  src/<br></code></pre></td></tr></table></figure>
+
+<p>列出文件并标记颜色分类</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost nginx-1.2.1]# ls --color=auto<br><br>auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  man  objs  README  src<br></code></pre></td></tr></table></figure>
+
+<h2 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h2><h3 id="不同颜色代表的文件类型"><a href="#不同颜色代表的文件类型" class="headerlink" title="不同颜色代表的文件类型"></a>不同颜色代表的文件类型</h3><ul>
+<li><code>蓝色</code><!--rehype:style=background: blue;color:white;-->：目录</li>
+<li><code>绿色</code><!--rehype:style=background: green;color:white;-->：可执行文件</li>
+<li><code>白色</code><!--rehype:style=background: #efefef;-->：一般性文件，如文本文件，配置文件等</li>
+<li><code>红色</code><!--rehype:style=background: red;color:white;-->：压缩文件或归档文件</li>
+<li><code>浅蓝色</code><!--rehype:style=background: #c4c3ff;-->：链接文件</li>
+<li>红色闪烁：链接文件存在问题</li>
+<li>黄色：设备文件</li>
+<li>青黄色：管道文件</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令-ls</div>
+      <div>http://example.com/2023/08/14/Linux命令-ls/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lpstat/" title="Linux命令-lpstat">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux命令-lpstat</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/Linux%E5%91%BD%E4%BB%A4-lsattr/" title="Linux命令-lsattr">
+                        <span class="hidden-mobile">Linux命令-lsattr</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,863 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="模块和包目标 模块 包 发布模块  01. 模块1.1 模块的概念 模块是 Python 程序架构的一个核心概念   每一个以扩展名 py 结尾的 Python 源代码文件都是一个 模块 模块名 同样也是一个 标识符，需要符合标识符的命名规则 在模块中定义的 全局变量 、函数、类 都是提供给外界直接使用的 工具 模块 就好比是 工具包，要想使用这个工具包中的工具，就需要先 导入 这个模块  1.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象-模块和包">
+<meta property="og:url" content="http://example.com/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="模块和包目标 模块 包 发布模块  01. 模块1.1 模块的概念 模块是 Python 程序架构的一个核心概念   每一个以扩展名 py 结尾的 Python 源代码文件都是一个 模块 模块名 同样也是一个 标识符，需要符合标识符的命名规则 在模块中定义的 全局变量 、函数、类 都是提供给外界直接使用的 工具 模块 就好比是 工具包，要想使用这个工具包中的工具，就需要先 导入 这个模块  1.2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/OOP.jpg">
+<meta property="article:published_time" content="2021-09-04T07:58:57.000Z">
+<meta property="article:modified_time" content="2021-09-10T09:41:11.000Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Python面向对象">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/OOP.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>面向对象-模块和包 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="面向对象-模块和包"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-04 15:58" pubdate>
+          2021年9月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面向对象-模块和包</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="模块和包"><a href="#模块和包" class="headerlink" title="模块和包"></a>模块和包</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>模块</li>
+<li>包</li>
+<li>发布模块</li>
+</ul>
+<h2 id="01-模块"><a href="#01-模块" class="headerlink" title="01. 模块"></a>01. 模块</h2><h3 id="1-1-模块的概念"><a href="#1-1-模块的概念" class="headerlink" title="1.1 模块的概念"></a>1.1 模块的概念</h3><blockquote>
+<p><strong>模块是 Python 程序架构的一个核心概念</strong></p>
+</blockquote>
+<ul>
+<li>每一个以扩展名 <code>py</code> 结尾的 <code>Python</code> 源代码文件都是一个 <strong>模块</strong></li>
+<li><strong>模块名</strong> 同样也是一个 <strong>标识符</strong>，需要符合标识符的命名规则</li>
+<li>在模块中定义的 <strong>全局变量</strong> 、<strong>函数</strong>、<strong>类</strong> 都是提供给外界直接使用的 <strong>工具</strong></li>
+<li><strong>模块</strong> 就好比是 <strong>工具包</strong>，要想使用这个工具包中的工具，就需要先 <strong>导入</strong> 这个模块</li>
+</ul>
+<h3 id="1-2-模块的两种导入方式"><a href="#1-2-模块的两种导入方式" class="headerlink" title="1.2 模块的两种导入方式"></a>1.2 模块的两种导入方式</h3><h4 id="1）import-导入"><a href="#1）import-导入" class="headerlink" title="1）import 导入"></a>1）import 导入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> 模块名<span class="hljs-number">1</span>, 模块名<span class="hljs-number">2</span> <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：在导入模块时，每个导入应该独占一行</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> 模块名<span class="hljs-number">1</span><br><span class="hljs-keyword">import</span> 模块名<span class="hljs-number">2</span> <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>导入之后</strong><ul>
+<li>通过 <code>模块名.</code> 使用 <strong>模块提供的工具</strong> —— <strong>全局变量</strong>、<strong>函数</strong>、<strong>类</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="使用-as-指定模块的别名"><a href="#使用-as-指定模块的别名" class="headerlink" title="使用 as 指定模块的别名"></a>使用 <code>as</code> 指定模块的别名</h5><blockquote>
+<p><strong>如果模块的名字太长</strong>，可以使用 <code>as</code> 指定模块的名称，以方便在代码中的使用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> 模块名<span class="hljs-number">1</span> <span class="hljs-keyword">as</span> 模块别名<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<strong>模块别名</strong> 应该符合 <strong>大驼峰命名法</strong></p>
+</blockquote>
+<h4 id="2）from…import-导入"><a href="#2）from…import-导入" class="headerlink" title="2）from…import 导入"></a>2）from…import 导入</h4><ul>
+<li>如果希望 <strong>从某一个模块</strong> 中，导入 <strong>部分</strong> 工具，就可以使用 <code>from ... import</code> 的方式</li>
+<li><code>import 模块名</code> 是 <strong>一次性</strong> 把模块中 <strong>所有工具全部导入</strong>，并且通过 <strong>模块名&#x2F;别名</strong> 访问</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 从 模块 导入 某一个工具</span><br><span class="hljs-keyword">from</span> 模块名<span class="hljs-number">1</span> <span class="hljs-keyword">import</span> 工具名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>导入之后<ul>
+<li><strong>不需要</strong> 通过 <code>模块名.</code></li>
+<li>可以直接使用 <strong>模块提供的工具</strong> —— <strong>全局变量</strong>、<strong>函数</strong>、<strong>类</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>如果 <strong>两个模块</strong>，存在 <strong>同名的函数</strong>，那么 <strong>后导入模块的函数</strong>，会 <strong>覆盖掉先导入的函数</strong></p>
+</blockquote>
+<ul>
+<li>开发时 <code>import</code> 代码应该统一写在 <strong>代码的顶部</strong>，更容易及时发现冲突</li>
+<li>一旦发现冲突，可以使用 <code>as</code> 关键字 <strong>给其中一个工具起一个别名</strong></li>
+</ul>
+<h5 id="from…import-（知道）"><a href="#from…import-（知道）" class="headerlink" title="from…import *（知道）"></a>from…import *（知道）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 从 模块 导入 所有工具</span><br><span class="hljs-keyword">from</span> 模块名<span class="hljs-number">1</span> <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<blockquote>
+<p>这种方式不推荐使用，因为函数重名并没有任何的提示，出现问题不好排查</p>
+</blockquote>
+<h3 id="1-3-模块的搜索顺序-扩展"><a href="#1-3-模块的搜索顺序-扩展" class="headerlink" title="1.3 模块的搜索顺序[扩展]"></a>1.3 模块的搜索顺序[扩展]</h3><p><code>Python</code> 的解释器在 <strong>导入模块</strong> 时，会：</p>
+<ol>
+<li>搜索 <strong>当前目录</strong> 指定模块名的文件，<strong>如果有就直接导入</strong></li>
+<li>如果没有，再搜索 <strong>系统目录</strong></li>
+</ol>
+<blockquote>
+<p>在开发时，给文件起名，不要和 <strong>系统的模块文件</strong> <strong>重名</strong></p>
+</blockquote>
+<p><code>Python</code> 中每一个模块都有一个内置属性 <code>__file__</code> 可以 <strong>查看模块</strong> 的 <strong>完整路径</strong></p>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><br><span class="hljs-comment"># 生成一个 0～10 的数字</span><br>rand = random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)<br><br><span class="hljs-built_in">print</span>(rand)<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：如果当前目录下，存在一个 <code>random.py</code> 的文件，程序就无法正常执行了！</p>
+</blockquote>
+<ul>
+<li>这个时候，<code>Python</code> 的解释器会 <strong>加载当前目录</strong> 下的 <code>random.py</code> 而不会加载 <strong>系统的</strong> <code>random</code> 模块</li>
+</ul>
+<h3 id="1-4-原则-——-每一个文件都应该是可以被导入的"><a href="#1-4-原则-——-每一个文件都应该是可以被导入的" class="headerlink" title="1.4 原则 —— 每一个文件都应该是可以被导入的"></a>1.4 原则 —— 每一个文件都应该是可以被导入的</h3><ul>
+<li>一个 <strong>独立的 <code>Python</code> 文件</strong> 就是一个 <strong>模块</strong></li>
+<li>在导入文件时，文件中 <strong>所有没有任何缩进的代码</strong> 都会被执行一遍！</li>
+</ul>
+<p><strong>实际开发场景</strong></p>
+<ul>
+<li>在实际开发中，每一个模块都是独立开发的，大多都有专人负责</li>
+<li><strong>开发人员</strong> 通常会在 <strong>模块下方</strong> <strong>增加一些测试代码</strong><ul>
+<li>仅在模块内使用，而被导入到其他文件中不需要执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="name-属性"><a href="#name-属性" class="headerlink" title="__name__ 属性"></a><code>__name__</code> 属性</h4><blockquote>
+<ul>
+<li><code>__name__</code> 属性可以做到，测试模块的代码 <strong>只在测试情况下被运行</strong>，而在 <strong>被导入时不会被执行</strong>！</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>__name__</code> 是 <code>Python</code> 的一个内置属性，记录着一个 <strong>字符串</strong></li>
+<li>如果 <strong>是被其他文件导入的</strong>，<code>__name__</code> 就是 <strong>模块名</strong></li>
+<li>如果 <strong>是当前执行的程序</strong> <code>__name__</code> 是 <strong><code>__main__</code></strong></li>
+</ul>
+<p><strong>在很多 <code>Python</code> 文件中都会看到以下格式的代码</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 导入模块</span><br><span class="hljs-comment"># 定义全局变量</span><br><span class="hljs-comment"># 定义类</span><br><span class="hljs-comment"># 定义函数</span><br><br><span class="hljs-comment"># 在代码的最下方</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-comment"># ...</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># 根据 __name__ 判断是否执行下方代码</span><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="02-包（Package）"><a href="#02-包（Package）" class="headerlink" title="02. 包（Package）"></a>02. 包（Package）</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>包</strong> 是一个 <strong>包含多个模块</strong> 的 <strong>特殊目录</strong></li>
+<li>目录下有一个 <strong>特殊的文件</strong> <code>__init__.py</code></li>
+<li>包名的 <strong>命名方式</strong> 和变量名一致，<strong>小写字母</strong> + <code>_</code></li>
+</ul>
+<p><strong>好处</strong></p>
+<ul>
+<li>使用 <code>import 包名</code> 可以一次性导入 <strong>包</strong> 中 <strong>所有的模块</strong></li>
+</ul>
+<h3 id="案例演练"><a href="#案例演练" class="headerlink" title="案例演练"></a>案例演练</h3><ol>
+<li>新建一个 <code>hm_message</code> 的 <strong>包</strong></li>
+<li>在目录下，新建两个文件 <code>send_message</code> 和 <code>receive_message</code></li>
+<li>在 <code>send_message</code> 文件中定义一个 <code>send</code> 函数</li>
+<li>在 <code>receive_message</code> 文件中定义一个 <code>receive</code> 函数</li>
+<li>在外部直接导入 <code>hm_message</code> 的包</li>
+</ol>
+<h3 id="init-py"><a href="#init-py" class="headerlink" title="__init__.py"></a><code>__init__.py</code></h3><ul>
+<li>要在外界使用 <strong>包</strong> 中的模块，需要在 <code>__init__.py</code> 中指定 <strong>对外界提供的模块列表</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 从 当前目录 导入 模块列表</span><br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> send_message<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> receive_message<br></code></pre></td></tr></table></figure>
+
+<h2 id="03-发布模块（知道）"><a href="#03-发布模块（知道）" class="headerlink" title="03. 发布模块（知道）"></a>03. 发布模块（知道）</h2><ul>
+<li>如果希望自己开发的模块，<strong>分享</strong> 给其他人，可以按照以下步骤操作</li>
+</ul>
+<h3 id="3-1-制作发布压缩包步骤"><a href="#3-1-制作发布压缩包步骤" class="headerlink" title="3.1 制作发布压缩包步骤"></a>3.1 制作发布压缩包步骤</h3><h4 id="1-创建-setup-py"><a href="#1-创建-setup-py" class="headerlink" title="1) 创建 setup.py"></a>1) 创建 setup.py</h4><ul>
+<li><code>setup.py</code> 的文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> distutils.core <span class="hljs-keyword">import</span> setup<br><br>setup(name=<span class="hljs-string">&quot;hm_message&quot;</span>,  <span class="hljs-comment"># 包名</span><br>      version=<span class="hljs-string">&quot;1.0&quot;</span>,  <span class="hljs-comment"># 版本</span><br>      description=<span class="hljs-string">&quot;itheima&#x27;s 发送和接收消息模块&quot;</span>,  <span class="hljs-comment"># 描述信息</span><br>      long_description=<span class="hljs-string">&quot;完整的发送和接收消息模块&quot;</span>,  <span class="hljs-comment"># 完整描述信息</span><br>      author=<span class="hljs-string">&quot;itheima&quot;</span>,  <span class="hljs-comment"># 作者</span><br>      author_email=<span class="hljs-string">&quot;itheima@itheima.com&quot;</span>,  <span class="hljs-comment"># 作者邮箱</span><br>      url=<span class="hljs-string">&quot;www.itheima.com&quot;</span>,  <span class="hljs-comment"># 主页</span><br>      py_modules=[<span class="hljs-string">&quot;hm_message.send_message&quot;</span>,<br>                  <span class="hljs-string">&quot;hm_message.receive_message&quot;</span>])<br><br></code></pre></td></tr></table></figure>
+
+<p>有关字典参数的详细信息，可以参阅官方网站：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/2/distutils/apiref.html">https://docs.python.org/2/distutils/apiref.html</a></p>
+<h4 id="2-构建模块"><a href="#2-构建模块" class="headerlink" title="2) 构建模块"></a>2) 构建模块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 setup.py build<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-生成发布压缩包"><a href="#3-生成发布压缩包" class="headerlink" title="3) 生成发布压缩包"></a>3) 生成发布压缩包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 setup.py sdist<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：要制作哪个版本的模块，就使用哪个版本的解释器执行！</p>
+</blockquote>
+<h3 id="3-2-安装模块"><a href="#3-2-安装模块" class="headerlink" title="3.2 安装模块"></a>3.2 安装模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -zxvf hm_message-1.0.tar.gz <br><br>$ sudo python3 setup.py install<br></code></pre></td></tr></table></figure>
+
+<p><strong>卸载模块</strong></p>
+<p>直接从安装目录下，把安装模块的 <strong>目录</strong> 删除就可以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">$ cd /usr/local/lib/python3<span class="hljs-number">.5</span>/dist-packages/<br>$ sudo rm -r hm_message*<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-pip-安装第三方模块"><a href="#3-3-pip-安装第三方模块" class="headerlink" title="3.3 pip 安装第三方模块"></a>3.3 <code>pip</code> 安装第三方模块</h3><ul>
+<li><strong>第三方模块</strong> 通常是指由 <strong>知名的第三方团队</strong> <strong>开发的</strong> 并且被 <strong>程序员广泛使用</strong> 的 <code>Python</code> 包 &#x2F; 模块<ul>
+<li>例如 <code>pygame</code> 就是一套非常成熟的 <strong>游戏开发模块</strong></li>
+</ul>
+</li>
+<li><code>pip</code> 是一个现代的，通用的 <code>Python</code> 包管理工具</li>
+<li>提供了对 <code>Python</code> 包的查找、下载、安装、卸载等功能</li>
+</ul>
+<p>安装和卸载命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将模块安装到 Python 2.x 环境</span><br>$ sudo pip install pygame<br>$ sudo pip uninstall pygame<br><br><span class="hljs-comment"># 将模块安装到 Python 3.x 环境</span><br>$ sudo pip3 install pygame<br>$ sudo pip3 uninstall pygame<br></code></pre></td></tr></table></figure>
+
+<h4 id="在-Mac-下安装-iPython"><a href="#在-Mac-下安装-iPython" class="headerlink" title="在 Mac 下安装 iPython"></a>在 <code>Mac</code> 下安装 <code>iPython</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo pip install ipython<br></code></pre></td></tr></table></figure>
+
+<h4 id="在-Linux-下安装-iPython"><a href="#在-Linux-下安装-iPython" class="headerlink" title="在 Linux 下安装 iPython"></a>在 <code>Linux</code> 下安装 <code>iPython</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install ipython<br>$ sudo apt install ipython3<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="category-chain-item">面向对象</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">#Python面向对象</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>面向对象-模块和包</div>
+      <div>http://example.com/2021/09/04/面向对象-模块和包/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年9月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%96%87%E4%BB%B6/" title="面向对象-文件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面向对象-文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%BC%82%E5%B8%B8/" title="面向对象-异常">
+                        <span class="hidden-mobile">面向对象-异常</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

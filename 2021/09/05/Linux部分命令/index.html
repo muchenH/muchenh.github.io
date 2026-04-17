@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="hostname操作服务器的主机名（读取和设置） 语法1. hostname ：表示输出当前完整的主机名 12root@firstpc:~# hostnamefirstpc  hostname -f ：表示输出当前主机名中的FQDN（全限定域名） 12root@firstpc:~# hostname -ffirstpc  id用于查看一个用户的一些基本信息  语法2. id ：默认当前用户的基本信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux部分命令">
+<meta property="og:url" content="http://example.com/2021/09/05/Linux%E9%83%A8%E5%88%86%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="hostname操作服务器的主机名（读取和设置） 语法1. hostname ：表示输出当前完整的主机名 12root@firstpc:~# hostnamefirstpc  hostname -f ：表示输出当前主机名中的FQDN（全限定域名） 12root@firstpc:~# hostname -ffirstpc  id用于查看一个用户的一些基本信息  语法2. id ：默认当前用户的基本信">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2021-09-05T12:01:15.000Z">
+<meta property="article:modified_time" content="2023-02-25T12:50:49.628Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux部分命令 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux部分命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-05 20:01" pubdate>
+          2021年9月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux部分命令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h1><p>操作服务器的主机名（读取和设置）</p>
+<p>语法1.</p>
+<p>hostname ：表示输出当前完整的主机名</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># hostname</span><br>firstpc<br></code></pre></td></tr></table></figure>
+
+<p>hostname -f ：表示输出当前主机名中的FQDN（全限定域名）</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># hostname -f</span><br>firstpc<br></code></pre></td></tr></table></figure>
+
+<h1 id="id"><a href="#id" class="headerlink" title="id"></a>id</h1><p>用于查看一个用户的一些基本信息 </p>
+<p>语法2.</p>
+<p>id ：默认当前用户的基本信息</p>
+<p>id 用户名 ：指定用户的基本信息</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">root@firstpc:~# id muchenH<br><span class="hljs-attribute">uid</span>=1000(muchenH) <span class="hljs-attribute">gid</span>=1000(muchenH) <span class="hljs-attribute">groups</span>=1000(muchenH),27(sudo)<br>root@firstpc:~# id root<br><span class="hljs-attribute">uid</span>=0(root) <span class="hljs-attribute">gid</span>=0(root) <span class="hljs-attribute">groups</span>=0(root)<br>root@firstpc:~# id<br><span class="hljs-attribute">uid</span>=0(root) <span class="hljs-attribute">gid</span>=0(root) <span class="hljs-attribute">groups</span>=0(root)<br>root@firstpc:~# <br></code></pre></td></tr></table></figure>
+
+<h1 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h1><p>用于查询“我是谁” 显示当前登录的用户名</p>
+<p>whoami &amp;&amp;who am i</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@firstpc:~# whoami<br><span class="hljs-attribute">root</span><br><span class="hljs-attribute">root</span>@firstpc:~# who am i<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>        <span class="hljs-number">2021</span>-<span class="hljs-number">09</span>-<span class="hljs-number">05</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> (<span class="hljs-number">223.104.35.20</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="ps-ef"><a href="#ps-ef" class="headerlink" title="ps -ef"></a>ps -ef</h1><p>用于查看服务器的进程信息</p>
+<p>-e ：等价于“-A” 表示列出全部的进程</p>
+<p>-f  ：显示所有的列</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@firstpc:~# ps -ef<br><span class="hljs-attribute">UID</span>          PID    PPID  C STIME TTY          TIME CMD<br><span class="hljs-attribute">root</span>           <span class="hljs-number">1</span>       <span class="hljs-number">0</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">10</span> /sbin/init nopti nospectre_v2 nospec_store_bypass_disable<br><span class="hljs-attribute">root</span>           <span class="hljs-number">2</span>       <span class="hljs-number">0</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [kthreadd]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">235</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [scsi_tmf_31]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">263</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">01</span><span class="hljs-meta"> [jbd2/vda1-8]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">264</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [ext4-rsv-conver]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">312</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">02</span> /lib/systemd/systemd-journald<br><span class="hljs-attribute">root</span>         <span class="hljs-number">350</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /lib/systemd/systemd-udevd<br><span class="hljs-attribute">systemd</span>+     <span class="hljs-number">450</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /lib/systemd/systemd-networkd<br><span class="hljs-attribute">systemd</span>+     <span class="hljs-number">465</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">01</span> /lib/systemd/systemd-resolved<br><span class="hljs-attribute">root</span>         <span class="hljs-number">471</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [cryptd]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">501</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [nfit]</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">533</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">01</span> /usr/lib/accountsservice/accounts-daemon<br><span class="hljs-attribute">root</span>         <span class="hljs-number">542</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/sbin/cron -f<br><span class="hljs-attribute">message</span>+     <span class="hljs-number">544</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/bin/dbus-daemon --system --address=systemd: --nofork<br><span class="hljs-attribute">_chrony</span>      <span class="hljs-number">558</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/sbin/chronyd -F -<span class="hljs-number">1</span><br><span class="hljs-attribute">_chrony</span>      <span class="hljs-number">559</span>     <span class="hljs-number">558</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/sbin/chronyd -F -<span class="hljs-number">1</span><br><span class="hljs-attribute">root</span>         <span class="hljs-number">571</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /opt/bcm-agent/var/lib/bcm-agent/bcm-agent.upgrader --upd<br><span class="hljs-attribute">root</span>         <span class="hljs-number">574</span>     <span class="hljs-number">571</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">09</span> ./bcm-agent<br><span class="hljs-attribute">root</span>         <span class="hljs-number">583</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/bin/python3 /usr/bin/networkd-dispatcher --run-start<br><span class="hljs-attribute">syslog</span>       <span class="hljs-number">589</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/sbin/rsyslogd -n -iNONE<br><span class="hljs-attribute">root</span>         <span class="hljs-number">592</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /lib/systemd/systemd-logind<br><span class="hljs-attribute">root</span>         <span class="hljs-number">595</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">02</span> /opt/hosteye/bin/hosteye<br><span class="hljs-attribute">root</span>         <span class="hljs-number">616</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">14</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">01</span> sshd: /usr/sbin/sshd -D<span class="hljs-meta"> [listener] 0 of 10-100 startups</span><br><span class="hljs-meta">root         638     595  0 00:14 ?        00:07:35 /opt/hosteye/bin/hosteye --is_child_mode=true --is_consol</span><br><span class="hljs-meta">root         683       1  0 00:14 ?        00:00:00 nginx: master process /usr/sbin/nginx -g daemon on; maste</span><br><span class="hljs-meta">www-data     685     683  0 00:14 ?        00:00:00 nginx: worker process</span><br><span class="hljs-meta">root         697       1  0 00:14 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug</span><br><span class="hljs-meta">root         699       1  0 00:14 ttyS0    00:00:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 tt</span><br><span class="hljs-meta">root         705       1  0 00:14 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattende</span><br><span class="hljs-meta">root         710       1  0 00:14 tty1     00:00:00 /sbin/agetty -o -p -- \u --noclear tty1 linux</span><br><span class="hljs-meta">root         723     574  0 00:14 ?        00:00:38 ./bcm-si -N 3219cd74-0ca4-4822-8069-795585a5943f</span><br><span class="hljs-meta">root        1582       1  0 00:32 ?        00:00:00 /usr/sbin/vsftpd /etc/vsftpd.conf</span><br><span class="hljs-meta">root        7824       2  0 13:26 ?        00:00:05 [kworker/0:1-events]</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">8978</span>     <span class="hljs-number">616</span>  <span class="hljs-number">0</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> sshd: root@pts/<span class="hljs-number">0</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">8991</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /lib/systemd/systemd --user<br><span class="hljs-attribute">root</span>        <span class="hljs-number">8992</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [kworker/0:0-events]</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">8993</span>    <span class="hljs-number">8991</span>  <span class="hljs-number">0</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> (sd-pam)<br><span class="hljs-attribute">root</span>        <span class="hljs-number">9017</span>    <span class="hljs-number">8978</span>  <span class="hljs-number">0</span> <span class="hljs-number">15</span>:<span class="hljs-number">59</span> pts/<span class="hljs-number">0</span>    <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> -bash<br><span class="hljs-attribute">root</span>        <span class="hljs-number">9138</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">16</span>:<span class="hljs-number">09</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [kworker/u2:2-events_power_efficient]</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">9322</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">16</span>:<span class="hljs-number">19</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [kworker/u2:1-events_power_efficient]</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">9391</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span> <span class="hljs-number">16</span>:<span class="hljs-number">25</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><span class="hljs-meta"> [kworker/u2:0-events_unbound]</span><br><span class="hljs-attribute">root</span>        <span class="hljs-number">9405</span>    <span class="hljs-number">9017</span>  <span class="hljs-number">0</span> <span class="hljs-number">16</span>:<span class="hljs-number">27</span> pts/<span class="hljs-number">0</span>    <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> ps -ef<br></code></pre></td></tr></table></figure>
+
+<p>UID：该进程执行的用户ID</p>
+<p>PID：进程ID</p>
+<p>PPID：该进程的父级进程ID ，如果一个程序的父进程找不到，该程序的进程被称为僵尸进程</p>
+<p>C：CPU的占用率，形式为百分数</p>
+<p>STIME：进行的启动时间</p>
+<p>TTY：终端设备，发起该进程的设备识别符号，如果是？ 则表示该进程并不是终端发起的</p>
+<p>TIME：进程的执行时间</p>
+<p>CMD：该进程的名称或者对应的路径</p>
+<p>ps -ef|grep ftp 例如查看ftp的进程</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@firstpc:~# ps -ef|grep ftp<br><span class="hljs-attribute">root</span>        <span class="hljs-number">1582</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> <span class="hljs-number">00</span>:<span class="hljs-number">32</span> ?        <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> /usr/sbin/vsftpd /etc/vsftpd.conf<br><span class="hljs-attribute">root</span>        <span class="hljs-number">9505</span>    <span class="hljs-number">9017</span>  <span class="hljs-number">0</span> <span class="hljs-number">16</span>:<span class="hljs-number">37</span> pts/<span class="hljs-number">0</span>    <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> grep --color=auto ftp<br><span class="hljs-attribute">root</span>@firstpc:~# <br></code></pre></td></tr></table></figure>
+
+<h1 id="top"><a href="#top" class="headerlink" title="top"></a>top</h1><p>用于查看服务器进程占用的资源</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@firstpc:~<span class="hljs-comment"># top</span><br>top - 16:42:29 up 16:27, <span class="hljs-number"> 1 </span>user,  load average: 0.00, 0.00, 0.00<br>Tasks:<span class="hljs-number"> 143 </span>total,  <span class="hljs-number"> 1 </span>running,<span class="hljs-number"> 142 </span>sleeping,  <span class="hljs-number"> 0 </span>stopped,  <span class="hljs-number"> 0 </span>zombie<br>%Cpu(s):  1.0 us,  0.7 sy,  0.0 ni, 98.0 id,  0.0 wa,  0.0 hi,  0.3 si,  0.0 st<br>MiB Mem :    981.2 total,    226.3 free,    128.0 used,    626.9 buff/cache<br>MiB Swap:      0.0 total,      0.0 free,      0.0 used.    704.2 avail Mem <br><br>    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                              <br>   <span class="hljs-number"> 638 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span><span class="hljs-number"> 836052 </span><span class="hljs-number"> 44876 </span><span class="hljs-number"> 21956 </span>S   0.3   4.5   7:42.58 hosteye                              <br>     <span class="hljs-number"> 1 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span><span class="hljs-number"> 102596 </span><span class="hljs-number"> 12396 </span> <span class="hljs-number"> 8420 </span>S   0.0   1.2   0:10.30 systemd                              <br>     <span class="hljs-number"> 2 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 kthreadd                             <br>     <span class="hljs-number"> 3 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 rcu_gp                               <br>     <span class="hljs-number"> 4 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 rcu_par_gp                           <br>     <span class="hljs-number"> 6 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 kworker/0:0H-kblockd                 <br>     <span class="hljs-number"> 9 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 mm_percpu_wq                         <br>    <span class="hljs-number"> 10 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:05.38 ksoftirqd/0                          <br>    <span class="hljs-number"> 11 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:02.59 rcu_sched                            <br>    <span class="hljs-number"> 12 </span>root      rt  <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.31 migration/0                          <br>    <span class="hljs-number"> 13 </span>root     -51  <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 idle_inject/0                        <br>    <span class="hljs-number"> 14 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 cpuhp/0                              <br>    <span class="hljs-number"> 15 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 kdevtmpfs                            <br>    <span class="hljs-number"> 16 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 netns                                <br>    <span class="hljs-number"> 17 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 rcu_tasks_kthre                      <br>    <span class="hljs-number"> 18 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 kauditd                              <br>    <span class="hljs-number"> 19 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.02 khungtaskd                           <br>    <span class="hljs-number"> 20 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 oom_reaper                           <br>    <span class="hljs-number"> 21 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 writeback                            <br>    <span class="hljs-number"> 22 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 kcompactd0                           <br>    <span class="hljs-number"> 23 </span>root     <span class="hljs-number"> 25 </span> <span class="hljs-number"> 5 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 ksmd                                 <br>    <span class="hljs-number"> 24 </span>root     <span class="hljs-number"> 39 </span><span class="hljs-number"> 19 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.0   0.0   0:00.00 khugepaged                           <br>    <span class="hljs-number"> 70 </span>root      <span class="hljs-number"> 0 </span>-20      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>I   0.0   0.0   0:00.00 kintegrityd     <br></code></pre></td></tr></table></figure>
+
+<p>q ：退出</p>
+<p>PID：进程ID</p>
+<p>USER：该进程对应的用户</p>
+<p>PR：优先级</p>
+<p>NI：用户进程空间优先级的进程占用CPU百分比</p>
+<p>VIRT：虚拟内存</p>
+<p>RES：常驻内存</p>
+<p>SHR：共享内存　　　　<em>实际使用内存＝常驻内存-共享内存</em></p>
+<p><strong>S：睡眠进程　　R表示运行</strong></p>
+<p>TIME+：执行的时间</p>
+<p><strong>COMMAND：进程的名称或者路径</strong></p>
+<p>top　指令快捷键</p>
+<p>M：将结果按照从高到低降序排列</p>
+<p>P：奖结果按照CPU的使用率从高到低排列</p>
+<p>１：当服务器拥有多个ｃｐｕ的时候可以使用　１　快捷键来切换是否展示各个CPU的详细信息</p>
+<h1 id="du-sh"><a href="#du-sh" class="headerlink" title="du -sh"></a>du -sh</h1><p>作用：查看目录的真实大小</p>
+<p>du -sh 路径</p>
+<p>选项含义：<br>    -s：只显示汇总的大小</p>
+<pre><code class="hljs">-h：以人性化形式进行显示
+</code></pre>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/</span><span class="hljs-comment"># du -sh /etc</span><br><span class="hljs-number">5.2</span>M	/etc<br>root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/</span><span class="hljs-comment"># </span><br></code></pre></td></tr></table></figure>
+
+<h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><p>用于查找文件</p>
+<p><strong>find 路径 选项 选项的值</strong></p>
+<p>-name 按照文档名称进行搜索（支持模糊搜索）</p>
+<p>-type 按照文档的类型进行搜索</p>
+<pre><code class="hljs">        文档类型：“-” 表示文件 在find时需要使用f来替换 “d”表示文件夹
+</code></pre>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/home/muchenH</span><span class="hljs-comment"># find /home/muchenH/ -name *.txt</span><br>/home/muchenH/token.txt<br>root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/home/muchenH</span><span class="hljs-comment"># </span><br></code></pre></td></tr></table></figure>
+
+<h1 id="service"><a href="#service" class="headerlink" title="service"></a>service</h1><p>服务 用于控制某些软件的启动、重启和停止</p>
+<p>service 服务名 start&#x2F;restart&#x2F;stop</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/home/muchenH</span><span class="hljs-comment"># service vsftpd restart</span><br>root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/home/muchenH</span><span class="hljs-comment"># service vsftpd stop </span><br>root<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:/home/muchenH</span><span class="hljs-comment"># service vsftpd start </span><br></code></pre></td></tr></table></figure>
+
+<h1 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h1><p>杀死进程</p>
+<p>kill 进程PID</p>
+<p>killall 进程名称</p>
+<h1 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h1><p>查看ip相关信息</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@firstpc:~# ifconfig<br><span class="hljs-attribute">eth0</span>: flags=<span class="hljs-number">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="hljs-number">1500</span><br>        <span class="hljs-attribute">inet</span> <span class="hljs-number">192.168.0.4</span>  netmask <span class="hljs-number">255.255.240.0</span>  broadcast <span class="hljs-number">192.168.15.255</span><br>        <span class="hljs-attribute">inet6</span> fe80::f827:ff:fe07:<span class="hljs-number">8</span>c82  prefixlen <span class="hljs-number">64</span>  scopeid <span class="hljs-number">0</span>x20&lt;link&gt;<br>        <span class="hljs-attribute">ether</span> fa:<span class="hljs-number">27</span>:<span class="hljs-number">00</span>:<span class="hljs-number">07</span>:<span class="hljs-number">8</span>c:<span class="hljs-number">82</span>  txqueuelen <span class="hljs-number">1000</span>  (Ethernet)<br>        <span class="hljs-attribute">RX</span> packets <span class="hljs-number">141045</span>  bytes <span class="hljs-number">18719637</span> (<span class="hljs-number">18</span>.<span class="hljs-number">7</span> MB)<br>        <span class="hljs-attribute">RX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span>  overruns <span class="hljs-number">0</span>  frame <span class="hljs-number">0</span><br>        <span class="hljs-attribute">TX</span> packets <span class="hljs-number">141517</span>  bytes <span class="hljs-number">43201291</span> (<span class="hljs-number">43</span>.<span class="hljs-number">2</span> MB)<br>        <span class="hljs-attribute">TX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span> overruns <span class="hljs-number">0</span>  carrier <span class="hljs-number">0</span>  collisions <span class="hljs-number">0</span><br><br><span class="hljs-attribute">lo</span>: flags=<span class="hljs-number">73</span>&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class="hljs-number">65536</span><br>        <span class="hljs-attribute">inet</span> <span class="hljs-number">127.0.0.1</span>  netmask <span class="hljs-number">255.0.0.0</span><br>        <span class="hljs-attribute">inet6</span> ::<span class="hljs-number">1</span>  prefixlen <span class="hljs-number">128</span>  scopeid <span class="hljs-number">0</span>x10&lt;host&gt;<br>        <span class="hljs-attribute">loop</span>  txqueuelen <span class="hljs-number">1000</span>  (Local Loopback)<br>        <span class="hljs-attribute">RX</span> packets <span class="hljs-number">57230</span>  bytes <span class="hljs-number">24052983</span> (<span class="hljs-number">24</span>.<span class="hljs-number">0</span> MB)<br>        <span class="hljs-attribute">RX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span>  overruns <span class="hljs-number">0</span>  frame <span class="hljs-number">0</span><br>        <span class="hljs-attribute">TX</span> packets <span class="hljs-number">57230</span>  bytes <span class="hljs-number">24052983</span> (<span class="hljs-number">24</span>.<span class="hljs-number">0</span> MB)<br>        <span class="hljs-attribute">TX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span> overruns <span class="hljs-number">0</span>  carrier <span class="hljs-number">0</span>  collisions <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h1><p>重新启动计算机</p>
+<h1 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h1><p>关机 （服务器慎用）</p>
+<p>shutdown -h now    &amp; shutdown -h xx:xx “关机提示”</p>
+<p>shutdown -c 取消关机命令</p>
+<p>ps：其他关机命令</p>
+<pre><code class="hljs">init 0
+
+halt
+
+poweroff
+</code></pre>
+<h1 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h1><p>作用 ：输出计算机的持续在线时间</p>
+<p>uptime</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@firstpc:~# uptime<br> <span class="hljs-attribute">19</span>:<span class="hljs-number">23</span>:<span class="hljs-number">17</span> up <span class="hljs-number">19</span>:<span class="hljs-number">08</span>,  <span class="hljs-number">3</span> users,  load average: <span class="hljs-number">0</span>.<span class="hljs-number">00</span>, <span class="hljs-number">0</span>.<span class="hljs-number">00</span>, <span class="hljs-number">0</span>.<span class="hljs-number">00</span><br><span class="hljs-attribute">root</span>@firstpc:~# <br></code></pre></td></tr></table></figure>
+
+<h1 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h1><p>获取操作系统相关信息</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">muchenH<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>uname<br><span class="hljs-title class_">Linux</span><br></code></pre></td></tr></table></figure>
+
+<p>uname -a  表示获取完整的系统信息（类型 全部主机名字 内核版本 发布时间 开源计划）</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">muchenH</span>@firstpc:~$ uname -a<br><span class="hljs-attribute">Linux</span> firstpc <span class="hljs-number">5</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span>-<span class="hljs-number">81</span>-generic #<span class="hljs-number">91</span>-Ubuntu SMP Thu Jul <span class="hljs-number">15</span> <span class="hljs-number">19</span>:<span class="hljs-number">09</span>:<span class="hljs-number">17</span> UTC <span class="hljs-number">2021</span> x86_64 x86_64 x86_64 GNU/Linux<br></code></pre></td></tr></table></figure>
+
+<h1 id="netstat-tnlp"><a href="#netstat-tnlp" class="headerlink" title="netstat -tnlp"></a>netstat -tnlp</h1><p>查看网络的连接状态</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs elixir">muchenH<span class="hljs-variable">@firstpc</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>netstat -tnlp<br>(<span class="hljs-title class_">No</span> info could be read <span class="hljs-keyword">for</span> <span class="hljs-string">&quot;-p&quot;</span>: geteuid()=<span class="hljs-number">1000</span> but you should be root.)<br><span class="hljs-title class_">Active</span> <span class="hljs-title class_">Internet</span> connections (only servers)<br><span class="hljs-title class_">Proto</span> <span class="hljs-title class_">Recv</span>-Q <span class="hljs-title class_">Send</span>-Q <span class="hljs-title class_">Local</span> <span class="hljs-title class_">Address</span>           <span class="hljs-title class_">Foreign</span> <span class="hljs-title class_">Address</span>         <span class="hljs-title class_">State</span>       <span class="hljs-title class_">PID</span>/<span class="hljs-title class_">Program</span> name    <br>tcp        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">127.0</span>.<span class="hljs-number">0.53</span><span class="hljs-symbol">:</span><span class="hljs-number">53</span>           <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:*</span>               <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:</span><span class="hljs-number">22</span>              <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:*</span>               <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-symbol">:</span><span class="hljs-number">6010</span>          <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:*</span>               <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-symbol">:</span><span class="hljs-number">6011</span>          <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:*</span>               <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:</span><span class="hljs-number">80</span>              <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><span class="hljs-symbol">:*</span>               <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-symbol">:</span><span class="hljs-number">21</span>                   ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-symbol">:</span><span class="hljs-number">22</span>                   ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">6010</span>                ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">6011</span>                ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-symbol">:</span><span class="hljs-number">781</span>                  ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br>tcp6       <span class="hljs-number">0</span>      <span class="hljs-number">0</span> ::<span class="hljs-symbol">:</span><span class="hljs-number">80</span>                   ::<span class="hljs-symbol">:*</span>                    <span class="hljs-title class_">LISTEN</span>      -                   <br></code></pre></td></tr></table></figure>
+
+<p>选项说明：</p>
+<pre><code class="hljs">-t 表示只列出tcp协议的连接
+
+-n 表示将地址从字母组合转化为ip地址，将协议转化为端口号来显示
+
+-l 表示过滤出 “State”列中其值为LISTEN的连接
+
+-p 表示显示发起连接的进程pid和进程名称
+</code></pre>
+<h1 id="man"><a href="#man" class="headerlink" title="man"></a>man</h1><p>命令手册</p>
+<h1 id="删除光标前后的命令"><a href="#删除光标前后的命令" class="headerlink" title="删除光标前后的命令"></a>删除光标前后的命令</h1><p>CTRL +u 删除光标前面的命令</p>
+<p>CTRL +k 删除光标后面的命令</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux部分命令</div>
+      <div>http://example.com/2021/09/05/Linux部分命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年9月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/10/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/" title="飞机大战">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">飞机大战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-eval%E5%87%BD%E6%95%B0/" title="面向对象-eval函数">
+                        <span class="hidden-mobile">面向对象-eval函数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
