@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows 10 使用 pyenv-win 安装和管理多版本 Python 完整方案一、系统要求和准备工作系统要求：  Windows 10 或更高版本 PowerShell 5.1+（Windows 10 自带） 管理员权限（部分步骤需要） 网络连接（用于下载 Python 版本）  准备工作：  卸载现有的 Python 安装（可选但推荐） 备份现有的环境变量 PATH 中与 Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在Windows上安装和管理多版本 Python">
+<meta property="og:url" content="http://example.com/2026/08/28/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E4%B8%8A%E7%A7%91%E5%AD%A6%E7%9A%84%E7%AE%A1%E7%90%86%E5%A4%9A%E7%89%88%E6%9C%ACPython/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="Windows 10 使用 pyenv-win 安装和管理多版本 Python 完整方案一、系统要求和准备工作系统要求：  Windows 10 或更高版本 PowerShell 5.1+（Windows 10 自带） 管理员权限（部分步骤需要） 网络连接（用于下载 Python 版本）  准备工作：  卸载现有的 Python 安装（可选但推荐） 备份现有的环境变量 PATH 中与 Python">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2026-08-28T03:09:45.000Z">
+<meta property="article:modified_time" content="2026-08-28T03:29:36.258Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>如何在Windows上安装和管理多版本 Python - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何在Windows上安装和管理多版本 Python"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-28 11:09" pubdate>
+          2026年8月28日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何在Windows上安装和管理多版本 Python</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Windows-10-使用-pyenv-win-安装和管理多版本-Python-完整方案"><a href="#Windows-10-使用-pyenv-win-安装和管理多版本-Python-完整方案" class="headerlink" title="Windows 10 使用 pyenv-win 安装和管理多版本 Python 完整方案"></a>Windows 10 使用 pyenv-win 安装和管理多版本 Python 完整方案</h2><h3 id="一、系统要求和准备工作"><a href="#一、系统要求和准备工作" class="headerlink" title="一、系统要求和准备工作"></a>一、系统要求和准备工作</h3><p><strong>系统要求：</strong></p>
+<ul>
+<li>Windows 10 或更高版本</li>
+<li>PowerShell 5.1+（Windows 10 自带）</li>
+<li>管理员权限（部分步骤需要）</li>
+<li>网络连接（用于下载 Python 版本）</li>
+</ul>
+<p><strong>准备工作：</strong></p>
+<ol>
+<li>卸载现有的 Python 安装（可选但推荐）</li>
+<li>备份现有的环境变量 PATH 中与 Python 相关的路径</li>
+<li>确保有足够的磁盘空间（每个 Python 版本约 100-200MB）</li>
+</ol>
+<h3 id="二、安装-pyenv-win"><a href="#二、安装-pyenv-win" class="headerlink" title="二、安装 pyenv-win"></a>二、安装 pyenv-win</h3><h4 id="方法1：使用-PowerShell-安装（推荐）"><a href="#方法1：使用-PowerShell-安装（推荐）" class="headerlink" title="方法1：使用 PowerShell 安装（推荐）"></a>方法1：使用 PowerShell 安装（推荐）</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 以管理员身份打开 PowerShell</span><br><span class="hljs-comment"># 2. 安装 Chocolatey（Windows 包管理器）</span><br><span class="hljs-built_in">Set-ExecutionPolicy</span> Bypass <span class="hljs-literal">-Scope</span> <span class="hljs-keyword">Process</span> <span class="hljs-literal">-Force</span><br>[<span class="hljs-type">System.Net.ServicePointManager</span>]::SecurityProtocol = [<span class="hljs-type">System.Net.ServicePointManager</span>]::SecurityProtocol <span class="hljs-operator">-bor</span> <span class="hljs-number">3072</span><br><span class="hljs-built_in">iex</span> ((<span class="hljs-built_in">New-Object</span> System.Net.WebClient).DownloadString(<span class="hljs-string">&#x27;https://community.chocolatey.org/install.ps1&#x27;</span>))<br><br><span class="hljs-comment"># 3. 使用 Chocolatey 安装 pyenv-win</span><br>choco install pyenv<span class="hljs-literal">-win</span><br><br><span class="hljs-comment"># 4. 或者使用独立安装脚本</span><br><span class="hljs-built_in">Invoke-WebRequest</span> <span class="hljs-literal">-UseBasicParsing</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="hljs-literal">-OutFile</span> <span class="hljs-string">&quot;./install-pyenv-win.ps1&quot;</span><br>.\<span class="hljs-built_in">install-pyenv</span><span class="hljs-literal">-win</span>.ps1<br></code></pre></td></tr></table></figure>
+
+<h4 id="方法2：手动安装"><a href="#方法2：手动安装" class="headerlink" title="方法2：手动安装"></a>方法2：手动安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 克隆 pyenv-win 仓库</span><br>git clone https://github.com/pyenv<span class="hljs-literal">-win</span>/pyenv<span class="hljs-literal">-win</span>.git <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>\.pyenv&quot;</span><br><br><span class="hljs-comment"># 2. 设置环境变量（系统级）</span><br><span class="hljs-comment"># 打开 &quot;系统属性&quot; → &quot;高级&quot; → &quot;环境变量&quot;</span><br><span class="hljs-comment"># 新建系统变量：PYENV = %USERPROFILE%\.pyenv\pyenv-win</span><br><span class="hljs-comment"># 编辑 PATH 变量，添加：%PYENV%\bin</span><br><span class="hljs-comment"># 重启 PowerShell 使生效</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="三、配置环境变量"><a href="#三、配置环境变量" class="headerlink" title="三、配置环境变量"></a>三、配置环境变量</h3><p>安装完成后，需要配置环境变量：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 检查当前环境变量</span><br><span class="hljs-variable">$env:Path</span><br><br><span class="hljs-comment"># 确保以下路径在 PATH 中：</span><br><span class="hljs-comment"># C:\Users\您的用户名\.pyenv\pyenv-win\bin</span><br><span class="hljs-comment"># C:\Users\您的用户名\.pyenv\pyenv-win\shims</span><br><br><span class="hljs-comment"># 如果不在，手动添加：</span><br><span class="hljs-variable">$env:PYENV</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>\.pyenv\pyenv-win&quot;</span><br><span class="hljs-variable">$env:Path</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$env:PYENV</span>\bin;<span class="hljs-variable">$env:PYENV</span>\shims;<span class="hljs-variable">$env:Path</span>&quot;</span><br><br><span class="hljs-comment"># 永久生效，添加到用户环境变量：</span><br>[<span class="hljs-type">Environment</span>]::SetEnvironmentVariable(<span class="hljs-string">&quot;PYENV&quot;</span>, <span class="hljs-string">&quot;<span class="hljs-variable">$env:UserProfile</span>\.pyenv\pyenv-win&quot;</span>, <span class="hljs-string">&quot;User&quot;</span>)<br>[<span class="hljs-type">Environment</span>]::SetEnvironmentVariable(<span class="hljs-string">&quot;Path&quot;</span>, <span class="hljs-string">&quot;<span class="hljs-variable">$env:UserProfile</span>\.pyenv\pyenv-win\bin;<span class="hljs-variable">$env:Path</span>&quot;</span>, <span class="hljs-string">&quot;User&quot;</span>)<br>[<span class="hljs-type">Environment</span>]::SetEnvironmentVariable(<span class="hljs-string">&quot;Path&quot;</span>, <span class="hljs-string">&quot;<span class="hljs-variable">$env:UserProfile</span>\.pyenv\pyenv-win\shims;<span class="hljs-variable">$env:Path</span>&quot;</span>, <span class="hljs-string">&quot;User&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="四、基本命令使用"><a href="#四、基本命令使用" class="headerlink" title="四、基本命令使用"></a>四、基本命令使用</h3><h4 id="1-查看可安装的-Python-版本"><a href="#1-查看可安装的-Python-版本" class="headerlink" title="1. 查看可安装的 Python 版本"></a>1. 查看可安装的 Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pyenv install <span class="hljs-literal">--list</span><br><span class="hljs-comment"># 或查看特定版本</span><br>pyenv install <span class="hljs-literal">--list</span> | findstr <span class="hljs-string">&quot;3.8&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-安装-Python-版本"><a href="#2-安装-Python-版本" class="headerlink" title="2. 安装 Python 版本"></a>2. 安装 Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 安装指定版本（如 Python 3.9.0）</span><br>pyenv install <span class="hljs-number">3.9</span>.<span class="hljs-number">0</span><br><br><span class="hljs-comment"># 安装多个版本</span><br>pyenv install <span class="hljs-number">3.8</span>.<span class="hljs-number">0</span><br>pyenv install <span class="hljs-number">3.10</span>.<span class="hljs-number">0</span><br>pyenv install <span class="hljs-number">3.11</span>.<span class="hljs-number">0</span><br>pyenv install <span class="hljs-number">3.12</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> 如果下载缓慢，可以设置镜像源：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 设置淘宝镜像加速</span><br><span class="hljs-variable">$env:PYTHON_BUILD_MIRROR_URL</span> = <span class="hljs-string">&quot;https://npm.taobao.org/mirrors/python&quot;</span><br><span class="hljs-comment"># 或使用官方镜像</span><br><span class="hljs-variable">$env:PYTHON_BUILD_MIRROR_URL</span> = <span class="hljs-string">&quot;https://www.python.org/ftp/python&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-查看已安装的版本"><a href="#3-查看已安装的版本" class="headerlink" title="3. 查看已安装的版本"></a>3. 查看已安装的版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pyenv versions<br><span class="hljs-comment"># 输出示例：</span><br><span class="hljs-comment"># * system (set by C:\Users\username\.pyenv\pyenv-win\version)</span><br><span class="hljs-comment">#   3.8.0</span><br><span class="hljs-comment">#   3.9.0</span><br><span class="hljs-comment">#   3.10.0</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-设置全局-Python-版本"><a href="#4-设置全局-Python-版本" class="headerlink" title="4. 设置全局 Python 版本"></a>4. 设置全局 Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 设置全局默认版本</span><br>pyenv global <span class="hljs-number">3.9</span>.<span class="hljs-number">0</span><br><br><span class="hljs-comment"># 验证设置</span><br>python <span class="hljs-literal">--version</span><br>pip <span class="hljs-literal">--version</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-设置局部（项目）Python-版本"><a href="#5-设置局部（项目）Python-版本" class="headerlink" title="5. 设置局部（项目）Python 版本"></a>5. 设置局部（项目）Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 进入项目目录</span><br><span class="hljs-built_in">cd</span> D:\myproject<br><br><span class="hljs-comment"># 设置该目录使用特定 Python 版本</span><br>pyenv local <span class="hljs-number">3.8</span>.<span class="hljs-number">0</span><br><br><span class="hljs-comment"># 这会创建一个 .python-version 文件</span><br><span class="hljs-comment"># 查看当前目录使用的版本</span><br>pyenv version<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-切换回系统-Python-版本"><a href="#6-切换回系统-Python-版本" class="headerlink" title="6. 切换回系统 Python 版本"></a>6. 切换回系统 Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pyenv global system<br><span class="hljs-comment"># 或删除局部设置</span><br>pyenv local <span class="hljs-literal">--unset</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="五、高级管理功能"><a href="#五、高级管理功能" class="headerlink" title="五、高级管理功能"></a>五、高级管理功能</h3><h4 id="1-卸载-Python-版本"><a href="#1-卸载-Python-版本" class="headerlink" title="1. 卸载 Python 版本"></a>1. 卸载 Python 版本</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pyenv uninstall <span class="hljs-number">3.8</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-更新-pyenv-win"><a href="#2-更新-pyenv-win" class="headerlink" title="2. 更新 pyenv-win"></a>2. 更新 pyenv-win</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 方法1：通过 Chocolatey</span><br>choco upgrade pyenv<span class="hljs-literal">-win</span><br><br><span class="hljs-comment"># 方法2：手动更新</span><br><span class="hljs-built_in">cd</span> <span class="hljs-variable">$HOME</span>\.pyenv<br>git pull<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-清理缓存和安装文件"><a href="#3-清理缓存和安装文件" class="headerlink" title="3. 清理缓存和安装文件"></a>3. 清理缓存和安装文件</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 清理下载缓存</span><br>pyenv rehash<br><br><span class="hljs-comment"># 查看缓存位置</span><br>pyenv prefix<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-设置虚拟环境（配合-virtualenv）"><a href="#4-设置虚拟环境（配合-virtualenv）" class="headerlink" title="4. 设置虚拟环境（配合 virtualenv）"></a>4. 设置虚拟环境（配合 virtualenv）</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 安装 virtualenv</span><br>pip install virtualenv<br><br><span class="hljs-comment"># 创建虚拟环境（指定 Python 版本）</span><br>pyenv local <span class="hljs-number">3.9</span>.<span class="hljs-number">0</span><br>python <span class="hljs-literal">-m</span> venv venv<br><br><span class="hljs-comment"># 激活虚拟环境</span><br>venv\Scripts\activate<br><br><span class="hljs-comment"># 退出虚拟环境</span><br>deactivate<br></code></pre></td></tr></table></figure>
+
+<h3 id="六、常见问题解决"><a href="#六、常见问题解决" class="headerlink" title="六、常见问题解决"></a>六、常见问题解决</h3><h4 id="问题1：安装-Python-版本时下载失败"><a href="#问题1：安装-Python-版本时下载失败" class="headerlink" title="问题1：安装 Python 版本时下载失败"></a>问题1：安装 Python 版本时下载失败</h4><p><strong>解决方案：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 手动下载 Python 安装包</span><br><span class="hljs-comment"># 访问：https://www.python.org/downloads/windows/</span><br><span class="hljs-comment"># 下载对应版本的 .exe 安装文件</span><br><br><span class="hljs-comment"># 2. 将下载的文件放入 pyenv 缓存目录</span><br><span class="hljs-comment"># 默认位置：%USERPROFILE%\.pyenv\pyenv-win\install_cache</span><br><br><span class="hljs-comment"># 3. 重试安装</span><br>pyenv install <span class="hljs-number">3.9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="问题2：命令未找到或无法识别"><a href="#问题2：命令未找到或无法识别" class="headerlink" title="问题2：命令未找到或无法识别"></a>问题2：命令未找到或无法识别</h4><p><strong>解决方案：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 确保环境变量配置正确</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$env:PYENV</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$env:Path</span><br><br><span class="hljs-comment"># 2. 重新加载 profile</span><br>. <span class="hljs-variable">$PROFILE</span><br><br><span class="hljs-comment"># 3. 重启 PowerShell</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="问题3：Python-版本切换不生效"><a href="#问题3：Python-版本切换不生效" class="headerlink" title="问题3：Python 版本切换不生效"></a>问题3：Python 版本切换不生效</h4><p><strong>解决方案：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 检查当前目录是否有 .python-version 文件</span><br><span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-literal">-Filter</span> <span class="hljs-string">&quot;.python-version&quot;</span> <span class="hljs-literal">-Recurse</span><br><br><span class="hljs-comment"># 2. 重新执行 rehash</span><br>pyenv rehash<br><br><span class="hljs-comment"># 3. 检查 PATH 中 shims 目录的顺序</span><br><span class="hljs-comment"># shims 目录应该在 PATH 的最前面</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="七、最佳实践建议"><a href="#七、最佳实践建议" class="headerlink" title="七、最佳实践建议"></a>七、最佳实践建议</h3><ol>
+<li><p><strong>版本管理策略：</strong></p>
+<ul>
+<li>使用 <code>pyenv global</code> 设置一个最新的稳定版本作为默认</li>
+<li>为每个项目使用 <code>pyenv local</code> 设置特定版本</li>
+<li>保持旧的 Python 版本用于兼容性测试</li>
+</ul>
+</li>
+<li><p><strong>虚拟环境使用：</strong></p>
+<ul>
+<li>为每个项目创建独立的虚拟环境</li>
+<li>使用 <code>requirements.txt</code> 或 <code>pyproject.toml</code> 管理依赖</li>
+<li>定期更新依赖版本</li>
+</ul>
+</li>
+<li><p><strong>性能优化：</strong></p>
+<ul>
+<li>定期清理不需要的 Python 版本</li>
+<li>使用镜像源加速下载</li>
+<li>保持 pyenv-win 更新到最新版</li>
+</ul>
+</li>
+</ol>
+<h3 id="八、常用命令速查表"><a href="#八、常用命令速查表" class="headerlink" title="八、常用命令速查表"></a>八、常用命令速查表</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pyenv versions</code></td>
+<td>查看所有已安装版本</td>
+</tr>
+<tr>
+<td><code>pyenv version</code></td>
+<td>查看当前使用的版本</td>
+</tr>
+<tr>
+<td><code>pyenv install &lt;version&gt;</code></td>
+<td>安装指定版本</td>
+</tr>
+<tr>
+<td><code>pyenv uninstall &lt;version&gt;</code></td>
+<td>卸载指定版本</td>
+</tr>
+<tr>
+<td><code>pyenv global &lt;version&gt;</code></td>
+<td>设置全局版本</td>
+</tr>
+<tr>
+<td><code>pyenv local &lt;version&gt;</code></td>
+<td>设置局部版本</td>
+</tr>
+<tr>
+<td><code>pyenv rehash</code></td>
+<td>刷新 shims</td>
+</tr>
+<tr>
+<td><code>pyenv which python</code></td>
+<td>查看当前 python 路径</td>
+</tr>
+<tr>
+<td><code>pyenv help</code></td>
+<td>查看帮助</td>
+</tr>
+</tbody></table>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过 pyenv-win，您可以在 Windows 10 上轻松管理多个 Python 版本，无需担心版本冲突和环境变量混乱。建议从安装最新的 Python 3.12 或 3.11 版本开始，然后根据项目需求安装其他特定版本。记得为每个项目创建虚拟环境，这样可以确保依赖包的隔离和管理。</p>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/pyenv-win/pyenv-win">pyenv-win GitHub 仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://pyenv-win.github.io/pyenv-win/docs/installation.html">pyenv-win 官方安装文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37547964/article/details/161143312">Windows 系统安装 pyenv</a></li>
+</ul>
+<p>按照这个方案，您可以开始在 Windows 10 上使用 pyenv-win 高效地管理多个 Python 版本了！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Docker/" class="category-chain-item">Docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何在Windows上安装和管理多版本 Python</div>
+      <div>http://example.com/2026/08/28/如何在Windows上科学的管理多版本Python/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/26/Docker%E9%95%9C%E5%83%8Ftar%E5%8C%85%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95/" title="Docker镜像tar包导入方法">
+                        <span class="hidden-mobile">Docker镜像tar包导入方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
