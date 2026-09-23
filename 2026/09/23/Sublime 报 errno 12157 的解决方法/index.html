@@ -1,0 +1,957 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Sublime Text Package Control 报 Secure channel error（errno 12157）的解决方法在 Windows 系统中使用 Sublime Text 的 Package Control 安装插件时，有时会遇到类似下面的错误： 1234Package Control: Error downloading channel.Secure channel er">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime 报 errno 12157 的解决方法">
+<meta property="og:url" content="http://example.com/2026/09/23/Sublime%20%E6%8A%A5%20errno%2012157%20%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="Sublime Text Package Control 报 Secure channel error（errno 12157）的解决方法在 Windows 系统中使用 Sublime Text 的 Package Control 安装插件时，有时会遇到类似下面的错误： 1234Package Control: Error downloading channel.Secure channel er">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2026-09-23T03:39:45.000Z">
+<meta property="article:modified_time" content="2026-09-23T03:49:32.490Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Sublime 报 errno 12157 的解决方法 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Sublime 报 errno 12157 的解决方法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-23 11:39" pubdate>
+          2026年9月23日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Sublime 报 errno 12157 的解决方法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Sublime-Text-Package-Control-报-Secure-channel-error（errno-12157）的解决方法"><a href="#Sublime-Text-Package-Control-报-Secure-channel-error（errno-12157）的解决方法" class="headerlink" title="Sublime Text Package Control 报 Secure channel error（errno 12157）的解决方法"></a>Sublime Text Package Control 报 Secure channel error（errno 12157）的解决方法</h1><p>在 Windows 系统中使用 Sublime Text 的 Package Control 安装插件时，有时会遇到类似下面的错误：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Package Control: Error downloading channel.<br>Secure channel error, server not providing SSL<br>(errno 12157) during HTTP write phase of downloading<br>https://packagecontrol.github.io/channel/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>同时还可能出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Package Control: Error downloading channel.<br>Secure channel error, server not providing SSL<br>(errno 12157) during HTTP write phase of downloading<br>https://packages.sublimetext.com/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>这类问题通常不是 Package Control 本身损坏，而是 <strong>Windows 的 SSL&#x2F;TLS 通信、代理配置或者 Sublime Text 使用的网络下载方式出现问题</strong>。</p>
+<p>本文记录几种常见且有效的解决方法。</p>
+<hr>
+<h2 id="一、错误原因"><a href="#一、错误原因" class="headerlink" title="一、错误原因"></a>一、错误原因</h2><p>错误中的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>对应 Windows 的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ERROR_INTERNET_SECURITY_CHANNEL_ERROR<br></code></pre></td></tr></table></figure>
+
+<p>简单来说，就是 Windows 在建立 HTTPS 安全通信通道时出现了问题。</p>
+<p>Package Control 在 Windows 下进行网络通信时，可能使用 Windows 的 WinINet&#x2F;安全通信组件。如果系统 TLS 配置、证书、代理或者网络环境存在问题，就可能导致 Package Control 无法正常访问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://packagecontrol.github.io/<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://packages.sublimetext.com/<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="二、首先检查-Windows-的-TLS-1-2"><a href="#二、首先检查-Windows-的-TLS-1-2" class="headerlink" title="二、首先检查 Windows 的 TLS 1.2"></a>二、首先检查 Windows 的 TLS 1.2</h1><p>按：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Win + R<br></code></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">inetcpl.cpl<br></code></pre></td></tr></table></figure>
+
+<p>打开 <strong>Internet 属性</strong>。</p>
+<p>进入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">高级 → 安全<br></code></pre></td></tr></table></figure>
+
+<p>检查是否启用了：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">使用 TLS 1.2<br></code></pre></td></tr></table></figure>
+
+<p>建议保持：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">TLS 1.0  ❌<br>TLS 1.1  ❌<br>TLS 1.2  ✅<br>TLS 1.3  ✅（如果系统提供）<br></code></pre></td></tr></table></figure>
+
+<p>如果系统提供 TLS 1.3，也可以保持开启。</p>
+<hr>
+<h2 id="三、开启-TLS-1-2-有什么影响？"><a href="#三、开启-TLS-1-2-有什么影响？" class="headerlink" title="三、开启 TLS 1.2 有什么影响？"></a>三、开启 TLS 1.2 有什么影响？</h2><p>TLS 是 HTTPS 使用的加密协议。</p>
+<p>TLS 1.2 是目前非常成熟、兼容性非常好的 HTTPS 协议版本。</p>
+<p>开启 TLS 1.2 一般不会影响正常使用，反而有利于现代 HTTPS 网站和软件正常建立安全连接。</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTPS 网站</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>Sublime Package Control</td>
+<td>有利于正常连接</td>
+</tr>
+<tr>
+<td>Windows Update</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>浏览器</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>新软件</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>HTTP 网站</td>
+<td>不受影响</td>
+</tr>
+</tbody></table>
+<p>因此，如果 Windows 中没有启用 TLS 1.2，建议开启。</p>
+<hr>
+<h1 id="四、推荐解决方法：让-Package-Control-使用-urllib"><a href="#四、推荐解决方法：让-Package-Control-使用-urllib" class="headerlink" title="四、推荐解决方法：让 Package Control 使用 urllib"></a>四、推荐解决方法：让 Package Control 使用 urllib</h1><p>如果开启 TLS 1.2 后仍然出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Secure channel error<br>errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>推荐直接修改 Package Control 的下载方式。</p>
+<p>打开 Sublime Text：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Preferences<br>→ Package Settings<br>→ Package Control<br>→ Settings - User<br></code></pre></td></tr></table></figure>
+
+<p>添加：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果原来的配置文件中已经有其他配置，不要删除原配置，只需要增加：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;timeout&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>保存配置。</p>
+<p>然后：</p>
+<ol>
+<li>完全退出 Sublime Text</li>
+<li>重新启动 Sublime Text</li>
+<li>按 <code>Ctrl + Shift + P</code></li>
+<li>执行：</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Package Control: Install Package<br></code></pre></td></tr></table></figure>
+
+<p>再次尝试安装插件。</p>
+<hr>
+<h1 id="五、为什么切换到-urllib-有效？"><a href="#五、为什么切换到-urllib-有效？" class="headerlink" title="五、为什么切换到 urllib 有效？"></a>五、为什么切换到 urllib 有效？</h1><p>问题的关键在于：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Windows<br>   ↓<br>WinINet / Secure Channel<br>   ↓<br>HTTPS<br>   ↓<br>Package Control<br></code></pre></td></tr></table></figure>
+
+<p>当 Windows 的 Secure Channel 出现问题时，Package Control 就可能产生：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>切换：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>可以让 Package Control 优先使用另一套下载方式，从而绕过部分 WinINet&#x2F;Windows Secure Channel 相关问题。</p>
+<p>因此，对于 Windows 系统上的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Secure channel error<br>errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>这个方法值得优先尝试。</p>
+<hr>
+<h1 id="六、如果电脑使用了代理"><a href="#六、如果电脑使用了代理" class="headerlink" title="六、如果电脑使用了代理"></a>六、如果电脑使用了代理</h1><p>如果电脑使用 Clash、V2Ray、其他代理软件，或者公司网络提供了 HTTP 代理，那么还需要检查代理配置。</p>
+<p>例如本机 HTTP 代理地址为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">127.0.0.1:7890<br></code></pre></td></tr></table></figure>
+
+<p>可以在 Package Control 的用户配置中加入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;http_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;https_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后重新启动 Sublime Text。</p>
+<hr>
+<h1 id="七、检查代理是否真的可以访问-HTTPS"><a href="#七、检查代理是否真的可以访问-HTTPS" class="headerlink" title="七、检查代理是否真的可以访问 HTTPS"></a>七、检查代理是否真的可以访问 HTTPS</h1><p>可以在 Windows CMD 中测试：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">curl -I https://packagecontrol.github.io/channel/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>再测试：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">curl -I https://packages.sublimetext.com/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>如果能够正常返回 HTTP 响应，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">HTTP/1.1 200 OK<br></code></pre></td></tr></table></figure>
+
+<p>说明当前网络基本可以正常访问 Package Control 服务器。</p>
+<p>如果出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">SSL certificate problem<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">SSL_ERROR<br></code></pre></td></tr></table></figure>
+
+<p>则需要进一步检查：</p>
+<ul>
+<li>Windows 根证书</li>
+<li>HTTPS 代理</li>
+<li>代理软件</li>
+<li>TLS 配置</li>
+<li>公司网络的 HTTPS 拦截</li>
+</ul>
+<hr>
+<h1 id="八、HTTPS-代理导致的问题"><a href="#八、HTTPS-代理导致的问题" class="headerlink" title="八、HTTPS 代理导致的问题"></a>八、HTTPS 代理导致的问题</h1><p>部分代理软件或者公司网络会对 HTTPS 进行中间人代理（MITM）。</p>
+<p>通信过程可能变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">Sublime Text<br>     ↓<br>代理服务器<br>     ↓<br>HTTPS 解密/重新加密<br>     ↓<br>Package Control<br></code></pre></td></tr></table></figure>
+
+<p>这种情况下，代理服务器可能会使用自己的 CA 证书重新签发 HTTPS 证书。</p>
+<p>如果 Windows 或 Python 环境不信任这个 CA，就可能产生 SSL 错误。</p>
+<p>如果你使用的是带 HTTPS 解密功能的代理，需要检查代理软件是否安装了对应的根证书。</p>
+<hr>
+<h1 id="九、检查系统时间"><a href="#九、检查系统时间" class="headerlink" title="九、检查系统时间"></a>九、检查系统时间</h1><p>HTTPS 证书验证依赖系统时间。</p>
+<p>如果 Windows 的系统时间严重错误，也可能导致 HTTPS 证书验证失败。</p>
+<p>可以检查：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">Windows 设置<br>→ 时间和语言<br>→ 日期和时间<br></code></pre></td></tr></table></figure>
+
+<p>建议开启：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">自动设置时间<br>自动设置时区<br></code></pre></td></tr></table></figure>
+
+<p>确保系统时间正确。</p>
+<hr>
+<h1 id="十、检查-Package-Control-的-Channel-配置"><a href="#十、检查-Package-Control-的-Channel-配置" class="headerlink" title="十、检查 Package Control 的 Channel 配置"></a>十、检查 Package Control 的 Channel 配置</h1><p>如果错误信息中出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://packages.sublimetext.com/channel_v4.json.<br></code></pre></td></tr></table></figure>
+
+<p>需要特别注意最后的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">.json.<br></code></pre></td></tr></table></figure>
+
+<p>正常 URL 应该类似：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://packages.sublimetext.com/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>而不是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://packages.sublimetext.com/channel_v4.json.<br></code></pre></td></tr></table></figure>
+
+<p>如果你在 Package Control 用户配置中手动修改过：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-string">&quot;channels&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>建议检查相关配置。</p>
+<p>打开：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Preferences<br>→ Package Settings<br>→ Package Control<br>→ Settings - User<br></code></pre></td></tr></table></figure>
+
+<p>如果存在自定义：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;channels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;...&quot;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<p>确认 URL 是否正确。</p>
+<p>如果没有特殊需求，可以考虑删除自定义 <code>channels</code> 配置，让 Package Control 使用默认配置。</p>
+<hr>
+<h1 id="十一、推荐的最终配置"><a href="#十一、推荐的最终配置" class="headerlink" title="十一、推荐的最终配置"></a>十一、推荐的最终配置</h1><p>如果是 Windows + Sublime Text，并且主要目的是解决：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Secure channel error<br>errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>可以使用：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果同时使用 HTTP 代理，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">127.0.0.1:7890<br></code></pre></td></tr></table></figure>
+
+<p>则可以使用：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;http_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;https_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="十二、推荐排查顺序"><a href="#十二、推荐排查顺序" class="headerlink" title="十二、推荐排查顺序"></a>十二、推荐排查顺序</h1><p>遇到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Secure channel error<br>(errno 12157)<br></code></pre></td></tr></table></figure>
+
+<p>建议按照下面的顺序排查。</p>
+<h3 id="第-1-步：检查-TLS-1-2"><a href="#第-1-步：检查-TLS-1-2" class="headerlink" title="第 1 步：检查 TLS 1.2"></a>第 1 步：检查 TLS 1.2</h3><p>打开：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Win + R<br>→ inetcpl.cpl<br>→ 高级<br>→ 安全<br></code></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">使用 TLS 1.2<br></code></pre></td></tr></table></figure>
+
+<p>已经开启。</p>
+<hr>
+<h3 id="第-2-步：切换-Package-Control-下载方式"><a href="#第-2-步：切换-Package-Control-下载方式" class="headerlink" title="第 2 步：切换 Package Control 下载方式"></a>第 2 步：切换 Package Control 下载方式</h3><p>加入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后重启 Sublime Text。</p>
+<hr>
+<h3 id="第-3-步：检查代理"><a href="#第-3-步：检查代理" class="headerlink" title="第 3 步：检查代理"></a>第 3 步：检查代理</h3><p>如果使用代理，确认代理地址和端口正确。</p>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">127.0.0.1:7890<br></code></pre></td></tr></table></figure>
+
+<p>可以配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;http_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;https_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="第-4-步：使用-curl-测试"><a href="#第-4-步：使用-curl-测试" class="headerlink" title="第 4 步：使用 curl 测试"></a>第 4 步：使用 curl 测试</h3><p>执行：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">curl -I https://packagecontrol.github.io/channel/channel_v4.json<br></code></pre></td></tr></table></figure>
+
+<p>如果 curl 也无法访问，则重点检查 Windows、网络或者代理。</p>
+<hr>
+<h3 id="第-5-步：检查-HTTPS-代理证书"><a href="#第-5-步：检查-HTTPS-代理证书" class="headerlink" title="第 5 步：检查 HTTPS 代理证书"></a>第 5 步：检查 HTTPS 代理证书</h3><p>如果使用了 HTTPS MITM 代理，则检查代理软件的 CA 证书是否正确安装并受到信任。</p>
+<hr>
+<h1 id="十三、结论"><a href="#十三、结论" class="headerlink" title="十三、结论"></a>十三、结论</h1><p>对于 Windows 系统中的 Sublime Text Package Control：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Secure channel error<br>errno 12157<br></code></pre></td></tr></table></figure>
+
+<p>最常见的处理思路是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">检查 TLS 1.2<br>       ↓<br>检查代理<br>       ↓<br>切换 Package Control 到 urllib<br>       ↓<br>使用 curl 测试 HTTPS<br>       ↓<br>检查证书 / HTTPS MITM<br></code></pre></td></tr></table></figure>
+
+<p>其中，<strong>最值得优先尝试的是修改 Package Control 配置：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果电脑使用代理，则进一步配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;downloader_precedence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;windows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;urllib&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;http_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;https_proxy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1:7890&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>通常不需要为了这个问题去开启 TLS 1.0 或 TLS 1.1。保持 TLS 1.2 开启即可。</p>
+<blockquote>
+<p><strong>注意：</strong> 如果修改后仍然无法连接，建议优先使用 <code>curl</code> 判断问题究竟发生在 Sublime Text、Windows TLS、代理还是网络环境，而不是反复重装 Package Control。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Windows/" class="category-chain-item">Windows</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Windows/">#Windows</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Sublime 报 errno 12157 的解决方法</div>
+      <div>http://example.com/2026/09/23/Sublime 报 errno 12157 的解决方法/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/28/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E4%B8%8A%E7%A7%91%E5%AD%A6%E7%9A%84%E7%AE%A1%E7%90%86%E5%A4%9A%E7%89%88%E6%9C%ACPython/" title="如何在Windows上安装和管理多版本 Python">
+                        <span class="hidden-mobile">如何在Windows上安装和管理多版本 Python</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
