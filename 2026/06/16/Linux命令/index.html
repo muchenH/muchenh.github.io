@@ -16,16 +16,16 @@
   <meta name="author" content="muchenH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux 命令大全本文档将 @Linux命令\ 目录下的所有命令文档合并为一处，并按命令名称字母顺序排列，通过左侧目录中的超链接即可跳转到对应命令的详细说明（语法、选项、参数、实例等）。  说明：每个命令保留其原始内容与示例，仅将标题统一为文档内可跳转的二级标题。  目录字母 A ab accept ack ag alias apachectl apk apropos apt-get apt-k">
+    <meta name="description" content="Linux 命令大全ab  Apache服务器的性能测试工具 安装若系统未安装，使用以下命令安装 123456# Ubuntusudo apt-get install apache2-utils# Centosyum install httpd-tools   补充说明ab命令 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux命令大全">
 <meta property="og:url" content="http://example.com/2026/06/16/Linux%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="muchenH Blog">
-<meta property="og:description" content="Linux 命令大全本文档将 @Linux命令\ 目录下的所有命令文档合并为一处，并按命令名称字母顺序排列，通过左侧目录中的超链接即可跳转到对应命令的详细说明（语法、选项、参数、实例等）。  说明：每个命令保留其原始内容与示例，仅将标题统一为文档内可跳转的二级标题。  目录字母 A ab accept ack ag alias apachectl apk apropos apt-get apt-k">
+<meta property="og:description" content="Linux 命令大全ab  Apache服务器的性能测试工具 安装若系统未安装，使用以下命令安装 123456# Ubuntusudo apt-get install apache2-utils# Centosyum install httpd-tools   补充说明ab命令 是一个测试你 Apache http 服务器的工具，你可以通过这个工具，指定一个单位时间内向 apache 发出的请求数">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/default.png">
 <meta property="article:published_time" content="2026-06-16T05:37:15.000Z">
-<meta property="article:modified_time" content="2026-09-23T04:48:54.263Z">
+<meta property="article:modified_time" content="2026-09-23T07:06:08.464Z">
 <meta property="article:author" content="muchenH">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          742k 字
+          738k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          6182 分钟
+          6151 分钟
         
       </span>
     
@@ -290,655 +290,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Linux-命令大全"><a href="#Linux-命令大全" class="headerlink" title="Linux 命令大全"></a>Linux 命令大全</h1><p>本文档将 <code>@Linux命令\</code> 目录下的所有命令文档合并为一处，并按命令名称字母顺序排列，通过左侧目录中的超链接即可跳转到对应命令的详细说明（语法、选项、参数、实例等）。</p>
-<blockquote>
-<p>说明：每个命令保留其原始内容与示例，仅将标题统一为文档内可跳转的二级标题。</p>
-</blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="字母-A"><a href="#字母-A" class="headerlink" title="字母 A"></a>字母 A</h3><ul>
-<li><a href="#ab"><code>ab</code></a></li>
-<li><a href="#accept"><code>accept</code></a></li>
-<li><a href="#ack"><code>ack</code></a></li>
-<li><a href="#ag"><code>ag</code></a></li>
-<li><a href="#alias"><code>alias</code></a></li>
-<li><a href="#apachectl"><code>apachectl</code></a></li>
-<li><a href="#apk"><code>apk</code></a></li>
-<li><a href="#apropos"><code>apropos</code></a></li>
-<li><a href="#apt-get"><code>apt-get</code></a></li>
-<li><a href="#apt-key"><code>apt-key</code></a></li>
-<li><a href="#apt-sortpkgs"><code>apt-sortpkgs</code></a></li>
-<li><a href="#aptitude"><code>aptitude</code></a></li>
-<li><a href="#ar"><code>ar</code></a></li>
-<li><a href="#arch"><code>arch</code></a></li>
-<li><a href="#arj"><code>arj</code></a></li>
-<li><a href="#arp"><code>arp</code></a></li>
-<li><a href="#arpd"><code>arpd</code></a></li>
-<li><a href="#arping"><code>arping</code></a></li>
-<li><a href="#arptables"><code>arptables</code></a></li>
-<li><a href="#arpwatch"><code>arpwatch</code></a></li>
-<li><a href="#as"><code>as</code></a></li>
-<li><a href="#at"><code>at</code></a></li>
-<li><a href="#atop"><code>atop</code></a></li>
-<li><a href="#atq"><code>atq</code></a></li>
-<li><a href="#atrm"><code>atrm</code></a></li>
-<li><a href="#axel"><code>axel</code></a></li>
-</ul>
-<h3 id="字母-B"><a href="#字母-B" class="headerlink" title="字母 B"></a>字母 B</h3><ul>
-<li><a href="#badblocks"><code>badblocks</code></a></li>
-<li><a href="#base64"><code>base64</code></a></li>
-<li><a href="#basename"><code>basename</code></a></li>
-<li><a href="#batch"><code>batch</code></a></li>
-<li><a href="#bc"><code>bc</code></a></li>
-<li><a href="#bg"><code>bg</code></a></li>
-<li><a href="#bind"><code>bind</code></a></li>
-<li><a href="#blkid"><code>blkid</code></a></li>
-<li><a href="#blockdev"><code>blockdev</code></a></li>
-<li><a href="#bmodinfo"><code>bmodinfo</code></a></li>
-<li><a href="#break"><code>break</code></a></li>
-<li><a href="#builtin"><code>builtin</code></a></li>
-<li><a href="#bunzip2"><code>bunzip2</code></a></li>
-<li><a href="#bye"><code>bye</code></a></li>
-<li><a href="#bzcat"><code>bzcat</code></a></li>
-<li><a href="#bzcmp"><code>bzcmp</code></a></li>
-<li><a href="#bzdiff"><code>bzdiff</code></a></li>
-<li><a href="#bzgrep"><code>bzgrep</code></a></li>
-<li><a href="#bzip2"><code>bzip2</code></a></li>
-<li><a href="#bzip2recover"><code>bzip2recover</code></a></li>
-<li><a href="#bzless"><code>bzless</code></a></li>
-<li><a href="#bzmore"><code>bzmore</code></a></li>
-</ul>
-<h3 id="字母-C"><a href="#字母-C" class="headerlink" title="字母 C"></a>字母 C</h3><ul>
-<li><a href="#cal"><code>cal</code></a></li>
-<li><a href="#cancel"><code>cancel</code></a></li>
-<li><a href="#cat"><code>cat</code></a></li>
-<li><a href="#cd"><code>cd</code></a></li>
-<li><a href="#cdrecord"><code>cdrecord</code></a></li>
-<li><a href="#chage"><code>chage</code></a></li>
-<li><a href="#chattr"><code>chattr</code></a></li>
-<li><a href="#chcon"><code>chcon</code></a></li>
-<li><a href="#chfn"><code>chfn</code></a></li>
-<li><a href="#chgrp"><code>chgrp</code></a></li>
-<li><a href="#chkconfig"><code>chkconfig</code></a></li>
-<li><a href="#chmod"><code>chmod</code></a></li>
-<li><a href="#chown"><code>chown</code></a></li>
-<li><a href="#chpasswd"><code>chpasswd</code></a></li>
-<li><a href="#chroot"><code>chroot</code></a></li>
-<li><a href="#chsh"><code>chsh</code></a></li>
-<li><a href="#cksum"><code>cksum</code></a></li>
-<li><a href="#clear"><code>clear</code></a></li>
-<li><a href="#clock"><code>clock</code></a></li>
-<li><a href="#clockdiff"><code>clockdiff</code></a></li>
-<li><a href="#cmp"><code>cmp</code></a></li>
-<li><a href="#col"><code>col</code></a></li>
-<li><a href="#colrm"><code>colrm</code></a></li>
-<li><a href="#comm"><code>comm</code></a></li>
-<li><a href="#command"><code>command</code></a></li>
-<li><a href="#compress"><code>compress</code></a></li>
-<li><a href="#consoletype"><code>consoletype</code></a></li>
-<li><a href="#continue"><code>continue</code></a></li>
-<li><a href="#convertquota"><code>convertquota</code></a></li>
-<li><a href="#cp"><code>cp</code></a></li>
-<li><a href="#cpio"><code>cpio</code></a></li>
-<li><a href="#crontab"><code>crontab</code></a></li>
-<li><a href="#csplit"><code>csplit</code></a></li>
-<li><a href="#cu"><code>cu</code></a></li>
-<li><a href="#cupsdisable"><code>cupsdisable</code></a></li>
-<li><a href="#cupsenable"><code>cupsenable</code></a></li>
-<li><a href="#curl"><code>curl</code></a></li>
-<li><a href="#cut"><code>cut</code></a></li>
-</ul>
-<h3 id="字母-D"><a href="#字母-D" class="headerlink" title="字母 D"></a>字母 D</h3><ul>
-<li><a href="#date"><code>date</code></a></li>
-<li><a href="#dc"><code>dc</code></a></li>
-<li><a href="#dd"><code>dd</code></a></li>
-<li><a href="#declare"><code>declare</code></a></li>
-<li><a href="#depmod"><code>depmod</code></a></li>
-<li><a href="#df"><code>df</code></a></li>
-<li><a href="#dhclient"><code>dhclient</code></a></li>
-<li><a href="#dhcpd"><code>dhcpd</code></a></li>
-<li><a href="#dhcrelay"><code>dhcrelay</code></a></li>
-<li><a href="#diff"><code>diff</code></a></li>
-<li><a href="#diff3"><code>diff3</code></a></li>
-<li><a href="#diffstat"><code>diffstat</code></a></li>
-<li><a href="#dig"><code>dig</code></a></li>
-<li><a href="#dircolors"><code>dircolors</code></a></li>
-<li><a href="#dirname"><code>dirname</code></a></li>
-<li><a href="#dirs"><code>dirs</code></a></li>
-<li><a href="#disown"><code>disown</code></a></li>
-<li><a href="#dmesg"><code>dmesg</code></a></li>
-<li><a href="#dmidecode"><code>dmidecode</code></a></li>
-<li><a href="#dnf"><code>dnf</code></a></li>
-<li><a href="#dnsdomainname"><code>dnsdomainname</code></a></li>
-<li><a href="#docker"><code>docker</code></a></li>
-<li><a href="#domainname"><code>domainname</code></a></li>
-<li><a href="#dos2unix"><code>dos2unix</code></a></li>
-<li><a href="#dpkg"><code>dpkg</code></a></li>
-<li><a href="#dpkg-deb"><code>dpkg-deb</code></a></li>
-<li><a href="#dpkg-divert"><code>dpkg-divert</code></a></li>
-<li><a href="#dpkg-preconfigure"><code>dpkg-preconfigure</code></a></li>
-<li><a href="#dpkg-query"><code>dpkg-query</code></a></li>
-<li><a href="#dpkg-reconfigure"><code>dpkg-reconfigure</code></a></li>
-<li><a href="#dpkg-split"><code>dpkg-split</code></a></li>
-<li><a href="#dpkg-statoverride"><code>dpkg-statoverride</code></a></li>
-<li><a href="#dpkg-trigger"><code>dpkg-trigger</code></a></li>
-<li><a href="#dris"><code>dris</code></a></li>
-<li><a href="#dstat"><code>dstat</code></a></li>
-<li><a href="#du"><code>du</code></a></li>
-<li><a href="#dump"><code>dump</code></a></li>
-</ul>
-<h3 id="字母-E"><a href="#字母-E" class="headerlink" title="字母 E"></a>字母 E</h3><ul>
-<li><a href="#e2fsck"><code>e2fsck</code></a></li>
-<li><a href="#e2label"><code>e2label</code></a></li>
-<li><a href="#echo"><code>echo</code></a></li>
-<li><a href="#ed"><code>ed</code></a></li>
-<li><a href="#edquota"><code>edquota</code></a></li>
-<li><a href="#egrep"><code>egrep</code></a></li>
-<li><a href="#eject"><code>eject</code></a></li>
-<li><a href="#elinks"><code>elinks</code></a></li>
-<li><a href="#elm"><code>elm</code></a></li>
-<li><a href="#emacs"><code>emacs</code></a></li>
-<li><a href="#enable"><code>enable</code></a></li>
-<li><a href="#env"><code>env</code></a></li>
-<li><a href="#ethtool"><code>ethtool</code></a></li>
-<li><a href="#ex"><code>ex</code></a></li>
-<li><a href="#exec"><code>exec</code></a></li>
-<li><a href="#exit"><code>exit</code></a></li>
-<li><a href="#expand"><code>expand</code></a></li>
-<li><a href="#export"><code>export</code></a></li>
-<li><a href="#exportfs"><code>exportfs</code></a></li>
-<li><a href="#expr"><code>expr</code></a></li>
-</ul>
-<h3 id="字母-F"><a href="#字母-F" class="headerlink" title="字母 F"></a>字母 F</h3><ul>
-<li><a href="#false"><code>false</code></a></li>
-<li><a href="#fc"><code>fc</code></a></li>
-<li><a href="#fdisk"><code>fdisk</code></a></li>
-<li><a href="#fg"><code>fg</code></a></li>
-<li><a href="#fgrep"><code>fgrep</code></a></li>
-<li><a href="#file"><code>file</code></a></li>
-<li><a href="#find"><code>find</code></a></li>
-<li><a href="#findfs"><code>findfs</code></a></li>
-<li><a href="#finger"><code>finger</code></a></li>
-<li><a href="#firewall-cmd"><code>firewall-cmd</code></a></li>
-<li><a href="#fishshell"><code>fishshell</code></a></li>
-<li><a href="#fmt"><code>fmt</code></a></li>
-<li><a href="#fold"><code>fold</code></a></li>
-<li><a href="#fping"><code>fping</code></a></li>
-<li><a href="#free"><code>free</code></a></li>
-<li><a href="#fsck"><code>fsck</code></a></li>
-<li><a href="#ftp"><code>ftp</code></a></li>
-<li><a href="#ftpcount"><code>ftpcount</code></a></li>
-<li><a href="#ftpshut"><code>ftpshut</code></a></li>
-<li><a href="#ftptop"><code>ftptop</code></a></li>
-<li><a href="#ftpwho"><code>ftpwho</code></a></li>
-<li><a href="#fuser"><code>fuser</code></a></li>
-</ul>
-<h3 id="字母-G"><a href="#字母-G" class="headerlink" title="字母 G"></a>字母 G</h3><ul>
-<li><a href="#gcc"><code>gcc</code></a></li>
-<li><a href="#gcov"><code>gcov</code></a></li>
-<li><a href="#gdb"><code>gdb</code></a></li>
-<li><a href="#get_module"><code>get_module</code></a></li>
-<li><a href="#getenforce"><code>getenforce</code></a></li>
-<li><a href="#getent"><code>getent</code></a></li>
-<li><a href="#getsebool"><code>getsebool</code></a></li>
-<li><a href="#git"><code>git</code></a></li>
-<li><a href="#gpasswd"><code>gpasswd</code></a></li>
-<li><a href="#gpm"><code>gpm</code></a></li>
-<li><a href="#groupadd"><code>groupadd</code></a></li>
-<li><a href="#groupdel"><code>groupdel</code></a></li>
-<li><a href="#groupmems"><code>groupmems</code></a></li>
-<li><a href="#groupmod"><code>groupmod</code></a></li>
-<li><a href="#groups"><code>groups</code></a></li>
-<li><a href="#grpck"><code>grpck</code></a></li>
-<li><a href="#grpconv"><code>grpconv</code></a></li>
-<li><a href="#grpunconv"><code>grpunconv</code></a></li>
-<li><a href="#grub"><code>grub</code></a></li>
-<li><a href="#grub2-mkconfig"><code>grub2-mkconfig</code></a></li>
-<li><a href="#grub2-set-default"><code>grub2-set-default</code></a></li>
-<li><a href="#gunzip"><code>gunzip</code></a></li>
-<li><a href="#gzexe"><code>gzexe</code></a></li>
-<li><a href="#gzip"><code>gzip</code></a></li>
-</ul>
-<h3 id="字母-H"><a href="#字母-H" class="headerlink" title="字母 H"></a>字母 H</h3><ul>
-<li><a href="#halt"><code>halt</code></a></li>
-<li><a href="#hdparm"><code>hdparm</code></a></li>
-<li><a href="#head"><code>head</code></a></li>
-<li><a href="#help"><code>help</code></a></li>
-<li><a href="#hexdump"><code>hexdump</code></a></li>
-<li><a href="#history"><code>history</code></a></li>
-<li><a href="#host"><code>host</code></a></li>
-<li><a href="#hostid"><code>hostid</code></a></li>
-<li><a href="#hostname"><code>hostname</code></a></li>
-<li><a href="#hostnamectl"><code>hostnamectl</code></a></li>
-<li><a href="#hping3"><code>hping3</code></a></li>
-<li><a href="#htdigest"><code>htdigest</code></a></li>
-<li><a href="#htop"><code>htop</code></a></li>
-<li><a href="#htpasswd"><code>htpasswd</code></a></li>
-<li><a href="#hwclock"><code>hwclock</code></a></li>
-</ul>
-<h3 id="字母-I"><a href="#字母-I" class="headerlink" title="字母 I"></a>字母 I</h3><ul>
-<li><a href="#iconv"><code>iconv</code></a></li>
-<li><a href="#id"><code>id</code></a></li>
-<li><a href="#ifcfg"><code>ifcfg</code></a></li>
-<li><a href="#ifconfig"><code>ifconfig</code></a></li>
-<li><a href="#ifdown"><code>ifdown</code></a></li>
-<li><a href="#ifstat"><code>ifstat</code></a></li>
-<li><a href="#iftop"><code>iftop</code></a></li>
-<li><a href="#ifup"><code>ifup</code></a></li>
-<li><a href="#indent"><code>indent</code></a></li>
-<li><a href="#info"><code>info</code></a></li>
-<li><a href="#init"><code>init</code></a></li>
-<li><a href="#inotifywait"><code>inotifywait</code></a></li>
-<li><a href="#insmod"><code>insmod</code></a></li>
-<li><a href="#install"><code>install</code></a></li>
-<li><a href="#iostat"><code>iostat</code></a></li>
-<li><a href="#iotop"><code>iotop</code></a></li>
-<li><a href="#ip"><code>ip</code></a></li>
-<li><a href="#ip6tables"><code>ip6tables</code></a></li>
-<li><a href="#ip6tables-restore"><code>ip6tables-restore</code></a></li>
-<li><a href="#ip6tables-save"><code>ip6tables-save</code></a></li>
-<li><a href="#ipcalc"><code>ipcalc</code></a></li>
-<li><a href="#ipcrm"><code>ipcrm</code></a></li>
-<li><a href="#ipcs"><code>ipcs</code></a></li>
-<li><a href="#iperf"><code>iperf</code></a></li>
-<li><a href="#iptables"><code>iptables</code></a></li>
-<li><a href="#iptables-restore"><code>iptables-restore</code></a></li>
-<li><a href="#iptables-save"><code>iptables-save</code></a></li>
-<li><a href="#iptraf"><code>iptraf</code></a></li>
-<li><a href="#iptstate"><code>iptstate</code></a></li>
-<li><a href="#ispell"><code>ispell</code></a></li>
-</ul>
-<h3 id="字母-J"><a href="#字母-J" class="headerlink" title="字母 J"></a>字母 J</h3><ul>
-<li><a href="#jed"><code>jed</code></a></li>
-<li><a href="#jobs"><code>jobs</code></a></li>
-<li><a href="#joe"><code>joe</code></a></li>
-<li><a href="#join"><code>join</code></a></li>
-<li><a href="#journalctl"><code>journalctl</code></a></li>
-<li><a href="#jq"><code>jq</code></a></li>
-<li><a href="#jwhois"><code>jwhois</code></a></li>
-</ul>
-<h3 id="字母-K"><a href="#字母-K" class="headerlink" title="字母 K"></a>字母 K</h3><ul>
-<li><a href="#kernelversion"><code>kernelversion</code></a></li>
-<li><a href="#kexec"><code>kexec</code></a></li>
-<li><a href="#kill"><code>kill</code></a></li>
-<li><a href="#killall"><code>killall</code></a></li>
-</ul>
-<h3 id="字母-L"><a href="#字母-L" class="headerlink" title="字母 L"></a>字母 L</h3><ul>
-<li><a href="#last"><code>last</code></a></li>
-<li><a href="#lastb"><code>lastb</code></a></li>
-<li><a href="#lastlog"><code>lastlog</code></a></li>
-<li><a href="#ld"><code>ld</code></a></li>
-<li><a href="#ldconfig"><code>ldconfig</code></a></li>
-<li><a href="#ldd"><code>ldd</code></a></li>
-<li><a href="#less"><code>less</code></a></li>
-<li><a href="#let"><code>let</code></a></li>
-<li><a href="#lftp"><code>lftp</code></a></li>
-<li><a href="#lftpget"><code>lftpget</code></a></li>
-<li><a href="#lha"><code>lha</code></a></li>
-<li><a href="#lilo"><code>lilo</code></a></li>
-<li><a href="#ln"><code>ln</code></a></li>
-<li><a href="#lnstat"><code>lnstat</code></a></li>
-<li><a href="#local"><code>local</code></a></li>
-<li><a href="#locate"><code>locate</code></a></li>
-<li><a href="#logger"><code>logger</code></a></li>
-<li><a href="#login"><code>login</code></a></li>
-<li><a href="#logname"><code>logname</code></a></li>
-<li><a href="#logout"><code>logout</code></a></li>
-<li><a href="#logrotate"><code>logrotate</code></a></li>
-<li><a href="#logsave"><code>logsave</code></a></li>
-<li><a href="#logwatch"><code>logwatch</code></a></li>
-<li><a href="#look"><code>look</code></a></li>
-<li><a href="#losetup"><code>losetup</code></a></li>
-<li><a href="#lp"><code>lp</code></a></li>
-<li><a href="#lpadmin"><code>lpadmin</code></a></li>
-<li><a href="#lpc"><code>lpc</code></a></li>
-<li><a href="#lpq"><code>lpq</code></a></li>
-<li><a href="#lpr"><code>lpr</code></a></li>
-<li><a href="#lprm"><code>lprm</code></a></li>
-<li><a href="#lpstat"><code>lpstat</code></a></li>
-<li><a href="#ls"><code>ls</code></a></li>
-<li><a href="#lsattr"><code>lsattr</code></a></li>
-<li><a href="#lsb_release"><code>lsb_release</code></a></li>
-<li><a href="#lsblk"><code>lsblk</code></a></li>
-<li><a href="#lscpu"><code>lscpu</code></a></li>
-<li><a href="#lsmod"><code>lsmod</code></a></li>
-<li><a href="#lsof"><code>lsof</code></a></li>
-<li><a href="#lspci"><code>lspci</code></a></li>
-<li><a href="#lsusb"><code>lsusb</code></a></li>
-<li><a href="#ltrace"><code>ltrace</code></a></li>
-<li><a href="#lvcreate"><code>lvcreate</code></a></li>
-<li><a href="#lvdisplay"><code>lvdisplay</code></a></li>
-<li><a href="#lvextend"><code>lvextend</code></a></li>
-<li><a href="#lvreduce"><code>lvreduce</code></a></li>
-<li><a href="#lvremove"><code>lvremove</code></a></li>
-<li><a href="#lvresize"><code>lvresize</code></a></li>
-<li><a href="#lvscan"><code>lvscan</code></a></li>
-<li><a href="#lynx"><code>lynx</code></a></li>
-</ul>
-<h3 id="字母-M"><a href="#字母-M" class="headerlink" title="字母 M"></a>字母 M</h3><ul>
-<li><a href="#mail"><code>mail</code></a></li>
-<li><a href="#mailq"><code>mailq</code></a></li>
-<li><a href="#mailstat"><code>mailstat</code></a></li>
-<li><a href="#make"><code>make</code></a></li>
-<li><a href="#man"><code>man</code></a></li>
-<li><a href="#mapfile"><code>mapfile</code></a></li>
-<li><a href="#md5sum"><code>md5sum</code></a></li>
-<li><a href="#mesg"><code>mesg</code></a></li>
-<li><a href="#mii-tool"><code>mii-tool</code></a></li>
-<li><a href="#mkbootdisk"><code>mkbootdisk</code></a></li>
-<li><a href="#mkcert"><code>mkcert</code></a></li>
-<li><a href="#mkdir"><code>mkdir</code></a></li>
-<li><a href="#mke2fs"><code>mke2fs</code></a></li>
-<li><a href="#mkfs"><code>mkfs</code></a></li>
-<li><a href="#mkinitrd"><code>mkinitrd</code></a></li>
-<li><a href="#mkisofs"><code>mkisofs</code></a></li>
-<li><a href="#mknod"><code>mknod</code></a></li>
-<li><a href="#mkswap"><code>mkswap</code></a></li>
-<li><a href="#mktemp"><code>mktemp</code></a></li>
-<li><a href="#modetest"><code>modetest</code></a></li>
-<li><a href="#modprobe"><code>modprobe</code></a></li>
-<li><a href="#more"><code>more</code></a></li>
-<li><a href="#mount"><code>mount</code></a></li>
-<li><a href="#mpstat"><code>mpstat</code></a></li>
-<li><a href="#mtools"><code>mtools</code></a></li>
-<li><a href="#mv"><code>mv</code></a></li>
-<li><a href="#mysql"><code>mysql</code></a></li>
-<li><a href="#mysqladmin"><code>mysqladmin</code></a></li>
-<li><a href="#mysqldump"><code>mysqldump</code></a></li>
-<li><a href="#mysqlimport"><code>mysqlimport</code></a></li>
-<li><a href="#mysqlshow"><code>mysqlshow</code></a></li>
-</ul>
-<h3 id="字母-N"><a href="#字母-N" class="headerlink" title="字母 N"></a>字母 N</h3><ul>
-<li><a href="#named-checkzone"><code>named-checkzone</code></a></li>
-<li><a href="#nano"><code>nano</code></a></li>
-<li><a href="#nc"><code>nc</code></a></li>
-<li><a href="#ncftp"><code>ncftp</code></a></li>
-<li><a href="#neofetch"><code>neofetch</code></a></li>
-<li><a href="#nethogs"><code>nethogs</code></a></li>
-<li><a href="#netstat"><code>netstat</code></a></li>
-<li><a href="#newusers"><code>newusers</code></a></li>
-<li><a href="#nfsstat"><code>nfsstat</code></a></li>
-<li><a href="#ngrep"><code>ngrep</code></a></li>
-<li><a href="#nice"><code>nice</code></a></li>
-<li><a href="#nisdomainname"><code>nisdomainname</code></a></li>
-<li><a href="#nl"><code>nl</code></a></li>
-<li><a href="#nm"><code>nm</code></a></li>
-<li><a href="#nmap"><code>nmap</code></a></li>
-<li><a href="#nmcli"><code>nmcli</code></a></li>
-<li><a href="#nohup"><code>nohup</code></a></li>
-<li><a href="#nologin"><code>nologin</code></a></li>
-<li><a href="#nproc"><code>nproc</code></a></li>
-<li><a href="#nslookup"><code>nslookup</code></a></li>
-<li><a href="#ntpdate"><code>ntpdate</code></a></li>
-<li><a href="#ntsysv"><code>ntsysv</code></a></li>
-</ul>
-<h3 id="字母-O"><a href="#字母-O" class="headerlink" title="字母 O"></a>字母 O</h3><ul>
-<li><a href="#objdump"><code>objdump</code></a></li>
-<li><a href="#od"><code>od</code></a></li>
-<li><a href="#openssl"><code>openssl</code></a></li>
-</ul>
-<h3 id="字母-P"><a href="#字母-P" class="headerlink" title="字母 P"></a>字母 P</h3><ul>
-<li><a href="#pacman"><code>pacman</code></a></li>
-<li><a href="#parted"><code>parted</code></a></li>
-<li><a href="#partprobe"><code>partprobe</code></a></li>
-<li><a href="#passwd"><code>passwd</code></a></li>
-<li><a href="#paste"><code>paste</code></a></li>
-<li><a href="#patch"><code>patch</code></a></li>
-<li><a href="#pathchk"><code>pathchk</code></a></li>
-<li><a href="#perl"><code>perl</code></a></li>
-<li><a href="#pfctl"><code>pfctl</code></a></li>
-<li><a href="#pgrep"><code>pgrep</code></a></li>
-<li><a href="#php"><code>php</code></a></li>
-<li><a href="#pico"><code>pico</code></a></li>
-<li><a href="#pidof"><code>pidof</code></a></li>
-<li><a href="#pidstat"><code>pidstat</code></a></li>
-<li><a href="#pigz"><code>pigz</code></a></li>
-<li><a href="#ping"><code>ping</code></a></li>
-<li><a href="#ping6"><code>ping6</code></a></li>
-<li><a href="#pkill"><code>pkill</code></a></li>
-<li><a href="#pmap"><code>pmap</code></a></li>
-<li><a href="#popd"><code>popd</code></a></li>
-<li><a href="#poweroff"><code>poweroff</code></a></li>
-<li><a href="#ppp-off"><code>ppp-off</code></a></li>
-<li><a href="#pr"><code>pr</code></a></li>
-<li><a href="#printf"><code>printf</code></a></li>
-<li><a href="#protoize"><code>protoize</code></a></li>
-<li><a href="#prtstat"><code>prtstat</code></a></li>
-<li><a href="#ps"><code>ps</code></a></li>
-<li><a href="#pssh"><code>pssh</code></a></li>
-<li><a href="#pstack"><code>pstack</code></a></li>
-<li><a href="#pstree"><code>pstree</code></a></li>
-<li><a href="#pushd"><code>pushd</code></a></li>
-<li><a href="#pv"><code>pv</code></a></li>
-<li><a href="#pvchange"><code>pvchange</code></a></li>
-<li><a href="#pvck"><code>pvck</code></a></li>
-<li><a href="#pvcreate"><code>pvcreate</code></a></li>
-<li><a href="#pvdisplay"><code>pvdisplay</code></a></li>
-<li><a href="#pvremove"><code>pvremove</code></a></li>
-<li><a href="#pvs"><code>pvs</code></a></li>
-<li><a href="#pvscan"><code>pvscan</code></a></li>
-<li><a href="#pwck"><code>pwck</code></a></li>
-<li><a href="#pwconv"><code>pwconv</code></a></li>
-<li><a href="#pwd"><code>pwd</code></a></li>
-<li><a href="#pwdx"><code>pwdx</code></a></li>
-<li><a href="#pwunconv"><code>pwunconv</code></a></li>
-</ul>
-<h3 id="字母-Q"><a href="#字母-Q" class="headerlink" title="字母 Q"></a>字母 Q</h3><ul>
-<li><a href="#quota"><code>quota</code></a></li>
-<li><a href="#quotacheck"><code>quotacheck</code></a></li>
-<li><a href="#quotaoff"><code>quotaoff</code></a></li>
-<li><a href="#quotaon"><code>quotaon</code></a></li>
-</ul>
-<h3 id="字母-R"><a href="#字母-R" class="headerlink" title="字母 R"></a>字母 R</h3><ul>
-<li><a href="#rcconf"><code>rcconf</code></a></li>
-<li><a href="#rcp"><code>rcp</code></a></li>
-<li><a href="#read"><code>read</code></a></li>
-<li><a href="#readelf"><code>readelf</code></a></li>
-<li><a href="#readonly"><code>readonly</code></a></li>
-<li><a href="#reboot"><code>reboot</code></a></li>
-<li><a href="#reject"><code>reject</code></a></li>
-<li><a href="#rename"><code>rename</code></a></li>
-<li><a href="#renice"><code>renice</code></a></li>
-<li><a href="#repquota"><code>repquota</code></a></li>
-<li><a href="#resize"><code>resize</code></a></li>
-<li><a href="#restore"><code>restore</code></a></li>
-<li><a href="#restorecon"><code>restorecon</code></a></li>
-<li><a href="#return"><code>return</code></a></li>
-<li><a href="#rev"><code>rev</code></a></li>
-<li><a href="#rexec"><code>rexec</code></a></li>
-<li><a href="#rlogin"><code>rlogin</code></a></li>
-<li><a href="#rm"><code>rm</code></a></li>
-<li><a href="#rmdir"><code>rmdir</code></a></li>
-<li><a href="#rmmod"><code>rmmod</code></a></li>
-<li><a href="#route"><code>route</code></a></li>
-<li><a href="#rpm"><code>rpm</code></a></li>
-<li><a href="#rpm2cpio"><code>rpm2cpio</code></a></li>
-<li><a href="#rpmbuild"><code>rpmbuild</code></a></li>
-<li><a href="#rpmdb"><code>rpmdb</code></a></li>
-<li><a href="#rpmquery"><code>rpmquery</code></a></li>
-<li><a href="#rpmsign"><code>rpmsign</code></a></li>
-<li><a href="#rpmverify"><code>rpmverify</code></a></li>
-<li><a href="#rsh"><code>rsh</code></a></li>
-<li><a href="#rsync"><code>rsync</code></a></li>
-<li><a href="#runlevel"><code>runlevel</code></a></li>
-</ul>
-<h3 id="字母-S"><a href="#字母-S" class="headerlink" title="字母 S"></a>字母 S</h3><ul>
-<li><a href="#sar"><code>sar</code></a></li>
-<li><a href="#scp"><code>scp</code></a></li>
-<li><a href="#script"><code>script</code></a></li>
-<li><a href="#scriptreplay"><code>scriptreplay</code></a></li>
-<li><a href="#seinfo"><code>seinfo</code></a></li>
-<li><a href="#semanage"><code>semanage</code></a></li>
-<li><a href="#sendmail"><code>sendmail</code></a></li>
-<li><a href="#seq"><code>seq</code></a></li>
-<li><a href="#service"><code>service</code></a></li>
-<li><a href="#sesearch"><code>sesearch</code></a></li>
-<li><a href="#set"><code>set</code></a></li>
-<li><a href="#setfacl"><code>setfacl</code></a></li>
-<li><a href="#setpci"><code>setpci</code></a></li>
-<li><a href="#setsebool"><code>setsebool</code></a></li>
-<li><a href="#setsid"><code>setsid</code></a></li>
-<li><a href="#sftp"><code>sftp</code></a></li>
-<li><a href="#sftp-server"><code>sftp-server</code></a></li>
-<li><a href="#sh"><code>sh</code></a></li>
-<li><a href="#sha256sum"><code>sha256sum</code></a></li>
-<li><a href="#shift"><code>shift</code></a></li>
-<li><a href="#shopt"><code>shopt</code></a></li>
-<li><a href="#showmount"><code>showmount</code></a></li>
-<li><a href="#shuf"><code>shuf</code></a></li>
-<li><a href="#shutdown"><code>shutdown</code></a></li>
-<li><a href="#skill"><code>skill</code></a></li>
-<li><a href="#slabtop"><code>slabtop</code></a></li>
-<li><a href="#sleep"><code>sleep</code></a></li>
-<li><a href="#slocate"><code>slocate</code></a></li>
-<li><a href="#smartmontools"><code>smartmontools</code></a></li>
-<li><a href="#smbclient"><code>smbclient</code></a></li>
-<li><a href="#smbpasswd"><code>smbpasswd</code></a></li>
-<li><a href="#sort"><code>sort</code></a></li>
-<li><a href="#source"><code>source</code></a></li>
-<li><a href="#speedtest-cli"><code>speedtest-cli</code></a></li>
-<li><a href="#spell"><code>spell</code></a></li>
-<li><a href="#split"><code>split</code></a></li>
-<li><a href="#squid"><code>squid</code></a></li>
-<li><a href="#squidclient"><code>squidclient</code></a></li>
-<li><a href="#ss"><code>ss</code></a></li>
-<li><a href="#ssh"><code>ssh</code></a></li>
-<li><a href="#ssh-add"><code>ssh-add</code></a></li>
-<li><a href="#ssh-agent"><code>ssh-agent</code></a></li>
-<li><a href="#ssh-copy-id"><code>ssh-copy-id</code></a></li>
-<li><a href="#ssh-keygen"><code>ssh-keygen</code></a></li>
-<li><a href="#ssh-keyscan"><code>ssh-keyscan</code></a></li>
-<li><a href="#sshd"><code>sshd</code></a></li>
-<li><a href="#startx"><code>startx</code></a></li>
-<li><a href="#stat"><code>stat</code></a></li>
-<li><a href="#strace"><code>strace</code></a></li>
-<li><a href="#strings"><code>strings</code></a></li>
-<li><a href="#stty"><code>stty</code></a></li>
-<li><a href="#su"><code>su</code></a></li>
-<li><a href="#sudo"><code>sudo</code></a></li>
-<li><a href="#sum"><code>sum</code></a></li>
-<li><a href="#supervisord"><code>supervisord</code></a></li>
-<li><a href="#suspend"><code>suspend</code></a></li>
-<li><a href="#swapoff"><code>swapoff</code></a></li>
-<li><a href="#swapon"><code>swapon</code></a></li>
-<li><a href="#sync"><code>sync</code></a></li>
-<li><a href="#sysctl"><code>sysctl</code></a></li>
-<li><a href="#syslog"><code>syslog</code></a></li>
-<li><a href="#systemctl"><code>systemctl</code></a></li>
-<li><a href="#systool"><code>systool</code></a></li>
-</ul>
-<h3 id="字母-T"><a href="#字母-T" class="headerlink" title="字母 T"></a>字母 T</h3><ul>
-<li><a href="#tac"><code>tac</code></a></li>
-<li><a href="#tail"><code>tail</code></a></li>
-<li><a href="#tailf"><code>tailf</code></a></li>
-<li><a href="#talk"><code>talk</code></a></li>
-<li><a href="#tar"><code>tar</code></a></li>
-<li><a href="#tcpdump"><code>tcpdump</code></a></li>
-<li><a href="#tcpreplay"><code>tcpreplay</code></a></li>
-<li><a href="#tee"><code>tee</code></a></li>
-<li><a href="#telinit"><code>telinit</code></a></li>
-<li><a href="#telnet"><code>telnet</code></a></li>
-<li><a href="#tempfile"><code>tempfile</code></a></li>
-<li><a href="#test"><code>test</code></a></li>
-<li><a href="#tftp"><code>tftp</code></a></li>
-<li><a href="#time"><code>time</code></a></li>
-<li><a href="#timedatectl"><code>timedatectl</code></a></li>
-<li><a href="#times"><code>times</code></a></li>
-<li><a href="#tload"><code>tload</code></a></li>
-<li><a href="#tmux"><code>tmux</code></a></li>
-<li><a href="#top"><code>top</code></a></li>
-<li><a href="#touch"><code>touch</code></a></li>
-<li><a href="#tput"><code>tput</code></a></li>
-<li><a href="#tr"><code>tr</code></a></li>
-<li><a href="#tracepath"><code>tracepath</code></a></li>
-<li><a href="#traceroute"><code>traceroute</code></a></li>
-<li><a href="#trap"><code>trap</code></a></li>
-<li><a href="#tree"><code>tree</code></a></li>
-<li><a href="#true"><code>true</code></a></li>
-<li><a href="#tty"><code>tty</code></a></li>
-<li><a href="#type"><code>type</code></a></li>
-</ul>
-<h3 id="字母-U"><a href="#字母-U" class="headerlink" title="字母 U"></a>字母 U</h3><ul>
-<li><a href="#ulimit"><code>ulimit</code></a></li>
-<li><a href="#umask"><code>umask</code></a></li>
-<li><a href="#umount"><code>umount</code></a></li>
-<li><a href="#unalias"><code>unalias</code></a></li>
-<li><a href="#uname"><code>uname</code></a></li>
-<li><a href="#unarj"><code>unarj</code></a></li>
-<li><a href="#uncompress"><code>uncompress</code></a></li>
-<li><a href="#unexpand"><code>unexpand</code></a></li>
-<li><a href="#uniq"><code>uniq</code></a></li>
-<li><a href="#unlink"><code>unlink</code></a></li>
-<li><a href="#unprotoize"><code>unprotoize</code></a></li>
-<li><a href="#unrar"><code>unrar</code></a></li>
-<li><a href="#unset"><code>unset</code></a></li>
-<li><a href="#unzip"><code>unzip</code></a></li>
-<li><a href="#updatedb"><code>updatedb</code></a></li>
-<li><a href="#uptime"><code>uptime</code></a></li>
-<li><a href="#useradd"><code>useradd</code></a></li>
-<li><a href="#userdel"><code>userdel</code></a></li>
-<li><a href="#usermod"><code>usermod</code></a></li>
-<li><a href="#usernetctl"><code>usernetctl</code></a></li>
-<li><a href="#users"><code>users</code></a></li>
-<li><a href="#uucico"><code>uucico</code></a></li>
-<li><a href="#uupick"><code>uupick</code></a></li>
-<li><a href="#uuto"><code>uuto</code></a></li>
-</ul>
-<h3 id="字母-V"><a href="#字母-V" class="headerlink" title="字母 V"></a>字母 V</h3><ul>
-<li><a href="#vdfuse"><code>vdfuse</code></a></li>
-<li><a href="#vgchange"><code>vgchange</code></a></li>
-<li><a href="#vgconvert"><code>vgconvert</code></a></li>
-<li><a href="#vgcreate"><code>vgcreate</code></a></li>
-<li><a href="#vgdisplay"><code>vgdisplay</code></a></li>
-<li><a href="#vgextend"><code>vgextend</code></a></li>
-<li><a href="#vgreduce"><code>vgreduce</code></a></li>
-<li><a href="#vgremove"><code>vgremove</code></a></li>
-<li><a href="#vgrename"><code>vgrename</code></a></li>
-<li><a href="#vgscan"><code>vgscan</code></a></li>
-<li><a href="#vi"><code>vi</code></a></li>
-<li><a href="#vmstat"><code>vmstat</code></a></li>
-<li><a href="#volname"><code>volname</code></a></li>
-</ul>
-<h3 id="字母-W"><a href="#字母-W" class="headerlink" title="字母 W"></a>字母 W</h3><ul>
-<li><a href="#w"><code>w</code></a></li>
-<li><a href="#wait"><code>wait</code></a></li>
-<li><a href="#wall"><code>wall</code></a></li>
-<li><a href="#watch"><code>watch</code></a></li>
-<li><a href="#wc"><code>wc</code></a></li>
-<li><a href="#wget"><code>wget</code></a></li>
-<li><a href="#whatis"><code>whatis</code></a></li>
-<li><a href="#whereis"><code>whereis</code></a></li>
-<li><a href="#which"><code>which</code></a></li>
-<li><a href="#who"><code>who</code></a></li>
-<li><a href="#whoami"><code>whoami</code></a></li>
-<li><a href="#write"><code>write</code></a></li>
-</ul>
-<h3 id="字母-X"><a href="#字母-X" class="headerlink" title="字母 X"></a>字母 X</h3><ul>
-<li><a href="#xargs"><code>xargs</code></a></li>
-<li><a href="#xauth"><code>xauth</code></a></li>
-<li><a href="#xclip"><code>xclip</code></a></li>
-<li><a href="#xhost"><code>xhost</code></a></li>
-<li><a href="#xinit"><code>xinit</code></a></li>
-<li><a href="#xlsatoms"><code>xlsatoms</code></a></li>
-<li><a href="#xlsclients"><code>xlsclients</code></a></li>
-<li><a href="#xlsfonts"><code>xlsfonts</code></a></li>
-<li><a href="#xrandr"><code>xrandr</code></a></li>
-<li><a href="#xset"><code>xset</code></a></li>
-<li><a href="#xz"><code>xz</code></a></li>
-</ul>
-<h3 id="字母-Y"><a href="#字母-Y" class="headerlink" title="字母 Y"></a>字母 Y</h3><ul>
-<li><a href="#yes"><code>yes</code></a></li>
-<li><a href="#ypdomainname"><code>ypdomainname</code></a></li>
-<li><a href="#yum"><code>yum</code></a></li>
-</ul>
-<h3 id="字母-Z"><a href="#字母-Z" class="headerlink" title="字母 Z"></a>字母 Z</h3><ul>
-<li><a href="#zcat"><code>zcat</code></a></li>
-<li><a href="#zfore"><code>zfore</code></a></li>
-<li><a href="#zip"><code>zip</code></a></li>
-<li><a href="#zipinfo"><code>zipinfo</code></a></li>
-<li><a href="#zipsplit"><code>zipsplit</code></a></li>
-<li><a href="#znew"><code>znew</code></a></li>
-</ul>
-<hr>
-<h2 id="ab"><a href="#ab" class="headerlink" title="ab  "></a><code>ab</code>  <a id='ab'></a></h2><p>Apache服务器的性能测试工具</p>
+                <h1 id="Linux-命令大全"><a href="#Linux-命令大全" class="headerlink" title="Linux 命令大全"></a>Linux 命令大全</h1><h2 id="ab"><a href="#ab" class="headerlink" title="ab  "></a><code>ab</code>  <a id='ab'></a></h2><p>Apache服务器的性能测试工具</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>若系统未安装，使用以下命令安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Ubuntu</span><br>sudo apt-get install apache2-utils<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Centos</span><br>yum install httpd-tools<br><br></code></pre></td></tr></table></figure>
 
@@ -7232,7 +6584,7 @@
 
 
 <h2 id="kill"><a href="#kill" class="headerlink" title="kill  "></a><code>kill</code>  <a id='kill'></a></h2><p>发送信号到进程。</p>
-<h2 id="目录-1"><a href="#目录-1" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4">bash内建命令</a></li>
 <li><a href="#%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4">GNU coreutils中的命令</a></li>
 </ul>
@@ -8550,12 +7902,12 @@
 <p> <strong>使用文件进行邮件发送</strong> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mail -s &quot;Hello from jsdig.com by file&quot; admin@jsdig.com &lt; mail.txt<br></code></pre></td></tr></table></figure>
 
-<p>使用上面的命令后，我们就可以把mail.txt文件的内容作为邮件的内容发送给<a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#x6a;&#x73;&#100;&#105;&#x67;&#46;&#x63;&#111;&#109;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#x6a;&#x73;&#100;&#105;&#x67;&#46;&#x63;&#111;&#109;</a>了。</p>
+<p>使用上面的命令后，我们就可以把mail.txt文件的内容作为邮件的内容发送给<a href="mailto:&#x61;&#100;&#109;&#x69;&#110;&#x40;&#106;&#x73;&#100;&#x69;&#103;&#x2e;&#x63;&#111;&#109;">&#x61;&#100;&#109;&#x69;&#110;&#x40;&#106;&#x73;&#100;&#x69;&#103;&#x2e;&#x63;&#111;&#109;</a>了。</p>
 <p>使用上述三种方式都可以给外部邮箱进行邮件发送，但因为前面2中都是直接在shell中敲入邮件内容，因此无法输入中文，即使我们使用粘贴的方式输入了中文，那么收到的邮件也是乱码的。但第3种方式，我们可以在window下编辑好邮件内容后，放到linux下，再进行发送，这样就可以正常发送中文了。不过目前邮件的中文标题暂时没有找到解决办法。</p>
 <p>因为mail程序本身就是调用sendmail来进行邮件发送的，因此我们可以在mail命令中使用sendmail的参数进行配置，比如我想使用特定的发件人发送邮件，可以使用如下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mail -s &quot;Hello from jsdig.com with sender&quot; admin@jsdig.com -- -f user@jsdig.com&lt;mail.txt<br></code></pre></td></tr></table></figure>
 
-<p>上面的命令中，我们使用了– -f <a href="mailto:&#x75;&#115;&#x65;&#x72;&#x40;&#106;&#115;&#100;&#x69;&#103;&#46;&#x63;&#111;&#109;">&#x75;&#115;&#x65;&#x72;&#x40;&#106;&#115;&#100;&#x69;&#103;&#46;&#x63;&#111;&#109;</a>这样的参数，这是sendmail的选项，其中-f表示邮件的发送人邮件地址。</p>
+<p>上面的命令中，我们使用了– -f <a href="mailto:&#x75;&#x73;&#101;&#114;&#64;&#x6a;&#115;&#100;&#105;&#103;&#x2e;&#x63;&#x6f;&#x6d;">&#x75;&#x73;&#101;&#114;&#64;&#x6a;&#115;&#100;&#105;&#103;&#x2e;&#x63;&#x6f;&#x6d;</a>这样的参数，这是sendmail的选项，其中-f表示邮件的发送人邮件地址。</p>
 <p>很多情况下，我们也需要使用邮件来发送附件，在linux下使用mail命令发送附件也很简单，不过首先需要安装uuencode软件包，这个程序是对二进制文件进行编码使其适合通过邮件进行发送，在CentOS上安装该软件包如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install sharutils<br></code></pre></td></tr></table></figure>
 
@@ -10313,7 +9665,7 @@
 
 <h3 id="参数-222"><a href="#参数-222" class="headerlink" title="参数"></a>参数</h3><p>文件：需要转换格式的文件。</p>
 <h2 id="printf"><a href="#printf" class="headerlink" title="printf  "></a><code>printf</code>  <a id='printf'></a></h2><p>格式化并输出结果。</p>
-<h2 id="目录-2"><a href="#目录-2" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2 id="目录-1"><a href="#目录-1" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4">bash内建命令</a></li>
 <li><a href="#%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4">GNU coreutils中的命令</a></li>
 </ul>
@@ -12357,7 +11709,7 @@
 <p>下一步，编辑smartd的配置文件（&#x2F;etc&#x2F;smartd.conf），添加以下行内容。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/dev/sda -m myemail@mydomain.com -M test<br></code></pre></td></tr></table></figure>
 
-<p>选项说明 <br>-m ：指定发送测试报告到某个电子邮件地址。这里可以是系统用户比如root，或者如果服务器已经配置成发送电子邮件到系统外部，则是类似于 <a href="mailto:&#x6d;&#121;&#101;&#x6d;&#x61;&#105;&#108;&#x40;&#109;&#x79;&#x64;&#x6f;&#109;&#97;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x6d;&#121;&#101;&#x6d;&#x61;&#105;&#108;&#x40;&#109;&#x79;&#x64;&#x6f;&#109;&#97;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> 的邮件地址。<br>-M ：指定发送邮件报告的期望类型。<br>once：为检测到的每种磁盘问题只发送一封警告邮件。<br>daily：为检测到的每种磁盘问题每隔一天发送一封额外的警告提醒邮件。<br>diminishing：为检测到的每种问题发送一封额外的警告提醒邮件，开始是每隔一天，然后每隔两天，每隔四天，以此类推。每个间隔是前一次间隔的2倍。<br>test：只要smartd一启动，立即发送一封测试邮件。<br>exec PATH：取代默认的邮件命令，运行PATH路径下的可执行文件。PATH必须指向一个可执行的二进制文件或脚本。当检测到一个问题时，可以指定执行一个期望的动作（闪烁控制台、关闭系统等等）。</p>
+<p>选项说明 <br>-m ：指定发送测试报告到某个电子邮件地址。这里可以是系统用户比如root，或者如果服务器已经配置成发送电子邮件到系统外部，则是类似于 <a href="mailto:&#109;&#x79;&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#x6d;&#x79;&#x64;&#x6f;&#109;&#97;&#x69;&#110;&#x2e;&#99;&#x6f;&#109;">&#109;&#x79;&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#x6d;&#x79;&#x64;&#x6f;&#109;&#97;&#x69;&#110;&#x2e;&#99;&#x6f;&#109;</a> 的邮件地址。<br>-M ：指定发送邮件报告的期望类型。<br>once：为检测到的每种磁盘问题只发送一封警告邮件。<br>daily：为检测到的每种磁盘问题每隔一天发送一封额外的警告提醒邮件。<br>diminishing：为检测到的每种问题发送一封额外的警告提醒邮件，开始是每隔一天，然后每隔两天，每隔四天，以此类推。每个间隔是前一次间隔的2倍。<br>test：只要smartd一启动，立即发送一封测试邮件。<br>exec PATH：取代默认的邮件命令，运行PATH路径下的可执行文件。PATH必须指向一个可执行的二进制文件或脚本。当检测到一个问题时，可以指定执行一个期望的动作（闪烁控制台、关闭系统等等）。</p>
 <p>保存改动并重启smartd。</p>
 <h2 id="smbclient"><a href="#smbclient" class="headerlink" title="smbclient  "></a><code>smbclient</code>  <a id='smbclient'></a></h2><p>交互方式访问samba服务器</p>
 <h2 id="补充说明-403"><a href="#补充说明-403" class="headerlink" title="补充说明"></a>补充说明</h2><p><strong>smbclient命令</strong> 属于samba套件，它提供一种命令行使用交互式方式访问samba服务器的共享资源。</p>
@@ -12639,10 +11991,10 @@
 <p>（LCTT 译注：DNS 协议中的 WKS 记录类型意即“众所周知的业务描述”，是类似于 A、MX 这样的 DNS 记录类型，用于描述某个 IP 所提供的服务，目前鲜见使用。参见： <a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/E19683-01/806-4077/dnsintro-154/index.html">https://docs.oracle.com/cd/E19683-01/806-4077/dnsintro-154/index.html</a> 。）</p>
 <p>第二天，我就收到了 Joyce 发来的邮件：</p>
 <blockquote>
-<p>Date: Mon, 10 Jul 1995 15:35:33 -0700<br>From: <a href="mailto:&#106;&#x6b;&#114;&#x65;&#121;&#x40;&#73;&#83;&#73;&#46;&#69;&#x44;&#x55;">&#106;&#x6b;&#114;&#x65;&#121;&#x40;&#73;&#83;&#73;&#46;&#69;&#x44;&#x55;</a><br>To: <a href="mailto:&#121;&#108;&#111;&#64;&#99;&#115;&#46;&#x68;&#x75;&#x74;&#x2e;&#x66;&#105;">&#121;&#108;&#111;&#64;&#99;&#115;&#46;&#x68;&#x75;&#x74;&#x2e;&#x66;&#105;</a><br>Subject: 回复：请求取得一个端口号<br>Cc: <a href="mailto:&#105;&#x61;&#x6e;&#97;&#64;&#x49;&#x53;&#x49;&#46;&#69;&#68;&#x55;">&#105;&#x61;&#x6e;&#97;&#64;&#x49;&#x53;&#x49;&#46;&#69;&#68;&#x55;</a><br>Tatu,<br>我们将端口号 22 分配给 ssh 服务了，你目前是该服务的主要联系人。<br>Joyce  </p>
+<p>Date: Mon, 10 Jul 1995 15:35:33 -0700<br>From: <a href="mailto:&#106;&#107;&#114;&#101;&#121;&#x40;&#73;&#x53;&#73;&#x2e;&#x45;&#68;&#85;">&#106;&#107;&#114;&#101;&#121;&#x40;&#73;&#x53;&#73;&#x2e;&#x45;&#68;&#85;</a><br>To: <a href="mailto:&#x79;&#x6c;&#x6f;&#x40;&#99;&#x73;&#46;&#104;&#117;&#x74;&#46;&#x66;&#x69;">&#x79;&#x6c;&#x6f;&#x40;&#99;&#x73;&#46;&#104;&#117;&#x74;&#46;&#x66;&#x69;</a><br>Subject: 回复：请求取得一个端口号<br>Cc: <a href="mailto:&#105;&#x61;&#110;&#97;&#64;&#x49;&#83;&#x49;&#46;&#69;&#68;&#85;">&#105;&#x61;&#110;&#97;&#64;&#x49;&#83;&#x49;&#46;&#69;&#68;&#85;</a><br>Tatu,<br>我们将端口号 22 分配给 ssh 服务了，你目前是该服务的主要联系人。<br>Joyce  </p>
 </blockquote>
 <p>这就搞定了！SSH 的端口正式使用 22！！！</p>
-<p>1995 年 7 月 12 日上午 2 点 21 分，我给我在赫尔辛基理工大学的测试者们宣布了 SSH 的最后 beta 版本。当日下午 5 点 23 分，我给测试者们宣布了 ssh-1.0.0 版本。1995 年 7 月 12 日，下午 5 点 51 分，我将一份 SSH（安全终端）的宣告发给了 <a href="mailto:&#x63;&#121;&#x70;&#104;&#101;&#114;&#112;&#x75;&#110;&#x6b;&#x73;&#x40;&#x74;&#111;&#97;&#100;&#x2e;&#99;&#x6f;&#x6d;">&#x63;&#121;&#x70;&#104;&#101;&#114;&#112;&#x75;&#110;&#x6b;&#x73;&#x40;&#x74;&#111;&#97;&#100;&#x2e;&#99;&#x6f;&#x6d;</a> 的邮件列表，此外我还将其发给了一些新闻组、邮件列表和一些在因特网上讨论相关话题的人们。</p>
+<p>1995 年 7 月 12 日上午 2 点 21 分，我给我在赫尔辛基理工大学的测试者们宣布了 SSH 的最后 beta 版本。当日下午 5 点 23 分，我给测试者们宣布了 ssh-1.0.0 版本。1995 年 7 月 12 日，下午 5 点 51 分，我将一份 SSH（安全终端）的宣告发给了 <a href="mailto:&#99;&#121;&#x70;&#104;&#x65;&#x72;&#x70;&#x75;&#x6e;&#107;&#x73;&#64;&#116;&#111;&#x61;&#x64;&#x2e;&#x63;&#111;&#x6d;">&#99;&#121;&#x70;&#104;&#x65;&#x72;&#x70;&#x75;&#x6e;&#107;&#x73;&#64;&#116;&#111;&#x61;&#x64;&#x2e;&#x63;&#111;&#x6d;</a> 的邮件列表，此外我还将其发给了一些新闻组、邮件列表和一些在因特网上讨论相关话题的人们。</p>
 <h4 id="如何更改-SSH-服务的端口号"><a href="#如何更改-SSH-服务的端口号" class="headerlink" title="如何更改 SSH 服务的端口号"></a>如何更改 SSH 服务的端口号</h4><p>SSH 服务器是默认运行在 22 号端口上的。然而，由于某些原因需要，它也可以运行在别的端口上。比如为了方便测试使用，又比如在同一个宿主机上运行多个不同的配置。当然，极少情况下，不使用 root 权限运行它也可以，比如某些必须运行在非特权的端口的情况（端口号大于等于 1024）。</p>
 <p>端口号可以在配置文件 &#x2F;etc&#x2F;ssh&#x2F;sshd_config 中将 Port 22 更改。也可以使用 -p  选项运行 sshd。SSH 客户端和 sftp 程序也可以使用 -p  选项。</p>
 <h4 id="配置-SSH-协议穿越防火墙"><a href="#配置-SSH-协议穿越防火墙" class="headerlink" title="配置 SSH 协议穿越防火墙"></a>配置 SSH 协议穿越防火墙</h4><p>SSH 是少数通常被许可穿越防火墙的协议之一。通常的做法是不限制出站的 SSH 连接，尤其常见于一些较小的或者比较技术型的组织中，而入站的 SSH 连接通常会限制到一台或者是少数几台服务器上。</p>
