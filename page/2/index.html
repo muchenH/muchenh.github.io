@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -41,7 +44,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -62,7 +65,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -97,7 +100,7 @@
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
 
-    <!-- Collapsible content -->
+    <!-- Collapsible content (desktop) -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
         
@@ -106,7 +109,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -118,7 +121,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -130,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -142,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -154,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/links/" target="_self">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -166,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -193,6 +196,123 @@
   </div>
 </nav>
 
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/links/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>友链</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
   
 
 <div id="banner" class="banner" parallax=true
@@ -218,6 +338,8 @@
   </div>
 </div>
 
+
+
 </div>
 
   </header>
@@ -233,6 +355,7 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+<h1 style="display: none">muchenH Blog</h1>
 
   <div class="row mx-auto index-card">
     
@@ -244,12 +367,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-eval%E5%87%BD%E6%95%B0/" target="_self">
           面向对象-eval函数
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-eval%E5%87%BD%E6%95%B0/" target="_self">
@@ -311,12 +434,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%96%87%E4%BB%B6/" target="_self">
           面向对象-文件
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%96%87%E4%BB%B6/" target="_self">
@@ -378,12 +501,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/" target="_self">
           面向对象-模块和包
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/" target="_self">
@@ -445,12 +568,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%BC%82%E5%B8%B8/" target="_self">
           面向对象-异常
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%BC%82%E5%B8%B8/" target="_self">
@@ -512,12 +635,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%8D%95%E4%BE%8B/" target="_self">
           面向对象-单例
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%8D%95%E4%BE%8B/" target="_self">
@@ -579,12 +702,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E6%96%B9%E6%B3%95/" target="_self">
           面向对象-类属性和类方法
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E6%96%B9%E6%B3%95/" target="_self">
@@ -646,12 +769,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81/" target="_self">
           面向对象-多态
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81/" target="_self">
@@ -713,12 +836,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF/" target="_self">
           面向对象-继承
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF/" target="_self">
@@ -780,12 +903,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89/" target="_self">
           面向对象（私有属性和方法）
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89/" target="_self">
@@ -847,12 +970,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%A1%88%E4%BE%8B/" target="_self">
           面向对象案例
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%A1%88%E4%BE%8B/" target="_self">
@@ -914,12 +1037,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" target="_self">
           面向对象
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/29/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" target="_self">
@@ -981,12 +1104,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/29/Python%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" target="_self">
           Python学习路线
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/29/Python%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" target="_self">
@@ -1055,12 +1178,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/29/Linux%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" target="_self">
           Linux学习路线
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/29/Linux%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" target="_self">
@@ -1129,12 +1252,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A6/" target="_self">
           使用PyCharm编写Python.PartⅦ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A6/" target="_self">
@@ -1203,12 +1326,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A5/" target="_self">
           使用PyCharm编写Python.PartⅥ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A5/" target="_self">
@@ -1277,12 +1400,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A4/" target="_self">
           使用PyCharm编写Python.PartⅤ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A4/" target="_self">
@@ -1351,12 +1474,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A3/" target="_self">
           使用PyCharm编写Python.PartⅣ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A3/" target="_self">
@@ -1425,12 +1548,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A2/" target="_self">
           使用PyCharm编写Python.PartⅢ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A2/" target="_self">
@@ -1499,12 +1622,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A1/" target="_self">
           使用PyCharm编写Python.PartⅡ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A1/" target="_self">
@@ -1573,12 +1696,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A0/" target="_self">
           使用PyCharm编写Python.PartⅠ
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/2021/08/28/%E4%BD%BF%E7%94%A8PyCharm%E7%BC%96%E5%86%99Python-Part%E2%85%A0/" target="_self">
@@ -1715,7 +1838,9 @@
       </span>
     
     
+
   
+
 </div>
 
   
@@ -1730,7 +1855,6 @@
   
 </div>
 
-  
   
 </div>
 
