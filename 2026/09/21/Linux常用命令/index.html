@@ -1,0 +1,1347 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="muchenH">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux 常用命令速查 📚 按用途分组的常用 Linux 命令速查表，保留各命令的原始文档结构（命令名 &#x3D;&#x3D;&#x3D; + 补充说明 &#x2F; 语法 &#x2F; 选项 &#x2F; 实例 &#x2F; 注意 &#x2F; 参考链接），并对冗长内容做了精简。来源：Linux命令&#x2F; 目录下各独立命令文档（ls、cat、ps、git、systemctl、chmod、cp、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令速查">
+<meta property="og:url" content="http://example.com/2026/09/21/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="muchenH Blog">
+<meta property="og:description" content="Linux 常用命令速查 📚 按用途分组的常用 Linux 命令速查表，保留各命令的原始文档结构（命令名 &#x3D;&#x3D;&#x3D; + 补充说明 &#x2F; 语法 &#x2F; 选项 &#x2F; 实例 &#x2F; 注意 &#x2F; 参考链接），并对冗长内容做了精简。来源：Linux命令&#x2F; 目录下各独立命令文档（ls、cat、ps、git、systemctl、chmod、cp、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="article:published_time" content="2026-09-21T05:37:15.000Z">
+<meta property="article:modified_time" content="2026-09-24T05:29:17.086Z">
+<meta property="article:author" content="muchenH">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/default.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux常用命令速查 - muchenH Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>辰妍亦沐</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/links/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>友链</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux常用命令速查"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-21 13:37" pubdate>
+          2026年9月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          174 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux常用命令速查</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux-常用命令速查-📚"><a href="#Linux-常用命令速查-📚" class="headerlink" title="Linux 常用命令速查 📚"></a>Linux 常用命令速查 📚</h1><blockquote>
+<p>按用途分组的常用 Linux 命令速查表，保留各命令的原始文档结构（命令名 &#x3D;&#x3D;&#x3D; + 补充说明 &#x2F; 语法 &#x2F; 选项 &#x2F; 实例 &#x2F; 注意 &#x2F; 参考链接），并对冗长内容做了精简。<br>来源：<code>Linux命令/</code> 目录下各独立命令文档（ls、cat、ps、git、systemctl、chmod、cp、mv、find、df、free、tar、curl、wget、mkdir、rm、tail、head、top、sudo、du、ln、touch、diff、ssh、sort、uniq、wc、kill、egrep、pwd、man、ping、netstat、ss）。</p>
+</blockquote>
+<h2 id="目录-📑"><a href="#目录-📑" class="headerlink" title="目录 📑"></a>目录 📑</h2><ul>
+<li><a href="#%E4%B8%80%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86">一、文件与目录管理</a> — <code>ls</code> <code>pwd</code> <code>mkdir</code> <code>rm</code> <code>cp</code> <code>mv</code> <code>ln</code> <code>touch</code> <code>find</code></li>
+<li><a href="#%E4%BA%8C%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%A4%84%E7%90%86">二、内容查看与处理</a> — <code>cat</code> <code>head</code> <code>tail</code> <code>grep/egrep</code> <code>sort</code> <code>uniq</code> <code>wc</code></li>
+<li><a href="#%E4%B8%89%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF">三、系统信息</a> — <code>ps</code> <code>top</code> <code>df</code> <code>free</code> <code>du</code> <code>systemctl</code></li>
+<li><a href="#%E5%9B%9B%E7%BD%91%E7%BB%9C">四、网络</a> — <code>ssh</code> <code>curl</code> <code>wget</code> <code>ping</code> <code>netstat</code> <code>ss</code> <code>nmcli</code></li>
+<li><a href="#%E4%BA%94%E5%8E%8B%E7%BC%A9%E4%B8%8E%E5%BD%92%E6%A1%A3">五、压缩与归档</a> — <code>tar</code></li>
+<li><a href="#%E5%85%AD%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">六、权限管理</a> — <code>chmod</code></li>
+<li><a href="#%E4%B8%83%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86">七、进程管理</a> — <code>kill</code></li>
+<li><a href="#%E5%85%AB%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6">八、版本控制</a> — <code>git</code></li>
+<li><a href="#%E4%B9%9D%E5%B8%AE%E5%8A%A9%E4%B8%8E%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87">九、帮助与权限提升</a> — <code>sudo</code> <code>man</code></li>
+</ul>
+<hr>
+<h2 id="一、文件与目录管理-🗂️"><a href="#一、文件与目录管理-🗂️" class="headerlink" title="一、文件与目录管理 🗂️"></a>一、文件与目录管理 🗂️</h2><h3 id="ls-🔍"><a href="#ls-🔍" class="headerlink" title="ls 🔍"></a>ls 🔍</h3><p>列出目录 contents 及文件属性。</p>
+<h4 id="补充说明-📖"><a href="#补充说明-📖" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ls</code> 命令用于列出目标目录中所含内容（子目录与文件），并可选列出文件属性（如大小、时间、权限等）。<code>ls</code> 默认在当前目录查找，若目标为目录则递归列出其下内容。</p>
+<h4 id="语法-📝"><a href="#语法-📝" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls [-aAdFhLlmNnrRsstwX] [文件/目录名]<br></code></pre></td></tr></table></figure>
+
+<h4 id="常用选项-⚙️"><a href="#常用选项-⚙️" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  列出全部文件（含隐藏文件，以 . 开头）<br>-A  列出全部文件（不含 . 与 ..）<br>-d  仅列出目录本身，不列出内容（配合 -l 查看目录权限）<br>-F  为不同类型追加标识：目录 /、符号链接 @、可执行文件 *<br>-l  长格式列出（权限、链接数、所有者、组、大小、修改时间）<br>-h  人类易读的文件大小（配合 -l）<br>-R  递归列出子目录<br>-S  按文件大小排序<br>-t  按修改时间排序（最新在前）<br>-u  配合 -l 按访问时间排序<br>-r  反向排序<br>-R  递归<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡"><a href="#常见用法-💡" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls                    # 列出当前目录内容<br>ls -l                 # 列出详细文件列表<br>ls -lh                # 详细列表 + 人类可读大小<br>ls -la                # 含隐藏文件的详细列表<br>ls -ld /usr           # 仅查看 /usr 目录本身的权限<br>ls -lt                # 按时间排序，最近修改的在前<br>ls -lSh               # 按大小排序<br>ls *.txt              # 列出匹配模式的文件<br>ls -1                 # 每行一个文件名（便于脚本处理）<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗"><a href="#参考链接-🔗" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ls.html">命令网 ls</a></li>
+</ul>
+<hr>
+<h3 id="pwd-📍"><a href="#pwd-📍" class="headerlink" title="pwd 📍"></a>pwd 📍</h3><p>显示当前工作目录的绝对路径。</p>
+<h4 id="补充说明-📖-1"><a href="#补充说明-📖-1" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>pwd</code>（print working directory）用于显示用户当前所在工作目录（以绝对路径显示）。#### 概要 📝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">pwd [-LP]        # bash 内建命令<br>pwd [OPTION]...  # GNU coreutils 外部命令<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️"><a href="#选项-⚙️" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">-L, --logical  打印环境变量 &quot;$PWD&quot; 的值，可能为符号链接（默认值）<br>-P, --physical 打印当前工作目录的物理位置（外部命令默认值）<br>--help         显示帮助信息并退出<br>--version      显示版本信息并退出<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-1"><a href="#常见用法-💡-1" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">pwd                     # 查看当前所在路径 → /var<br>cd /var/                # 进入目录，其中 mail 是软链接 -&gt; spool/mail<br>pwd                     # 默认显示连接文件全路径 → /var/mail<br>pwd -P                  # 显示软链接最终指向的真实路径 → /var/spool/mail<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-1"><a href="#参考链接-🔗-1" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-pwd.html">命令网 pwd</a></li>
+</ul>
+<hr>
+<h3 id="mkdir-🆕"><a href="#mkdir-🆕" class="headerlink" title="mkdir 🆕"></a>mkdir 🆕</h3><p>创建目录。</p>
+<h4 id="补充说明-📖-2"><a href="#补充说明-📖-2" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>mkdir</code> 命令用于创建目录（英文 make directory）。默认仅创建指定的单层目录；若目标目录的父目录不存在，需加 <code>-p</code> 自动创建父目录。</p>
+<h4 id="语法-📝-1"><a href="#语法-📝-1" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir [-m权限] [-p/创建多级目录] [目录名]<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-2"><a href="#常见用法-💡-2" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir test              # 创建 test 目录<br>mkdir -p /tmp/a/b/c     # 创建多级目录（自动创建中间目录）<br>mkdir -m 777 test       # 创建时设定权限为 777<br>mkdir test1 test2 test3 # 一次创建多个目录<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-2"><a href="#参考链接-🔗-2" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-mkdir.html">命令网 mkdir</a></li>
+</ul>
+<hr>
+<h3 id="rm-🗑️"><a href="#rm-🗑️" class="headerlink" title="rm 🗑️"></a>rm 🗑️</h3><p>删除文件或目录。</p>
+<h4 id="补充说明-📖-3"><a href="#补充说明-📖-3" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>rm</code> 命令用于删除文件或直接删除非空目录（英文 remove）。默认删除单个文件；删除目录需配合 <code>-r</code>（递归），删除空目录配合 <code>-d</code>。</p>
+<h4 id="语法-📝-2"><a href="#语法-📝-2" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm [-fiIr] 文件或目录<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-1"><a href="#选项-⚙️-1" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">-f  强制删除（忽略不存在的文件，不提示）<br>-i  交互模式，删除前逐一确认<br>-r  递归删除目录及其内容<br>-d  将目录作为文件删除（删除空目录）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-3"><a href="#常见用法-💡-3" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm test.txt                 # 删除文件（提示确认）<br>rm -f test.txt              # 强制删除，不提示<br>rm -rf test/                # 递归删除整个目录（谨慎使用）<br>rm -rf /tmp/*               # 删除 /tmp 下所有内容<br>rm -i *.log                 # 逐个确认再删除 .log 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-3"><a href="#参考链接-🔗-3" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-rm.html">命令网 rm</a></li>
+</ul>
+<hr>
+<h3 id="cp-📋"><a href="#cp-📋" class="headerlink" title="cp 📋"></a>cp 📋</h3><p>复制文件或目录。</p>
+<h4 id="补充说明-📖-4"><a href="#补充说明-📖-4" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>cp</code> 命令用于复制文件或目录（英文 copy）。源文件可为一个或多个，目标为单一文件时所有源复制到该目录；目标为目录时复制到其下。</p>
+<h4 id="语法-📝-3"><a href="#语法-📝-3" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp [-airbdfgprsuxX] 源文件 目标文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-2"><a href="#选项-⚙️-2" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  复制（保留权限、时间戳等，类似 -dr）<br>-r  递归复制目录及子目录<br>-d  保留符号链接本身而非复制目标<br>-f  强制覆盖<br>-i  覆盖前确认<br>-p  保留原始权限、所有者、时间戳等属性<br>-r  递归处理目录<br>-u  仅当源文件比目标新时才复制（更新）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-4"><a href="#常见用法-💡-4" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp file1 file2              # 复制 file1 为 file2（或重命名）<br>cp -r dir1 dir2             # 递归复制目录<br>cp -a dir1 dir2             # 完整保留属性复制目录（备份常用）<br>cp -u file1 dir2            # 仅更新 dir2 中较新的文件<br>cp -i file1 file2           # 覆盖前提示确认<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-4"><a href="#参考链接-🔗-4" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-cp.html">命令网 cp</a></li>
+</ul>
+<hr>
+<h3 id="mv-🚩"><a href="#mv-🚩" class="headerlink" title="mv 🚩"></a>mv 🚩</h3><p>移动或重命名文件。</p>
+<h4 id="补充说明-📖-5"><a href="#补充说明-📖-5" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>mv</code> 命令用于移动或重命名文件、目录、符号链接（英文 move）。源与目标可为一个或多个；目标为目录时移入其中。#### 语法 📝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mv [-fiv] SOURCE... DIRECTORY<br></code></pre></td></tr></table></figure>
+
+<h4 id="常用选项-⚙️-1"><a href="#常用选项-⚙️-1" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-f  强制覆盖，不提示<br>-i  覆盖前提示确认<br>-n  不覆盖已存在的文件<br>-t  指定目标目录<br>-v  显示详细过程<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-5"><a href="#常见用法-💡-5" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">mv file1 file2              # 重命名 file1 为 file2<br>mv file1 /home/             # 将 file1 移入 /home/<br>mv dir1 dir2                # 将 dir1 移入 dir2 下<br>mv -f file1 /home/file1     # 强制移动，覆盖同名文件<br>mv -i file1 /home/          # 移动前提示确认<br>mv -v *.txt /backup/        # 详细列出移动的 .txt 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-5"><a href="#参考链接-🔗-5" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-mv.html">命令网 mv</a></li>
+</ul>
+<hr>
+<h3 id="ln-🔗"><a href="#ln-🔗" class="headerlink" title="ln 🔗"></a>ln 🔗</h3><p>为文件创建链接。</p>
+<h4 id="补充说明-📖-6"><a href="#补充说明-📖-6" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ln</code> 命令用于为文件创建链接（英文 link）。默认创建硬链接；加 <code>-s</code> 创建符号链接（软链接）。#### 语法 📝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ln [-abFnis] 源文件 目标文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-3"><a href="#选项-⚙️-3" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  保持符号链接状态<br>-b  为覆盖目标创建备份（同 --backup）<br>-F  目标存在时强制创建，并移除冲突项<br>-f  强制创建链接<br>-i  覆盖前提示确认<br>-n  将符号链接指向目标本身而非其所在目录<br>-s  创建符号链接（软链接）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-6"><a href="#常见用法-💡-6" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">ln source target                 # 创建硬链接<br>ln -s source target              # 创建符号链接（软链接）<br>ln -sf source target             # 强制创建符号链接（覆盖已有）<br>ln -s /path/to/repo ~/.link      # 将路径软链接到主目录<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-6"><a href="#参考链接-🔗-6" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ln.html">命令网 ln</a></li>
+</ul>
+<hr>
+<h3 id="touch-🕒"><a href="#touch-🕒" class="headerlink" title="touch 🕒"></a>touch 🕒</h3><p>创建空文件或更新修改时间。</p>
+<h4 id="补充说明-📖-7"><a href="#补充说明-📖-7" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>touch</code> 命令用于创建空文件或修改已有文件的访问&#x2F;修改时间（英文 touch）。若文件不存在则创建一个 0 长度空文件；若存在则更新其时间戳为当前时间。</p>
+<h4 id="语法-📝-4"><a href="#语法-📝-4" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch [选项] 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="常用选项-⚙️-2"><a href="#常用选项-⚙️-2" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  仅修改访问时间（atime）<br>-m  仅修改修改时间（mtime）<br>-t STAMP 使用指定时间（[[CC]YY]MMDDhhmm[.ss]）<br>-c  目标已存在则不创建、不报错<br>-d DATE 使用指定日期时间字符串<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-7"><a href="#常见用法-💡-7" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch file.txt                 # 创建空文件 file.txt（不存在时）<br>touch a.txt b.txt              # 一次创建多个空文件<br>touch -c file.txt              # 不创建不存在的文件<br>touch -d &quot;2023-01-01&quot; file.txt # 将修改时间设为指定日期<br>touch -a file.txt              # 仅更新访问时间<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-7"><a href="#参考链接-🔗-7" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-touch.html">命令网 touch</a></li>
+</ul>
+<hr>
+<h3 id="find-🔎"><a href="#find-🔎" class="headerlink" title="find 🔎"></a>find 🔎</h3><p>在指定目录下查找文件。</p>
+<h4 id="补充说明-📖-8"><a href="#补充说明-📖-8" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>find</code> 命令用来在指定目录下查找文件。位于参数之前的字符串视为欲查找的目录名；不设置参数则在当前目录查找子目录与文件并全部显示。</p>
+<h4 id="语法-📝-5"><a href="#语法-📝-5" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find [路径] [表达式]<br></code></pre></td></tr></table></figure>
+
+<h4 id="常用选项-⚙️（部分）"><a href="#常用选项-⚙️（部分）" class="headerlink" title="常用选项 ⚙️（部分）"></a>常用选项 ⚙️（部分）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">-name &lt;样式&gt;      按文件名匹配（支持通配符）<br>-iname &lt;样式&gt;     忽略大小写匹配文件名<br>-type &lt;类型&gt;      按文件类型查找（见下方类型表）<br>-size ±N[unit]    按文件大小匹配（+大于 / -小于 / 等于）<br>-mtime/atime/ctime N  按修改/访问/变更时间（天）查找<br>-mmin/amin/cmin N     按分钟查找<br>-perm &lt;数值&gt;      按权限数值查找<br>-user &lt;用户&gt;      按所有者查找<br>-group &lt;组&gt;       按所属组查找<br>-newer &lt;文件&gt;     查找比指定文件更新者<br>-exec cmd &#123;&#125; \;   对匹配结果执行命令<br>-ok cmd &#123;&#125; \;     同 -exec，执行前逐一确认<br>-maxdepth N       限制最大搜索深度<br>-mindepth N       限制最小搜索深度<br>-empty            查找空文件或空目录<br>-prune            跳过指定目录<br></code></pre></td></tr></table></figure>
+
+<p><strong>文件类型参数表：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">f  普通文件    l  符号链接    d  目录<br>c  字符设备    b  块设备      s  套接字   p  Fifo<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-8"><a href="#常见用法-💡-8" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">find .                                  # 列出当前目录及子目录所有内容<br>find /home -name &quot;*.txt&quot;                # /home 下查找 .txt 文件<br>find /home -iname &quot;*.txt&quot;               # 忽略大小写<br>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)  # 匹配多种后缀<br>find /home ! -name &quot;*.txt&quot;              # 否定：非 .txt 文件<br>find . -maxdepth 3 -type f              # 最大深度 3 的普通文件<br>find . -type f -atime -7                # 7 天内被访问过的文件<br>find . -type f -size +10k               # 大于 10KB 的文件<br>find . -type f -perm 777                # 权限为 777 的文件<br>find . -type f -user tom                # 用户 tom 拥有的文件<br>find . -type f -name &quot;*.log&quot; -mtime +30 -exec cp &#123;&#125; old \;  # 30 天前的日志移到 old<br>find . -name &quot;*.txt&quot; -delete            # 删除匹配的 .txt 文件<br>find . -path &quot;./sk&quot; -prune -o -name &quot;*.txt&quot; -print  # 跳过 sk 目录<br>find . -empty                           # 列出长度为零的文件<br></code></pre></td></tr></table></figure>
+
+<p><strong>类型参数：</strong> 起始目录，查找的根路径。</p>
+<h4 id="参考链接-🔗-8"><a href="#参考链接-🔗-8" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-find.html">命令网 find</a></li>
+</ul>
+<hr>
+<h2 id="二、内容查看与处理-📄"><a href="#二、内容查看与处理-📄" class="headerlink" title="二、内容查看与处理 📄"></a>二、内容查看与处理 📄</h2><h3 id="cat-📃"><a href="#cat-📃" class="headerlink" title="cat 📃"></a>cat 📃</h3><p>查看文件内容。</p>
+<h4 id="补充说明-📖-9"><a href="#补充说明-📖-9" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>cat</code> 命令用于读取并输出文件内容（英文 concatenate，连接）。可一次性查看整个文件，也可配合重定向将多个文件合并。</p>
+<h4 id="语法-📝-6"><a href="#语法-📝-6" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat [-abEnTv] 文件...<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-4"><a href="#选项-⚙️-4" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b  对非空输出行编号<br>-n  对所有输出行编号（含空行）<br>-E  在每行末尾显示 $ 符号<br>-T  显示 Tab 符为 ^I<br>-v  显示不可见字符（Tab 除外）<br>-e  等价于 -vT<br>-s  压缩连续空行为一个<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-9"><a href="#常见用法-💡-9" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat file.txt                    # 查看文件内容<br>cat -n file.txt                 # 显示行号<br>cat -b file.txt                 # 仅对非空行编号<br>cat file1.txt file2.txt &gt; out.txt  # 合并两个文件到 out.txt<br>cat &gt; new.txt                   # 从键盘输入创建文件（Ctrl+D 结束）<br>cat -A file.txt                 # 显示行尾与 Tab（调试隐藏字符）<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-9"><a href="#参考链接-🔗-9" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-cat.html">命令网 cat</a></li>
+</ul>
+<hr>
+<h3 id="head-⬆️"><a href="#head-⬆️" class="headerlink" title="head ⬆️"></a>head ⬆️</h3><p>查看文件开头内容。</p>
+<h4 id="补充说明-📖-10"><a href="#补充说明-📖-10" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>head</code> 命令用于查看文件开头部分（英文 head，头部）。默认输出前 10 行；也可指定行数或字节数。</p>
+<h4 id="语法-📝-7"><a href="#语法-📝-7" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">head [-bcn] 文件<br>head -c &lt;字节数&gt; 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-5"><a href="#选项-⚙️-5" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b  按字节计数（配合 -n）<br>-c &lt;字节数&gt;  只输出前 N 个字节<br>-n &lt;行数&gt;  只输出前 N 行（默认 10）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-10"><a href="#常见用法-💡-10" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat file.txt                    # 查看文件内容<br>cat -n file.txt                 # 显示行号<br>cat -b file.txt                 # 仅对非空行编号<br>cat file1.txt file2.txt &gt; out.txt  # 合并两个文件到 out.txt<br>cat &gt; new.txt                   # 从键盘输入创建文件（Ctrl+D 结束）<br>cat -A file.txt                 # 显示行尾与 Tab（调试隐藏字符）<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-10"><a href="#参考链接-🔗-10" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-head.html">命令网 head</a></li>
+</ul>
+<hr>
+<h3 id="tail-⬇️"><a href="#tail-⬇️" class="headerlink" title="tail ⬇️"></a>tail ⬇️</h3><p>查看文件结尾内容。</p>
+<h4 id="补充说明-📖-11"><a href="#补充说明-📖-11" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>tail</code> 命令用于查看文件末尾部分（英文 tail，尾巴）。默认输出最后 10 行；配合 <code>-f</code> 可实时跟踪文件增长（适合看日志）。</p>
+<h4 id="语法-📝-8"><a href="#语法-📝-8" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">tail [-befn] [FILE]<br>tail [-c N] [FILE]<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-6"><a href="#选项-⚙️-6" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b  按字节计数<br>-c &lt;字节数&gt;  只输出最后 N 个字节<br>-e  等价于 -v<br>-f  跟踪文件增长（实时追加，Ctrl+C 结束）<br>-n &lt;行数&gt;  只输出最后 N 行（默认 10）<br>-v  显示详细处理信息<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-11"><a href="#常见用法-💡-11" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">tail file.txt                   # 查看文件最后 10 行<br>tail -n 20 file.txt             # 查看最后 20 行<br>tail -c 100 file.txt            # 查看最后 100 字节<br>tail -f /var/log/syslog         # 实时跟踪日志增长（看日志常用）<br>tail -n +50 file.txt            # 从第 50 行开始输出到结尾<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-11"><a href="#参考链接-🔗-11" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-tail.html">命令网 tail</a></li>
+</ul>
+<hr>
+<h3 id="grep-x2F-egrep-🔎"><a href="#grep-x2F-egrep-🔎" class="headerlink" title="grep &#x2F; egrep 🔎"></a>grep &#x2F; egrep 🔎</h3><p>按正则表达式搜索文件内容。</p>
+<blockquote>
+<p><code>grep</code> 基本正则；<code>egrep</code>（等价 <code>grep -E</code>）使用扩展正则，无需转义 <code>()</code> <code>|</code> <code>+</code> 等元字符。</p>
+</blockquote>
+<h4 id="补充说明-📖-12"><a href="#补充说明-📖-12" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>grep</code> 命令用于在文件中按字符串或正则匹配行并输出。<code>egrep</code> 使用扩展正则表达式（ERE），元字符可直接书写。</p>
+<h4 id="常用选项-⚙️-3"><a href="#常用选项-⚙️-3" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">-i  忽略大小写<br>-n  输出匹配行的行号<br>-v  反选：输出不匹配的行<br>-r  递归搜索子目录<br>-l  仅列出包含匹配的文件名<br>-c  只统计匹配行数<br>-w  按单词整体匹配<br>-E  使用扩展正则（egrep 等价）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-12"><a href="#常见用法-💡-12" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep &quot;error&quot; log.txt              # 查找包含 error 的行<br>grep -n &quot;error&quot; log.txt           # 带行号<br>grep -i &quot;error&quot; log.txt           # 忽略大小写<br>grep -v &quot;^#&quot; config.conf          # 排除注释行（# 开头）<br>grep -rn &quot;TODO&quot; src/              # 递归搜索 src 下 TODO<br>grep -l &quot;class&quot; *.java            # 仅列出匹配文件名<br>grep -c &quot;error&quot; log.txt           # 统计匹配行数<br>egrep -n &quot;cat|dog&quot; animals.txt    # 扩展正则：匹配 cat 或 dog<br>egrep -n &quot;[0-9]&#123;3&#125;&quot; numbers.txt   # 匹配三位数字<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-12"><a href="#参考链接-🔗-12" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-grep.html">命令网 grep</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-egrep.html">命令网 egrep</a></li>
+</ul>
+<hr>
+<h3 id="sort-📊"><a href="#sort-📊" class="headerlink" title="sort 📊"></a>sort 📊</h3><p>排序。</p>
+<h4 id="补充说明-📖-13"><a href="#补充说明-📖-13" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>sort</code> 命令用于对多行文本按一定规则排序（英文 sort，排序）。默认按 ASCII 首字母升序；支持按数字、指定列、忽略大小写、去重等。</p>
+<h4 id="语法-📝-9"><a href="#语法-📝-9" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sort [选项] 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-7"><a href="#选项-⚙️-7" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">-f  忽略大小写<br>-i  忽略不可打印字符<br>-n  按数字大小排序（默认按字符串）<br>-r  反向排序（降序）<br>-t  指定分隔符（配合 -k）<br>-k N[,M]  按第 N 到 M 列排序<br>-u  去重（保留重复项中第一行）<br>-b  忽略前导空白<br>-o FILE  将结果写入指定文件<br>-M  按月份（Jan..Dec）排序<br>-h  按人类易读大小排序（1K, 2M...）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-13"><a href="#常见用法-💡-13" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">sort file.txt                   # 按 ASCII 升序排序<br>sort -n file.txt                # 按数字排序<br>sort -nr file.txt               # 按数字降序<br>sort -k2 file.txt               # 按第二列排序<br>sort -u file.txt                # 排序并去重<br>sort -t: -k3 /etc/passwd        # 以 : 分隔，按第 3 列排序<br>sort -o out.txt file.txt        # 排序结果写入 out.txt<br>sort -h file_sizes.txt          # 按人类易读大小排序（1K/2M）<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-13"><a href="#参考链接-🔗-13" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-sort.html">命令网 sort</a></li>
+</ul>
+<hr>
+<h3 id="uniq-🆑"><a href="#uniq-🆑" class="headerlink" title="uniq 🆑"></a>uniq 🆑</h3><p>去重相邻重复行。</p>
+<blockquote>
+<p><code>uniq</code> 只处理<strong>相邻</strong>的重复行，通常先 <code>sort</code> 再 <code>uniq</code>。</p>
+</blockquote>
+<h4 id="补充说明-📖-14"><a href="#补充说明-📖-14" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>uniq</code> 命令用于去除排序后文件中相邻的重复行（英文 unique，唯一）。</p>
+<h4 id="语法-📝-10"><a href="#语法-📝-10" class="headerlink" title="语法 📝"></a>语法 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">uniq [-ic] 文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-8"><a href="#选项-⚙️-8" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-c  在每行旁输出该行重复次数<br>-i  忽略大小写<br>-v  仅输出不重复的行（反向）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-14"><a href="#常见用法-💡-14" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">uniq file.txt                   # 去除相邻重复行<br>sort file.txt | uniq            # 先排序再去重，得到唯一列表<br>sort file.txt | uniq -c         # 统计每行出现次数（常用！）<br>sort file.txt | uniq -d         # 仅列出重复过的行<br>sort file.txt | uniq -v         # 仅列出唯一（不重复）的行<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-14"><a href="#参考链接-🔗-14" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-uniq.html">命令网 uniq</a></li>
+</ul>
+<hr>
+<h3 id="wc-📏"><a href="#wc-📏" class="headerlink" title="wc 📏"></a>wc 📏</h3><p>统计。</p>
+<blockquote>
+<p>统计文件、单词、行、字符等。</p>
+</blockquote>
+<h4 id="补充说明-📖-15"><a href="#补充说明-📖-15" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>wc</code> 命令用于统计文件中的字节数、字符数、单词数、行数（英文 word count）。#### 语法 📝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wc [选项] 文件...<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-9"><a href="#选项-⚙️-9" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b  统计字节数<br>-c  统计字符数<br>-l  统计行数（默认）<br>-m  统计字符数<br>-w  统计单词数<br>-L  输出最长行的长度<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-15"><a href="#常见用法-💡-15" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wc file.txt                   # 输出 行数 单词数 字节数 文件名<br>wc -l file.txt                # 只统计行数<br>wc -w file.txt                # 只统计单词数<br>wc -c file.txt                # 只统计字符数<br>wc -l *.txt                   # 统计多个文件各自行数<br>grep -v &#x27;^$&#x27; file | wc -l     # 统计非空行数量<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-15"><a href="#参考链接-🔗-15" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-wc.html">命令网 wc</a></li>
+</ul>
+<hr>
+<h2 id="三、系统信息-🖥️"><a href="#三、系统信息-🖥️" class="headerlink" title="三、系统信息 🖥️"></a>三、系统信息 🖥️</h2><h3 id="ps-🔄"><a href="#ps-🔄" class="headerlink" title="ps 🔄"></a>ps 🔄</h3><p>查看进程状态。</p>
+<h4 id="补充说明-📖-16"><a href="#补充说明-📖-16" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ps</code> 命令用于报告当前进程的状态（英文 process status）。可列出当前正在运行的进程及其相关信息（PID、用户、CPU&#x2F;内存占用、命令等）。</p>
+<h4 id="常用选项-⚙️-4"><a href="#常用选项-⚙️-4" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">A  显示所有进程（含其他用户）<br>a  显示所有进程（含终端，不含无终端）<br>-r  仅显示正在运行的进程<br>x  显示无终端控制的进程<br>u  以用户为主的格式输出（CPU/内存占用等）<br>e  显示环境变量<br>j  作业控制格式<br>l  长格式<br>-ef  /  -aux  最常用的组合，列出所有进程的详细信息<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-16"><a href="#常见用法-💡-16" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps aux                        # 列出所有进程详细信息（Linux，BSD 风格）<br>ps -ef                        # 列出所有进程详细信息（System V 风格）<br>ps aux | grep nginx           # 筛选特定进程（如 nginx）<br>ps -u root                    # 列出 root 用户的进程<br>ps -o pid,user,cmd -p 1234    # 指定列查看特定 PID<br>ps aux --sort=-%cpu           # 按 CPU 占用排序<br>ps aux --sort=-%mem           # 按内存占用排序<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-16"><a href="#参考链接-🔗-16" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ps.html">命令网 ps</a></li>
+</ul>
+<hr>
+<h3 id="top-📈"><a href="#top-📈" class="headerlink" title="top 📈"></a>top 📈</h3><p>实时查看系统资源使用情况。</p>
+<h4 id="补充说明-📖-17"><a href="#补充说明-📖-17" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>top</code> 命令用于实时显示系统中各个进程的资源占用状况（英文 top，顶部）。默认每 3 秒刷新，可动态查看 CPU、内存、进程负载。</p>
+<h4 id="常用选项-⚙️-5"><a href="#常用选项-⚙️-5" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-d 秒数  设置刷新间隔（默认 3 秒）<br>-i      忽略空闲进程<br>-s      安全模式<br>-p PID   只监控指定进程<br>-u 用户名  只监控某用户进程<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行中按键（交互）：<code>P</code> 按 CPU、<code>M</code> 按内存、<code>N</code> 按 PID、<code>k</code> 终止进程、<code>q</code> 退出、<code>c</code> 显示完整命令。</p>
+</blockquote>
+<h4 id="常见用法-💡-17"><a href="#常见用法-💡-17" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">top                                   # 实时查看系统资源<br>top -d 2                                # 每 2 秒刷新<br>top -p 1234                             # 只监控 PID 1234<br>top -u root                             # 只看 root 用户进程<br>top -i                                    # 忽略空闲进程<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-17"><a href="#参考链接-🔗-17" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-top.html">命令网 top</a></li>
+</ul>
+<hr>
+<h3 id="df-📊"><a href="#df-📊" class="headerlink" title="df 📊"></a>df 📊</h3><p>查看磁盘空间。</p>
+<h4 id="补充说明-📖-18"><a href="#补充说明-📖-18" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>df</code> 命令用于报告文件系统的整体及个体磁盘使用情况（英文 disk free）。默认输出块数，配合 <code>-h</code> 以人类易读方式显示。</p>
+<h4 id="常用选项-⚙️-6"><a href="#常用选项-⚙️-6" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  显示所有文件系统（含 0 块）<br>-h  人类易读格式（K/M/G）<br>-H  以 1000 为单位（而非 1024）<br>-i  显示 inode 使用情况<br>-k  以 1024 字节为单位<br>-l  仅显示本地文件系统<br>-T  显示文件系统类型<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-18"><a href="#常见用法-💡-18" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">df                                        # 列出所有文件系统使用情况<br>df -h                                     # 人类易读格式（最常用）<br>df -h /                                   # 仅查看根分区<br>df -hT                                    # 含文件系统类型<br>df -h --exclude-type tmpfs                # 排除 tmpfs 等虚拟文件系统<br>df -i                                     # 查看 inode 使用情况<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-18"><a href="#参考链接-🔗-18" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-df.html">命令网 df</a></li>
+</ul>
+<hr>
+<h3 id="free-💾"><a href="#free-💾" class="headerlink" title="free 💾"></a>free 💾</h3><p>查看内存使用情况。</p>
+<h4 id="补充说明-📖-19"><a href="#补充说明-📖-19" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>free</code> 命令用于查看内存使用情况（英文 free，空闲）。默认以字节显示，配合 <code>-h</code> 以人类易读方式显示。</p>
+<h4 id="常用选项-⚙️-7"><a href="#常用选项-⚙️-7" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b  以字节显示<br>-k  以 KB 显示（默认）<br>-M  以 MB 显示<br>-g  以 GB 显示<br>-h  人类易读格式<br>-t  显示总计（内存 + 交换分区）<br>-s  定期刷新（配合秒数）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-19"><a href="#常见用法-💡-19" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">free                                    # 查看内存使用情况<br>free -h                                   # 人类易读格式（最常用）<br>free -m                                   # 以 MB 显示<br>free -t                                   # 含总计（内存+Swap）<br>free -s 5                                 # 每 5 秒刷新一次<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-19"><a href="#参考链接-🔗-19" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-free.html">命令网 free</a></li>
+</ul>
+<hr>
+<h3 id="du-📏"><a href="#du-📏" class="headerlink" title="du 📏"></a>du 📏</h3><p>查看目录占用空间。</p>
+<h4 id="补充说明-📖-20"><a href="#补充说明-📖-20" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>du</code> 命令用于估算文件目录的使用空间（英文 disk usage）。默认显示当前目录及其子目录的磁盘用量，配合 <code>-h</code> 以人类易读方式显示。</p>
+<h4 id="常用选项-⚙️-8"><a href="#常用选项-⚙️-8" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a  显示所有文件（含普通文件）<br>-h  人类易读格式（K/M/G，最常用）<br>-s  仅显示总计（不展开子目录）<br>-x  跳过可移动文件系统<br>-c  输出总计行<br>-t  超过指定大小的目录不列出<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-20"><a href="#常见用法-💡-20" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">du                                    # 查看当前目录各子目录占用<br>du -h                                   # 人类易读格式<br>du -sh /var/log                         # 仅查看某目录总占用（最常用）<br>du -ah file.txt                         # 含文件本身的占用<br>du -c dir1 dir2                         # 输出多个目标的总计<br>du -h --max-depth=1                     # 只展开一层子目录<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-20"><a href="#参考链接-🔗-20" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-du.html">命令网 du</a></li>
+</ul>
+<hr>
+<h3 id="systemctl-🛠️"><a href="#systemctl-🛠️" class="headerlink" title="systemctl 🛠️"></a>systemctl 🛠️</h3><p>systemd 服务管理工具。</p>
+<blockquote>
+<p>用于控制 systemd 系统和“服务”工具。适用于 systemd 管理的发行版（CentOS 7+、Debian 8+ 等）。</p>
+</blockquote>
+<h4 id="补充说明-📖-21"><a href="#补充说明-📖-21" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>systemctl</code> 命令用于管理 systemd 系统和“服务”（英文 systemctl）。可启动&#x2F;停止&#x2F;重启服务、设置开机自启、查看状态等。</p>
+<blockquote>
+<p>常用服务：<code>sshd</code>、<code>mariadb</code>&#x2F;<code>mysqld</code>、<code>firewalld</code>、<code>nginx</code>、<code>httpd</code> 等。</p>
+</blockquote>
+<h4 id="常用选项-⚙️-9"><a href="#常用选项-⚙️-9" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">start  启动某服务<br>stop   停止某服务<br>restart  重启某服务<br>status  查看某服务状态<br>enable  开机自启<br>disable  取消开机自启<br>is-active  查看服务是否为 active<br>is-enabled  查看是否开机自启<br>list-units  列出所有已加载单元<br>list-unit-files  列出单元文件及其启用状态<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-21"><a href="#常见用法-💡-21" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl status sshd                     # 查看 sshd 服务状态<br>systemctl start sshd                        # 启动 sshd 服务<br>systemctl stop sshd                         # 停止 sshd 服务<br>systemctl restart sshd                      # 重启 sshd 服务<br>systemctl enable sshd                       # 设置开机自启<br>systemctl disable sshd                      # 取消开机自启<br>systemctl is-active sshd                    # 查看服务是否活动（active/inactive）<br>systemctl is-enabled sshd                   # 是否开机自启<br>systemctl list-units --type service         # 列出所有已加载服务单元<br>systemctl cat mariadb                       # 查看服务单元文件内容<br>systemctl --failed                          # 列出启动失败的服务<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-21"><a href="#参考链接-🔗-21" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-systemctl.html">命令网 systemctl</a></li>
+</ul>
+<hr>
+<h2 id="四、网络-🌐"><a href="#四、网络-🌐" class="headerlink" title="四、网络 🌐"></a>四、网络 🌐</h2><h3 id="ssh-🔐"><a href="#ssh-🔐" class="headerlink" title="ssh 🔐"></a>ssh 🔐</h3><p>登录并管理远程服务器。</p>
+<h4 id="补充说明-📖-22"><a href="#补充说明-📖-22" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ssh</code> 命令用于安全地远程登录并管理远程服务器（英文 secure shell）。默认端口 22；支持公钥免密登录。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">-p PORT  指定端口（默认 22）<br>-l USER  指定登录用户名<br>-N  不执行命令，仅建立隧道<br>-T  禁用交互 shell<br>-g  允许远程主机连接本地转发端口<br>-L localport:remotehost:remoteport  本地端口转发<br>-R remoteport:localhost:localport  远程端口转发<br>-C  压缩传输<br>-v  显示调试信息<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-22"><a href="#常见用法-💡-22" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -p 22 user@192.168.1.100              # 以 user 登录服务器<br>ssh -p 10022 root@192.168.1.100           # 指定端口登录<br>ssh -l admin 192.168.1.100                # 指定用户名<br>ssh -N -L 8080:localhost:80 server        # 本地 8080 转发到服务器 80 端口<br>ssh -R 3307 localhost:3306 server         # 远程端口转发（MySQL）<br>ssh -v user@host                          # 调试模式查看连接过程<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>免密登录：先用 <code>ssh-keygen</code> 生成密钥，再用 <code>ssh-copy-id</code> 将公钥上传到服务器。</p>
+</blockquote>
+<h4 id="参考链接-🔗-22"><a href="#参考链接-🔗-22" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ssh.html">命令网 ssh</a></li>
+</ul>
+<blockquote>
+<p>相关：<code>scp</code>（基于 SSH 的安全文件传输，用法见下方传输命令）。</p>
+</blockquote>
+<hr>
+<h3 id="curl-🌍"><a href="#curl-🌍" class="headerlink" title="curl 🌍"></a>curl 🌍</h3><p>利用 URL 命令行传输文件。</p>
+<h4 id="补充说明-📖-23"><a href="#补充说明-📖-23" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>curl</code> 是一个利用 URL 规则在命令行下工作的文件传输工具。支持 HTTP&#x2F;HTTPS&#x2F;FTP 等协议，支持上传下载、POST、Cookie、认证、部分下载、限速、进度条等。</p>
+<h4 id="常用选项-⚙️（常用部分）"><a href="#常用选项-⚙️（常用部分）" class="headerlink" title="常用选项 ⚙️（常用部分）"></a>常用选项 ⚙️（常用部分）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">-o  输出到指定文件（自定文件名）<br>-O  保留远程文件名输出到文件<br>-s  静默模式（不输出进度/错误）<br>-L  跟随重定向（-L/-follow）<br>-X METHOD  指定请求方法（GET/POST/PUT/DELETE）<br>-d DATA  发送 POST 数据（表单）<br>--data-urlencode  自动 URL 编码 POST 数据<br>-H &quot;Header: value&quot;  自定义请求头<br>-b &#x27;cookie&#x27;  /  --cookie  发送 Cookie<br>-j  忽略会话 Cookie<br>-A &quot;User-Agent&quot;  设置用户代理<br>--referer URL  设置来源页<br>--limit-rate 50k  限速下载<br>--max-filesize N  限制最大下载量<br>-C -  断点续传<br>-u user:pwd  身份认证<br>-I / --head  只输出响应头<br>-w  输出传输细节（如耗时）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-23"><a href="#常见用法-💡-23" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl URL                        # 下载文件输出到终端<br>curl URL --silent               # 静默下载（无进度/错误）<br>curl http://example.com/test.iso --silent -O  # 下载到本地（保留原名）<br>curl http://example.com/test.iso -o filename.iso --progress  # 指定文件名 + 进度条<br>curl -C - URL                   # 断点续传<br>curl --referer http://www.example.com http://example.com  # 设置来源页<br>curl URL --user-agent &quot;Mozilla/5.0&quot;   # 设置用户代理<br>curl URL --limit-rate 50k       # 限速 50k 下载<br>curl -u user:pwd http://example.com  # 认证<br>curl -I http://example.com      # 只查看响应头（HTTP 状态等）<br>curl &quot;http://www.example.com&quot;   # GET 请求<br>curl -d &quot;param1=value1&amp;param2=value2&quot; &quot;http://example.com/login&quot;   # POST 表单<br>curl -d &#x27;login=emma&#x27; -d &#x27;password=123&#x27; -X POST https://example.com/login  # POST 多字段<br>curl --data-urlencode &#x27;comment=hello world&#x27; https://example.com/login  # 自动 URL 编码<br>curl -d &#x27;@data.txt&#x27; https://example.com/upload  # 发送本地文件内容作为数据体<br>curl -l -H &quot;Content-type: application/json&quot; -X POST -d &#x27;&#123;&quot;phone&quot;:&quot;138...&quot;&#125;&#x27; http://example.com/apis  # JSON POST<br>curl http://example.com --cookie &quot;user=root;pass=123456&quot;   # 发送 Cookie<br>curl -b &#x27;foo=bar&#x27; https://example.com           # 通过 -b 发送 Cookie<br>curl URL --cookie-jar cookie_file               # 将 Cookie 存到文件<br>curl -s -o /dev/null https://example.com        # 不产生任何输出（探测用）<br>curl -o- -L https://yarnpkg.com/install.sh | bash   # 下载并管道执行（配合 -L 跟踪重定向）<br>curl -w ... -o /dev/null URL  # 输出耗时等传输细节（-w 详细输出）<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-23"><a href="#参考链接-🔗-23" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-curl.html">命令网 curl</a></li>
+</ul>
+<hr>
+<h3 id="wget-📥"><a href="#wget-📥" class="headerlink" title="wget 📥"></a>wget 📥</h3><p>下载文件工具。</p>
+<h4 id="补充说明-📖-24"><a href="#补充说明-📖-24" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>wget</code> 用来从指定 URL 下载文件。带宽很窄或不稳定网络中适应性强；失败会不断重试直至下载完毕；服务器打断后会从停止处继续下载。支持 HTTP&#x2F;HTTPS&#x2F;FTP 及代理，可在后台执行。</p>
+<h4 id="常用选项-⚙️（常用部分）-1"><a href="#常用选项-⚙️（常用部分）-1" class="headerlink" title="常用选项 ⚙️（常用部分）"></a>常用选项 ⚙️（常用部分）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">-O  以指定文件名保存（指定动态链接文件名）<br>-o  将下载信息写入日志文件<br>-a  追加日志到文件<br>-c  断点续传<br>-b  转为后台下载<br>-i file  读取文件中的 URL 批量下载<br>-r  递归下载（慎用）<br>-m  镜像整站（= -r -N -l inf -nr）<br>-p  下载页面所需资源（图片等）<br>-k  转换链接为本地链接<br>-L  跟踪相对链接<br>-N  仅当远程文件更新才下载<br>-t N  重试 N 次（0=无限）<br>-T 秒  响应超时秒数<br>--limit-rate 速率  限速<br>-Q 大小  限制递归总下载量<br>--spider  不下载，只测试链接是否有效<br>--user-agent  伪装代理名<br>-Y on/off  打开/关闭代理<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-24"><a href="#常见用法-💡-24" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://www.example.com/testfile.zip        # 下载单个文件<br>wget -O wordpress.zip http://example.com/d?id=1080  # 以指定文件名保存（动态链接常用）<br>wget --limit-rate=300k http://example.com/file  # 限速下载<br>wget -c http://example.com/testfile.zip         # 断点续传<br>wget -b http://example.com/testfile.zip         # 后台下载（可用 tail -f wget-log 看进度）<br>wget --spider URL                               # 测试链接是否有效（定时下载前检查）<br>wget --tries=40 URL                             # 增加重试次数<br>wget -i filelist.txt                            # 批量下载（文件里每行一个 URL）<br>wget --mirror -p --convert-links -P ./LOCAL URL  # 镜像整站到本地<br>wget --reject=gif URL                           # 下载网站但排除图片<br>wget -o download.log URL                        # 将下载信息存入日志文件<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明：默认以最后一个 <code>/</code> 后的字符命名，动态链接常导致文件名错误，此时用 <code>-O</code> 指定。</p>
+</blockquote>
+<h4 id="参考链接-🔗-24"><a href="#参考链接-🔗-24" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-wget.html">命令网 wget</a></li>
+</ul>
+<hr>
+<h3 id="ping-📡"><a href="#ping-📡" class="headerlink" title="ping 📡"></a>ping 📡</h3><p>测试主机间网络连通性（IPv4）。</p>
+<h4 id="补充说明-📖-25"><a href="#补充说明-📖-25" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ping</code> 用来测试主机之间网络的连通性。使用 ICMP 协议发出回应请求，远端网络正常则回应，从而判断其运作正常。</p>
+<h4 id="常用选项-⚙️-10"><a href="#常用选项-⚙️-10" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">-c 次数  指定回应次数后退出<br>-i 间隔  指定收发间隔（秒）<br>-n  只输出数值（不显示过程）<br>-r  忽略普通路由表，直接送到远端主机<br>-R  记录路由过程<br>-s 大小  设置数据包大小<br>-t  设置存活数值 TTL<br>-w 秒  超过该秒数即退出<br>-f  极限检测（快速发送）<br>-q  不显示执行过程（仅开头结尾）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-25"><a href="#常见用法-💡-25" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">ping www.example.com                    # 测试到主机是否连通<br>ping -c 4 www.example.com               # 只发 4 个包后退出<br>ping -i 0.2 host                        # 每 0.2 秒发一个包<br>ping -n 192.168.1.1                     # 只输出数值结果<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>输出示例含：往返时间（time&#x3D;ms）、丢包率（packet loss）、最小&#x2F;平均&#x2F;最大&#x2F;偏差（rtt min&#x2F;avg&#x2F;max&#x2F;mdev）。</p>
+</blockquote>
+<h4 id="参考链接-🔗-25"><a href="#参考链接-🔗-25" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ping.html">命令网 ping</a></li>
+</ul>
+<hr>
+<h3 id="netstat-📡"><a href="#netstat-📡" class="headerlink" title="netstat 📡"></a>netstat 📡</h3><p>查看网络系统状态信息。</p>
+<h4 id="补充说明-📖-26"><a href="#补充说明-📖-26" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>netstat</code> 命令用于打印 Linux 网络系统的状态信息，可了解整个系统的网络情况。可列出端口、连接状态、路由表、统计信息等。</p>
+<h4 id="常用选项-⚙️-11"><a href="#常用选项-⚙️-11" class="headerlink" title="常用选项 ⚙️"></a>常用选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a / --all          列出所有连接（含监听与未监听）<br>-t / --tcp          仅 TCP 连接<br>-u / --udp          仅 UDP 连接<br>-l / --listening    仅监听中的 Socket<br>-n / --numeric      直接用 IP/端口，不解析域名（加速）<br>-r / --route        显示路由表<br>-s / --statistics   显示各协议统计信息<br>-p / --programs     显示进程 PID 与名称（需 root）<br>-e / --extend       显示更详细信息<br>-A &lt;网络类型&gt;       列出该网络类型的连接（如 unix）<br>-c / --continuous   持续列出（每秒刷新）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-26"><a href="#常见用法-💡-26" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">netstat -a                        # 列出所有端口（含监听与未监听）<br>netstat -at                       # 仅 TCP 端口<br>netstat -au                       # 仅 UDP 端口<br>netstat -l                        # 仅监听端口<br>netstat -lt                       # 仅监听 TCP 端口<br>netstat -an                       # 数字格式（不解析域名，且更快）<br>netstat -rn                       # 数字格式路由表<br>netstat -tlnp                     # 监听中的 TCP 端口 + 进程 PID<br>netstat -ap | grep ssh            # 找出 ssh 相关端口（需 root）<br>netstat -anp | grep 8081          # 通过端口找进程 ID<br>netstat -s                        # 各协议统计信息<br>netstat -c                        # 每秒刷新输出（Ctrl+C 结束）<br>netstat -ntu | grep :80 | awk &#x27;&#123;print $5&#125;&#x27; | cut -d: -f1 | sort | uniq -c  # 统计某端口连接数最多的 IP<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>相关：<code>ss</code> 是更快速的替代工具（见下方）。</p>
+</blockquote>
+<h4 id="参考链接-🔗-26"><a href="#参考链接-🔗-26" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-netstat.html">命令网 netstat</a></li>
+</ul>
+<hr>
+<h3 id="ss-🚀"><a href="#ss-🚀" class="headerlink" title="ss 🚀"></a>ss 🚀</h3><p>比 netstat 更高效的 socket 统计工具。</p>
+<h4 id="补充说明-📖-27"><a href="#补充说明-📖-27" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>ss</code> 命令用于显示处于活动状态的套接字信息，是 <code>iproute2</code> 包附带的工具，可获取与 netstat 类似的内容，且更快——尤其当连接数上万时，ss 远快于 netstat（后者等于“浪费生命”）。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a / --all       显示所有套接字<br>-l / --listening 仅监听状态<br>-t / --tcp       仅 TCP<br>-u / --udp       仅 UDP<br>-n / --numeric   不解析服务名（快）<br>-e / --extended  详细信息<br>-o / --options   计时器信息<br>-p / --processes 显示使用套接字的进程<br>-i / --info      TCP 内部信息<br>-s / --summary   套接字使用概况<br>-4 / --ipv4      仅 IPv4<br>-6 / --ipv6      仅 IPv6<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>过滤语法（<code>ss</code> 独有，很强大）：<code>ss state &lt;状态&gt;</code>、<code>ss sport = :port</code>、<code>ss dport OP PORT</code>（OP 可为 <code>= &lt; &gt; &gt;= &lt;= !=</code>）、<code>ss dst/src &lt;地址&gt;</code>。</p>
+</blockquote>
+<h4 id="常见用法-💡-27"><a href="#常见用法-💡-27" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">ss -tan                                   # 列出所有 TCP 连接（最常用）<br>ss -tlnp                                  # 监听中的 TCP 端口 + 进程<br>ss -s                                     # 套接字摘要<br>ss -pl                                    # 查看进程使用的 socket<br>ss -lp | grep 3306                        # 找出打开某端口（3306）的应用<br>ss state all sport = :ssh                 # 列出端口为 ssh 的所有连接<br>ss -tan | awk &#x27;NR&gt;1&#123;++S[$1]&#125;END&#123;for(a in S) print a,S[a]&#125;&#x27;  # 统计各 TCP 状态连接数<br>ss dst 192.168.1.5                        # 匹配远程地址<br>ss src 192.168.1.103:ssh                  # 匹配本地地址<br>ss dport = :80                            # 匹配目标端口 80<br>ss sport &gt; :1024                          # 本地端口大于 1024<br>ss -4 state closing                       # 按 TCP 状态过滤（closing）<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>效率对比：<code>time netstat -at</code> 与 <code>time ss</code> 可直观看出 ss 更快。</p>
+</blockquote>
+<h4 id="参考链接-🔗-27"><a href="#参考链接-🔗-27" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-ss.html">命令网 ss</a></li>
+</ul>
+<hr>
+<h3 id="nmcli-🎛️"><a href="#nmcli-🎛️" class="headerlink" title="nmcli 🎛️"></a>nmcli 🎛️</h3><p>NetworkManager 命令行客户端（配置网络）。</p>
+<h4 id="补充说明-📖-28"><a href="#补充说明-📖-28" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>nmcli</code>（NetworkManager client）是 NetworkManager 的网络管理客户端，用于命令行下查看、管理与配置网络（连接、设备、无线、DNS 等），替代图形界面的网络设置。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">-t / -- terse       简洁输出（适合脚本解析）<br>-p / -- pretty      格式化输出<br>-m / -- mode        输出模式：tabular | multiline<br>-f / -- fields      指定输出字段（字段1,字段2,... | all | common）<br>-n / -- nocheck     不检查 nmcli 与 NetworkManager 版本<br>-v / -- version     显示程序版本<br>-h / -- help        查看帮助<br></code></pre></td></tr></table></figure>
+
+<p><strong>对象（OBJECT）：</strong> <code>general</code> 一般状态、<code>networking</code> 整体组网、<code>radio</code> 无线开关、<code>connection</code> 连接、<code>device</code> 受管设备、<code>agent</code> 秘密代理。</p>
+<h4 id="常见用法-💡-28"><a href="#常见用法-💡-28" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmcli connection show                       # 查看当前连接<br>nmcli connection show -active                 # 显示活动的连接<br>nmcli connection show &quot;lan eth0&quot;              # 查看指定网络连接配置<br>nmcli connection reload                       # 重载/重启连接<br>nmcli device status                           # 显示设备状态（网卡）<br>nmcli device show eno16777736                 # 显示指定接口的属性<br>nmcli device show                             # 显示全部接口属性<br>nmcli con up static                           # 启用名为 static 的连接<br>nmcli con up default                          # 启用默认连接<br>nmcli connection add con-name company ifname ens33 autoconnect no type ethernet ip4 192.168.1.2/24 gw4 192.168.1.1  # 新建连接配置<br></code></pre></td></tr></table></figure>
+
+<p><strong>新建连接参数：</strong> <code>con-name</code> 会话名、<code>ifname</code> 网卡名、<code>autoconnect</code> 是否自动连接、<code>type</code> 网卡类型（ethernet）、<code>ip4/ip6</code> 地址、<code>gw4/gw6</code> 网关。</p>
+<h4 id="参考链接-🔗-28"><a href="#参考链接-🔗-28" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-nmcli.html">命令网 nmcli</a></li>
+</ul>
+<hr>
+<h2 id="五、压缩与归档-📦"><a href="#五、压缩与归档-📦" class="headerlink" title="五、压缩与归档 📦"></a>五、压缩与归档 📦</h2><h3 id="tar-🗜️"><a href="#tar-🗜️" class="headerlink" title="tar 🗜️"></a>tar 🗜️</h3><p>打包与解压（归档）工具。</p>
+<h4 id="补充说明-📖-29"><a href="#补充说明-📖-29" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>tar</code> 命令可为 Linux 文件和目录创建档案（打包），也能从档案中单独还原所需文件。需弄清两个概念：<strong>打包</strong> 是把一堆文件变成一个文件；<strong>压缩</strong> 是用压缩算法把大文件变小。tar 只负责打包，压缩需配合 gzip&#x2F;bzip2&#x2F;xz（通过 <code>-z/-j/-J</code>）。</p>
+<blockquote>
+<p>常用压缩参数：<code>-z</code> gzip（<code>.tar.gz</code>&#x2F;<code>.tgz</code>）、<code>-j</code> bzip2（<code>.tar.bz2</code>）、<code>-J</code> xz（<code>.tar.xz</code>）、<code>-Z</code> compress（<code>.tar.Z</code>，过时）。</p>
+</blockquote>
+<h4 id="常用选项-⚙️（常用部分）-2"><a href="#常用选项-⚙️（常用部分）-2" class="headerlink" title="常用选项 ⚙️（常用部分）"></a>常用选项 ⚙️（常用部分）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">-c / --create     创建新归档<br>-x / --extract    从归档解出文件<br>-t / --list       列出归档内容<br>-u / --update     仅追加比归档中更新的文件<br>-f 文件名         指定归档文件名（必须是最后一个参数！）<br>-z / --gzip       通过 gzip 压缩/解压<br>-j / --bzip2      通过 bzip2<br>-J / --xz         通过 xz<br>-v / --verbose    详细列出处理过程<br>-p / --preserve-permissions  保留权限（备份常用）<br>-C 目录           切换到指定目录再操作<br>--strip-components N  解压时去除文件名前 N 层路径<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-29"><a href="#常见用法-💡-29" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -zcvf log.tar.gz log2012.log      # 打包并以 gzip 压缩（最常用）<br>tar -jcvf log.tar.bz2 log2012.log     # 打包并以 bzip2 压缩<br>tar -Jcvf log.tar.xz log2012.log      # 打包并以 xz 压缩<br>tar -cf archive.tar foo bar           # 仅打包，不压缩（.tar）<br>tar -tvf archive.tar                  # 查看 tar 包内文件<br>tar -zxvf log.tar.gz                  # 解压 .tar.gz（最常用）<br>tar -xvf xxx.tar.gz -C /usr/src/a     # 解压到指定目录<br>tar -xvf xxx.tar.gz --strip-components 1 -C /usr/src/a  # 解压并去掉一层路径<br>tar -ztvf log.tar.gz                  # 查看 .tar.gz 内文件（带 z）<br>tar -zcvpf log31.tar.gz log1 log2     # 打包并保留权限<br>tar -N &quot;2012/11/13&quot; -zcvf log17.tar.gz test  # 只备份某日期之后的文件<br>tar --exclude scf/service -zcvf scf.tar.gz scf/*  # 打包时排除部分文件<br>tar -cvf test.tar test --remove-files # 打包后删除源文件<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>速记：压缩 <code>tar -jcv -f 包名 目标</code>；查询 <code>tar -jtv -f 包名</code>；解压 <code>tar -jxv -f 包名 -C 目录</code>。</p>
+</blockquote>
+<h4 id="参考链接-🔗-29"><a href="#参考链接-🔗-29" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-tar.html">命令网 tar</a></li>
+</ul>
+<hr>
+<h2 id="六、权限管理-🔐"><a href="#六、权限管理-🔐" class="headerlink" title="六、权限管理 🔐"></a>六、权限管理 🔐</h2><h3 id="chmod-🔑"><a href="#chmod-🔑" class="headerlink" title="chmod 🔑"></a>chmod 🔑</h3><p>修改文件权限。</p>
+<h4 id="补充说明-📖-30"><a href="#补充说明-📖-30" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>chmod</code> 命令用于文件或目录的访问权限修改（英文 change mode）。可通过数字（4 读 2 写 1 执行）或符号（rwx）设置所有者、所属组、其他人的权限。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-R / --recursive  递归修改目录及其内容的权限<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>权限数字：读&#x3D;4、写&#x3D;2、执行&#x3D;1。三位数字分别对应 所有者 &#x2F; 所属组 &#x2F; 其他人（如 755、644）。</p>
+</blockquote>
+<h4 id="常见用法-💡-30"><a href="#常见用法-💡-30" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 755 script.sh       # 所有者可读写执行，组与其他人可读执行<br>chmod 644 file.txt        # 所有者读写，组与其他人只读<br>chmod +x script.sh        # 给所有人添加可执行权限<br>chmod -x script.sh        # 移除所有人可执行权限<br>chmod u+x,g-w,o+r file    # 符号式：所有者加执行、组去掉写、其他人加读<br>chmod -R 755 /var/www     # 递归修改目录权限（Web 目录常用）<br>chmod 700 dir/            # 仅所有者可读写执行<br></code></pre></td></tr></table></figure>
+
+<h4 id="参考链接-🔗-30"><a href="#参考链接-🔗-30" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-chmod.html">命令网 chmod</a></li>
+</ul>
+<hr>
+<h2 id="七、进程管理-🛑"><a href="#七、进程管理-🛑" class="headerlink" title="七、进程管理 🛑"></a>七、进程管理 🛑</h2><h3 id="kill-🚫"><a href="#kill-🚫" class="headerlink" title="kill 🚫"></a>kill 🚫</h3><p>结束进程。</p>
+<h4 id="补充说明-📖-31"><a href="#补充说明-📖-31" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>kill</code> 命令用于结束进程（英文 kill，杀死）。通过进程 ID（PID）发送信号，默认发送 <code>TERM</code>（15）信号。常用 <code>1</code>（SIGHUP）强制结束。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-s 信号名/编号  指定发送的信号（如 -9、-15、-HUP）<br>-l  列出所有可用信号名<br>-p  仅打印目标 PID，不实际发送（dry-run）<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常见信号：<code>1</code> SIGHUP（强制结束）、<code>9</code> SIGKILL（强制杀死，不可忽略）、<code>15</code> SIGTERM（默认，优雅结束）、<code>19</code> SIGSTOP（暂停）、<code>18</code> SIGCONT（继续）。</p>
+</blockquote>
+<h4 id="常见用法-💡-31"><a href="#常见用法-💡-31" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">kill 1234                       # 向 PID 1234 发送 TERM 信号（默认）<br>kill -9 1234                    # 强制杀死 PID 1234（SIGKILL）<br>kill -1 1234                    # 发送 SIGHUP（常用于重载配置）<br>kill -l                         # 列出所有信号名及编号<br>kill -s KILL 1234               # 等价于 kill -9<br>kill -l | grep SIG              # 筛选信号列表<br>PID=$(pgrep -f myprocess); kill -9 &quot;$PID&quot;   # 按名称找 PID 并结束<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：先用 <code>ps</code> &#x2F; <code>pgrep</code> 找到 PID，再 <code>kill</code>；优先用 15 优雅结束，无效再用 9 强制。</p>
+</blockquote>
+<h4 id="参考链接-🔗-31"><a href="#参考链接-🔗-31" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.w3csky.com/linux/linux-command-kill.html">命令网 kill</a></li>
+</ul>
+<hr>
+<h2 id="八、版本控制-🌿"><a href="#八、版本控制-🌿" class="headerlink" title="八、版本控制 🌿"></a>八、版本控制 🌿</h2><h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p>目前世界上最先进的分布式版本控制系统。</p>
+<h4 id="补充说明-📖-32"><a href="#补充说明-📖-32" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>git</code> 命令是分布式版本控制工具，用于版本管理与代码协作。常用操作见下方（已精简冗长的历史叙述）。</p>
+<h4 id="常用命令-📝"><a href="#常用命令-📝" class="headerlink" title="常用命令 📝"></a>常用命令 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs shell">git --version                   # 查看版本<br>git init                        # 初始化仓库<br>git clone &lt;url&gt; [目录名]        # 克隆远程仓库（支持 http/ssh/git/本地等协议）<br>git add &lt;文件|.|*&gt;              # 将文件添加到暂存区（. 或 * 代表全部）<br>git rm --cached &lt;文件&gt;          # 撤销 git add（commit 前）<br>git reset HEAD [文件]           # 从暂存区移出（也可撤销 add）<br>git commit -m &quot;message&quot;         # 提交并写注释<br>git status                      # 查看工作区状态<br>git log                         # 查看提交历史<br>git branch                      # 列出分支<br>git branch &lt;name&gt;               # 创建分支<br>git branch -d &lt;name&gt;            # 删除分支<br>git checkout &lt;branch&gt;           # 切换分支<br>git checkout -b &lt;name&gt;          # 创建并切换分支<br>git merge &lt;branch&gt;              # 合并分支<br>git pull                        # 拉取并合并远程更新<br>git push -u origin master       # 推送并设置默认跟踪分支<br>git push -f origin master       # 强制推送（--force）<br>git remote add origin &lt;url&gt;     # 添加远程仓库<br>git remote -v                   # 查看远程仓库<br>git tag &lt;name&gt;                  # 打标签<br>git stash                       # 保存当前修改到栈<br>git stash pop                   # 恢复 stash<br></code></pre></td></tr></table></figure>
+
+<h4 id="配置与-SSH-🔧"><a href="#配置与-SSH-🔧" class="headerlink" title="配置与 SSH 🔧"></a>配置与 SSH 🔧</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">git config --global user.name &quot;你的名字&quot;      # 修改全局用户名<br>git config --global user.email &quot;邮箱&quot;         # 修改全局邮箱<br>git config --list                             # 查看配置<br>git config --global core.autocrlf input       # 配置自动换行（提交转 LF）<br><br>ssh-keygen -t rsa -C &quot;你的邮箱&quot;               # 生成 SSH 密钥<br>ssh -T git@github.com                         # 测试密钥是否生效<br>ssh-copy-id -i ~/.ssh/公钥.pub user@host      # 将公钥上传到服务器（免密登录）<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>多账号 &#x2F; 免密：可为不同仓库配置不同密钥，并在 <code>~/.ssh/config</code> 中用 <code>Host</code> 别名区分（详见原 git 文档）。</p>
+</blockquote>
+<h4 id="参考链接-🔗-32"><a href="#参考链接-🔗-32" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/handbook/blob/master/other/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95.md">Git 常用命令清单</a></li>
+</ul>
+<hr>
+<h2 id="九、帮助与权限提升-🆘"><a href="#九、帮助与权限提升-🆘" class="headerlink" title="九、帮助与权限提升 🆘"></a>九、帮助与权限提升 🆘</h2><h3 id="sudo-👑"><a href="#sudo-👑" class="headerlink" title="sudo 👑"></a>sudo 👑</h3><p>以其他用户身份执行命令。</p>
+<h4 id="补充说明-📖-33"><a href="#补充说明-📖-33" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>sudo</code> 命令允许基本用户以系统管理员（root）或其他用户身份运行命令（英文 super user do）。可临时提升权限执行特权操作，并记录审计日志。#### 常用选项 ⚙️</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-u 用户 / -u UID   指定以哪个用户身份执行（默认 root）<br>-h / --help        显示帮助并退出<br>-V / --version     显示版本并退出<br>-l / --list        列出当前用户可执行的命令<br>-k / --invalidate  使身份凭证失效（下次需重新验证）<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-32"><a href="#常见用法-💡-32" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo command            # 以 root 身份执行 command<br>sudo -u otheruser cmd   # 以 otheruser 身份执行<br>sudo -l                 # 列出当前用户可执行的命令<br>sudo apt install pkg    # 以 root 安装软件包<br>sudo systemctl restart nginx  # 以 root 管理服务<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：首次使用 sudo 需输入<strong>当前用户</strong>密码；配置不当可能带来安全风险，建议按需授权。</p>
+</blockquote>
+<h4 id="相关命令-🔗"><a href="#相关命令-🔗" class="headerlink" title="相关命令 🔗"></a>相关命令 🔗</h4><ul>
+<li><code>chmod</code>、<code>chown</code>、<code>ls</code>、<code>cat</code>、<code>ls -l</code> 等可配合 sudo 以 root 身份查看&#x2F;修改系统文件。</li>
+</ul>
+<hr>
+<h3 id="man-📖"><a href="#man-📖" class="headerlink" title="man 📖"></a>man 📖</h3><p>查看命令帮助手册。</p>
+<h4 id="补充说明-📖-34"><a href="#补充说明-📖-34" class="headerlink" title="补充说明 📖"></a>补充说明 📖</h4><p><code>man</code> 命令是通过 man 手册查看 Linux 指令、配置文件与编程帮助的工具。#### 语法 📝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">man (选项)(参数)<br></code></pre></td></tr></table></figure>
+
+<h4 id="选项-⚙️-10"><a href="#选项-⚙️-10" class="headerlink" title="选项 ⚙️"></a>选项 ⚙️</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">-a / --all       在所有 man 手册中搜索<br>-f / --whatis    显示关键字的简短描述（等价 whatis）<br>-P 程序          指定分页程序<br>-M 路径          指定 man 手册搜索路径<br></code></pre></td></tr></table></figure>
+
+<h4 id="参数-📝"><a href="#参数-📝" class="headerlink" title="参数 📝"></a>参数 📝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">数字  指定从哪本手册搜索；关键字  指定要搜索的关键字<br></code></pre></td></tr></table></figure>
+
+<p><strong>手册章节号对照：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">1  用户可在 shell 操作的命令或执行文件<br>2  系统内核可调用的函数与工具<br>3  常用函数与函数库（多为 C 库 libc）<br>4  设备文件说明（/dev 下）<br>5  配置文件或某些文件格式<br>6  游戏（games）<br>7  惯例与协议（文件系统、网络协议、ASCII 等）<br>8  系统管理员可用的管理命令<br>9  与 kernel 有关的文件<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见用法-💡-33"><a href="#常见用法-💡-33" class="headerlink" title="常见用法 💡"></a>常见用法 💡</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">man ls                              # 查看 ls 手册（左上角显示 LS(1)）<br>man ifconfig                        # 查看 ifconfig（显示 IFCONFIG(8)）<br>man 3 sleep                         # 指定章节（查库函数 sleep 用第 3 章）<br>man -s 8 route                      # 指定章节查看 route<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>相关：<code>tldr</code> 是简化版手册，只列出常用 Sample 与说明，比 man 更轻量。</p>
+</blockquote>
+<ul>
+<li>tldr 开源：<a target="_blank" rel="noopener" href="https://github.com/tldr-pages/tldr/">https://github.com/tldr-pages/tldr/</a></li>
+<li>官网：<a target="_blank" rel="noopener" href="https://tldr.sh/">https://tldr.sh/</a></li>
+<li>在线版：<a target="_blank" rel="noopener" href="https://tldr.ostera.io/">https://tldr.ostera.io/</a></li>
+</ul>
+<hr>
+<p><em>本文档由各独立命令文档合成，保留了各命令的原始结构与参考链接，并对冗长内容做了精简与 emoji 标注，便于快速查阅。</em></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux常用命令速查</div>
+      <div>http://example.com/2026/09/21/Linux常用命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>muchenH</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/09/23/Sublime%20%E6%8A%A5%20errno%2012157%20%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="Sublime 报 errno 12157 的解决方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Sublime 报 errno 12157 的解决方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/28/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E4%B8%8A%E7%A7%91%E5%AD%A6%E7%9A%84%E7%AE%A1%E7%90%86%E5%A4%9A%E7%89%88%E6%9C%ACPython/" title="如何在Windows上安装和管理多版本 Python">
+                        <span class="hidden-mobile">如何在Windows上安装和管理多版本 Python</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"> <span>Hexo </span> </a><span> </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <span>Fluid</span> </a> <i class="iconfont icon-love">  </i> <a href="https://github.com/muchenH" target="_blank" rel="nofollow noopener"> <span>muchenH</span> </a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
