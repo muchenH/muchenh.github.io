@@ -133,13 +133,7 @@ draft: false
 
 alt 末尾的 `-w720` 表示最大宽度 720px，避免大图在大屏上被拉得过宽。图片路径尽量只使用英文、数字、下划线和连字符，并且注意大小写：Windows 本地不区分，GitHub Pages 的 Linux 环境区分。
 
-为了少写重复的 front matter，我还把新建文章的步骤做成了一个小脚本：
-
-```bash
-node .qoder/skills/muchenh-blog-publisher/scripts/new-post.mjs "文章标题" --category "分类" --tags "标签1,标签2"
-```
-
-加 `--slug` 可以固定英文地址，加 `--draft` 可以先存成草稿。脚本只是生成文件，真正的内容还是自己写。
+为了少写重复的 front matter，我在本地写了一个小脚本，按标题、分类和标签生成文章骨架。它只用于写作，不参与构建，也不会随站点发布。真正的内容还是自己写。
 
 ## 本地预览与构建
 

@@ -55,10 +55,11 @@ D:\Blog\
 ├─ public/            # 构建产物，已加入 .gitignore
 ├─ site.config.js     # 站点标题、域名、导航、主题时间等
 ├─ .github/workflows/deploy.yml
-├─ .qoder/skills/muchenh-blog-publisher/  # AI 写作与发布 skill
 ├─ package.json
 └─ README.md
 ```
+
+> `.qoder/` 是本地 AI skill，不参与构建，也不会提交到仓库。
 
 ## 3. 写一篇文章
 
@@ -70,7 +71,7 @@ D:\Blog\
 content/posts/在-Windows-上备份-WSL.md
 ```
 
-也可以在 `D:\Blog` 打开终端，用 skill 自带的脚本生成带 front matter 的文章骨架：
+也可以在 `D:\Blog` 打开终端，用本地 skill 自带的脚本生成带 front matter 的文章骨架（`.qoder/` 不会提交到仓库）：
 
 ```bash
 node .qoder/skills/muchenh-blog-publisher/scripts/new-post.mjs "在 Windows 上备份 WSL" --category Windows --tags "Windows,WSL"
@@ -236,17 +237,19 @@ theme: {
 
 当前配置对应自定义域名 **blog.muyc.site**，仓库为 `muchenh.github.io`。新站由 GitHub Actions 构建并发布，不需要 Hexo，也不需要把 `public/` 提交进仓库。
 
-### 5.1 把源码放进仓库
+### 5.1 首次迁移（已完成，仅作参考）
 
-推荐继续使用原来的 `https://github.com/muchenH/muchenh.github.io` 仓库，这样域名和旧文章地址都不变。原仓库的 `main` 里可能是 Hexo 生成的静态文件，替换前先做备份分支或标签：
+本次迁移已于 2026-10-21 完成，旧版本保存在远程 tag `pre-static-rebuild` 中，线上仓库的 `main` 现在就是新版源码。日常发布请直接看 5.5，**不要重复执行下面的清空步骤**。
+
+下面的流程留作以后在新仓库重建时参考。使用原来的 `https://github.com/muchenH/muchenh.github.io` 仓库，可以保持域名和旧文章地址不变。替换前先做备份：
 
 ```bash
 git clone https://github.com/muchenH/muchenh.github.io.git
 cd muchenh.github.io
 
-# 备份当前线上版本，可随时找回
-git tag pre-static-rebuild
-git push origin pre-static-rebuild
+# 备份当前线上版本，可随时找回（换一个不冲突的 tag 名）
+git tag pre-static-rebuild-backup
+git push origin pre-static-rebuild-backup
 
 # 清空旧的已跟踪文件，把新项目源码复制进来
 git rm -r .
@@ -263,12 +266,14 @@ git push origin main
 
 ### 5.2 启用 GitHub Actions 发布
 
+当前仓库已经完成下面的设置；只有新建仓库或重新配置时才需要再操作一遍。
+
 1. 打开仓库的 **Settings → Pages**。
 2. 把 **Build and deployment → Source** 改为 **GitHub Actions**。
 3. 确认部署工作流存在：`.github/workflows/deploy.yml` 会在每次推送到 `main` 时运行，也可以在 **Actions → Deploy blog to GitHub Pages → Run workflow** 手动触发。
 4. 等待 `build` 和 `deploy` 两个任务都变成绿色。部署完成后，Actions 页面会显示站点地址。
 
-首次推送时如果 Pages 还没切换到 Actions，工作流可能在 `configure-pages` 或 `deploy` 步骤失败。按上面的顺序设置好 Source，再手动重跑一次即可。
+如果 Pages 还没切换到 GitHub Actions，工作流可能在 `configure-pages` 或 `deploy` 步骤失败。按上面的顺序设置好 Source，再手动重跑一次即可。
 
 ### 5.3 自定义域名与 DNS
 
@@ -401,11 +406,11 @@ title: "一次 Docker 排错：从 502 到正常"
 
 写作和发布流程已整理为可移植 skill：
 
-- 项目内路径：`.qoder/skills/muchenh-blog-publisher/`
-- 可移植压缩包：`D:\Blog\muchenh-blog-publisher-skill.zip`
+- 本地路径（不参与构建、不提交）：`.qoder/skills/muchenh-blog-publisher/`
+- 可移植压缩包：`D:\Blog\muchenh-blog-publisher-skill.zip`（已加入 `.gitignore`）
 - 新建文章脚本：`.qoder/skills/muchenh-blog-publisher/scripts/new-post.mjs`
 
-在 Qoder 中以 `D:\Blog` 打开项目后，可以直接描述“写一篇关于 XX 的文章并发布”，或调用 `/muchenh-blog-publisher`。使用其他 AI agent 时，解压压缩包并把 `muchenh-blog-publisher/` 文件夹放进该 agent 的 skills 目录；也可以直接复制项目内的 `.qoder/skills/muchenh-blog-publisher/`。请确保 agent 的工作目录是 `D:\Blog`。
+在 Qoder 中以 `D:\Blog` 打开项目后，可以直接描述“写一篇关于 XX 的文章并发布”，或调用 `/muchenh-blog-publisher`。使用其他 AI agent 时，解压压缩包并把 `muchenh-blog-publisher/` 文件夹放进该 agent 的 skills 目录；也可以直接复制项目内的 `.qoder/skills/muchenh-blog-publisher/`。这些文件只保存在本地，不会随源码推送到 GitHub。请确保 agent 的工作目录是 `D:\Blog`。
 
 手动调用脚本：
 
