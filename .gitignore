@@ -1,6 +1,4 @@
-node_modules/
-public/
-.qoder/
 .DS_Store
 *.log
-/muchenh-blog-publisher-skill.zip
+/publish.bat
+/publish.ps1
