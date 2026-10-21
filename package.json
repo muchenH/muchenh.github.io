@@ -1,0 +1,28 @@
+{
+  "name": "muchenh-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "muchenH 的静态个人博客",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/dev.js",
+    "build": "node src/build.js",
+    "clean": "node -e \"require('node:fs').rmSync('public', { recursive: true, force: true })\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "blog",
+    "static-site",
+    "markdown"
+  ],
+  "author": "muchenH",
+  "license": "MIT",
+  "dependencies": {
+    "highlight.js": "^11.12.0",
+    "js-yaml": "^4.3.2",
+    "marked": "^18.1.1",
+    "marked-highlight": "^2.2.4"
+  }
+}
