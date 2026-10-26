@@ -1,8 +1,12 @@
 ---
 title: 如何在Windows上安装和管理多版本 Python
 date: 2026-08-28 11:09:45
-category: Windows
-tags: Windows
+category: 
+- Python 
+- Windows
+tags: 
+- Python 
+- Windows
 index_img: /img/default.png
 banner_img:
 
